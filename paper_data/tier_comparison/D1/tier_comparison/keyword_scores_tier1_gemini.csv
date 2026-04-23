@@ -1,0 +1,156 @@
+keyword_id,keyword_text,segment_id,t_narr,t_vis,delta_t,match_case,match_method,alpha,scene_id,scene_t_start,scene_t_end,sub_scene_onset,confidence,groundability,visual_on_screen,gemini_concept_matched,gemini_match_score,S_gaussian,S_piecewise,S_temporal,zone,S_floored,importance,importance_weight,S_weighted,priority
+0,rgb values,0,7.455,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+1,build neural network,0,1.49,0.5,-0.99,A,ocr_at_tnarr_partial,0.8,1.0,0.5,4.5,,MEDIUM,HIGH,True,,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+2,given background color,0,5.005,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+3,network predicts light,0,2.333,0.5,-1.833,A,ocr_at_tnarr_partial,0.8,1.0,0.5,4.5,,MEDIUM,HIGH,True,,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+4,dark font,0,4.181,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+5,color expressed rgb,0,5.728,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+6,input layer,1,9.569,4.5,-5.069000000000001,E,gemini_concept_exact,0.8999999999999999,2.0,4.5,21.5,,HIGH,HIGH,True,input layer:,1.0,100.0,100.0,100.0,Optimal,95.0,4,1.5,150.0,0.0
+7,single pixel image,2,11.291,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,HIGH,False,,,,,,No Match,,3,1.0,,0.0
+8,think single pixel,2,10.65,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+9,layer contain final,3,13.995,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,HIGH,False,,,,,,No Match,,5,2.0,,0.0
+10,hidden layer nodes,3,13.754,4.5,-9.254,E,gemini_concept_fuzzy,0.84,2.0,4.5,21.5,,MEDIUM,HIGH,True,hidden layer (from top to bottom):,0.8,100.0,100.0,100.0,Optimal,92.0,5,2.0,200.0,0.0
+11,values output layer,3,16.338,4.5,-11.838,E,gemini_concept_fuzzy,0.825,2.0,4.5,21.5,,MEDIUM,HIGH,True,output layer:,0.75,100.0,100.0,100.0,Optimal,91.25,5,2.0,200.0,0.0
+12,final prediction value,3,19.923,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+13,three nodes,3,14.556,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+14,weight and bias values,3,15.737,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+15,each input layer node,4,21.485,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,HIGH,False,,,,,,No Match,,4,1.5,,0.0
+16,each hidden layer node,4,21.485,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,HIGH,False,,,,,,No Match,,4,1.5,,0.0
+17,establishing weight,4,25.951,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+18,each hidden node,5,31.358,21.5,-9.858,E,gemini_concept_fuzzy,0.8444444444444443,3.0,21.5,46.5,,MEDIUM,MEDIUM,True,**top hidden node**: this node contains the mathematical expression `w1x1 + w2x2 + w3x3 + b1`. this indicates that it computes a weighted sum of the inputs `x1`,0.815,100.0,100.0,100.0,Optimal,92.22222222222221,4,1.5,150.0,0.0
+19,value associated hidden,5,30.037,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+20,bias value associated,5,29.676,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+21,how many hidden layers,6,33.261,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+22,hidden layer determined,6,33.622,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,HIGH,False,,,,,,No Match,,3,1.0,,0.0
+23,each hidden layer,6,35.184,21.5,-13.683999999999996,E,gemini_concept_fuzzy,0.8482758620689654,3.0,21.5,46.5,,MEDIUM,HIGH,True,illustrating the flow of information from an input layer to a hidden layer.,0.828,100.0,100.0,100.0,Optimal,92.41379310344827,3,1.0,100.0,0.0
+24,specific problem experimentation,6,37.473,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+25,layers number,6,33.882,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+26,number nodes,6,34.463,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+27,determined specific,6,36.325,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+28,one or more nodes,7,39.696,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+29,output layer,7,41.217,21.5,-19.717,E,gemini_concept_exact,0.8999999999999999,3.0,21.5,46.5,,HIGH,HIGH,True,**output layer (right)**: on the far right,1.0,100.0,100.0,100.0,Optimal,95.0,3,1.0,100.0,0.0
+30,nodes exist output,7,40.116,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+31,case,8,42.378,,,F,low_groundability,0.0,,,,,NONE,LOW,False,,,,,,No Match,,2,0.6,,0.0
+32,hold final prediction,9,44.0,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+33,zoom output node,10,45.782,50.5,4.718000000000004,E,gemini_concept_fuzzy,0.8444444444444443,5.0,50.5,58.5,,MEDIUM,MEDIUM,False,central output node on the right.,0.815,16.85097074280832,9.869999999999848,16.85097074280832,Disruptive,15.54033968503434,1,0.3,5.055291222842496,21.06442074515522
+34,let zoom,10,46.392,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,1,0.3,,0.0
+35,prediction categorize light,11,48.044,50.5,2.456000000000003,D,ocr_at_tnarr_partial,0.8,4.0,46.5,50.5,50.5,MEDIUM,MEDIUM,True,,,61.72044923023085,78.15999999999995,61.72044923023085,Suboptimal,55.54840430720776,4,1.5,92.58067384534627,45.935460923722985
+36,greater equal,12,52.368,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+37,equal categorize dark,12,53.009,52.5,-0.5090000000000003,D,ocr_at_tnarr_partial,0.8,5.0,50.5,58.5,52.5,MEDIUM,MEDIUM,True,,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+38,multiplication and addition operations,13,56.973,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+39,top,13,56.552,,,F,low_groundability,0.0,,,,,NONE,LOW,False,,,,,,No Match,,5,2.0,,0.0
+40,activation functions,13,60.857,58.5,-2.3569999999999998,E,gemini_concept_exact,0.8999999999999999,6.0,58.5,62.5,,HIGH,MEDIUM,True,with specific activation functions indicated for each processing step.,1.0,100.0,100.0,100.0,Optimal,95.0,5,2.0,200.0,0.0
+41,node apply activation,13,59.395,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+42,each node,13,59.135,58.5,-0.634999999999998,E,gemini_concept_exact,0.8999999999999999,6.0,58.5,62.5,,HIGH,MEDIUM,True,white arrows connect each input node to every node in the subsequent hidden layer,1.0,100.0,100.0,100.0,Optimal,95.0,5,2.0,200.0,0.0
+43,three rgb values,14,67.551,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+44,which,14,68.833,62.5,-6.332999999999998,E,gemini_concept_exact,0.8999999999999999,7.0,62.5,75.0,,HIGH,MEDIUM,True,which is a common activation function defined as `max(0,1.0,100.0,100.0,100.0,Optimal,95.0,4,1.5,150.0,0.0
+45,neural network break,14,65.701,58.5,-7.200999999999993,E,gemini_concept_fuzzy,0.8470588235294118,6.0,58.5,62.5,,MEDIUM,HIGH,False,this image displays a diagram of a simple feedforward neural network on a black background. the network consists of an input layer,0.824,1.5790416399073797,0.0,1.5790416399073797,Unacceptable,1.458291396855639,4,1.5,2.3685624598610695,125.05251179870592
+46,color neural,14,65.001,64.5,-0.5010000000000048,D,ocr_at_tnarr_partial,0.8,7.0,62.5,75.0,64.5,MEDIUM,MEDIUM,True,,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+47,greenish background color,14,64.2,64.5,0.2999999999999971,D,ocr_at_tnarr_partial,0.8,7.0,62.5,75.0,64.5,MEDIUM,MEDIUM,True,,,99.28258579038135,100.0,99.28258579038135,Optimal,89.35432721134322,4,1.5,148.92387868557202,0.8608970515423835
+48,rgb values divide,14,67.851,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+49,255 linearly scaled,14,69.814,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+50,pass color neural,15,73.941,64.5,-9.441000000000004,D,ocr_at_tnarr_partial,0.8,7.0,62.5,75.0,64.5,MEDIUM,MEDIUM,True,,,100.0,100.0,100.0,Optimal,90.0,2,0.6,60.0,0.0
+51,network make prediction,15,75.263,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,HIGH,False,,,,,,No Match,,2,0.6,,0.0
+52,prediction light dark,15,76.104,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,2,0.6,,0.0
+53,dark font,15,77.206,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,2,0.6,,0.0
+54,neural network,15,75.002,62.5,-12.501999999999995,E,gemini_concept_exact,0.8999999999999999,7.0,62.5,75.0,,HIGH,HIGH,False,this image illustrates a simple feedforward neural network,1.0,0.00037117751451362836,0.0,0.00037117751451362836,Unacceptable,0.0003526186387879469,2,0.6,0.00022270650870817701,53.99979956414216
+55,hidden node substitute,16,81.232,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+56,x2 x3 values,16,81.73349999999999,75.0,-6.733499999999992,E,gemini_concept_exact,0.8999999999999999,8.0,75.0,80.0,,HIGH,MEDIUM,False,x2,1.0,2.6590486434656038,0.0,2.6590486434656038,Unacceptable,2.5260962112923235,4,1.5,3.9885729651984057,131.4102843313214
+57,pass input,16,78.468,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+58,first three input values,16,79.329,62.5,-16.828999999999994,E,gemini_concept_fuzzy,0.8357142857142856,7.0,62.5,75.0,,MEDIUM,MEDIUM,False,three input nodes,0.786,1.4457549616552129e-08,0.0,1.4457549616552129e-08,Unacceptable,1.3269965183763918e-08,4,1.5,2.1686324424828194e-08,125.35714283901926
+59,substitute x1,16,82.915,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+60,first hidden node,16,79.329,75.0,-4.3289999999999935,E,gemini_concept_fuzzy,0.8482758620689654,8.0,75.0,80.0,,MEDIUM,MEDIUM,True,this neuron takes the outputs of the first hidden layer (presumably after relu activation) as its inputs. it then performs another weighted sum and adds a bias. the expression inside is: `w10(w1x1 + w2x2 + w3x3 + b1) + w11(w4x1 + w5x2 + w6x3 + b2) + w12(w7x1 + w8x2 + w9x3 + b3) + b4`.,0.828,100.0,100.0,100.0,Optimal,92.41379310344827,4,1.5,150.0,0.0
+61,"x1, x2",16,83.576,75.0,-8.575999999999993,E,gemini_concept_exact,0.8999999999999999,8.0,75.0,80.0,,HIGH,MEDIUM,False,x2,1.0,0.27841237696749277,0.0,0.27841237696749277,Unacceptable,0.2644917581191181,4,1.5,0.41761856545123915,134.62414329109387
+62,weights showed earlier,17,87.903,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+63,three weights,17,87.623,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+64,weights fitted,18,89.606,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+65,samples pre,18,96.369,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+66,other optimization techniques,18,92.731,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+67,optimization techniques thousands,18,93.031,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+68,pre-labeled background colors,18,97.09,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+69,using stochastic gradient,18,90.627,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+70,stochastic gradient descent,18,91.188,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+71,process calculate bias,19,99.113,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+72,bias value,19,100.855,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+73,finally perform multiplication,20,102.216,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+74,addition,20,104.159,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+75,output pass relu,22,106.621,80.0,-26.620999999999995,A,ocr_at_tnarr_partial,0.8,9.0,80.0,107.5,,MEDIUM,MEDIUM,True,,,100.0,100.0,100.0,Optimal,90.0,5,2.0,200.0,0.0
+76,pass relu function,22,107.442,80.0,-27.441999999999997,A,ocr_at_tnarr_partial,0.8,9.0,80.0,107.5,,MEDIUM,MEDIUM,True,,,100.0,100.0,100.0,Optimal,90.0,5,2.0,200.0,0.0
+77,need output,22,105.941,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+78,takes negative values,23,110.446,107.5,-2.945999999999998,E,gemini_concept_fuzzy,0.8285714285714285,10.0,107.5,114.0,,MEDIUM,MEDIUM,True,for negative x-values,0.762,100.0,100.0,100.0,Optimal,91.42857142857143,5,2.0,200.0,0.0
+79,turns zero,23,111.708,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+80,relu function,23,109.245,107.5,-1.7450000000000043,A,ocr_at_tnarr_partial,0.8,10.0,107.5,114.0,,MEDIUM,MEDIUM,True,,,100.0,100.0,100.0,Optimal,90.0,5,2.0,200.0,0.0
+81,function simply,23,109.545,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+82,simply takes negative,23,110.126,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+83,just leaves value,24,113.89,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+84,positive just leaves,24,113.169,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+85,repeat process hidden,25,115.512,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+86,every other hidden node,25,116.693,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+87,values given,26,119.737,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+88,forward scaled rgb,26,118.476,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+89,given background color,26,120.458,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+90,scaled rgb values,26,118.896,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+91,pass forward,26,118.235,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+92,weights given hidden,27,124.567,120.0,-4.566999999999993,E,gemini_concept_fuzzy,0.8470588235294118,12.0,120.0,138.5,,MEDIUM,MEDIUM,True,`1.37` are the weights connecting the inputs to this specific hidden node. `b₂` represents the bias term for this node.,0.824,100.0,100.0,100.0,Optimal,92.3529411764706,4,1.5,150.0,0.0
+93,each input node,27,127.752,120.0,-7.751999999999995,E,gemini_concept_fuzzy,0.825,12.0,120.0,138.5,,MEDIUM,MEDIUM,True,this node shows a generic weighted sum formula: `w₇x₁ + w₈x₂ + w₉x₃ + b₃`. this indicates that each hidden node performs a similar calculation,0.75,100.0,100.0,100.0,Optimal,91.25,4,1.5,150.0,0.0
+94,hidden node associated,27,126.27,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+95,multiplied unique respective,27,122.924,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+96,unique respective weights,27,123.665,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+97,pass activation function,28,131.578,120.0,-11.578000000000005,E,gemini_concept_fuzzy,0.8651162790697674,12.0,120.0,138.5,,MEDIUM,MEDIUM,True,along with a graph of the rectified linear unit (relu) activation function (a line that is 0 for negative inputs and `x` for positive inputs). this suggests that 0.571 is the result of applying the relu function to a weighted sum.,0.884,100.0,100.0,100.0,Optimal,93.25581395348837,3,1.0,100.0,0.0
+98,add bias value,28,129.815,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+99,value pass,28,130.517,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+100,anything,29,139.531,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+101,no negative values,29,140.573,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+102,color relu doing,29,137.468,120.0,-17.46799999999999,A,ocr_at_tnarr_partial,0.8,12.0,120.0,138.5,,MEDIUM,MEDIUM,True,,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+103,hidden nodes okay,29,143.137,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+104,negative values coming,29,140.934,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+105,relu doing negative,29,138.69,145.0,6.310000000000002,D,ocr_at_tnarr_partial,0.8,13.0,138.5,145.0,145.0,MEDIUM,MEDIUM,True,,,4.13663305820535,0.0,4.13663305820535,Unacceptable,3.722969752384815,3,1.0,4.13663305820535,76.69069355343572
+106,particular color,29,137.027,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+107,zero,30,148.646,,,F,low_groundability,0.0,,,,,NONE,LOW,False,,,,,,No Match,,3,1.0,,0.0
+108,colors outputting negative,30,145.161,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+109,other colors,30,144.98,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+110,negative value,30,147.204,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+111,relu common hidden,31,155.301,145.0,-10.300999999999988,A,ocr_at_tnarr_partial,0.8,14.0,145.0,170.5,,MEDIUM,MEDIUM,True,,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+112,which activation,31,153.559,145.0,-8.558999999999997,E,gemini_concept_fuzzy,0.8307692307692307,14.0,145.0,170.5,,MEDIUM,MEDIUM,True,"the graph and text ""relu"" indicate that the rectified linear unit is the activation function used for these nodes.",0.769,100.0,100.0,100.0,Optimal,91.53846153846153,3,1.0,100.0,0.0
+113,activation function use,31,153.779,145.0,-8.778999999999996,E,gemini_concept_exact,0.8999999999999999,14.0,145.0,170.5,,HIGH,MEDIUM,True,"the graph and text ""relu"" indicate that the rectified linear unit is the activation function used for these nodes.",1.0,100.0,100.0,100.0,Optimal,95.0,3,1.0,100.0,0.0
+114,function use relu,31,154.36,145.0,-9.360000000000014,A,ocr_at_tnarr_partial,0.8,14.0,145.0,170.5,,MEDIUM,MEDIUM,True,,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+115,common hidden layers,31,155.762,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+116,choose appropriate hidden,32,159.448,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+117,others,32,162.072,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+118,hidden layers,32,161.13,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+119,handful activation functions,32,157.905,145.0,-12.905,E,gemini_concept_fuzzy,0.85,14.0,145.0,170.5,,MEDIUM,MEDIUM,True,and the application of different activation functions (relu for the hidden layer and sigmoid for the output layer).,0.833,100.0,100.0,100.0,Optimal,92.5,3,1.0,100.0,0.0
+120,functions choose,32,158.967,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+121,appropriate output layers,32,160.57,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+122,layers productive,33,167.12,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+123,necessary make,33,165.858,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+124,activation functions necessary,33,164.756,145.0,-19.756,E,gemini_concept_fuzzy,0.84,14.0,145.0,170.5,,MEDIUM,MEDIUM,True,and the application of different activation functions (relu for the hidden layer and sigmoid for the output layer).,0.8,100.0,100.0,100.0,Optimal,92.0,4,1.5,150.0,0.0
+125,separate features scale,34,168.342,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+126,features scale outputs,34,168.823,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+127,completed hidden,35,177.696,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,1,0.3,,0.0
+128,layer let look,35,178.417,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,HIGH,False,,,,,,No Match,,1,0.3,,0.0
+129,hidden layer,35,178.137,179.5,1.3629999999999995,E,gemini_concept_exact,0.8999999999999999,17.0,179.5,190.5,,HIGH,HIGH,False,this image illustrates a simple feedforward neural network with one hidden layer,1.0,86.18952632939943,94.555,86.18952632939943,Suboptimal,81.88005001292946,1,0.3,25.85685789881983,3.728827891062154
+130,prediction output layer,35,179.639,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,HIGH,False,,,,,,No Match,,1,0.3,,0.0
+131,three incoming values,36,184.348,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+132,node input variables,36,189.996,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+133,values hidden nodes,36,185.33,179.5,-5.8300000000000125,E,gemini_concept_fuzzy,0.84375,17.0,179.5,190.5,,MEDIUM,MEDIUM,True,it receives weighted inputs from all three hidden layer neurons (the values 0.571,0.812,100.0,100.0,100.0,Optimal,92.1875,4,1.5,150.0,0.0
+134,propagated output node,36,188.234,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+135,establish,36,182.926,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+136,going substitute,37,192.76,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+137,node substitute,38,197.868,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+138,unique weights,38,196.105,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+139,hidden and output node,38,197.106,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+140,going unique,38,195.564,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0
+141,bias value unique,39,204.677,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+142,operation add bias,39,203.295,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+143,unique node raw,39,205.538,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+144,raw output,39,208.022,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+145,addition and multiplication operation,39,201.793,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+146,sigmoid activation function,40,210.98,216.5,5.52000000000001,D,ocr_at_tnarr_partial,0.8,22.0,210.0,217.0,216.5,MEDIUM,MEDIUM,True,,,8.736749292517437,0.0,8.736749292517437,Unacceptable,7.863074363265694,5,2.0,17.473498585034875,146.0212011319721
+147,function scale,40,212.122,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+148,pass,40,209.564,,,F,low_groundability,0.0,,,,,NONE,LOW,False,,,,,,No Match,,5,2.0,,0.0
+149,value resembling probability,40,214.225,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,5,2.0,,0.0
+150,recall prediction,41,218.311,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,3,1.0,,0.0
+151,prediction light,41,218.972,219.0,0.0279999999999915,D,ocr_at_tnarr_partial,0.8,23.0,217.0,229.0,219.0,MEDIUM,MEDIUM,True,,,99.99372819668581,100.0,99.99372819668581,Optimal,89.99435537701723,3,1.0,99.99372819668581,0.0050174426513535765
+152,greater equal dark,42,221.616,221.0,-0.6160000000000139,D,ocr_at_tnarr_partial,0.8,23.0,217.0,229.0,221.0,MEDIUM,MEDIUM,True,,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+153,843 categorize dark,43,226.584,221.0,-5.584000000000003,D,ocr_at_tnarr_partial,0.8,23.0,217.0,229.0,221.0,MEDIUM,MEDIUM,True,,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+154,value 843,43,225.703,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,,,No Match,,4,1.5,,0.0

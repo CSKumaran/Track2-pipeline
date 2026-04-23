@@ -1,0 +1,293 @@
+cpu-bind=MASK - cn27, task  0  0 [4161311]: mask 0x4040000000000000000000004040 set
+04:18:58 [INFO] pipeline_v2_2: Pipeline v2.2 starting
+04:18:58 [INFO] pipeline_v2_2: Config: ASR=whisperx, VLM=skip, SigLIP=True, Keywords=True, Importance=True
+04:18:58 [INFO] pipeline_v2_2: [v2.2] TEMPORAL_SIGMA=5.0, USE_KEYFRAME_AS_TVIS=True, SCORING_MODE=both, DIAGNOSTICS=True
+04:18:59 [INFO] pipeline_v2_2: ============================================================
+04:18:59 [INFO] pipeline_v2_2: Processing: A0
+04:18:59 [INFO] pipeline_v2_2: Output: outputs_v2_2/A0
+04:18:59 [INFO] pipeline_v2_2: Running ONLY Stage 1
+04:18:59 [INFO] pipeline_v2_2: ============================================================
+04:18:59 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostics enabled: outputs_v2_2/A0/diagnostics
+04:18:59 [INFO] pipeline_v2_2: --- Stage 1: ASR Transcription ---
+04:18:59 [INFO] pipeline_v2_2_gpu.utils.ffmpeg_utils: Extracting audio: ffmpeg -y -i videos/A0.mp4 -ac 1 -ar 16000 -vn outputs_v2_2/A0/audio.wav
+04:19:00 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: torch.load patched at module level for PyTorch 2.6 compat
+04:19:00 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading WhisperX model: large-v3 (device=cuda, compute=float16, beam=10, lang=en)
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/pyannote/audio/core/io.py:212: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  torchaudio.list_audio_backends()
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/speechbrain/utils/torch_audio_backend.py:57: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  available_backends = torchaudio.list_audio_backends()
+04:19:07 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _speechbrain_save
+04:19:07 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _speechbrain_load
+04:19:07 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for save
+04:19:07 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for load
+04:19:07 [INFO] speechbrain.utils.quirks: Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+04:19:07 [INFO] speechbrain.utils.quirks: Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+04:19:07 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _save
+04:19:07 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _recover
+04:19:08 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:19:10 [INFO] pytorch_lightning.utilities.migration.utils: Lightning automatically upgraded your loaded checkpoint from v1.5.4 to v2.6.1. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint .conda/envs/tc_pipeline/lib/python3.10/site-packages/whisperx/assets/pytorch_model.bin`
+04:19:11 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Transcribing (batch_size=16, beam_size=10)...
+04:19:11 [WARNING] pipeline_v2_2_gpu.stages.asr_whisper: WhisperX failed (FasterWhisperPipeline.transcribe() got an unexpected keyword argument 'beam_size'), falling back to faster-whisper
+04:19:11 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading faster-whisper: large-v3 (device=cuda, compute=float16)
+04:19:11 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:19:14 [INFO] faster_whisper: Processing audio with duration 03:36.503
+04:19:14 [INFO] faster_whisper: Detected language 'en' with probability 1.00
+04:19:25 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: ASR backend: faster-whisper (fallback)
+04:19:25 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: pySBD force-split 1 oversized segments (max_words=40)
+04:19:25 [INFO] pipeline_v2_2_gpu.utils.timestamp_validator: Timestamp sanity: 49/627 words flagged (7.8%)
+04:19:25 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/A0/transcript_words.csv (627 rows)
+04:19:25 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/A0/transcript_segments.csv (42 rows)
+04:19:25 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/A0/transcript_segments_improved.csv (40 rows)
+04:19:25 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostic: outputs_v2_2/A0/diagnostics/stage1_asr.json
+04:19:25 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved JSON: outputs_v2_2/A0/timings.json
+04:19:25 [INFO] pipeline_v2_2: Done: A0 (total: 26.2s)
+04:19:31 [INFO] pipeline_v2_2: Pipeline v2.2 starting
+04:19:31 [INFO] pipeline_v2_2: Config: ASR=whisperx, VLM=skip, SigLIP=True, Keywords=True, Importance=True
+04:19:31 [INFO] pipeline_v2_2: [v2.2] TEMPORAL_SIGMA=5.0, USE_KEYFRAME_AS_TVIS=True, SCORING_MODE=both, DIAGNOSTICS=True
+04:19:32 [INFO] pipeline_v2_2: ============================================================
+04:19:32 [INFO] pipeline_v2_2: Processing: A1
+04:19:32 [INFO] pipeline_v2_2: Output: outputs_v2_2/A1
+04:19:32 [INFO] pipeline_v2_2: Running ONLY Stage 1
+04:19:32 [INFO] pipeline_v2_2: ============================================================
+04:19:32 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostics enabled: outputs_v2_2/A1/diagnostics
+04:19:32 [INFO] pipeline_v2_2: --- Stage 1: ASR Transcription ---
+04:19:32 [INFO] pipeline_v2_2_gpu.utils.ffmpeg_utils: Extracting audio: ffmpeg -y -i videos/A1.mp4 -ac 1 -ar 16000 -vn outputs_v2_2/A1/audio.wav
+04:19:32 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: torch.load patched at module level for PyTorch 2.6 compat
+04:19:32 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading WhisperX model: large-v3 (device=cuda, compute=float16, beam=10, lang=en)
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/pyannote/audio/core/io.py:212: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  torchaudio.list_audio_backends()
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/speechbrain/utils/torch_audio_backend.py:57: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  available_backends = torchaudio.list_audio_backends()
+04:19:40 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _speechbrain_save
+04:19:40 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _speechbrain_load
+04:19:40 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for save
+04:19:40 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for load
+04:19:40 [INFO] speechbrain.utils.quirks: Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+04:19:40 [INFO] speechbrain.utils.quirks: Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+04:19:40 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _save
+04:19:40 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _recover
+04:19:41 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:19:43 [INFO] pytorch_lightning.utilities.migration.utils: Lightning automatically upgraded your loaded checkpoint from v1.5.4 to v2.6.1. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint .conda/envs/tc_pipeline/lib/python3.10/site-packages/whisperx/assets/pytorch_model.bin`
+04:19:44 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Transcribing (batch_size=16, beam_size=10)...
+04:19:44 [WARNING] pipeline_v2_2_gpu.stages.asr_whisper: WhisperX failed (FasterWhisperPipeline.transcribe() got an unexpected keyword argument 'beam_size'), falling back to faster-whisper
+04:19:44 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading faster-whisper: large-v3 (device=cuda, compute=float16)
+04:19:44 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:19:47 [INFO] faster_whisper: Processing audio with duration 03:36.526
+04:19:48 [INFO] faster_whisper: Detected language 'en' with probability 1.00
+04:19:58 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: ASR backend: faster-whisper (fallback)
+04:19:58 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: pySBD force-split 1 oversized segments (max_words=40)
+04:19:58 [INFO] pipeline_v2_2_gpu.utils.timestamp_validator: Timestamp sanity: 2/596 words flagged (0.3%)
+04:19:58 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/A1/transcript_words.csv (596 rows)
+04:19:58 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/A1/transcript_segments.csv (46 rows)
+04:19:58 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/A1/transcript_segments_improved.csv (37 rows)
+04:19:58 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostic: outputs_v2_2/A1/diagnostics/stage1_asr.json
+04:19:58 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved JSON: outputs_v2_2/A1/timings.json
+04:19:58 [INFO] pipeline_v2_2: Done: A1 (total: 26.6s)
+04:20:04 [INFO] pipeline_v2_2: Pipeline v2.2 starting
+04:20:04 [INFO] pipeline_v2_2: Config: ASR=whisperx, VLM=skip, SigLIP=True, Keywords=True, Importance=True
+04:20:04 [INFO] pipeline_v2_2: [v2.2] TEMPORAL_SIGMA=5.0, USE_KEYFRAME_AS_TVIS=True, SCORING_MODE=both, DIAGNOSTICS=True
+04:20:04 [INFO] pipeline_v2_2: ============================================================
+04:20:04 [INFO] pipeline_v2_2: Processing: A3
+04:20:04 [INFO] pipeline_v2_2: Output: outputs_v2_2/A3
+04:20:04 [INFO] pipeline_v2_2: Running ONLY Stage 1
+04:20:04 [INFO] pipeline_v2_2: ============================================================
+04:20:04 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostics enabled: outputs_v2_2/A3/diagnostics
+04:20:04 [INFO] pipeline_v2_2: --- Stage 1: ASR Transcription ---
+04:20:04 [INFO] pipeline_v2_2_gpu.utils.ffmpeg_utils: Extracting audio: ffmpeg -y -i videos/A3.mp4 -ac 1 -ar 16000 -vn outputs_v2_2/A3/audio.wav
+04:20:04 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: torch.load patched at module level for PyTorch 2.6 compat
+04:20:04 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading WhisperX model: large-v3 (device=cuda, compute=float16, beam=10, lang=en)
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/pyannote/audio/core/io.py:212: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  torchaudio.list_audio_backends()
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/speechbrain/utils/torch_audio_backend.py:57: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  available_backends = torchaudio.list_audio_backends()
+04:20:11 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _speechbrain_save
+04:20:11 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _speechbrain_load
+04:20:11 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for save
+04:20:11 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for load
+04:20:12 [INFO] speechbrain.utils.quirks: Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+04:20:12 [INFO] speechbrain.utils.quirks: Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+04:20:12 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _save
+04:20:12 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _recover
+04:20:12 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:20:15 [INFO] pytorch_lightning.utilities.migration.utils: Lightning automatically upgraded your loaded checkpoint from v1.5.4 to v2.6.1. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint .conda/envs/tc_pipeline/lib/python3.10/site-packages/whisperx/assets/pytorch_model.bin`
+04:20:15 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Transcribing (batch_size=16, beam_size=10)...
+04:20:15 [WARNING] pipeline_v2_2_gpu.stages.asr_whisper: WhisperX failed (FasterWhisperPipeline.transcribe() got an unexpected keyword argument 'beam_size'), falling back to faster-whisper
+04:20:15 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading faster-whisper: large-v3 (device=cuda, compute=float16)
+04:20:15 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:20:18 [INFO] faster_whisper: Processing audio with duration 03:36.526
+04:20:18 [INFO] faster_whisper: Detected language 'en' with probability 1.00
+04:20:29 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: ASR backend: faster-whisper (fallback)
+04:20:29 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: pySBD force-split 1 oversized segments (max_words=40)
+04:20:29 [INFO] pipeline_v2_2_gpu.utils.timestamp_validator: Timestamp sanity: 2/596 words flagged (0.3%)
+04:20:29 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/A3/transcript_words.csv (596 rows)
+04:20:29 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/A3/transcript_segments.csv (46 rows)
+04:20:29 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/A3/transcript_segments_improved.csv (37 rows)
+04:20:29 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostic: outputs_v2_2/A3/diagnostics/stage1_asr.json
+04:20:29 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved JSON: outputs_v2_2/A3/timings.json
+04:20:29 [INFO] pipeline_v2_2: Done: A3 (total: 24.8s)
+04:20:34 [INFO] pipeline_v2_2: Pipeline v2.2 starting
+04:20:34 [INFO] pipeline_v2_2: Config: ASR=whisperx, VLM=skip, SigLIP=True, Keywords=True, Importance=True
+04:20:34 [INFO] pipeline_v2_2: [v2.2] TEMPORAL_SIGMA=5.0, USE_KEYFRAME_AS_TVIS=True, SCORING_MODE=both, DIAGNOSTICS=True
+04:20:35 [INFO] pipeline_v2_2: ============================================================
+04:20:35 [INFO] pipeline_v2_2: Processing: A5
+04:20:35 [INFO] pipeline_v2_2: Output: outputs_v2_2/A5
+04:20:35 [INFO] pipeline_v2_2: Running ONLY Stage 1
+04:20:35 [INFO] pipeline_v2_2: ============================================================
+04:20:35 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostics enabled: outputs_v2_2/A5/diagnostics
+04:20:35 [INFO] pipeline_v2_2: --- Stage 1: ASR Transcription ---
+04:20:35 [INFO] pipeline_v2_2_gpu.utils.ffmpeg_utils: Extracting audio: ffmpeg -y -i videos/A5.mp4 -ac 1 -ar 16000 -vn outputs_v2_2/A5/audio.wav
+04:20:35 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: torch.load patched at module level for PyTorch 2.6 compat
+04:20:36 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading WhisperX model: large-v3 (device=cuda, compute=float16, beam=10, lang=en)
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/pyannote/audio/core/io.py:212: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  torchaudio.list_audio_backends()
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/speechbrain/utils/torch_audio_backend.py:57: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  available_backends = torchaudio.list_audio_backends()
+04:20:43 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _speechbrain_save
+04:20:43 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _speechbrain_load
+04:20:43 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for save
+04:20:43 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for load
+04:20:43 [INFO] speechbrain.utils.quirks: Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+04:20:43 [INFO] speechbrain.utils.quirks: Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+04:20:43 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _save
+04:20:43 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _recover
+04:20:43 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:20:45 [INFO] pytorch_lightning.utilities.migration.utils: Lightning automatically upgraded your loaded checkpoint from v1.5.4 to v2.6.1. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint .conda/envs/tc_pipeline/lib/python3.10/site-packages/whisperx/assets/pytorch_model.bin`
+04:20:46 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Transcribing (batch_size=16, beam_size=10)...
+04:20:46 [WARNING] pipeline_v2_2_gpu.stages.asr_whisper: WhisperX failed (FasterWhisperPipeline.transcribe() got an unexpected keyword argument 'beam_size'), falling back to faster-whisper
+04:20:46 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading faster-whisper: large-v3 (device=cuda, compute=float16)
+04:20:46 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:20:49 [INFO] faster_whisper: Processing audio with duration 03:36.526
+04:20:49 [INFO] faster_whisper: Detected language 'en' with probability 1.00
+04:20:59 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: ASR backend: faster-whisper (fallback)
+04:21:00 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: pySBD force-split 1 oversized segments (max_words=40)
+04:21:00 [INFO] pipeline_v2_2_gpu.utils.timestamp_validator: Timestamp sanity: 2/596 words flagged (0.3%)
+04:21:00 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/A5/transcript_words.csv (596 rows)
+04:21:00 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/A5/transcript_segments.csv (46 rows)
+04:21:00 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/A5/transcript_segments_improved.csv (37 rows)
+04:21:00 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostic: outputs_v2_2/A5/diagnostics/stage1_asr.json
+04:21:00 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved JSON: outputs_v2_2/A5/timings.json
+04:21:00 [INFO] pipeline_v2_2: Done: A5 (total: 25.1s)
+04:21:05 [INFO] pipeline_v2_2: Pipeline v2.2 starting
+04:21:05 [INFO] pipeline_v2_2: Config: ASR=whisperx, VLM=skip, SigLIP=True, Keywords=True, Importance=True
+04:21:05 [INFO] pipeline_v2_2: [v2.2] TEMPORAL_SIGMA=5.0, USE_KEYFRAME_AS_TVIS=True, SCORING_MODE=both, DIAGNOSTICS=True
+04:21:05 [INFO] pipeline_v2_2: ============================================================
+04:21:05 [INFO] pipeline_v2_2: Processing: CTML_03_01
+04:21:05 [INFO] pipeline_v2_2: Output: outputs_v2_2/CTML_03_01
+04:21:05 [INFO] pipeline_v2_2: Running ONLY Stage 1
+04:21:05 [INFO] pipeline_v2_2: ============================================================
+04:21:05 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostics enabled: outputs_v2_2/CTML_03_01/diagnostics
+04:21:05 [INFO] pipeline_v2_2: --- Stage 1: ASR Transcription ---
+04:21:05 [INFO] pipeline_v2_2_gpu.utils.ffmpeg_utils: Extracting audio: ffmpeg -y -i videos/CTML_03_01.mp4 -ac 1 -ar 16000 -vn outputs_v2_2/CTML_03_01/audio.wav
+04:21:06 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: torch.load patched at module level for PyTorch 2.6 compat
+04:21:06 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading WhisperX model: large-v3 (device=cuda, compute=float16, beam=10, lang=en)
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/pyannote/audio/core/io.py:212: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  torchaudio.list_audio_backends()
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/speechbrain/utils/torch_audio_backend.py:57: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  available_backends = torchaudio.list_audio_backends()
+04:21:14 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _speechbrain_save
+04:21:14 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _speechbrain_load
+04:21:14 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for save
+04:21:14 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for load
+04:21:14 [INFO] speechbrain.utils.quirks: Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+04:21:14 [INFO] speechbrain.utils.quirks: Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+04:21:14 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _save
+04:21:14 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _recover
+04:21:14 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:21:17 [INFO] pytorch_lightning.utilities.migration.utils: Lightning automatically upgraded your loaded checkpoint from v1.5.4 to v2.6.1. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint .conda/envs/tc_pipeline/lib/python3.10/site-packages/whisperx/assets/pytorch_model.bin`
+04:21:17 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Transcribing (batch_size=16, beam_size=10)...
+04:21:17 [WARNING] pipeline_v2_2_gpu.stages.asr_whisper: WhisperX failed (FasterWhisperPipeline.transcribe() got an unexpected keyword argument 'beam_size'), falling back to faster-whisper
+04:21:17 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading faster-whisper: large-v3 (device=cuda, compute=float16)
+04:21:18 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:21:20 [INFO] faster_whisper: Processing audio with duration 02:16.162
+04:21:21 [INFO] faster_whisper: Detected language 'en' with probability 1.00
+04:21:31 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: ASR backend: faster-whisper (fallback)
+04:21:31 [INFO] pipeline_v2_2_gpu.utils.timestamp_validator: Timestamp sanity: 0/222 words flagged (0.0%)
+04:21:31 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/CTML_03_01/transcript_words.csv (222 rows)
+04:21:31 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/CTML_03_01/transcript_segments.csv (19 rows)
+04:21:31 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/CTML_03_01/transcript_segments_improved.csv (18 rows)
+04:21:31 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostic: outputs_v2_2/CTML_03_01/diagnostics/stage1_asr.json
+04:21:31 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved JSON: outputs_v2_2/CTML_03_01/timings.json
+04:21:31 [INFO] pipeline_v2_2: Done: CTML_03_01 (total: 25.9s)
+04:21:36 [INFO] pipeline_v2_2: Pipeline v2.2 starting
+04:21:36 [INFO] pipeline_v2_2: Config: ASR=whisperx, VLM=skip, SigLIP=True, Keywords=True, Importance=True
+04:21:36 [INFO] pipeline_v2_2: [v2.2] TEMPORAL_SIGMA=5.0, USE_KEYFRAME_AS_TVIS=True, SCORING_MODE=both, DIAGNOSTICS=True
+04:21:36 [INFO] pipeline_v2_2: ============================================================
+04:21:36 [INFO] pipeline_v2_2: Processing: Video_evaluation_01
+04:21:36 [INFO] pipeline_v2_2: Output: outputs_v2_2/Video_evaluation_01
+04:21:36 [INFO] pipeline_v2_2: Running ONLY Stage 1
+04:21:36 [INFO] pipeline_v2_2: ============================================================
+04:21:36 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostics enabled: outputs_v2_2/Video_evaluation_01/diagnostics
+04:21:36 [INFO] pipeline_v2_2: --- Stage 1: ASR Transcription ---
+04:21:36 [INFO] pipeline_v2_2_gpu.utils.ffmpeg_utils: Extracting audio: ffmpeg -y -i videos/Video_evaluation_01.mp4 -ac 1 -ar 16000 -vn outputs_v2_2/Video_evaluation_01/audio.wav
+04:21:36 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: torch.load patched at module level for PyTorch 2.6 compat
+04:21:37 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading WhisperX model: large-v3 (device=cuda, compute=float16, beam=10, lang=en)
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/pyannote/audio/core/io.py:212: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  torchaudio.list_audio_backends()
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/speechbrain/utils/torch_audio_backend.py:57: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  available_backends = torchaudio.list_audio_backends()
+04:21:43 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _speechbrain_save
+04:21:43 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _speechbrain_load
+04:21:43 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for save
+04:21:43 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for load
+04:21:43 [INFO] speechbrain.utils.quirks: Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+04:21:43 [INFO] speechbrain.utils.quirks: Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+04:21:43 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _save
+04:21:43 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _recover
+04:21:44 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:21:46 [INFO] pytorch_lightning.utilities.migration.utils: Lightning automatically upgraded your loaded checkpoint from v1.5.4 to v2.6.1. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint .conda/envs/tc_pipeline/lib/python3.10/site-packages/whisperx/assets/pytorch_model.bin`
+04:21:46 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Transcribing (batch_size=16, beam_size=10)...
+04:21:47 [WARNING] pipeline_v2_2_gpu.stages.asr_whisper: WhisperX failed (FasterWhisperPipeline.transcribe() got an unexpected keyword argument 'beam_size'), falling back to faster-whisper
+04:21:47 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading faster-whisper: large-v3 (device=cuda, compute=float16)
+04:21:47 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:21:50 [INFO] faster_whisper: Processing audio with duration 01:21.247
+04:21:50 [INFO] faster_whisper: Detected language 'en' with probability 1.00
+04:21:53 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: ASR backend: faster-whisper (fallback)
+04:21:53 [INFO] pipeline_v2_2_gpu.utils.timestamp_validator: Timestamp sanity: 0/136 words flagged (0.0%)
+04:21:53 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/Video_evaluation_01/transcript_words.csv (136 rows)
+04:21:53 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/Video_evaluation_01/transcript_segments.csv (13 rows)
+04:21:53 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/Video_evaluation_01/transcript_segments_improved.csv (10 rows)
+04:21:53 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostic: outputs_v2_2/Video_evaluation_01/diagnostics/stage1_asr.json
+04:21:53 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved JSON: outputs_v2_2/Video_evaluation_01/timings.json
+04:21:53 [INFO] pipeline_v2_2: Done: Video_evaluation_01 (total: 16.8s)
+04:21:59 [INFO] pipeline_v2_2: Pipeline v2.2 starting
+04:21:59 [INFO] pipeline_v2_2: Config: ASR=whisperx, VLM=skip, SigLIP=True, Keywords=True, Importance=True
+04:21:59 [INFO] pipeline_v2_2: [v2.2] TEMPORAL_SIGMA=5.0, USE_KEYFRAME_AS_TVIS=True, SCORING_MODE=both, DIAGNOSTICS=True
+04:21:59 [INFO] pipeline_v2_2: ============================================================
+04:21:59 [INFO] pipeline_v2_2: Processing: test_video
+04:21:59 [INFO] pipeline_v2_2: Output: outputs_v2_2/test_video
+04:21:59 [INFO] pipeline_v2_2: Running ONLY Stage 1
+04:21:59 [INFO] pipeline_v2_2: ============================================================
+04:21:59 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostics enabled: outputs_v2_2/test_video/diagnostics
+04:21:59 [INFO] pipeline_v2_2: --- Stage 1: ASR Transcription ---
+04:21:59 [INFO] pipeline_v2_2_gpu.utils.ffmpeg_utils: Extracting audio: ffmpeg -y -i videos/test_video.mp4 -ac 1 -ar 16000 -vn outputs_v2_2/test_video/audio.wav
+04:22:00 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: torch.load patched at module level for PyTorch 2.6 compat
+04:22:00 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading WhisperX model: large-v3 (device=cuda, compute=float16, beam=10, lang=en)
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/pyannote/audio/core/io.py:212: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  torchaudio.list_audio_backends()
+/iitjhome/senthil1/.conda/envs/tc_pipeline/lib/python3.10/site-packages/speechbrain/utils/torch_audio_backend.py:57: UserWarning: torchaudio._backend.list_audio_backends has been deprecated. This deprecation is part of a large refactoring effort to transition TorchAudio into a maintenance phase. The decoding and encoding capabilities of PyTorch for both audio and video are being consolidated into TorchCodec. Please see https://github.com/pytorch/audio/issues/3902 for more information. It will be removed from the 2.9 release. 
+  available_backends = torchaudio.list_audio_backends()
+04:22:07 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _speechbrain_save
+04:22:07 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _speechbrain_load
+04:22:07 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for save
+04:22:07 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for load
+04:22:07 [INFO] speechbrain.utils.quirks: Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+04:22:07 [INFO] speechbrain.utils.quirks: Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+04:22:07 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint save hook for _save
+04:22:07 [DEBUG] speechbrain.utils.checkpoints: Registered checkpoint load hook for _recover
+04:22:08 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:22:10 [INFO] pytorch_lightning.utilities.migration.utils: Lightning automatically upgraded your loaded checkpoint from v1.5.4 to v2.6.1. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint .conda/envs/tc_pipeline/lib/python3.10/site-packages/whisperx/assets/pytorch_model.bin`
+04:22:10 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Transcribing (batch_size=16, beam_size=10)...
+04:22:11 [WARNING] pipeline_v2_2_gpu.stages.asr_whisper: WhisperX failed (FasterWhisperPipeline.transcribe() got an unexpected keyword argument 'beam_size'), falling back to faster-whisper
+04:22:11 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: Loading faster-whisper: large-v3 (device=cuda, compute=float16)
+04:22:11 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-large-v3/revision/main "HTTP/1.1 200 OK"
+04:22:13 [INFO] faster_whisper: Processing audio with duration 07:57.472
+04:22:14 [INFO] faster_whisper: Detected language 'en' with probability 1.00
+04:22:56 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: ASR backend: faster-whisper (fallback)
+04:22:56 [INFO] pipeline_v2_2_gpu.stages.asr_whisper: pySBD force-split 6 oversized segments (max_words=40)
+04:22:56 [INFO] pipeline_v2_2_gpu.utils.timestamp_validator: Timestamp sanity: 15/1324 words flagged (1.1%)
+04:22:56 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/test_video/transcript_words.csv (1324 rows)
+04:22:56 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/test_video/transcript_segments.csv (110 rows)
+04:22:56 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved CSV: outputs_v2_2/test_video/transcript_segments_improved.csv (64 rows)
+04:22:56 [INFO] pipeline_v2_2_gpu.utils.diagnostics: Diagnostic: outputs_v2_2/test_video/diagnostics/stage1_asr.json
+04:22:56 [INFO] pipeline_v2_2_gpu.utils.io_utils: Saved JSON: outputs_v2_2/test_video/timings.json
+04:22:56 [INFO] pipeline_v2_2: Done: test_video (total: 57.3s)

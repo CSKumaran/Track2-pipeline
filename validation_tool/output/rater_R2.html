@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Expert Validation — Temporal Contiguity</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f4f6f8; color: #1a1a1a; }
+  header { background: #1f2937; color: #fff; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  header h1 { font-size: 16px; margin: 0; font-weight: 600; }
+  header .meta { display: flex; align-items: center; gap: 16px; font-size: 13px; }
+  header .progress-bar { width: 220px; height: 8px; background: #374151; border-radius: 4px; overflow: hidden; }
+  header .progress-fill { height: 100%; background: #10b981; transition: width 0.3s; }
+  header button { background: #3b82f6; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+  header button:hover { background: #2563eb; }
+  header .rater-badge { background: #4b5563; padding: 4px 10px; border-radius: 4px; font-weight: 600; }
+
+  .container { display: grid; grid-template-columns: 60% 40%; height: calc(100vh - 52px); }
+  .video-pane { background: #000; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+  .video-pane .video-title { color: #fff; font-size: 18px; margin-bottom: 12px; font-weight: 600; }
+  .video-pane .video-wrapper { width: 100%; max-width: 800px; aspect-ratio: 16/9; background: #111; }
+  #player { width: 100%; height: 100%; }
+
+  .rating-pane { overflow-y: auto; padding: 20px; background: #fff; border-left: 1px solid #e5e7eb; }
+  .cpip-card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin-bottom: 14px; background: #fafafa; }
+  .cpip-card.locked { opacity: 0.5; pointer-events: none; }
+  .cpip-card.active { border-color: #3b82f6; background: #eff6ff; }
+  .cpip-card .cpip-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .cpip-card .cpip-label { font-weight: 600; font-size: 14px; }
+  .cpip-card .cpip-concept { color: #6b7280; font-size: 12px; margin-top: 2px; }
+  .cpip-card .jump-btn { background: #10b981; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; white-space: nowrap; }
+  .cpip-card .jump-btn:hover { background: #059669; }
+  .cpip-card .question { margin-top: 12px; }
+  .cpip-card .question.disabled { opacity: 0.4; pointer-events: none; }
+  .cpip-card .q-label { font-size: 13px; font-weight: 600; margin-bottom: 6px; display: block; }
+  .cpip-card .zone-options { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .cpip-card .zone-options label { display: flex; align-items: center; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer; font-size: 13px; background: #fff; }
+  .cpip-card .zone-options label:hover { background: #f3f4f6; }
+  .cpip-card .zone-options input[type=radio]:checked + span { font-weight: 600; }
+  .cpip-card .zone-options label:has(input:checked) { background: #dbeafe; border-color: #3b82f6; }
+  .cpip-card .delay-input { width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 14px; }
+  .cpip-card .delay-hint { font-size: 11px; color: #6b7280; margin-top: 4px; }
+  .cpip-card .confidence-options { display: flex; gap: 6px; }
+  .cpip-card .confidence-options label { flex: 1; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer; text-align: center; font-size: 13px; background: #fff; }
+  .cpip-card .confidence-options label:has(input:checked) { background: #dbeafe; border-color: #3b82f6; font-weight: 600; }
+
+  .overall-section { margin-top: 20px; padding: 16px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fafafa; }
+  .overall-section.locked { opacity: 0.4; pointer-events: none; }
+  .overall-section h3 { margin: 0 0 12px 0; font-size: 15px; }
+  .overall-section .slider-row { display: flex; align-items: center; gap: 12px; }
+  .overall-section .slider-row input[type=range] { flex: 1; }
+  .overall-section .slider-row .slider-value { font-weight: 600; font-size: 18px; min-width: 48px; text-align: right; }
+  .overall-section textarea { width: 100%; min-height: 70px; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px; font-family: inherit; font-size: 13px; resize: vertical; margin-top: 12px; }
+
+  .submit-btn { width: 100%; margin-top: 16px; padding: 14px; background: #10b981; color: #fff; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .submit-btn:hover { background: #059669; }
+  .submit-btn:disabled { background: #9ca3af; cursor: not-allowed; }
+
+  .banner { padding: 10px 14px; border-radius: 6px; margin-bottom: 12px; font-size: 13px; }
+  .banner.success { background: #d1fae5; color: #065f46; border: 1px solid #10b981; }
+  .banner.error { background: #fee2e2; color: #991b1b; border: 1px solid #ef4444; }
+  .banner.info { background: #dbeafe; color: #1e40af; border: 1px solid #3b82f6; }
+
+  .completion-screen { padding: 40px; text-align: center; }
+  .completion-screen h2 { color: #10b981; }
+
+  .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 1000; display: none; align-items: center; justify-content: center; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: #fff; max-width: 720px; width: 90%; max-height: 85vh; overflow-y: auto; border-radius: 8px; padding: 24px; }
+  .modal h2 { margin-top: 0; }
+  .modal .close-btn { float: right; background: #e5e7eb; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+  .modal .zone-def { margin-bottom: 14px; padding: 12px; border-left: 4px solid #d1d5db; background: #f9fafb; }
+  .modal .zone-def.optimal { border-left-color: #10b981; }
+  .modal .zone-def.suboptimal { border-left-color: #f59e0b; }
+  .modal .zone-def.disruptive { border-left-color: #f97316; }
+  .modal .zone-def.unacceptable { border-left-color: #ef4444; }
+  .modal .zone-def strong { display: block; margin-bottom: 4px; font-size: 14px; }
+  .modal .zone-def p { margin: 0; font-size: 13px; color: #4b5563; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Expert Validation — Temporal Contiguity</h1>
+  <div class="meta">
+    <button id="zoneCardBtn">View zone reference</button>
+    <div>
+      <span id="progressText">Loading…</span>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    </div>
+    <span class="rater-badge" id="raterBadge">R?</span>
+  </div>
+</header>
+
+<div class="container" id="mainContainer">
+  <div class="video-pane">
+    <div class="video-title" id="videoTitle">Loading…</div>
+    <div class="video-wrapper"><div id="player"></div></div>
+  </div>
+  <div class="rating-pane" id="ratingPane">
+    <div id="bannerArea"></div>
+    <div id="cpipContainer"></div>
+    <div class="overall-section locked" id="overallSection">
+      <h3>Overall video quality</h3>
+      <div class="slider-row">
+        <input type="range" id="overallScore" min="0" max="100" value="50" step="1">
+        <span class="slider-value" id="overallScoreVal">50</span>
+      </div>
+      <label style="display:block;margin-top:12px;font-size:13px;font-weight:600;">Comments (optional)</label>
+      <textarea id="comments" placeholder="Any observations about this video's visual-narration synchronisation…"></textarea>
+    </div>
+    <button class="submit-btn" id="submitBtn" disabled>Submit video ratings</button>
+  </div>
+</div>
+
+<div class="completion-screen" id="completionScreen" style="display:none;">
+  <h2>All 20 videos completed. Thank you!</h2>
+  <p>Your ratings have been recorded. You may close this window.</p>
+</div>
+
+<!-- Zone reference modal -->
+<div class="modal-overlay" id="zoneModal">
+  <div class="modal">
+    <button class="close-btn" id="closeModalBtn">Close</button>
+    <div id="zoneCardContent"></div>
+  </div>
+</div>
+
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<!-- RATER_CONFIG injected by generate_rater_copies.py -->
+<script id="rater-config">
+window.RATER_CONFIG = {"raterId": "R2", "appsScriptUrl": "PASTE_YOUR_DEPLOYED_APPS_SCRIPT_WEBAPP_URL_HERE", "videos": [{"displayLabel": "Video_R01", "internalId": "B3", "youtubeId": "REPLACE_YT_ID_B3", "duration": 240}, {"displayLabel": "Video_R02", "internalId": "A1", "youtubeId": "REPLACE_YT_ID_A1", "duration": 240}, {"displayLabel": "Video_R03", "internalId": "D5", "youtubeId": "REPLACE_YT_ID_D5", "duration": 240}, {"displayLabel": "Video_R04", "internalId": "C0", "youtubeId": "WUXvGNYRyTE", "duration": 240}, {"displayLabel": "Video_R05", "internalId": "E4", "youtubeId": "REPLACE_YT_ID_E4", "duration": 240}, {"displayLabel": "Video_R06", "internalId": "B1", "youtubeId": "REPLACE_YT_ID_B1", "duration": 240}, {"displayLabel": "Video_R07", "internalId": "A0", "youtubeId": "26A0ySVv_D4", "duration": 240}, {"displayLabel": "Video_R08", "internalId": "D1", "youtubeId": "REPLACE_YT_ID_D1", "duration": 240}, {"displayLabel": "Video_R09", "internalId": "C3", "youtubeId": "REPLACE_YT_ID_C3", "duration": 240}, {"displayLabel": "Video_R10", "internalId": "E3", "youtubeId": "REPLACE_YT_ID_E3", "duration": 240}, {"displayLabel": "Video_R11", "internalId": "B0", "youtubeId": "REPLACE_YT_ID_B0", "duration": 240}, {"displayLabel": "Video_R12", "internalId": "A3", "youtubeId": "REPLACE_YT_ID_A3", "duration": 240}, {"displayLabel": "Video_R13", "internalId": "E2", "youtubeId": "REPLACE_YT_ID_E2", "duration": 240}, {"displayLabel": "Video_R14", "internalId": "C1", "youtubeId": "REPLACE_YT_ID_C1", "duration": 240}, {"displayLabel": "Video_R15", "internalId": "D3", "youtubeId": "REPLACE_YT_ID_D3", "duration": 240}, {"displayLabel": "Video_R16", "internalId": "B5", "youtubeId": "REPLACE_YT_ID_B5", "duration": 240}, {"displayLabel": "Video_R17", "internalId": "E1", "youtubeId": "REPLACE_YT_ID_E1", "duration": 240}, {"displayLabel": "Video_R18", "internalId": "A5", "youtubeId": "REPLACE_YT_ID_A5", "duration": 240}, {"displayLabel": "Video_R19", "internalId": "C5", "youtubeId": "REPLACE_YT_ID_C5", "duration": 240}, {"displayLabel": "Video_R20", "internalId": "D0", "youtubeId": "REPLACE_YT_ID_D0", "duration": 240}], "cpips": {"B3": [{"cpipId": "B3_c1", "timestamp": 10.0, "conceptLabel": "Topic introduction"}, {"cpipId": "B3_c2", "timestamp": 40.0, "conceptLabel": "Process step 1 visual"}, {"cpipId": "B3_c3", "timestamp": 80.0, "conceptLabel": "Process step 2 visual"}, {"cpipId": "B3_c4", "timestamp": 120.0, "conceptLabel": "Worked example"}, {"cpipId": "B3_c5", "timestamp": 165.0, "conceptLabel": "Closing summary"}], "A1": [{"cpipId": "A1_c1", "timestamp": 12.5, "conceptLabel": "Definition of the core concept"}, {"cpipId": "A1_c2", "timestamp": 45.0, "conceptLabel": "First worked example appears"}, {"cpipId": "A1_c3", "timestamp": 88.2, "conceptLabel": "Key formula introduction"}, {"cpipId": "A1_c4", "timestamp": 132.7, "conceptLabel": "Diagram of relationships"}, {"cpipId": "A1_c5", "timestamp": 178.4, "conceptLabel": "Summary comparison table"}], "D5": [{"cpipId": "D5_c1", "timestamp": 8.0, "conceptLabel": "Opening concept"}, {"cpipId": "D5_c2", "timestamp": 35.0, "conceptLabel": "Diagram appears"}, {"cpipId": "D5_c3", "timestamp": 75.0, "conceptLabel": "Formula on screen"}, {"cpipId": "D5_c4", "timestamp": 115.0, "conceptLabel": "Applied example"}, {"cpipId": "D5_c5", "timestamp": 155.0, "conceptLabel": "Key takeaway visual"}, {"cpipId": "D5_c6", "timestamp": 195.0, "conceptLabel": "Final summary"}], "C0": [{"cpipId": "C0_c1", "timestamp": 15.0, "conceptLabel": "Concept definition"}, {"cpipId": "C0_c2", "timestamp": 50.0, "conceptLabel": "First visualization"}, {"cpipId": "C0_c3", "timestamp": 95.0, "conceptLabel": "Example application"}, {"cpipId": "C0_c4", "timestamp": 140.0, "conceptLabel": "Comparison diagram"}], "E4": [{"cpipId": "E4_c1", "timestamp": 10.0, "conceptLabel": "REPLACE — concept 1 label"}, {"cpipId": "E4_c2", "timestamp": 40.0, "conceptLabel": "REPLACE — concept 2 label"}, {"cpipId": "E4_c3", "timestamp": 80.0, "conceptLabel": "REPLACE — concept 3 label"}, {"cpipId": "E4_c4", "timestamp": 140.0, "conceptLabel": "REPLACE — concept 4 label"}], "B1": [{"cpipId": "B1_c1", "timestamp": 10.0, "conceptLabel": "Topic introduction"}, {"cpipId": "B1_c2", "timestamp": 40.0, "conceptLabel": "Process step 1 visual"}, {"cpipId": "B1_c3", "timestamp": 80.0, "conceptLabel": "Process step 2 visual"}, {"cpipId": "B1_c4", "timestamp": 120.0, "conceptLabel": "Worked example"}, {"cpipId": "B1_c5", "timestamp": 165.0, "conceptLabel": "Closing summary"}], "A0": [{"cpipId": "A0_c1", "timestamp": 12.5, "conceptLabel": "Definition of the core concept"}, {"cpipId": "A0_c2", "timestamp": 45.0, "conceptLabel": "First worked example appears"}, {"cpipId": "A0_c3", "timestamp": 88.2, "conceptLabel": "Key formula introduction"}, {"cpipId": "A0_c4", "timestamp": 132.7, "conceptLabel": "Diagram of relationships"}, {"cpipId": "A0_c5", "timestamp": 178.4, "conceptLabel": "Summary comparison table"}], "D1": [{"cpipId": "D1_c1", "timestamp": 8.0, "conceptLabel": "Opening concept"}, {"cpipId": "D1_c2", "timestamp": 35.0, "conceptLabel": "Diagram appears"}, {"cpipId": "D1_c3", "timestamp": 75.0, "conceptLabel": "Formula on screen"}, {"cpipId": "D1_c4", "timestamp": 115.0, "conceptLabel": "Applied example"}, {"cpipId": "D1_c5", "timestamp": 155.0, "conceptLabel": "Key takeaway visual"}, {"cpipId": "D1_c6", "timestamp": 195.0, "conceptLabel": "Final summary"}], "C3": [{"cpipId": "C3_c1", "timestamp": 15.0, "conceptLabel": "Concept definition"}, {"cpipId": "C3_c2", "timestamp": 50.0, "conceptLabel": "First visualization"}, {"cpipId": "C3_c3", "timestamp": 95.0, "conceptLabel": "Example application"}, {"cpipId": "C3_c4", "timestamp": 140.0, "conceptLabel": "Comparison diagram"}], "E3": [{"cpipId": "E3_c1", "timestamp": 10.0, "conceptLabel": "REPLACE — concept 1 label"}, {"cpipId": "E3_c2", "timestamp": 40.0, "conceptLabel": "REPLACE — concept 2 label"}, {"cpipId": "E3_c3", "timestamp": 80.0, "conceptLabel": "REPLACE — concept 3 label"}, {"cpipId": "E3_c4", "timestamp": 140.0, "conceptLabel": "REPLACE — concept 4 label"}], "B0": [{"cpipId": "B0_c1", "timestamp": 10.0, "conceptLabel": "Topic introduction"}, {"cpipId": "B0_c2", "timestamp": 40.0, "conceptLabel": "Process step 1 visual"}, {"cpipId": "B0_c3", "timestamp": 80.0, "conceptLabel": "Process step 2 visual"}, {"cpipId": "B0_c4", "timestamp": 120.0, "conceptLabel": "Worked example"}, {"cpipId": "B0_c5", "timestamp": 165.0, "conceptLabel": "Closing summary"}], "A3": [{"cpipId": "A3_c1", "timestamp": 12.5, "conceptLabel": "Definition of the core concept"}, {"cpipId": "A3_c2", "timestamp": 45.0, "conceptLabel": "First worked example appears"}, {"cpipId": "A3_c3", "timestamp": 88.2, "conceptLabel": "Key formula introduction"}, {"cpipId": "A3_c4", "timestamp": 132.7, "conceptLabel": "Diagram of relationships"}, {"cpipId": "A3_c5", "timestamp": 178.4, "conceptLabel": "Summary comparison table"}], "E2": [{"cpipId": "E2_c1", "timestamp": 10.0, "conceptLabel": "REPLACE — concept 1 label"}, {"cpipId": "E2_c2", "timestamp": 40.0, "conceptLabel": "REPLACE — concept 2 label"}, {"cpipId": "E2_c3", "timestamp": 80.0, "conceptLabel": "REPLACE — concept 3 label"}, {"cpipId": "E2_c4", "timestamp": 140.0, "conceptLabel": "REPLACE — concept 4 label"}], "C1": [{"cpipId": "C1_c1", "timestamp": 15.0, "conceptLabel": "Concept definition"}, {"cpipId": "C1_c2", "timestamp": 50.0, "conceptLabel": "First visualization"}, {"cpipId": "C1_c3", "timestamp": 95.0, "conceptLabel": "Example application"}, {"cpipId": "C1_c4", "timestamp": 140.0, "conceptLabel": "Comparison diagram"}], "D3": [{"cpipId": "D3_c1", "timestamp": 8.0, "conceptLabel": "Opening concept"}, {"cpipId": "D3_c2", "timestamp": 35.0, "conceptLabel": "Diagram appears"}, {"cpipId": "D3_c3", "timestamp": 75.0, "conceptLabel": "Formula on screen"}, {"cpipId": "D3_c4", "timestamp": 115.0, "conceptLabel": "Applied example"}, {"cpipId": "D3_c5", "timestamp": 155.0, "conceptLabel": "Key takeaway visual"}, {"cpipId": "D3_c6", "timestamp": 195.0, "conceptLabel": "Final summary"}], "B5": [{"cpipId": "B5_c1", "timestamp": 10.0, "conceptLabel": "Topic introduction"}, {"cpipId": "B5_c2", "timestamp": 40.0, "conceptLabel": "Process step 1 visual"}, {"cpipId": "B5_c3", "timestamp": 80.0, "conceptLabel": "Process step 2 visual"}, {"cpipId": "B5_c4", "timestamp": 120.0, "conceptLabel": "Worked example"}, {"cpipId": "B5_c5", "timestamp": 165.0, "conceptLabel": "Closing summary"}], "E1": [{"cpipId": "E1_c1", "timestamp": 10.0, "conceptLabel": "REPLACE — concept 1 label"}, {"cpipId": "E1_c2", "timestamp": 40.0, "conceptLabel": "REPLACE — concept 2 label"}, {"cpipId": "E1_c3", "timestamp": 80.0, "conceptLabel": "REPLACE — concept 3 label"}, {"cpipId": "E1_c4", "timestamp": 140.0, "conceptLabel": "REPLACE — concept 4 label"}], "A5": [{"cpipId": "A5_c1", "timestamp": 12.5, "conceptLabel": "Definition of the core concept"}, {"cpipId": "A5_c2", "timestamp": 45.0, "conceptLabel": "First worked example appears"}, {"cpipId": "A5_c3", "timestamp": 88.2, "conceptLabel": "Key formula introduction"}, {"cpipId": "A5_c4", "timestamp": 132.7, "conceptLabel": "Diagram of relationships"}, {"cpipId": "A5_c5", "timestamp": 178.4, "conceptLabel": "Summary comparison table"}], "C5": [{"cpipId": "C5_c1", "timestamp": 15.0, "conceptLabel": "Concept definition"}, {"cpipId": "C5_c2", "timestamp": 50.0, "conceptLabel": "First visualization"}, {"cpipId": "C5_c3", "timestamp": 95.0, "conceptLabel": "Example application"}, {"cpipId": "C5_c4", "timestamp": 140.0, "conceptLabel": "Comparison diagram"}], "D0": [{"cpipId": "D0_c1", "timestamp": 8.0, "conceptLabel": "Opening concept"}, {"cpipId": "D0_c2", "timestamp": 35.0, "conceptLabel": "Diagram appears"}, {"cpipId": "D0_c3", "timestamp": 75.0, "conceptLabel": "Formula on screen"}, {"cpipId": "D0_c4", "timestamp": 115.0, "conceptLabel": "Applied example"}, {"cpipId": "D0_c5", "timestamp": 155.0, "conceptLabel": "Key takeaway visual"}, {"cpipId": "D0_c6", "timestamp": 195.0, "conceptLabel": "Final summary"}]}, "zoneCardHtml": "<h2>Zone Reference Card — Temporal Contiguity<\/h2>\n<p style=\"font-size:13px;color:#4b5563;\">Rate each CPIP using the zone whose <strong>cognitive description<\/strong> best fits what the learner experiences. Do not count seconds — judge the cognitive effort the learner must exert to connect the visual and the narration.<\/p>\n\n<div class=\"zone-def optimal\">\n  <strong>Optimal<\/strong>\n  <p>The visual and narration are perceived as happening together. The learner does not notice any gap and does not need to exert any effort to link what is being said with what is being shown. Integration feels automatic and effortless.<\/p>\n<\/div>\n\n<div class=\"zone-def suboptimal\">\n  <strong>Suboptimal<\/strong>\n  <p>A small perceptual gap is noticeable, but the learner can bridge it using short-term memory without losing comprehension. The pairing still works pedagogically, but the learner must hold the narration (or the visual) briefly in mind while waiting for its partner to appear.<\/p>\n<\/div>\n\n<div class=\"zone-def disruptive\">\n  <strong>Disruptive<\/strong>\n  <p>The learner must <em>actively try to recall<\/em> what was said (or shown) in order to connect it with its partner. Working memory is strained. The learner is aware of the mismatch and has to make a deliberate mental effort — integration is no longer automatic and the learning is impaired.<\/p>\n<\/div>\n\n<div class=\"zone-def unacceptable\">\n  <strong>Unacceptable<\/strong>\n  <p>By the time the partner (visual or narration) arrives, the learner has lost the connection entirely — attention has moved on, or the earlier content has faded from working memory. The learner experiences split attention and cannot reliably integrate the two streams. The pairing has failed.<\/p>\n<\/div>\n\n<p style=\"font-size:12px;color:#6b7280;margin-top:16px;\"><strong>Reminder:<\/strong> Choose the zone <em>before<\/em> estimating the delay in seconds — this keeps your perceptual judgement independent of any numerical estimate.<\/p>\n"};
+</script>
+
+<script>
+(function() {
+  const cfg = window.RATER_CONFIG;
+  const stateKey = 'validation_' + cfg.raterId + '_state';
+
+  // ----- State -----
+  let state = loadState();
+  function loadState() {
+    try {
+      const s = localStorage.getItem(stateKey);
+      if (s) return JSON.parse(s);
+    } catch(e){}
+    return { completedVideos: [], draftAnswers: {}, currentVideoIndex: 0 };
+  }
+  function saveState() { localStorage.setItem(stateKey, JSON.stringify(state)); }
+
+  // Find next video not yet completed
+  function findNextVideoIndex() {
+    for (let i = 0; i < cfg.videos.length; i++) {
+      if (!state.completedVideos.includes(cfg.videos[i].internalId)) return i;
+    }
+    return -1; // all done
+  }
+
+  // ----- YouTube Player -----
+  let player = null;
+  let playerReady = false;
+  window.onYouTubeIframeAPIReady = function() {
+    // Will be initialized when first video loads
+    initializePage();
+  };
+
+  function createPlayer(videoId) {
+    if (player) {
+      player.loadVideoById(videoId);
+      return;
+    }
+    player = new YT.Player('player', {
+      videoId: videoId,
+      playerVars: { 'playsinline': 1, 'rel': 0, 'modestbranding': 1 },
+      events: {
+        'onReady': () => { playerReady = true; }
+      }
+    });
+  }
+
+  function jumpTo(seconds) {
+    if (!player || !playerReady) return;
+    player.seekTo(seconds, true);
+    player.playVideo();
+  }
+
+  // ----- Render -----
+  function renderVideo(idx) {
+    if (idx < 0 || idx >= cfg.videos.length) { showCompletion(); return; }
+    const video = cfg.videos[idx];
+    document.getElementById('videoTitle').textContent = video.displayLabel;
+    createPlayer(video.youtubeId);
+    state.currentVideoIndex = idx;
+    saveState();
+    renderCPIPs(video);
+    updateProgress();
+  }
+
+  function renderCPIPs(video) {
+    const container = document.getElementById('cpipContainer');
+    container.innerHTML = '';
+    const cpips = cfg.cpips[video.internalId] || [];
+    const draft = state.draftAnswers[video.internalId] || { cpips: {}, overallScore: 50, comments: '' };
+
+    cpips.forEach((cpip, i) => {
+      const saved = draft.cpips[cpip.cpipId] || {};
+      const card = document.createElement('div');
+      card.className = 'cpip-card';
+      card.dataset.cpipId = cpip.cpipId;
+      card.dataset.cpipIdx = i;
+      card.innerHTML = `
+        <div class="cpip-header">
+          <div>
+            <div class="cpip-label">CPIP ${i+1} of ${cpips.length} — ${formatTime(cpip.timestamp)}</div>
+            <div class="cpip-concept">Concept: ${escapeHtml(cpip.conceptLabel)}</div>
+          </div>
+          <button class="jump-btn" data-t="${cpip.timestamp}">Jump to moment</button>
+        </div>
+
+        <div class="question q-zone">
+          <label class="q-label">1. Zone classification (rate FIRST, before estimating delay):</label>
+          <div class="zone-options">
+            ${['Optimal','Suboptimal','Disruptive','Unacceptable'].map(z =>
+              `<label><input type="radio" name="zone_${cpip.cpipId}" value="${z}" ${saved.zone===z?'checked':''}><span>&nbsp;${z}</span></label>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="question q-delay ${saved.zone?'':'disabled'}">
+          <label class="q-label">2. Perceived delay (seconds):</label>
+          <input type="number" class="delay-input" name="delay_${cpip.cpipId}" step="0.1" min="-10" max="10" value="${saved.delaySeconds??''}" placeholder="e.g. 1.5 (negative = visual leads)">
+          <div class="delay-hint">Negative values = visual appears before narration. 0 = perfectly synced.</div>
+        </div>
+
+        <div class="question q-conf ${saved.delaySeconds!=null && saved.delaySeconds!==''?'':'disabled'}">
+          <label class="q-label">3. Confidence in your rating:</label>
+          <div class="confidence-options">
+            ${['High','Medium','Low'].map(c =>
+              `<label><input type="radio" name="conf_${cpip.cpipId}" value="${c}" ${saved.confidence===c?'checked':''}>&nbsp;${c}</label>`
+            ).join('')}
+          </div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    // Overall section
+    document.getElementById('overallScore').value = draft.overallScore || 50;
+    document.getElementById('overallScoreVal').textContent = draft.overallScore || 50;
+    document.getElementById('comments').value = draft.comments || '';
+
+    attachCPIPHandlers(video);
+    updateUnlockStates(video);
+  }
+
+  function attachCPIPHandlers(video) {
+    // Jump buttons
+    document.querySelectorAll('.jump-btn').forEach(btn => {
+      btn.onclick = () => jumpTo(parseFloat(btn.dataset.t));
+    });
+    // Zone radios → unlock delay
+    document.querySelectorAll('input[name^="zone_"]').forEach(el => {
+      el.onchange = () => { saveDraft(video); updateUnlockStates(video); };
+    });
+    // Delay → unlock confidence
+    document.querySelectorAll('input[name^="delay_"]').forEach(el => {
+      el.oninput = () => { saveDraft(video); updateUnlockStates(video); };
+    });
+    // Confidence → may complete CPIP
+    document.querySelectorAll('input[name^="conf_"]').forEach(el => {
+      el.onchange = () => { saveDraft(video); updateUnlockStates(video); };
+    });
+  }
+
+  function saveDraft(video) {
+    const cpips = cfg.cpips[video.internalId] || [];
+    const draft = { cpips: {}, overallScore: parseInt(document.getElementById('overallScore').value), comments: document.getElementById('comments').value };
+    cpips.forEach(cpip => {
+      const zone = (document.querySelector(`input[name="zone_${cpip.cpipId}"]:checked`)||{}).value || null;
+      const delayEl = document.querySelector(`input[name="delay_${cpip.cpipId}"]`);
+      const delay = delayEl && delayEl.value !== '' ? parseFloat(delayEl.value) : null;
+      const conf = (document.querySelector(`input[name="conf_${cpip.cpipId}"]:checked`)||{}).value || null;
+      draft.cpips[cpip.cpipId] = { zone, delaySeconds: delay, confidence: conf };
+    });
+    state.draftAnswers[video.internalId] = draft;
+    saveState();
+  }
+
+  function updateUnlockStates(video) {
+    const cpips = cfg.cpips[video.internalId] || [];
+    const draft = state.draftAnswers[video.internalId] || { cpips: {} };
+    let allCpipsComplete = true;
+    cpips.forEach(cpip => {
+      const card = document.querySelector(`.cpip-card[data-cpip-id="${cpip.cpipId}"]`);
+      if (!card) return;
+      const saved = draft.cpips[cpip.cpipId] || {};
+      const qDelay = card.querySelector('.q-delay');
+      const qConf = card.querySelector('.q-conf');
+      if (saved.zone) qDelay.classList.remove('disabled'); else qDelay.classList.add('disabled');
+      if (saved.delaySeconds != null && saved.delaySeconds !== '') qConf.classList.remove('disabled'); else qConf.classList.add('disabled');
+      if (!saved.zone || saved.delaySeconds == null || saved.delaySeconds === '' || !saved.confidence) allCpipsComplete = false;
+    });
+    const overallSection = document.getElementById('overallSection');
+    if (allCpipsComplete) overallSection.classList.remove('locked'); else overallSection.classList.add('locked');
+    document.getElementById('submitBtn').disabled = !allCpipsComplete;
+  }
+
+  function updateProgress() {
+    const done = state.completedVideos.length;
+    const total = cfg.videos.length;
+    document.getElementById('progressText').textContent = `${done} of ${total} completed`;
+    document.getElementById('progressFill').style.width = (done/total*100) + '%';
+  }
+
+  // ----- Submit -----
+  document.getElementById('submitBtn').onclick = async function() {
+    const idx = state.currentVideoIndex;
+    const video = cfg.videos[idx];
+    const cpips = cfg.cpips[video.internalId] || [];
+    const draft = state.draftAnswers[video.internalId];
+
+    const payload = {
+      raterId: cfg.raterId,
+      videoInternalId: video.internalId,
+      videoDisplayLabel: video.displayLabel,
+      videoOrderIndex: idx + 1,
+      overallScore: draft.overallScore,
+      comments: draft.comments || '',
+      clientDurationMs: Date.now() - (state.videoStartTime || Date.now()),
+      cpips: cpips.map(cpip => ({
+        cpipId: cpip.cpipId,
+        timestamp: cpip.timestamp,
+        conceptLabel: cpip.conceptLabel,
+        zone: draft.cpips[cpip.cpipId].zone,
+        delaySeconds: draft.cpips[cpip.cpipId].delaySeconds,
+        confidence: draft.cpips[cpip.cpipId].confidence
+      }))
+    };
+
+    showBanner('Submitting…', 'info');
+    this.disabled = true;
+    try {
+      await fetch(cfg.appsScriptUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+      // no-cors means we can't read response; assume success
+      state.completedVideos.push(video.internalId);
+      delete state.draftAnswers[video.internalId];
+      saveState();
+      showBanner('Submitted. Loading next video…', 'success');
+      setTimeout(() => {
+        const next = findNextVideoIndex();
+        if (next === -1) showCompletion();
+        else { renderVideo(next); document.getElementById('ratingPane').scrollTop = 0; }
+      }, 1000);
+    } catch(e) {
+      showBanner('Submit failed: ' + e.message + '. Copy the JSON below and email it as backup:<br><textarea style="width:100%;height:100px;margin-top:6px;">' + escapeHtml(JSON.stringify(payload)) + '</textarea>', 'error');
+      this.disabled = false;
+    }
+  };
+
+  function showBanner(msg, type) {
+    const area = document.getElementById('bannerArea');
+    area.innerHTML = `<div class="banner ${type}">${msg}</div>`;
+    if (type !== 'error') setTimeout(() => { area.innerHTML = ''; }, 3000);
+  }
+
+  function showCompletion() {
+    document.getElementById('mainContainer').style.display = 'none';
+    document.getElementById('completionScreen').style.display = 'block';
+    updateProgress();
+  }
+
+  // ----- Modal -----
+  document.getElementById('zoneCardBtn').onclick = () => {
+    document.getElementById('zoneCardContent').innerHTML = cfg.zoneCardHtml;
+    document.getElementById('zoneModal').classList.add('open');
+  };
+  document.getElementById('closeModalBtn').onclick = () => document.getElementById('zoneModal').classList.remove('open');
+  document.getElementById('zoneModal').onclick = (e) => { if(e.target.id==='zoneModal') e.currentTarget.classList.remove('open'); };
+
+  // Overall score slider
+  document.getElementById('overallScore').oninput = function() {
+    document.getElementById('overallScoreVal').textContent = this.value;
+    const idx = state.currentVideoIndex;
+    saveDraft(cfg.videos[idx]);
+  };
+  document.getElementById('comments').oninput = function() {
+    const idx = state.currentVideoIndex;
+    saveDraft(cfg.videos[idx]);
+  };
+
+  // Warn on unload if draft exists
+  window.addEventListener('beforeunload', (e) => {
+    const idx = state.currentVideoIndex;
+    if (idx >= 0 && idx < cfg.videos.length) {
+      const video = cfg.videos[idx];
+      if (state.draftAnswers[video.internalId] && !state.completedVideos.includes(video.internalId)) {
+        e.preventDefault(); e.returnValue = '';
+      }
+    }
+  });
+
+  // Helpers
+  function formatTime(s) {
+    const m = Math.floor(s/60), sec = (s%60).toFixed(0).padStart(2,'0');
+    return `${m}:${sec}`;
+  }
+  function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+
+  function initializePage() {
+    document.getElementById('raterBadge').textContent = cfg.raterId;
+    const idx = findNextVideoIndex();
+    if (idx === -1) { showCompletion(); return; }
+    state.videoStartTime = Date.now();
+    renderVideo(idx);
+  }
+
+  // If YT API already loaded before this script
+  if (window.YT && window.YT.Player) initializePage();
+})();
+</script>
+</body>
+</html>

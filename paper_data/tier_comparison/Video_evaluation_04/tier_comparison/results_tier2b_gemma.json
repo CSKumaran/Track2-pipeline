@@ -1,0 +1,130 @@
+{
+  "pipeline_version": "4.1",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "dwell_threshold": 15.0,
+  "dwell_tau": 30.0,
+  "keyword_level": {
+    "n_total": 54,
+    "n_groundable": 53,
+    "n_matched": 34,
+    "n_unmatched": 20,
+    "match_rate": 0.6296296296296297,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 19,
+      "low_groundability": 1
+    },
+    "mean_S_gaussian_weighted": 83.92616166591098,
+    "mean_S_piecewise_weighted": 85.04176132240761,
+    "mean_S_temporal_weighted": 83.92616166591098,
+    "mean_S_gaussian_unweighted": 83.40126673990257,
+    "mean_S_piecewise_unweighted": 84.51554185920482,
+    "mean_S_temporal_unweighted": 83.40126673990257,
+    "median_S_temporal": 99.20360728190381,
+    "mean_delta_t": -13.806750000000001,
+    "median_delta_t": -12.0,
+    "std_delta_t": 16.530776565312134,
+    "min_delta_t": -48.966,
+    "max_delta_t": 13.438000000000002,
+    "pct_negative_delta_t": 82.35294117647058,
+    "pct_within_1s": 11.76470588235294,
+    "mean_alpha": 0.8294117647058824,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 70.58823529411765,
+    "pct_Suboptimal": 11.76470588235294,
+    "pct_Disruptive": 11.76470588235294,
+    "pct_Unacceptable": 5.88235294117647,
+    "case_distribution": {
+      "A": 27,
+      "D": 7
+    },
+    "high_confidence": {
+      "n": 34,
+      "mean_S_temporal": 83.40126673990257,
+      "mean_delta_t": -13.806750000000001
+    }
+  },
+  "segment_level": {
+    "n_total": 12,
+    "n_with_matches": 12,
+    "n_without_matches": 0,
+    "mean_S_temporal": 79.69863477772842,
+    "median_S_temporal": 97.63503201637377,
+    "mean_S_piecewise": 80.30766393363625,
+    "mean_S_weighted": 75.11935193460539
+  },
+  "overall_score": 82.36,
+  "overall_grade": "Excellent",
+  "overall_score_alpha_only": 83.93,
+  "overall_score_unweighted": 83.4,
+  "overall_score_piecewise": 83.48,
+  "overall_grade_piecewise": "Excellent",
+  "coverage": {
+    "n_groundable_keywords": 53,
+    "n_matched": 34,
+    "coverage_rate": 0.6415,
+    "tc_score_matched_only": 82.36,
+    "tc_score_coverage_adjusted": 52.83,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 34,
+    "mean_lead_s": 13.81,
+    "median_lead_s": 12.0,
+    "max_lead_s": 48.97,
+    "pct_within_2s": 32.4,
+    "pct_within_5s": 44.1,
+    "pct_over_10s": 52.9,
+    "distribution": {
+      "0-1s (simultaneous)": 9,
+      "1-3s (near-simultaneous)": 2,
+      "3-5s (prepared ahead)": 4,
+      "5-10s (slide already up)": 1,
+      ">10s (long-showing slide)": 18
+    }
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 37,
+      "keyword_text": "mayor's temporal contiguity principle",
+      "segment_id": 8,
+      "delta_t": 13.438000000000002,
+      "S_temporal": 5.321249429551854e-05,
+      "priority": 159.99991486000914
+    },
+    {
+      "keyword_id": 10,
+      "keyword_text": "process follows simple",
+      "segment_id": 2,
+      "delta_t": 5.088000000000001,
+      "S_temporal": 12.605719833467127,
+      "priority": 69.9154241332263
+    },
+    {
+      "keyword_id": 11,
+      "keyword_text": "simple yet powerful three-step ai pipeline",
+      "segment_id": 2,
+      "delta_t": 3.747,
+      "S_temporal": 32.52371338814755,
+      "priority": 53.98102928948197
+    },
+    {
+      "keyword_id": 43,
+      "keyword_text": "generates comprehensive score",
+      "segment_id": 10,
+      "delta_t": 2.903000000000006,
+      "S_temporal": 50.956761835630374,
+      "priority": 39.234590531495705
+    },
+    {
+      "keyword_id": 45,
+      "keyword_text": "completing steps",
+      "segment_id": 10,
+      "delta_t": -40.054,
+      "S_temporal": 70.55879569694855,
+      "priority": 23.55296344244116
+    }
+  ]
+}

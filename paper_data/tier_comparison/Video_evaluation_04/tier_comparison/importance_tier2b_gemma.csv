@@ -1,0 +1,13 @@
+segment_id,importance,reason,backend,is_reliable,run1_rating,run2_rating
+0,1,Introductory greeting and title announcement.,local_llm_vllm,True,1,
+1,2,High-level overview of the video's objective.,local_llm_vllm,True,2,
+2,3,Introduces the structural framework (the three-step pipeline) of the lesson.,local_llm_vllm,True,3,
+3,1,Transition phrase.,local_llm_vllm,True,1,
+4,4,Introduction of the first key component of the process.,local_llm_vllm,True,4,
+5,3,Supporting explanation of how the first step functions.,local_llm_vllm,True,3,
+6,4,Introduction of the second key component of the process.,local_llm_vllm,True,4,
+7,4,Introduction of the third key component of the process.,local_llm_vllm,True,4,
+8,5,Introduction of the fundamental theoretical principle (Mayer's Principle) driving the system.,local_llm_vllm,True,5,
+9,3,Contextual explanation of the previously introduced principle.,local_llm_vllm,True,3,
+10,3,Explains the outcome and result of the completed pipeline.,local_llm_vllm,True,3,
+11,2,Concluding statement regarding the value proposition.,local_llm_vllm,True,2,

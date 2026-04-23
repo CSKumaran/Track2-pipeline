@@ -1,0 +1,129 @@
+{
+  "pipeline_version": "4.1",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "dwell_threshold": 15.0,
+  "dwell_tau": 30.0,
+  "keyword_level": {
+    "n_total": 80,
+    "n_groundable": 80,
+    "n_matched": 55,
+    "n_unmatched": 25,
+    "match_rate": 0.6875,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 25
+    },
+    "mean_S_gaussian_weighted": 84.17627515327293,
+    "mean_S_piecewise_weighted": 84.37366879920428,
+    "mean_S_temporal_weighted": 84.17627515327293,
+    "mean_S_gaussian_unweighted": 84.35974965418548,
+    "mean_S_piecewise_unweighted": 84.57577275960759,
+    "mean_S_temporal_unweighted": 84.35974965418548,
+    "median_S_temporal": 99.20850869681217,
+    "mean_delta_t": -15.168890909090905,
+    "median_delta_t": -14.617000000000004,
+    "std_delta_t": 15.58163394973179,
+    "min_delta_t": -55.465,
+    "max_delta_t": 16.560000000000002,
+    "pct_negative_delta_t": 87.27272727272727,
+    "pct_within_1s": 7.2727272727272725,
+    "mean_alpha": 0.847272727272727,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 76.36363636363637,
+    "pct_Suboptimal": 9.090909090909092,
+    "pct_Disruptive": 5.454545454545454,
+    "pct_Unacceptable": 9.090909090909092,
+    "case_distribution": {
+      "A": 48,
+      "D": 7
+    },
+    "high_confidence": {
+      "n": 55,
+      "mean_S_temporal": 84.35974965418548,
+      "mean_delta_t": -15.168890909090905
+    }
+  },
+  "segment_level": {
+    "n_total": 16,
+    "n_with_matches": 15,
+    "n_without_matches": 1,
+    "mean_S_temporal": 82.31554226928036,
+    "median_S_temporal": 93.62106706174386,
+    "mean_S_piecewise": 82.4410222090091,
+    "mean_S_weighted": 82.3294205157673
+  },
+  "overall_score": 84.18,
+  "overall_grade": "Excellent",
+  "overall_score_alpha_only": 84.18,
+  "overall_score_unweighted": 84.36,
+  "overall_score_piecewise": 84.37,
+  "overall_grade_piecewise": "Excellent",
+  "coverage": {
+    "n_groundable_keywords": 80,
+    "n_matched": 55,
+    "coverage_rate": 0.6875,
+    "tc_score_matched_only": 84.18,
+    "tc_score_coverage_adjusted": 57.87,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 55,
+    "mean_lead_s": 15.17,
+    "median_lead_s": 14.62,
+    "max_lead_s": 55.47,
+    "pct_within_2s": 23.6,
+    "pct_within_5s": 27.3,
+    "pct_over_10s": 60.0,
+    "distribution": {
+      "0-1s (simultaneous)": 10,
+      "1-3s (near-simultaneous)": 3,
+      "3-5s (prepared ahead)": 2,
+      "5-10s (slide already up)": 7,
+      ">10s (long-showing slide)": 33
+    }
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 6,
+      "keyword_text": "pictures",
+      "segment_id": 0,
+      "delta_t": 14.457,
+      "S_temporal": 5.475550529344576e-06,
+      "priority": 99.99999452444948
+    },
+    {
+      "keyword_id": 7,
+      "keyword_text": "dual channel",
+      "segment_id": 1,
+      "delta_t": 7.227,
+      "S_temporal": 1.5323582153067512,
+      "priority": 98.46764178469324
+    },
+    {
+      "keyword_id": 5,
+      "keyword_text": "presented using words",
+      "segment_id": 0,
+      "delta_t": 16.560000000000002,
+      "S_temporal": 2.965847807247327e-08,
+      "priority": 79.99999997627322
+    },
+    {
+      "keyword_id": 12,
+      "keyword_text": "key principles dual",
+      "segment_id": 1,
+      "delta_t": 8.989,
+      "S_temporal": 0.1558284597079573,
+      "priority": 79.87533723223363
+    },
+    {
+      "keyword_id": 11,
+      "keyword_text": "channel limited",
+      "segment_id": 1,
+      "delta_t": 6.846,
+      "S_temporal": 2.353145411052346,
+      "priority": 78.11748367115813
+    }
+  ]
+}

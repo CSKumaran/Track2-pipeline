@@ -1,0 +1,15 @@
+outputs*/
+outputs_v3/
+*.tar.gz
+*.zip
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wav
+*.mp3
+__pycache__/
+*.pyc
+.env
+ssh-copy-id*
+all_dashboards*

@@ -1,0 +1,13 @@
+segment_id,importance,reason,backend,is_reliable,run1_rating,run2_rating
+0,1,Introductory greeting and video title.,local_llm_vllm,True,1,
+1,2,Provides high-level context and learning objectives.,local_llm_vllm,True,2,
+2,3,Establishes the structural roadmap for the lesson.,local_llm_vllm,True,3,
+3,1,Transition phrase.,local_llm_vllm,True,1,
+4,4,Introduces the first key component of the process.,local_llm_vllm,True,4,
+5,3,Provides supporting explanation of the first step's functionality.,local_llm_vllm,True,3,
+6,4,Introduces the second key component of the process.,local_llm_vllm,True,4,
+7,4,Introduces the third key component of the process.,local_llm_vllm,True,4,
+8,5,Introduces the fundamental theoretical principle driving the entire system.,local_llm_vllm,True,5,
+9,3,Provides clarifying detail for the previously mentioned principle.,local_llm_vllm,True,3,
+10,3,Explains the final output and result of the pipeline.,local_llm_vllm,True,3,
+11,2,Concluding statement regarding the value of the process.,local_llm_vllm,True,2,

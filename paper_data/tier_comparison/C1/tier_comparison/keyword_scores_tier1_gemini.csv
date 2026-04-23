@@ -1,0 +1,127 @@
+t_narr,t_vis,delta_t,match_case,match_method,alpha,scene_id,scene_t_start,scene_t_end,sub_scene_onset,confidence,gemini_concept_matched,gemini_match_score,visual_on_screen,keyword_id,keyword_text,segment_id,groundability,gap_since_expired,S_gaussian,S_piecewise,S_temporal,zone,S_floored,importance,importance_weight,S_weighted,priority
+5.059,13.0,7.941,E,gemini_concept_exact,0.8999999999999999,4.0,13.0,14.5,,HIGH,it,1.0,False,0,theorem arguably critical,0,MEDIUM,,0.6443016293244143,0.0,0.6443016293244143,Unacceptable,0.6120865478581935,2,0.6,0.38658097759464854,53.652077120164805
+4.739,0.0,10.0,C,ocr_backward_expired,0.8,1.0,0.0,4.0,,MEDIUM,,,False,1,bayes' theorem,0,MEDIUM,0.7389999999999999,0.033546262790251184,0.0,0.033546262790251184,Unacceptable,0.030191636511226066,2,0.6,0.02012775767415071,47.98389779386068
+6.461,13.0,6.539,E,gemini_concept_exact,0.8999999999999999,4.0,13.0,14.5,,HIGH,it,1.0,False,2,most critical concepts,0,MEDIUM,,3.2690143125175672,0.0,3.2690143125175672,Unacceptable,3.1055635968916886,2,0.6,1.9614085875105403,52.2347322712405
+7.022,13.0,5.978,E,gemini_concept_exact,0.8999999999999999,4.0,13.0,14.5,,HIGH,it,1.0,False,3,concepts probability,0,MEDIUM,,5.733071732099318,0.0,5.733071732099318,Unacceptable,5.446418145494352,2,0.6,3.4398430392595905,50.904141264666364
+4.739,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,4,bayes theorem arguably,0,MEDIUM,,,,,No Match,,2,0.6,,0.0
+15.511,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,5,validation machine learning,1,MEDIUM,,,,,No Match,,3,1.0,,0.0
+10.766,13.0,2.234,E,gemini_concept_exact,0.8999999999999999,4.0,13.0,14.5,,HIGH,it,1.0,False,6,machine learning algorithms,1,MEDIUM,,67.08159444568837,81.49000000000001,67.08159444568837,Suboptimal,63.72751472340394,3,1.0,67.08159444568837,29.62656499888047
+11.587,13.0,1.4130000000000005,E,gemini_concept_exact,0.8999999999999999,4.0,13.0,14.5,,HIGH,it,1.0,False,7,algorithms general,1,MEDIUM,,85.23777174962895,93.80499999999999,85.23777174962895,Suboptimal,80.9758831621475,3,1.0,85.23777174962895,13.286005425333945
+12.708,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,8,naive bayes assessment,1,MEDIUM,,,,,No Match,,3,1.0,,0.0
+9.865,13.0,3.135,E,gemini_concept_exact,0.8999999999999999,4.0,13.0,14.5,,HIGH,it,1.0,False,9,critical machine learning,1,MEDIUM,,45.55462639688049,65.275,45.55462639688049,Disruptive,43.27689507703646,3,1.0,45.55462639688049,49.00083624280756
+23.7,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,10,medicine sciences general,2,MEDIUM,,,,,No Match,,3,1.0,,0.0
+19.936,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,11,heavily pertinent statistics,2,MEDIUM,,,,,No Match,,3,1.0,,0.0
+22.318,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,12,statistics medicine,2,MEDIUM,,,,,No Match,,3,1.0,,0.0
+27.804,,,F,low_groundability,0.0,,,,,NONE,,,False,13,example going,3,LOW,,,,,No Match,,3,1.0,,0.0
+30.527,30.5,-0.027000000000001,A,ocr_at_tnarr_partial,0.8,7.0,30.5,32.5,,MEDIUM,,,True,14,homicidal behavior video,3,HIGH,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+32.009,35.5,3.491,B,ocr_forward_partial,0.8,8.0,32.5,36.0,,MEDIUM,,,False,15,video games lack,3,HIGH,,37.720499726275555,52.815,37.720499726275555,Disruptive,33.948449753648,3,1.0,37.720499726275555,49.82360021897956
+31.168,35.5,4.332000000000001,B,ocr_forward_partial,0.8,8.0,32.5,36.0,,MEDIUM,,,False,16,behavior video games,3,HIGH,,22.2840742911809,23.379999999999974,22.2840742911809,Disruptive,20.05566686206281,3,1.0,22.2840742911809,62.172740567055286
+29.106,30.0,0.8939999999999984,D,ocr_at_tnarr_partial,0.8,6.0,18.5,30.5,30.0,MEDIUM,,,True,17,study relationship homicidal,3,MEDIUM,,93.8062332148368,100.0,93.8062332148368,Optimal,84.42560989335311,3,1.0,93.8062332148368,4.955013428130565
+39.761,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,18,flipping conditional probability,4,MEDIUM,,,,,No Match,,4,1.5,,0.0
+37.257,36.5,-0.7569999999999979,A,ocr_at_tnarr_partial,0.8,9.0,36.0,61.5,,MEDIUM,,,True,19,a's theorem,4,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+37.557,36.5,-1.0570000000000022,A,ocr_at_tnarr_partial,0.8,9.0,36.0,61.5,,MEDIUM,,,True,20,theorem thought flipping,4,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+44.768,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,21,interested probability,5,MEDIUM,,,,,No Match,,4,1.5,,0.0
+49.335,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,22,questions conflate,5,MEDIUM,,,,,No Match,,4,1.5,,0.0
+43.186,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,23,given interested,5,MEDIUM,,,,,No Match,,4,1.5,,0.0
+48.373,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,24,two very different questions,5,MEDIUM,,,,,No Match,,4,1.5,,0.0
+44.387,,,F,low_groundability,0.0,,,,,NONE,,,False,25,what,5,LOW,,,,,No Match,,4,1.5,,0.0
+42.505,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,26,probability given different,5,MEDIUM,,,,,No Match,,4,1.5,,0.0
+57.466,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,27,three pieces,6,MEDIUM,,,,,No Match,,4,1.5,,0.0
+52.579,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,28,flip need probability,6,MEDIUM,,,,,No Match,,4,1.5,,0.0
+57.126,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,29,plug pieces information,6,MEDIUM,,,,,No Match,,4,1.5,,0.0
+53.861,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,30,probability plug,6,MEDIUM,,,,,No Match,,4,1.5,,0.0
+60.691,,,F,low_groundability,0.0,,,,,NONE,,,False,31,b. let,7,LOW,,,,,No Match,,4,1.5,,0.0
+66.342,72.0,5.658000000000001,D,ocr_at_tnarr_full,1.0,10.0,61.5,82.0,72.0,HIGH,,,True,32,homicidal,7,MEDIUM,,7.72246077117031,0.0,7.72246077117031,Unacceptable,7.72246077117031,4,1.5,11.583691156755464,138.41630884324454
+65.962,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,33,someone,7,MEDIUM,,,,,No Match,,4,1.5,,0.0
+59.79,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,34,probability a,7,MEDIUM,,,,,No Match,,4,1.5,,0.0
+63.697,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,35,let say study,7,MEDIUM,,,,,No Match,,4,1.5,,0.0
+59.79,62.0,2.210000000000001,B,ocr_forward_partial,0.8,10.0,61.5,82.0,,MEDIUM,,,False,36,probability gamer given,7,MEDIUM,,67.6564156464655,81.85,67.6564156464655,Suboptimal,60.890774081818954,4,1.5,101.48462346969825,38.812301224241395
+72.412,72.0,-0.4120000000000061,D,ocr_at_tnarr_partial,0.8,10.0,61.5,82.0,72.0,MEDIUM,,,True,37,probability homicidal given,8,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+73.093,62.0,-11.093000000000004,A,ocr_at_tnarr_partial,0.8,10.0,61.5,82.0,,MEDIUM,,,True,38,homicidal given gamer,8,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+75.477,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,39,real question interested,9,MEDIUM,,,,,No Match,,3,1.0,,0.0
+78.943,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,40,two conditional probabilities,10,MEDIUM,,,,,No Match,,3,1.0,,0.0
+79.343,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,41,conditional probabilities equal,10,MEDIUM,,,,,No Match,,3,1.0,,0.0
+77.641,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,42,conflate conditional probabilities,10,MEDIUM,,,,,No Match,,3,1.0,,0.0
+82.729,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,43,reverse direction probability,11,MEDIUM,,,,,No Match,,2,0.6,,0.0
+84.952,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,44,few more pieces,11,MEDIUM,,,,,No Match,,2,0.6,,0.0
+84.732,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,45,need pieces information,11,MEDIUM,,,,,No Match,,2,0.6,,0.0
+83.791,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,46,probability need,11,MEDIUM,,,,,No Match,,2,0.6,,0.0
+92.531,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,47,population plays,12,MEDIUM,,,,,No Match,,4,1.5,,0.0
+94.793,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,48,united states,12,MEDIUM,,,,,No Match,,4,1.5,,0.0
+89.239,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,49,approximately 0.19 or 19%,12,MEDIUM,,,,,No Match,,4,1.5,,0.0
+91.215,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,50,19 19 population,12,MEDIUM,,,,,No Match,,4,1.5,,0.0
+87.577,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,51,industry research approximately,12,MEDIUM,,,,,No Match,,4,1.5,,0.0
+93.632,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,52,violent video games,12,HIGH,,,,,No Match,,4,1.5,,0.0
+98.277,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,53,about 0.01%,13,MEDIUM,,,,,No Match,,4,1.5,,0.0
+96.475,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,54,according fbi,13,MEDIUM,,,,,No Match,,4,1.5,,0.0
+98.968,96.0,-2.9680000000000035,D,ocr_at_tnarr_partial,0.8,12.0,85.0,116.0,96.0,MEDIUM,,,True,55,01 population homicidal,13,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+97.116,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,56,fbi 01 population,13,MEDIUM,,,,,No Match,,4,1.5,,0.0
+104.785,96.0,-8.784999999999997,D,ocr_at_tnarr_partial,0.8,12.0,85.0,116.0,96.0,MEDIUM,,,True,57,known homicides let,14,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,2,0.6,60.0,0.0
+101.981,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,58,course reported,14,MEDIUM,,,,,No Match,,2,0.6,,0.0
+103.703,96.0,-7.703000000000003,D,ocr_at_tnarr_partial,0.8,12.0,85.0,116.0,96.0,MEDIUM,,,True,59,homicides let assume,14,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,2,0.6,60.0,0.0
+104.7145,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,60,let assume significant,14,MEDIUM,,,,,No Match,,2,0.6,,0.0
+103.243,96.0,-7.242999999999995,D,ocr_at_tnarr_partial,0.8,12.0,85.0,116.0,96.0,MEDIUM,,,True,61,reported homicides known,14,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,2,0.6,60.0,0.0
+111.592,96.0,-15.592,D,ocr_at_tnarr_partial,0.8,12.0,85.0,116.0,96.0,MEDIUM,,,True,62,probability homicidal given,15,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+112.233,85.5,-26.733000000000004,A,ocr_at_tnarr_partial,0.8,12.0,85.0,116.0,,MEDIUM,,,True,63,homicidal given gamer,15,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+108.909,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,64,all three pieces,15,MEDIUM,,,,,No Match,,3,1.0,,0.0
+109.79,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,65,information calculate probability,15,MEDIUM,,,,,No Match,,3,1.0,,0.0
+114.8155,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,66,let started,16,MEDIUM,,,,,No Match,,1,0.3,,0.0
+118.84,116.0,-2.8400000000000034,A,ocr_at_tnarr_partial,0.8,13.0,116.0,119.5,,MEDIUM,,,True,67,bayes theorem formulation,17,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+117.579,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,68,three values,17,MEDIUM,,,,,No Match,,4,1.5,,0.0
+117.078,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,69,plug values,17,MEDIUM,,,,,No Match,,4,1.5,,0.0
+117.799,116.0,-1.7990000000000066,A,ocr_at_tnarr_partial,0.8,13.0,116.0,119.5,,MEDIUM,,,True,70,values bayes,17,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+122.836,124.5,1.6640000000000017,D,ocr_at_tnarr_partial,0.8,15.0,122.5,152.0,124.5,MEDIUM,,,True,71,evaluates 0004,18,MEDIUM,,80.13065628326224,90.03999999999998,80.13065628326224,Suboptimal,72.11759065493602,5,2.0,160.26131256652448,31.790949946780415
+130.944,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,72,homicidal given gamer,19,MEDIUM,,,,,No Match,,4,1.5,,0.0
+130.123,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,73,04 likelihood homicidal,19,MEDIUM,,,,,No Match,,4,1.5,,0.0
+128.121,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,74,.04% likelihood,19,MEDIUM,,,,,No Match,,4,1.5,,0.0
+129.402,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,75,likelihood homicidal given,19,MEDIUM,,,,,No Match,,4,1.5,,0.0
+136.649,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,76,homicidal reality comparing,20,MEDIUM,,,,,No Match,,4,1.5,,0.0
+139.012,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,77,very small numbers,20,MEDIUM,,,,,No Match,,4,1.5,,0.0
+136.189,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,78,likely homicidal,20,MEDIUM,,,,,No Match,,4,1.5,,0.0
+138.471,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,79,comparing small numbers,20,MEDIUM,,,,,No Match,,4,1.5,,0.0
+134.307,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,80,spin say,20,MEDIUM,,,,,No Match,,4,1.5,,0.0
+135.008,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,81,gamers times likely,20,MEDIUM,,,,,No Match,,4,1.5,,0.0
+145.338,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,82,85% claim,21,MEDIUM,,,,,No Match,,4,1.5,,0.0
+142.896,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,83,very small number,21,MEDIUM,,,,,No Match,,4,1.5,,0.0
+142.535,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,84,actually small number,21,MEDIUM,,,,,No Match,,4,1.5,,0.0
+144.357,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,85,different 85 claim,21,MEDIUM,,,,,No Match,,4,1.5,,0.0
+146.86,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,86,talked earlier,21,MEDIUM,,,,,No Match,,4,1.5,,0.0
+143.456,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,87,number different,21,MEDIUM,,,,,No Match,,4,1.5,,0.0
+149.382,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,88,let dissect visually,22,MEDIUM,,,,,No Match,,2,0.6,,0.0
+152.957,152.0,-0.9569999999999936,A,ocr_at_tnarr_partial,0.8,16.0,152.0,168.0,,MEDIUM,,,True,89,"100,000 population",23,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+152.356,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,90,representing 100 000,23,MEDIUM,,,,,No Match,,3,1.0,,0.0
+152.837,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,91,let say,23,MEDIUM,,,,,No Match,,3,1.0,,0.0
+151.615,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,92,say circle,23,MEDIUM,,,,,No Match,,3,1.0,,0.0
+152.016,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,93,circle representing 100,23,MEDIUM,,,,,No Match,,3,1.0,,0.0
+157.473,153.5,-3.973000000000013,D,ocr_at_tnarr_partial,0.8,16.0,152.0,168.0,153.5,MEDIUM,,,True,94,19 000 gamers,24,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+157.103,152.0,-5.103000000000009,A,ocr_at_tnarr_partial,0.8,16.0,152.0,168.0,,MEDIUM,,,True,95,gamers 19 population,24,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+157.764,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,96,which,24,MEDIUM,,,,,No Match,,3,1.0,,0.0
+164.413,169.0,4.586999999999989,B,ocr_forward_partial,0.8,17.0,168.0,185.0,,MEDIUM,,,False,97,representing homicidal people,25,MEDIUM,,18.57700760874753,14.455000000000382,18.57700760874753,Disruptive,16.719306847872776,3,1.0,18.57700760874753,65.13839391300199
+162.851,152.0,-10.851,A,ocr_at_tnarr_partial,0.8,16.0,152.0,168.0,,MEDIUM,,,True,98,tiny population representing,25,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+163.632,152.0,-11.632000000000003,A,ocr_at_tnarr_partial,0.8,16.0,152.0,168.0,,MEDIUM,,,True,99,population representing homicidal,25,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+162.45,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,100,very tiny part,25,MEDIUM,,,,,No Match,,3,1.0,,0.0
+167.9475,166.5,-1.447499999999991,D,ocr_at_tnarr_partial,0.8,16.0,152.0,168.0,166.5,MEDIUM,,,True,101,let zoom look,26,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,2,0.6,60.0,0.0
+170.641,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,102,population super tiny,27,MEDIUM,,,,,No Match,,3,1.0,,0.0
+170.121,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,103,subset,27,MEDIUM,,,,,No Match,,3,1.0,,0.0
+172.344,169.0,-3.343999999999994,A,ocr_at_tnarr_partial,0.8,17.0,168.0,185.0,,MEDIUM,,,True,104,only 10 homicidal people,28,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+174.687,168.0,-6.687000000000012,E,gemini_concept_exact,0.8999999999999999,17.0,168.0,185.0,,HIGH,"which is a universal symbol for ""no"" or ""none"" or ""forbidden"".",1.0,True,105,which,28,MEDIUM,,100.0,100.0,100.0,Optimal,95.0,4,1.5,150.0,0.0
+176.069,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,106,fbi statistics 0001,28,MEDIUM,,,,,No Match,,4,1.5,,0.0
+173.705,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,107,people lines fbi,28,MEDIUM,,,,,No Match,,4,1.5,,0.0
+183.392,189.0,5.608000000000004,B,ocr_forward_partial,0.8,18.0,185.0,191.5,,MEDIUM,,,False,108,gamers remaining,29,MEDIUM,,8.078426116423467,0.0,8.078426116423467,Unacceptable,7.27058350478112,4,1.5,12.117639174635201,110.30588866029184
+179.954,189.0,9.045999999999992,B,ocr_forward_partial,0.8,18.0,185.0,191.5,,MEDIUM,,,False,109,10 people gamers,29,MEDIUM,,0.1435259973467116,0.0,0.1435259973467116,Unacceptable,0.12917339761204044,4,1.5,0.2152889960200674,119.82776880318396
+187.217,189.0,1.782999999999987,D,ocr_at_tnarr_full,1.0,18.0,185.0,191.5,189.0,HIGH,,,True,110,games,29,MEDIUM,,77.54380992420865,88.2550000000002,77.54380992420865,Suboptimal,77.54380992420865,4,1.5,116.31571488631297,33.68428511368703
+189.38,,,F,low_groundability,0.0,,,,,NONE,,,False,111,beg,30,LOW,,,,,No Match,,4,1.5,,0.0
+192.283,191.5,-0.782999999999987,E,gemini_concept_exact,0.8999999999999999,19.0,191.5,203.5,,HIGH,000,1.0,True,112,"19,000 people",30,MEDIUM,,100.0,100.0,100.0,Optimal,95.0,4,1.5,150.0,0.0
+189.64,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,113,question going 19,30,MEDIUM,,,,,No Match,,4,1.5,,0.0
+193.164,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,114,people away playstations,30,MEDIUM,,,,,No Match,,4,1.5,,0.0
+195.887,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,115,conclude,31,MEDIUM,,,,,No Match,,4,1.5,,0.0
+197.89,203.0,5.110000000000014,D,ocr_at_tnarr_partial,0.8,19.0,191.5,203.5,203.0,MEDIUM,,,True,116,makes people homicidal,31,MEDIUM,,12.381484682916449,0.0,12.381484682916449,Unacceptable,11.143336214624805,4,1.5,18.572227024374673,105.14221838050025
+199.692,192.5,-7.192000000000007,A,ocr_at_tnarr_partial,0.8,19.0,191.5,203.5,,MEDIUM,,,True,117,violent video games,31,HIGH,,100.0,100.0,100.0,Optimal,90.0,4,1.5,150.0,0.0
+197.129,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,118,something,31,MEDIUM,,,,,No Match,,4,1.5,,0.0
+198.35,203.0,4.650000000000006,D,ocr_at_tnarr_partial,0.8,19.0,191.5,203.5,203.0,MEDIUM,,,True,119,homicidal violent video,31,HIGH,,17.73198703977956,12.249999999999801,17.73198703977956,Disruptive,15.958788335801605,4,1.5,26.59798055966934,98.72161555226452
+202.075,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,120,shows easily duped,32,MEDIUM,,,,,No Match,,4,1.5,,0.0
+202.636,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,121,easily duped percentages,32,MEDIUM,,,,,No Match,,4,1.5,,0.0
+208.142,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,122,problems encounter statistics,33,MEDIUM,,,,,No Match,,3,1.0,,0.0
+209.524,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,123,statistics machine learning,33,MEDIUM,,,,,No Match,,3,1.0,,0.0
+207.782,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,124,bias problems,33,MEDIUM,,,,,No Match,,3,1.0,,0.0
+205.219,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,125,yes cause lot,33,MEDIUM,,,,,No Match,,3,1.0,,0.0

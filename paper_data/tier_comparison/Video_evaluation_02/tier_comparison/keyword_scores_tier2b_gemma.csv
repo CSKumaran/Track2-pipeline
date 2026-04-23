@@ -1,0 +1,53 @@
+t_narr,t_vis,delta_t,match_case,match_method,alpha,scene_id,scene_t_start,scene_t_end,sub_scene_onset,confidence,visual_on_screen,keyword_id,keyword_text,segment_id,groundability,S_gaussian,S_piecewise,S_temporal,zone,S_floored,importance,importance_weight,S_weighted,priority
+13.691,7.5,-6.191000000000001,A,ocr_at_tnarr_full,1.0,3.0,7.5,28.5,,HIGH,True,0,ai-powered video evaluation,0,HIGH,100.0,100.0,100.0,Optimal,100.0,3,1.0,100.0,0.0
+13.0305,7.5,-5.5305,A,ocr_at_tnarr_partial,0.8,3.0,7.5,28.5,,MEDIUM,True,1,ai powered,0,MEDIUM,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+11.529,7.5,-4.029,A,ocr_at_tnarr_partial,0.8,3.0,7.5,28.5,,MEDIUM,True,2,instructional video ai,0,HIGH,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+10.628,7.5,-3.128,A,ocr_at_tnarr_partial,0.8,3.0,7.5,28.5,,MEDIUM,True,3,welcome instructional video,0,HIGH,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+19.718,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,4,ai-driven system,1,MEDIUM,,,,No Match,,3,1.0,,0.0
+22.922,7.5,-15.422,A,ocr_at_tnarr_partial,0.8,3.0,7.5,28.5,,MEDIUM,True,5,analyzes instructional video,1,HIGH,99.99010693384052,99.99010693384052,99.99010693384052,Optimal,89.99109624045647,3,1.0,99.99010693384052,0.007914452927582262
+17.736,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,6,demonstrate ai,1,MEDIUM,,,,No Match,,3,1.0,,0.0
+23.582,7.5,-16.082,A,ocr_at_tnarr_partial,0.8,3.0,7.5,28.5,,MEDIUM,True,7,instructional video content,1,HIGH,99.93498092434547,99.93498092434547,99.93498092434547,Optimal,89.94148283191092,3,1.0,99.93498092434547,0.05201526052362624
+21.079,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,8,efficiently evaluates,1,MEDIUM,,,,No Match,,3,1.0,,0.0
+20.839,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,9,ai driven efficiently,1,MEDIUM,,,,No Match,,3,1.0,,0.0
+27.286,7.5,-19.786,A,ocr_at_tnarr_partial,0.8,3.0,7.5,28.5,,MEDIUM,True,10,process follows simple,2,MEDIUM,98.73551838544586,98.73551838544586,98.73551838544586,Optimal,88.86196654690127,3,1.0,98.73551838544586,1.0115852916433141
+26.566,7.5,-19.066,A,ocr_at_tnarr_partial,0.8,3.0,7.5,28.5,,MEDIUM,True,11,evaluation process follows,2,MEDIUM,99.08574077676414,99.08574077676414,99.08574077676414,Optimal,89.17716669908773,3,1.0,99.08574077676414,0.7314073785886877
+28.628,28.5,-0.1280000000000001,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,12,simple yet powerful three-step ai pipeline,2,MEDIUM,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+33.353,28.5,-4.8530000000000015,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,13,explore step briefly,3,MEDIUM,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+34.144000000000005,28.5,-5.6440000000000055,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,14,let explore step,3,MEDIUM,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+33.854,,,F,low_groundability,0.0,,,,,NONE,False,15,each step,3,LOW,,,,No Match,,3,1.0,,0.0
+35.696,28.5,-7.195999999999998,A,ocr_at_tnarr_full,1.0,4.0,28.5,90.5,,HIGH,True,16,step audio processing,4,MEDIUM,100.0,100.0,100.0,Optimal,100.0,3,1.0,100.0,0.0
+44.18,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,17,key concepts,5,MEDIUM,,,,No Match,,3,1.0,,0.0
+45.602,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,18,ensuring precise,5,MEDIUM,,,,No Match,,3,1.0,,0.0
+46.143,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,19,precise content analysis,5,MEDIUM,,,,No Match,,3,1.0,,0.0
+41.577,28.5,-13.076999999999998,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,20,speech video identifying,5,HIGH,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+48.526,28.5,-20.026000000000003,A,ocr_at_tnarr_full,1.0,4.0,28.5,90.5,,HIGH,True,21,step visual processing,5,MEDIUM,98.60643045705484,98.60643045705484,98.60643045705484,Optimal,98.60643045705484,3,1.0,98.60643045705484,1.3935695429451584
+39.514,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,22,ai extracts transcribes,5,MEDIUM,,,,No Match,,3,1.0,,0.0
+61.422,28.5,-32.922,A,ocr_at_tnarr_full,1.0,4.0,28.5,90.5,,HIGH,True,23,alignment check,6,MEDIUM,83.65714222103928,83.65714222103928,83.65714222103928,Optimal,83.65714222103928,3,1.0,83.65714222103928,16.34285777896072
+53.712,28.5,-25.212000000000003,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,24,analyzes visual content,6,MEDIUM,94.37102674692464,94.37102674692464,94.37102674692464,Optimal,84.93392407223217,3,1.0,94.37102674692464,4.503178602460287
+52.771,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,25,frames analyzes,6,MEDIUM,,,,No Match,,3,1.0,,0.0
+51.71,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,26,captures critical,6,MEDIUM,,,,No Match,,3,1.0,,0.0
+52.251,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,27,critical frames,6,MEDIUM,,,,No Match,,3,1.0,,0.0
+58.639,28.5,-30.139000000000003,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,28,insight step alignment,6,MEDIUM,88.04453671017171,88.04453671017171,88.04453671017171,Optimal,79.24008303915454,3,1.0,88.04453671017171,9.56437063186263
+57.998,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,29,meaningful insight,6,MEDIUM,,,,No Match,,3,1.0,,0.0
+56.276,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,30,patterns,6,MEDIUM,,,,No Match,,3,1.0,,0.0
+64.686,28.5,-36.18600000000001,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,31,alignment visuals narration,7,MEDIUM,77.92999829587522,77.92999829587522,77.92999829587522,Suboptimal,70.13699846628771,3,1.0,77.92999829587522,17.656001363299822
+63.345,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,32,system,7,MEDIUM,,,,No Match,,3,1.0,,0.0
+63.845,28.5,-35.345,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,33,evaluates alignment,7,MEDIUM,79.45693462842385,79.45693462842385,79.45693462842385,Suboptimal,71.51124116558147,3,1.0,79.45693462842385,16.43445229726092
+68.557,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,34,compliance mayor,8,MEDIUM,,,,No Match,,3,1.0,,0.0
+67.936,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,35,ensuring compliance,8,MEDIUM,,,,No Match,,3,1.0,,0.0
+69.438,28.5,-40.938,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,36,mayor's temporal contiguity principle,8,MEDIUM,68.81375181433722,68.81375181433722,68.81375181433722,Suboptimal,61.932376632903505,3,1.0,68.81375181433722,24.948998548530223
+75.747,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,37,relevant narration,9,MEDIUM,,,,No Match,,3,1.0,,0.0
+73.784,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,38,appear simultaneously relevant,9,MEDIUM,,,,No Match,,3,1.0,,0.0
+73.103,28.5,-44.603,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,39,visuals appear simultaneously,9,MEDIUM,61.455661203981414,61.455661203981414,61.455661203981414,Suboptimal,55.31009508358327,3,1.0,61.455661203981414,30.83547103681487
+72.182,28.5,-43.682,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,40,confirming visuals,9,MEDIUM,63.316024605175,63.316024605175,63.316024605175,Suboptimal,56.9844221446575,3,1.0,63.316024605175,29.34718031586
+77.93,28.5,-49.43000000000001,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,41,completing steps,10,MEDIUM,51.75912769123398,51.75912769123398,51.75912769123398,Disruptive,46.58321492211058,3,1.0,51.75912769123398,38.59269784701282
+79.732,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,42,ai generates comprehensive,10,MEDIUM,,,,No Match,,3,1.0,,0.0
+80.814,28.5,-52.31399999999999,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,43,mayor principle,10,MEDIUM,46.13864872879548,46.13864872879548,46.13864872879548,Disruptive,41.524783855915935,3,1.0,46.13864872879548,43.08908101696362
+79.953,28.5,-51.453,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,44,generates comprehensive score,10,MEDIUM,47.79572407451636,47.79572407451636,47.79572407451636,Disruptive,43.016151667064726,3,1.0,47.79572407451636,41.76342074038692
+83.517,28.5,-55.017,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,45,mayor's principle,10,MEDIUM,41.080172369072926,41.080172369072926,41.080172369072926,Disruptive,36.97215513216563,3,1.0,41.080172369072926,47.13586210474166
+82.015,28.5,-53.515,A,ocr_at_tnarr_full,1.0,4.0,28.5,90.5,,HIGH,True,46,score based,10,MEDIUM,43.86234346334495,43.86234346334495,43.86234346334495,Disruptive,43.86234346334495,3,1.0,43.86234346334495,56.13765653665505
+86.201,28.5,-57.70099999999999,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,47,instructional videos deliver,11,MEDIUM,36.31329225614182,36.31329225614182,36.31329225614182,Unacceptable,32.68196303052764,3,1.0,36.31329225614182,50.94936619508655
+87.343,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,48,deliver maximum learning,11,MEDIUM,,,,No Match,,3,1.0,,0.0
+88.304,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,False,49,maximum learning effectiveness,11,MEDIUM,,,,No Match,,3,1.0,,0.0
+85.32,28.5,-56.81999999999999,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,50,ensures instructional,11,MEDIUM,37.84701776855276,37.84701776855276,37.84701776855276,Unacceptable,34.06231599169749,3,1.0,37.84701776855276,49.7223857851578
+86.842,28.5,-58.342,A,ocr_at_tnarr_partial,0.8,4.0,28.5,90.5,,MEDIUM,True,51,videos deliver maximum,11,MEDIUM,35.217495267245326,35.217495267245326,35.217495267245326,Unacceptable,31.695745740520795,3,1.0,35.217495267245326,51.82600378620374

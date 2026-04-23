@@ -1,0 +1,141 @@
+{
+  "_comment": "Per-video list of 4-6 CPIPs (Critical Pedagogical Integration Points). Each CPIP = a moment where a new concept is introduced and the learner must see the visual while hearing the narration. timestamp in seconds. cpipId must be unique per video. conceptLabel is a short (3-8 word) label shown to the rater.",
+  "cpips": {
+    "A0": [
+      { "cpipId": "A0_c1", "timestamp": 12.5, "conceptLabel": "Definition of the core concept" },
+      { "cpipId": "A0_c2", "timestamp": 45.0, "conceptLabel": "First worked example appears" },
+      { "cpipId": "A0_c3", "timestamp": 88.2, "conceptLabel": "Key formula introduction" },
+      { "cpipId": "A0_c4", "timestamp": 132.7, "conceptLabel": "Diagram of relationships" },
+      { "cpipId": "A0_c5", "timestamp": 178.4, "conceptLabel": "Summary comparison table" }
+    ],
+    "A1": [
+      { "cpipId": "A1_c1", "timestamp": 12.5, "conceptLabel": "Definition of the core concept" },
+      { "cpipId": "A1_c2", "timestamp": 45.0, "conceptLabel": "First worked example appears" },
+      { "cpipId": "A1_c3", "timestamp": 88.2, "conceptLabel": "Key formula introduction" },
+      { "cpipId": "A1_c4", "timestamp": 132.7, "conceptLabel": "Diagram of relationships" },
+      { "cpipId": "A1_c5", "timestamp": 178.4, "conceptLabel": "Summary comparison table" }
+    ],
+    "A3": [
+      { "cpipId": "A3_c1", "timestamp": 12.5, "conceptLabel": "Definition of the core concept" },
+      { "cpipId": "A3_c2", "timestamp": 45.0, "conceptLabel": "First worked example appears" },
+      { "cpipId": "A3_c3", "timestamp": 88.2, "conceptLabel": "Key formula introduction" },
+      { "cpipId": "A3_c4", "timestamp": 132.7, "conceptLabel": "Diagram of relationships" },
+      { "cpipId": "A3_c5", "timestamp": 178.4, "conceptLabel": "Summary comparison table" }
+    ],
+    "A5": [
+      { "cpipId": "A5_c1", "timestamp": 12.5, "conceptLabel": "Definition of the core concept" },
+      { "cpipId": "A5_c2", "timestamp": 45.0, "conceptLabel": "First worked example appears" },
+      { "cpipId": "A5_c3", "timestamp": 88.2, "conceptLabel": "Key formula introduction" },
+      { "cpipId": "A5_c4", "timestamp": 132.7, "conceptLabel": "Diagram of relationships" },
+      { "cpipId": "A5_c5", "timestamp": 178.4, "conceptLabel": "Summary comparison table" }
+    ],
+    "B0": [
+      { "cpipId": "B0_c1", "timestamp": 10.0, "conceptLabel": "Topic introduction" },
+      { "cpipId": "B0_c2", "timestamp": 40.0, "conceptLabel": "Process step 1 visual" },
+      { "cpipId": "B0_c3", "timestamp": 80.0, "conceptLabel": "Process step 2 visual" },
+      { "cpipId": "B0_c4", "timestamp": 120.0, "conceptLabel": "Worked example" },
+      { "cpipId": "B0_c5", "timestamp": 165.0, "conceptLabel": "Closing summary" }
+    ],
+    "B1": [
+      { "cpipId": "B1_c1", "timestamp": 10.0, "conceptLabel": "Topic introduction" },
+      { "cpipId": "B1_c2", "timestamp": 40.0, "conceptLabel": "Process step 1 visual" },
+      { "cpipId": "B1_c3", "timestamp": 80.0, "conceptLabel": "Process step 2 visual" },
+      { "cpipId": "B1_c4", "timestamp": 120.0, "conceptLabel": "Worked example" },
+      { "cpipId": "B1_c5", "timestamp": 165.0, "conceptLabel": "Closing summary" }
+    ],
+    "B3": [
+      { "cpipId": "B3_c1", "timestamp": 10.0, "conceptLabel": "Topic introduction" },
+      { "cpipId": "B3_c2", "timestamp": 40.0, "conceptLabel": "Process step 1 visual" },
+      { "cpipId": "B3_c3", "timestamp": 80.0, "conceptLabel": "Process step 2 visual" },
+      { "cpipId": "B3_c4", "timestamp": 120.0, "conceptLabel": "Worked example" },
+      { "cpipId": "B3_c5", "timestamp": 165.0, "conceptLabel": "Closing summary" }
+    ],
+    "B5": [
+      { "cpipId": "B5_c1", "timestamp": 10.0, "conceptLabel": "Topic introduction" },
+      { "cpipId": "B5_c2", "timestamp": 40.0, "conceptLabel": "Process step 1 visual" },
+      { "cpipId": "B5_c3", "timestamp": 80.0, "conceptLabel": "Process step 2 visual" },
+      { "cpipId": "B5_c4", "timestamp": 120.0, "conceptLabel": "Worked example" },
+      { "cpipId": "B5_c5", "timestamp": 165.0, "conceptLabel": "Closing summary" }
+    ],
+    "C0": [
+      { "cpipId": "C0_c1", "timestamp": 15.0, "conceptLabel": "Concept definition" },
+      { "cpipId": "C0_c2", "timestamp": 50.0, "conceptLabel": "First visualization" },
+      { "cpipId": "C0_c3", "timestamp": 95.0, "conceptLabel": "Example application" },
+      { "cpipId": "C0_c4", "timestamp": 140.0, "conceptLabel": "Comparison diagram" }
+    ],
+    "C1": [
+      { "cpipId": "C1_c1", "timestamp": 15.0, "conceptLabel": "Concept definition" },
+      { "cpipId": "C1_c2", "timestamp": 50.0, "conceptLabel": "First visualization" },
+      { "cpipId": "C1_c3", "timestamp": 95.0, "conceptLabel": "Example application" },
+      { "cpipId": "C1_c4", "timestamp": 140.0, "conceptLabel": "Comparison diagram" }
+    ],
+    "C3": [
+      { "cpipId": "C3_c1", "timestamp": 15.0, "conceptLabel": "Concept definition" },
+      { "cpipId": "C3_c2", "timestamp": 50.0, "conceptLabel": "First visualization" },
+      { "cpipId": "C3_c3", "timestamp": 95.0, "conceptLabel": "Example application" },
+      { "cpipId": "C3_c4", "timestamp": 140.0, "conceptLabel": "Comparison diagram" }
+    ],
+    "C5": [
+      { "cpipId": "C5_c1", "timestamp": 15.0, "conceptLabel": "Concept definition" },
+      { "cpipId": "C5_c2", "timestamp": 50.0, "conceptLabel": "First visualization" },
+      { "cpipId": "C5_c3", "timestamp": 95.0, "conceptLabel": "Example application" },
+      { "cpipId": "C5_c4", "timestamp": 140.0, "conceptLabel": "Comparison diagram" }
+    ],
+    "D0": [
+      { "cpipId": "D0_c1", "timestamp": 8.0, "conceptLabel": "Opening concept" },
+      { "cpipId": "D0_c2", "timestamp": 35.0, "conceptLabel": "Diagram appears" },
+      { "cpipId": "D0_c3", "timestamp": 75.0, "conceptLabel": "Formula on screen" },
+      { "cpipId": "D0_c4", "timestamp": 115.0, "conceptLabel": "Applied example" },
+      { "cpipId": "D0_c5", "timestamp": 155.0, "conceptLabel": "Key takeaway visual" },
+      { "cpipId": "D0_c6", "timestamp": 195.0, "conceptLabel": "Final summary" }
+    ],
+    "D1": [
+      { "cpipId": "D1_c1", "timestamp": 8.0, "conceptLabel": "Opening concept" },
+      { "cpipId": "D1_c2", "timestamp": 35.0, "conceptLabel": "Diagram appears" },
+      { "cpipId": "D1_c3", "timestamp": 75.0, "conceptLabel": "Formula on screen" },
+      { "cpipId": "D1_c4", "timestamp": 115.0, "conceptLabel": "Applied example" },
+      { "cpipId": "D1_c5", "timestamp": 155.0, "conceptLabel": "Key takeaway visual" },
+      { "cpipId": "D1_c6", "timestamp": 195.0, "conceptLabel": "Final summary" }
+    ],
+    "D3": [
+      { "cpipId": "D3_c1", "timestamp": 8.0, "conceptLabel": "Opening concept" },
+      { "cpipId": "D3_c2", "timestamp": 35.0, "conceptLabel": "Diagram appears" },
+      { "cpipId": "D3_c3", "timestamp": 75.0, "conceptLabel": "Formula on screen" },
+      { "cpipId": "D3_c4", "timestamp": 115.0, "conceptLabel": "Applied example" },
+      { "cpipId": "D3_c5", "timestamp": 155.0, "conceptLabel": "Key takeaway visual" },
+      { "cpipId": "D3_c6", "timestamp": 195.0, "conceptLabel": "Final summary" }
+    ],
+    "D5": [
+      { "cpipId": "D5_c1", "timestamp": 8.0, "conceptLabel": "Opening concept" },
+      { "cpipId": "D5_c2", "timestamp": 35.0, "conceptLabel": "Diagram appears" },
+      { "cpipId": "D5_c3", "timestamp": 75.0, "conceptLabel": "Formula on screen" },
+      { "cpipId": "D5_c4", "timestamp": 115.0, "conceptLabel": "Applied example" },
+      { "cpipId": "D5_c5", "timestamp": 155.0, "conceptLabel": "Key takeaway visual" },
+      { "cpipId": "D5_c6", "timestamp": 195.0, "conceptLabel": "Final summary" }
+    ],
+    "E1": [
+      { "cpipId": "E1_c1", "timestamp": 10.0, "conceptLabel": "REPLACE — concept 1 label" },
+      { "cpipId": "E1_c2", "timestamp": 40.0, "conceptLabel": "REPLACE — concept 2 label" },
+      { "cpipId": "E1_c3", "timestamp": 80.0, "conceptLabel": "REPLACE — concept 3 label" },
+      { "cpipId": "E1_c4", "timestamp": 140.0, "conceptLabel": "REPLACE — concept 4 label" }
+    ],
+    "E2": [
+      { "cpipId": "E2_c1", "timestamp": 10.0, "conceptLabel": "REPLACE — concept 1 label" },
+      { "cpipId": "E2_c2", "timestamp": 40.0, "conceptLabel": "REPLACE — concept 2 label" },
+      { "cpipId": "E2_c3", "timestamp": 80.0, "conceptLabel": "REPLACE — concept 3 label" },
+      { "cpipId": "E2_c4", "timestamp": 140.0, "conceptLabel": "REPLACE — concept 4 label" }
+    ],
+    "E3": [
+      { "cpipId": "E3_c1", "timestamp": 10.0, "conceptLabel": "REPLACE — concept 1 label" },
+      { "cpipId": "E3_c2", "timestamp": 40.0, "conceptLabel": "REPLACE — concept 2 label" },
+      { "cpipId": "E3_c3", "timestamp": 80.0, "conceptLabel": "REPLACE — concept 3 label" },
+      { "cpipId": "E3_c4", "timestamp": 140.0, "conceptLabel": "REPLACE — concept 4 label" }
+    ],
+    "E4": [
+      { "cpipId": "E4_c1", "timestamp": 10.0, "conceptLabel": "REPLACE — concept 1 label" },
+      { "cpipId": "E4_c2", "timestamp": 40.0, "conceptLabel": "REPLACE — concept 2 label" },
+      { "cpipId": "E4_c3", "timestamp": 80.0, "conceptLabel": "REPLACE — concept 3 label" },
+      { "cpipId": "E4_c4", "timestamp": 140.0, "conceptLabel": "REPLACE — concept 4 label" }
+    ]
+  }
+}

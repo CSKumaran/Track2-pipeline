@@ -1,0 +1,81 @@
+keyword_id,keyword_text,segment_id,t_narr,t_vis,delta_t,match_case,match_method,alpha,scene_id,scene_t_start,scene_t_end,sub_scene_onset,confidence,groundability,visual_on_screen,S_gaussian,S_piecewise,S_temporal,zone,S_floored,importance,importance_weight,S_weighted,priority
+0,proposed meir explains,0,3.912,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+1,cognitive theory multimedia,0,1.388,1.0,-0.3879999999999999,A,ocr_at_tnarr_full,1.0,1.0,1.0,25.5,,HIGH,MEDIUM,True,100.0,100.0,100.0,Optimal,100.0,3,1.0,100.0,0.0
+2,people learn better,0,6.356,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+3,information,0,8.198,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+4,multimedia learning proposed,0,2.55,1.0,-1.5499999999999998,A,ocr_at_tnarr_partial,0.8,1.0,1.0,25.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+5,presented using words,0,8.94,25.5,16.560000000000002,D,ocr_at_tnarr_partial,0.8,1.0,1.0,25.5,25.5,MEDIUM,MEDIUM,True,2.965847807247327e-08,0.0,2.965847807247327e-08,Unacceptable,2.6692630265225945e-08,3,1.0,2.965847807247327e-08,79.99999997627322
+6,pictures,0,11.043,25.5,14.457,D,ocr_at_tnarr_full,1.0,1.0,1.0,25.5,25.5,HIGH,MEDIUM,True,5.475550529344576e-06,0.0,5.475550529344576e-06,Unacceptable,5.475550529344576e-06,3,1.0,5.475550529344576e-06,99.99999452444948
+7,dual channel,1,18.273,25.5,7.227,D,ocr_at_tnarr_full,1.0,1.0,1.0,25.5,25.5,HIGH,MEDIUM,True,1.5323582153067512,0.0,1.5323582153067512,Unacceptable,1.5323582153067512,3,1.0,1.5323582153067512,98.46764178469324
+8,capacity active processing,1,20.016,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+9,theory based,1,14.428,1.0,-13.428,A,ocr_at_tnarr_partial,0.8,1.0,1.0,25.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+10,three key principles,1,15.95,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+11,channel limited,1,18.654,25.5,6.846,D,ocr_at_tnarr_partial,0.8,1.0,1.0,25.5,25.5,MEDIUM,MEDIUM,True,2.353145411052346,0.0,2.353145411052346,Unacceptable,2.1178308699471113,3,1.0,2.353145411052346,78.11748367115813
+12,key principles dual,1,16.511,25.5,8.989,D,ocr_at_tnarr_partial,0.8,1.0,1.0,25.5,25.5,MEDIUM,MEDIUM,True,0.1558284597079573,0.0,0.1558284597079573,Unacceptable,0.14024561373716157,3,1.0,0.1558284597079573,79.87533723223363
+13,limited capacity,1,19.595,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+14,learning starts multimedia,2,23.061,1.0,-22.061,A,ocr_at_tnarr_partial,0.8,1.0,1.0,25.5,,MEDIUM,MEDIUM,True,97.26813585950359,97.26813585950359,97.26813585950359,Optimal,87.54132227355323,3,1.0,97.26813585950359,2.1854913123971302
+15,multimedia presentation,2,24.523,1.0,-23.523,A,ocr_at_tnarr_full,1.0,1.0,1.0,25.5,,HIGH,MEDIUM,True,96.04470700069238,96.04470700069238,96.04470700069238,Optimal,96.04470700069238,3,1.0,96.04470700069238,3.9552929993076162
+16,words pictures,2,27.467,25.5,-1.9669999999999987,A,ocr_at_tnarr_full,1.0,2.0,25.5,49.5,,HIGH,MEDIUM,True,100.0,100.0,100.0,Optimal,100.0,3,1.0,100.0,0.0
+17,presentation combining words,2,25.204,25.5,0.2959999999999994,D,ocr_at_tnarr_partial,0.8,1.0,1.0,25.5,25.5,MEDIUM,MEDIUM,True,99.30152277091634,100.0,99.30152277091634,Optimal,89.3713704938247,3,1.0,99.30152277091634,0.5587817832669316
+18,eyes visual ears,3,33.797,25.5,-8.296999999999997,A,ocr_at_tnarr_partial,0.8,2.0,25.5,49.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+19,inputs processed sensors,3,30.493,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+20,ears auditory,3,36.04,25.5,-10.54,A,ocr_at_tnarr_partial,0.8,2.0,25.5,49.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+21,visual and ears,3,34.618,25.5,-9.118000000000002,A,ocr_at_tnarr_partial,0.8,2.0,25.5,49.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+22,auditory information,3,37.122,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+23,sensors eyes,3,32.435,25.5,-6.935000000000002,A,ocr_at_tnarr_partial,0.8,2.0,25.5,49.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+24,two distinct channels,4,41.989,25.5,-16.488999999999997,A,ocr_at_tnarr_partial,0.8,2.0,25.5,49.5,,MEDIUM,MEDIUM,True,99.87690243839356,99.87690243839356,99.87690243839356,Optimal,89.8892121945542,3,1.0,99.87690243839356,0.09847804928515416
+25,distinct channels visual,4,42.329,25.5,-16.829,A,ocr_at_tnarr_partial,0.8,2.0,25.5,49.5,,MEDIUM,MEDIUM,True,99.8143258658656,99.8143258658656,99.8143258658656,Optimal,89.83289327927903,3,1.0,99.8143258658656,0.14853930730752155
+26,visual and auditory input,4,43.651,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+27,dual channel assumption,4,39.946,25.5,-14.445999999999998,A,ocr_at_tnarr_partial,0.8,2.0,25.5,49.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+28,material focusing,5,52.363,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+29,sounds images,5,54.927,49.5,-5.427,A,ocr_at_tnarr_full,1.0,3.0,49.5,106.5,,HIGH,MEDIUM,True,100.0,100.0,100.0,Optimal,100.0,3,1.0,100.0,0.0
+30,learners actively select,5,47.176,49.5,2.323999999999998,D,ocr_at_tnarr_partial,0.8,2.0,25.5,49.5,49.5,MEDIUM,MEDIUM,True,64.91586883959128,80.14000000000003,64.91586883959128,Suboptimal,58.42428195563215,3,1.0,64.91586883959128,28.067304928326976
+31,focusing key sounds,5,53.365,49.5,-3.865000000000002,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+32,pictures relevant material,5,50.681,49.5,-1.1809999999999974,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+33,words,5,49.82,49.5,-0.3200000000000003,A,ocr_at_tnarr_full,1.0,3.0,49.5,106.5,,HIGH,MEDIUM,True,100.0,100.0,100.0,Optimal,100.0,3,1.0,100.0,0.0
+34,only meaningful content,6,59.431,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+35,ensures meaningful content,6,58.572,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+36,meaningful content retained,6,59.932,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+37,words pictures coherent,7,66.079,49.5,-16.578999999999994,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,99.86158249662908,99.86158249662908,99.86158249662908,Optimal,89.87542424696618,3,1.0,99.86158249662908,0.11073400269673357
+38,organize words pictures,7,65.238,49.5,-15.738,A,ocr_at_tnarr_full,1.0,3.0,49.5,106.5,,HIGH,MEDIUM,True,99.96974657727115,99.96974657727115,99.96974657727115,Optimal,99.96974657727115,3,1.0,99.96974657727115,0.030253422728847568
+39,coherent mental representations,7,68.282,49.5,-18.782,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,99.20850869681217,99.20850869681217,99.20850869681217,Optimal,89.28765782713096,3,1.0,99.20850869681217,0.6331930425502605
+40,selection learners organize,7,62.995,49.5,-13.494999999999996,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+41,learners organize words,7,64.117,49.5,-14.617000000000004,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+42,selected words,8,70.705,49.5,-21.205,A,ocr_at_tnarr_full,1.0,3.0,49.5,106.5,,HIGH,MEDIUM,True,97.88371300382394,97.88371300382394,97.88371300382394,Optimal,97.88371300382394,3,1.0,97.88371300382394,2.1162869961760578
+43,verbal model selected,8,72.768,49.5,-23.268,A,ocr_at_tnarr_full,1.0,3.0,49.5,106.5,,HIGH,MEDIUM,True,96.27344288838454,96.27344288838454,96.27344288838454,Optimal,96.27344288838454,3,1.0,96.27344288838454,3.726557111615463
+44,pictorial model,8,77.273,49.5,-27.773,A,ocr_at_tnarr_full,1.0,3.0,49.5,106.5,,HIGH,MEDIUM,True,91.3347710268417,91.3347710268417,91.3347710268417,Optimal,91.3347710268417,3,1.0,91.3347710268417,8.665228973158307
+45,selected pictures form,8,70.705,49.5,-21.205,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,97.88371300382394,97.88371300382394,97.88371300382394,Optimal,88.09534170344155,3,1.0,97.88371300382394,1.6930295969408462
+46,words form verbal,8,71.306,49.5,-21.806,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,97.45940611473007,97.45940611473007,97.45940611473007,Optimal,87.71346550325707,3,1.0,97.45940611473007,2.0324751082159422
+47,information way makes,9,80.697,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+48,makes sense learner,9,82.439,49.5,-32.93899999999999,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,83.62881341349477,83.62881341349477,83.62881341349477,Optimal,75.26593207214529,3,1.0,83.62881341349477,13.096949269204186
+49,step structures information,9,79.316,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+50,structures information way,9,80.037,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+51,way makes sense,9,81.638,49.5,-32.138000000000005,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,84.94443898531759,84.94443898531759,84.94443898531759,Optimal,76.44999508678583,3,1.0,84.94443898531759,12.04444881174593
+52,capacity principle crucial,10,86.304,49.5,-36.804,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,76.78820640970547,76.78820640970547,76.78820640970547,Suboptimal,69.10938576873492,3,1.0,76.78820640970547,18.56943487223563
+53,limited capacity principle,10,85.824,49.5,-36.324,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,77.67643006498426,77.67643006498426,77.67643006498426,Suboptimal,69.90878705848584,3,1.0,77.67643006498426,17.858855948012593
+54,limited space,11,90.867,49.5,-41.367,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,67.96124260452909,67.96124260452909,67.96124260452909,Suboptimal,61.165118344076184,3,1.0,67.96124260452909,25.63100591637673
+55,information overwhelm learners,11,92.89,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+56,so too much information,11,92.189,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+57,space information overwhelm,11,91.328,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+58,working memory limited,11,89.386,49.5,-39.886,A,ocr_at_tnarr_full,1.0,3.0,49.5,106.5,,HIGH,MEDIUM,True,70.88844260390368,70.88844260390368,70.88844260390368,Suboptimal,70.88844260390368,3,1.0,70.88844260390368,29.111557396096316
+59,avoid unnecessary material,12,101.26,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+60,essential content,12,99.558,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+61,presentations focus essential,12,97.115,49.5,-47.615,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,55.37922400369345,55.37922400369345,55.37922400369345,Disruptive,49.841301603324105,3,1.0,55.37922400369345,35.69662079704524
+62,multimedia presentations focus,12,96.454,49.5,-46.95399999999999,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,56.708021710311364,56.708021710311364,56.708021710311364,Disruptive,51.03721953928023,3,1.0,56.708021710311364,34.63358263175091
+63,prior knowledge stored,13,111.373,106.5,-4.873000000000005,A,ocr_at_tnarr_partial,0.8,4.0,106.5,136.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+64,long-term memory,13,114.036,106.5,-7.536000000000001,A,ocr_at_tnarr_partial,0.8,4.0,106.5,136.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+65,organized verbal and pictorial models,13,107.328,106.5,-0.828000000000003,A,ocr_at_tnarr_partial,0.8,4.0,106.5,136.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+66,long term memory,13,114.036,106.5,-7.536000000000001,A,ocr_at_tnarr_full,1.0,4.0,106.5,136.5,,HIGH,MEDIUM,True,100.0,100.0,100.0,Optimal,100.0,3,1.0,100.0,0.0
+67,learners integrate organized,13,104.965,49.5,-55.465,A,ocr_at_tnarr_partial,0.8,3.0,49.5,106.5,,MEDIUM,MEDIUM,True,40.26547916380119,40.26547916380119,40.26547916380119,Disruptive,36.23893124742107,3,1.0,40.26547916380119,47.78761666895905
+68,connects new information,14,117.582,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+69,active processing connects,14,116.419,106.5,-9.918999999999995,A,ocr_at_tnarr_partial,0.8,4.0,106.5,136.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+70,deeper understanding,14,124.355,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+71,knowledge opted creating,14,121.329,106.5,-14.828999999999994,A,ocr_at_tnarr_partial,0.8,4.0,106.5,136.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+72,existing knowledge,14,120.147,106.5,-13.647000000000006,A,ocr_at_tnarr_partial,0.8,4.0,106.5,136.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+73,new information existing,14,118.444,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+74,outcomes significantly enhanced,15,133.151,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+75,encouraging active processing,15,130.386,106.5,-23.886,A,ocr_at_tnarr_partial,0.8,4.0,106.5,136.5,,MEDIUM,MEDIUM,True,95.70810302556953,95.70810302556953,95.70810302556953,Optimal,86.13729272301258,3,1.0,95.70810302556953,3.4335175795443775
+76,both channels,15,126.9,106.5,-20.40000000000001,A,ocr_at_tnarr_partial,0.8,4.0,106.5,136.5,,MEDIUM,MEDIUM,True,98.39305142725084,98.39305142725084,98.39305142725084,Optimal,88.55374628452576,3,1.0,98.39305142725084,1.285558858199329
+77,cognitive load encouraging,15,128.823,106.5,-22.323000000000008,A,ocr_at_tnarr_partial,0.8,4.0,106.5,136.5,,MEDIUM,MEDIUM,True,97.06470141014992,97.06470141014992,97.06470141014992,Optimal,87.35823126913493,3,1.0,97.06470141014992,2.348238871880062
+78,processing learning outcomes,15,131.568,106.5,-25.06800000000001,A,ocr_at_tnarr_partial,0.8,4.0,106.5,136.5,,MEDIUM,MEDIUM,True,94.52425856876154,94.52425856876154,94.52425856876154,Optimal,85.07183271188539,3,1.0,94.52425856876154,4.380593144990769
+79,engaging channels managing,15,126.319,106.5,-19.819000000000003,A,ocr_at_tnarr_partial,0.8,4.0,106.5,136.5,,MEDIUM,MEDIUM,True,98.71813341417337,98.71813341417337,98.71813341417337,Optimal,88.84632007275603,3,1.0,98.71813341417337,1.0254932686613074

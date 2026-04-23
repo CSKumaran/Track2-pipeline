@@ -1,0 +1,129 @@
+{
+  "pipeline_version": "4.0",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "keyword_level": {
+    "n_total": 155,
+    "n_groundable": 151,
+    "n_matched": 40,
+    "n_unmatched": 115,
+    "match_rate": 0.25806451612903225,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 111,
+      "low_groundability": 4
+    },
+    "mean_S_gaussian_weighted": 81.06165217503981,
+    "mean_S_piecewise_weighted": 81.44701316696641,
+    "mean_S_temporal_weighted": 81.06165217503981,
+    "mean_S_gaussian_unweighted": 81.46166919911693,
+    "mean_S_piecewise_unweighted": 81.8235,
+    "mean_S_temporal_unweighted": 81.46166919911693,
+    "median_S_temporal": 100.0,
+    "mean_delta_t": -6.6024875,
+    "median_delta_t": -6.281750000000002,
+    "std_delta_t": 8.098921075252743,
+    "min_delta_t": -27.441999999999997,
+    "max_delta_t": 6.310000000000002,
+    "pct_negative_delta_t": 77.5,
+    "pct_within_1s": 20.0,
+    "mean_alpha": 0.8379629998759587,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 75.0,
+    "pct_Suboptimal": 7.5,
+    "pct_Disruptive": 2.5,
+    "pct_Unacceptable": 15.0,
+    "case_distribution": {
+      "E": 22,
+      "D": 10,
+      "A": 8
+    },
+    "high_confidence": {
+      "n": 40,
+      "mean_S_temporal": 81.46166919911693,
+      "mean_delta_t": -6.6024875
+    }
+  },
+  "segment_level": {
+    "n_total": 43,
+    "n_with_matches": 26,
+    "n_without_matches": 17,
+    "mean_S_temporal": 83.73630798521782,
+    "median_S_temporal": 100.0,
+    "mean_S_piecewise": 84.1868025538992,
+    "mean_S_weighted": 84.97403336013336
+  },
+  "overall_score": 81.91,
+  "overall_grade": "Excellent",
+  "overall_score_alpha_only": 81.06,
+  "overall_score_unweighted": 81.46,
+  "overall_score_piecewise": 82.47,
+  "overall_grade_piecewise": "Excellent",
+  "coverage": {
+    "n_groundable_keywords": 151,
+    "n_matched": 40,
+    "coverage_rate": 0.2649,
+    "tc_score_matched_only": 81.91,
+    "tc_score_coverage_adjusted": 21.7,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 18,
+    "mean_lead_s": 5.43,
+    "median_lead_s": 1.37,
+    "max_lead_s": 27.44,
+    "pct_within_2s": 61.1,
+    "pct_within_5s": 61.1,
+    "pct_over_10s": 22.2,
+    "distribution": {
+      "0-1s (simultaneous)": 9,
+      "1-3s (near-simultaneous)": 2,
+      "3-5s (prepared ahead)": 0,
+      "5-10s (slide already up)": 3,
+      ">10s (long-showing slide)": 4
+    }
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 50,
+      "keyword_text": "neural network",
+      "segment_id": 15,
+      "delta_t": -12.501999999999995,
+      "S_temporal": 0.00037117751451362836,
+      "priority": 98.99963253426063
+    },
+    {
+      "keyword_id": 43,
+      "keyword_text": "neural network break",
+      "segment_id": 14,
+      "delta_t": -7.200999999999993,
+      "S_temporal": 1.5790416399073797,
+      "priority": 83.36834119913728
+    },
+    {
+      "keyword_id": 59,
+      "keyword_text": "x1, x2",
+      "segment_id": 16,
+      "delta_t": -8.575999999999993,
+      "S_temporal": 0.27841237696749277,
+      "priority": 80.77448597465632
+    },
+    {
+      "keyword_id": 55,
+      "keyword_text": "x2 x3 values",
+      "segment_id": 16,
+      "delta_t": -6.733499999999992,
+      "S_temporal": 2.6590486434656038,
+      "priority": 78.84617059879285
+    },
+    {
+      "keyword_id": 106,
+      "keyword_text": "relu doing negative",
+      "segment_id": 29,
+      "delta_t": 6.310000000000002,
+      "S_temporal": 4.13663305820535,
+      "priority": 69.02162419809216
+    }
+  ]
+}

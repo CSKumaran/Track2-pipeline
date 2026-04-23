@@ -1,0 +1,130 @@
+{
+  "pipeline_version": "4.1",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "dwell_threshold": 15.0,
+  "dwell_tau": 30.0,
+  "keyword_level": {
+    "n_total": 80,
+    "n_groundable": 80,
+    "n_matched": 58,
+    "n_unmatched": 22,
+    "match_rate": 0.725,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 22
+    },
+    "mean_S_gaussian_weighted": 40.8239444558994,
+    "mean_S_piecewise_weighted": 40.8239444558994,
+    "mean_S_temporal_weighted": 40.8239444558994,
+    "mean_S_gaussian_unweighted": 39.66120486834202,
+    "mean_S_piecewise_unweighted": 39.66120486834202,
+    "mean_S_temporal_unweighted": 39.66120486834202,
+    "median_S_temporal": 20.166808695111,
+    "mean_delta_t": -68.04524137931035,
+    "median_delta_t": -68.686,
+    "std_delta_t": 38.96791909381507,
+    "min_delta_t": -135.878,
+    "max_delta_t": -5.710999999999999,
+    "pct_negative_delta_t": 100.0,
+    "pct_within_1s": 0.0,
+    "mean_alpha": 0.8568965517241378,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 25.862068965517242,
+    "pct_Suboptimal": 8.620689655172415,
+    "pct_Disruptive": 8.620689655172415,
+    "pct_Unacceptable": 56.896551724137936,
+    "case_distribution": {
+      "A": 52,
+      "D": 5,
+      "E": 1
+    },
+    "high_confidence": {
+      "n": 58,
+      "mean_S_temporal": 39.66120486834202,
+      "mean_delta_t": -68.04524137931035
+    }
+  },
+  "segment_level": {
+    "n_total": 16,
+    "n_with_matches": 15,
+    "n_without_matches": 1,
+    "mean_S_temporal": 33.686689971245826,
+    "median_S_temporal": 11.954152007113567,
+    "mean_S_piecewise": 33.686689971245826,
+    "mean_S_weighted": 33.7218299123971
+  },
+  "overall_score": 40.82,
+  "overall_grade": "Acceptable",
+  "overall_score_alpha_only": 40.82,
+  "overall_score_unweighted": 39.66,
+  "overall_score_piecewise": 40.82,
+  "overall_grade_piecewise": "Acceptable",
+  "coverage": {
+    "n_groundable_keywords": 80,
+    "n_matched": 58,
+    "coverage_rate": 0.725,
+    "tc_score_matched_only": 40.82,
+    "tc_score_coverage_adjusted": 29.59,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 57,
+    "mean_lead_s": 69.02,
+    "median_lead_s": 68.95,
+    "max_lead_s": 135.88,
+    "pct_within_2s": 0.0,
+    "pct_within_5s": 0.0,
+    "pct_over_10s": 96.5,
+    "distribution": {
+      "0-1s (simultaneous)": 0,
+      "1-3s (near-simultaneous)": 0,
+      "3-5s (prepared ahead)": 0,
+      "5-10s (slide already up)": 2,
+      ">10s (long-showing slide)": 55
+    }
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 66,
+      "keyword_text": "long term memory",
+      "segment_id": 13,
+      "delta_t": -118.345,
+      "S_temporal": 0.26493569012145707,
+      "priority": 99.73506430987854
+    },
+    {
+      "keyword_id": 58,
+      "keyword_text": "working memory limited",
+      "segment_id": 11,
+      "delta_t": -93.716,
+      "S_temporal": 3.1989801112341927,
+      "priority": 96.80101988876581
+    },
+    {
+      "keyword_id": 42,
+      "keyword_text": "pictorial model",
+      "segment_id": 8,
+      "delta_t": -81.602,
+      "S_temporal": 8.506428602062117,
+      "priority": 91.49357139793788
+    },
+    {
+      "keyword_id": 43,
+      "keyword_text": "verbal model selected",
+      "segment_id": 8,
+      "delta_t": -77.077,
+      "S_temporal": 11.755331614487194,
+      "priority": 88.24466838551281
+    },
+    {
+      "keyword_id": 46,
+      "keyword_text": "selected words",
+      "segment_id": 8,
+      "delta_t": -75.014,
+      "S_temporal": 13.520901451053168,
+      "priority": 86.47909854894684
+    }
+  ]
+}

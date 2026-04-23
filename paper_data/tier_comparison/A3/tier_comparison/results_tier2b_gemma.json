@@ -1,0 +1,140 @@
+{
+  "pipeline_version": "4.1",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "dwell_threshold": 15.0,
+  "dwell_tau": 30.0,
+  "keyword_level": {
+    "n_total": 117,
+    "n_groundable": 99,
+    "n_matched": 41,
+    "n_unmatched": 76,
+    "match_rate": 0.3504273504273504,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 54,
+      "low_groundability": 18,
+      "no_ocr_nearby": 4
+    },
+    "mean_S_gaussian_weighted": 85.90718797829678,
+    "mean_S_piecewise_weighted": 86.636603270449,
+    "mean_S_temporal_weighted": 85.90718797829678,
+    "mean_S_gaussian_unweighted": 85.12403499701972,
+    "mean_S_piecewise_unweighted": 85.76363758522068,
+    "mean_S_temporal_unweighted": 85.12403499701972,
+    "median_S_temporal": 100.0,
+    "mean_delta_t": -2.4197560975609758,
+    "median_delta_t": -1.3899999999999864,
+    "std_delta_t": 5.757033136870447,
+    "min_delta_t": -16.41300000000001,
+    "max_delta_t": 10.248999999999995,
+    "pct_negative_delta_t": 75.60975609756098,
+    "pct_within_1s": 26.82926829268293,
+    "mean_alpha": 0.9396341463414634,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 80.48780487804879,
+    "pct_Suboptimal": 4.878048780487805,
+    "pct_Disruptive": 4.878048780487805,
+    "pct_Unacceptable": 9.75609756097561,
+    "case_distribution": {
+      "D": 18,
+      "A": 17,
+      "E": 4,
+      "C": 1,
+      "B": 1
+    },
+    "high_confidence": {
+      "n": 41,
+      "mean_S_temporal": 85.12403499701972,
+      "mean_delta_t": -2.4197560975609758
+    }
+  },
+  "segment_level": {
+    "n_total": 34,
+    "n_with_matches": 21,
+    "n_without_matches": 13,
+    "mean_S_temporal": 75.91336232745597,
+    "median_S_temporal": 99.96040749787429,
+    "mean_S_piecewise": 76.60988712952839,
+    "mean_S_weighted": 75.84421760348228
+  },
+  "overall_score": 85.91,
+  "overall_grade": "Excellent",
+  "overall_score_alpha_only": 85.91,
+  "overall_score_unweighted": 85.12,
+  "overall_score_piecewise": 86.64,
+  "overall_grade_piecewise": "Excellent",
+  "coverage": {
+    "n_groundable_keywords": 99,
+    "n_matched": 41,
+    "coverage_rate": 0.4141,
+    "tc_score_matched_only": 85.91,
+    "tc_score_coverage_adjusted": 35.58,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 35,
+    "mean_lead_s": 2.94,
+    "median_lead_s": 1.36,
+    "max_lead_s": 16.41,
+    "pct_within_2s": 54.3,
+    "pct_within_5s": 71.4,
+    "pct_over_10s": 11.4,
+    "distribution": {
+      "0-1s (simultaneous)": 16,
+      "1-3s (near-simultaneous)": 5,
+      "3-5s (prepared ahead)": 4,
+      "5-10s (slide already up)": 6,
+      ">10s (long-showing slide)": 4
+    }
+  },
+  "positive_delta_t_only": {
+    "n": 2,
+    "mean_delta_t": 8.01,
+    "mean_S_temporal": 2.75,
+    "interpretation": "Cases B/C where visual appears AFTER narration (true TC lag)"
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 97,
+      "keyword_text": "simulated annealing",
+      "segment_id": 33,
+      "delta_t": 6.026999999999987,
+      "S_temporal": 5.469525495643582,
+      "priority": 94.53047450435642
+    },
+    {
+      "keyword_id": 49,
+      "keyword_text": "nearby states",
+      "segment_id": 19,
+      "delta_t": 10.248999999999995,
+      "S_temporal": 0.0224113019951181,
+      "priority": 79.98207095840391
+    },
+    {
+      "keyword_id": 87,
+      "keyword_text": "temperature",
+      "segment_id": 31,
+      "delta_t": 10.0,
+      "S_temporal": 0.033546262790251184,
+      "priority": 79.9731629897678
+    },
+    {
+      "keyword_id": 74,
+      "keyword_text": "worse move",
+      "segment_id": 27,
+      "delta_t": 5.877999999999986,
+      "S_temporal": 6.303464897790469,
+      "priority": 74.95722808176764
+    },
+    {
+      "keyword_id": 45,
+      "keyword_text": "hill",
+      "segment_id": 18,
+      "delta_t": -4.676000000000002,
+      "S_temporal": 17.39133521410144,
+      "priority": 74.3477983073087
+    }
+  ]
+}

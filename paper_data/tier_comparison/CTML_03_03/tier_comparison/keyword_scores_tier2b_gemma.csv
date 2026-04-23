@@ -1,0 +1,81 @@
+keyword_id,keyword_text,segment_id,t_narr,t_vis,delta_t,match_case,match_method,alpha,scene_id,scene_t_start,scene_t_end,sub_scene_onset,confidence,groundability,visual_on_screen,S_gaussian,S_piecewise,S_temporal,zone,S_floored,importance,importance_weight,S_weighted,priority
+0,pictures,0,11.041,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+1,proposed meir explains,0,3.912,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+2,presented using words,0,8.938,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+3,multimedia learning proposed,0,2.55,1.0,-1.5499999999999998,A,ocr_at_tnarr_partial,0.8,1.0,1.0,28.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+4,information,0,8.217,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+5,cognitive theory multimedia,0,1.388,1.0,-0.3879999999999999,A,ocr_at_tnarr_full,1.0,1.0,1.0,28.5,,HIGH,MEDIUM,True,100.0,100.0,100.0,Optimal,100.0,3,1.0,100.0,0.0
+6,people learn better,0,6.495,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+7,channel limited,1,18.65,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+8,theory based,1,14.425,1.0,-13.425,A,ocr_at_tnarr_partial,0.8,1.0,1.0,28.5,,MEDIUM,MEDIUM,True,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+9,limited capacity,1,19.591,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+10,capacity active processing,1,20.012,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+11,key principles dual,1,16.508,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+12,dual channel,1,18.27,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+13,three key principles,1,15.947,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+14,words pictures,2,27.461,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+15,learning starts multimedia,2,23.076,1.0,-22.076,A,ocr_at_tnarr_partial,0.8,1.0,1.0,28.5,,MEDIUM,MEDIUM,True,97.2566775374877,97.2566775374877,97.2566775374877,Optimal,87.53100978373894,3,1.0,97.2566775374877,2.1946579700098368
+16,presentation combining words,2,25.199,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+17,multimedia presentation,2,24.518,1.0,-23.518,A,ocr_at_tnarr_partial,0.8,1.0,1.0,28.5,,MEDIUM,MEDIUM,True,96.04925349122034,96.04925349122034,96.04925349122034,Optimal,86.44432814209831,3,1.0,96.04925349122034,3.160597207023727
+18,visual and ears,3,34.604,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+19,auditory information,3,37.127,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+20,eyes visual ears,3,33.823,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+21,sensors eyes,3,32.441,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+22,ears auditory,3,36.045,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+23,inputs processed sensors,3,30.479,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+24,two distinct channels,4,41.972,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+25,visual and auditory input,4,43.634,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+26,distinct channels visual,4,42.333,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+27,dual channel assumption,4,39.95,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+28,learners actively select,5,47.159,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+29,material focusing,5,52.385,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+30,focusing key sounds,5,53.366,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+31,pictures relevant material,5,50.683,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+32,sounds images,5,54.928,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+33,words,5,49.822,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+34,only meaningful content,6,59.431,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+35,meaningful content retained,6,59.932,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+36,ensures meaningful content,6,58.572,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+37,selection learners organize,7,62.995,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+38,organize words pictures,7,64.637,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+39,words pictures coherent,7,66.079,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+40,learners organize words,7,64.097,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+41,coherent mental representations,7,68.282,139.5,71.218,D,ocr_at_tnarr_partial,0.8,2.0,28.5,139.5,139.5,MEDIUM,MEDIUM,True,6.033212006285424e-175,0.0,6.033212006285424e-175,Unacceptable,5.429890805656882e-175,3,1.0,6.033212006285424e-175,80.0
+42,selected words,8,70.705,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+43,words form verbal,8,71.306,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+44,verbal model selected,8,72.768,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+45,pictorial model,8,77.273,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+46,selected pictures form,8,70.705,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+47,makes sense learner,9,82.439,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+48,structures information way,9,80.037,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+49,information way makes,9,80.697,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+50,way makes sense,9,81.638,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+51,step structures information,9,79.316,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+52,capacity principle crucial,10,86.304,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+53,limited capacity principle,10,85.824,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+54,limited space,11,90.867,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+55,space information overwhelm,11,91.328,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+56,information overwhelm learners,11,92.889,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+57,working memory limited,11,89.385,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+58,so too much information,11,92.189,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+59,avoid unnecessary material,12,101.259,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+60,essential content,12,99.557,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+61,multimedia presentations focus,12,96.453,28.5,-67.953,A,ocr_at_tnarr_partial,0.8,2.0,28.5,139.5,,MEDIUM,MEDIUM,True,21.06011950072347,21.06011950072347,21.06011950072347,Unacceptable,18.954107550651123,3,1.0,21.06011950072347,63.15190439942123
+62,presentations focus essential,12,97.094,139.5,42.406000000000006,D,ocr_at_tnarr_partial,0.8,2.0,28.5,139.5,139.5,MEDIUM,MEDIUM,True,3.324615334771551e-61,0.0,3.324615334771551e-61,Unacceptable,2.992153801294396e-61,3,1.0,3.324615334771551e-61,80.0
+63,prior knowledge stored,13,111.37,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+64,long-term memory,13,114.033,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+65,long term memory,13,114.033,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+66,learners integrate organized,13,104.963,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+67,organized verbal and pictorial models,13,107.326,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+68,active processing connects,14,116.416,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+69,connects new information,14,117.582,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+70,deeper understanding,14,124.354,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+71,knowledge opted creating,14,121.328,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+72,existing knowledge,14,120.146,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+73,new information existing,14,118.443,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+74,cognitive load encouraging,15,128.821,28.5,-100.321,A,ocr_at_tnarr_partial,0.8,2.0,28.5,139.5,,MEDIUM,MEDIUM,True,1.7522617559446798,1.7522617559446798,1.7522617559446798,Unacceptable,1.5770355803502119,3,1.0,1.7522617559446798,78.59819059524426
+75,processing learning outcomes,15,131.566,28.5,-103.066,A,ocr_at_tnarr_partial,0.8,2.0,28.5,139.5,,MEDIUM,MEDIUM,True,1.345132081959341,1.345132081959341,1.345132081959341,Unacceptable,1.210618873763407,3,1.0,1.345132081959341,78.92389433443253
+76,engaging channels managing,15,126.317,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+77,outcomes significantly enhanced,15,133.149,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+78,encouraging active processing,15,130.384,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0
+79,both channels,15,126.898,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,MEDIUM,False,,,,No Match,,3,1.0,,0.0

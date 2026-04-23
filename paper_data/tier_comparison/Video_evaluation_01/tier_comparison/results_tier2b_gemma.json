@@ -1,0 +1,137 @@
+{
+  "pipeline_version": "4.1",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "dwell_threshold": 15.0,
+  "dwell_tau": 30.0,
+  "keyword_level": {
+    "n_total": 52,
+    "n_groundable": 51,
+    "n_matched": 30,
+    "n_unmatched": 22,
+    "match_rate": 0.5769230769230769,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 21,
+      "low_groundability": 1
+    },
+    "mean_S_gaussian_weighted": 89.55205195857806,
+    "mean_S_piecewise_weighted": 91.25009537529301,
+    "mean_S_temporal_weighted": 89.55205195857806,
+    "mean_S_gaussian_unweighted": 89.1181797781719,
+    "mean_S_piecewise_unweighted": 90.88551601593024,
+    "mean_S_temporal_unweighted": 89.1181797781719,
+    "median_S_temporal": 100.0,
+    "mean_delta_t": -5.81385,
+    "median_delta_t": -3.807500000000001,
+    "std_delta_t": 9.33339814410482,
+    "min_delta_t": -26.242999999999995,
+    "max_delta_t": 12.164,
+    "pct_negative_delta_t": 70.0,
+    "pct_within_1s": 16.666666666666664,
+    "mean_alpha": 0.8333333333333335,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 80.0,
+    "pct_Suboptimal": 13.333333333333334,
+    "pct_Disruptive": 0.0,
+    "pct_Unacceptable": 6.666666666666667,
+    "case_distribution": {
+      "A": 19,
+      "D": 10,
+      "B": 1
+    },
+    "high_confidence": {
+      "n": 30,
+      "mean_S_temporal": 89.1181797781719,
+      "mean_delta_t": -5.81385
+    }
+  },
+  "segment_level": {
+    "n_total": 12,
+    "n_with_matches": 12,
+    "n_without_matches": 0,
+    "mean_S_temporal": 86.13641107444256,
+    "median_S_temporal": 100.0,
+    "mean_S_piecewise": 87.22066590252946,
+    "mean_S_weighted": 86.04759233652224
+  },
+  "overall_score": 89.55,
+  "overall_grade": "Excellent",
+  "overall_score_alpha_only": 89.55,
+  "overall_score_unweighted": 89.12,
+  "overall_score_piecewise": 91.25,
+  "overall_grade_piecewise": "Excellent",
+  "coverage": {
+    "n_groundable_keywords": 51,
+    "n_matched": 30,
+    "coverage_rate": 0.5882,
+    "tc_score_matched_only": 89.55,
+    "tc_score_coverage_adjusted": 52.68,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 29,
+    "mean_lead_s": 6.34,
+    "median_lead_s": 4.08,
+    "max_lead_s": 26.24,
+    "pct_within_2s": 37.9,
+    "pct_within_5s": 58.6,
+    "pct_over_10s": 31.0,
+    "distribution": {
+      "0-1s (simultaneous)": 10,
+      "1-3s (near-simultaneous)": 2,
+      "3-5s (prepared ahead)": 5,
+      "5-10s (slide already up)": 3,
+      ">10s (long-showing slide)": 9
+    }
+  },
+  "positive_delta_t_only": {
+    "n": 1,
+    "mean_delta_t": 9.31,
+    "mean_S_temporal": 0.1,
+    "interpretation": "Cases B/C where visual appears AFTER narration (true TC lag)"
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 34,
+      "keyword_text": "mayor's temporal contiguity principle",
+      "segment_id": 8,
+      "delta_t": 12.164,
+      "S_temporal": 0.0007231734264133938,
+      "priority": 79.99942146125888
+    },
+    {
+      "keyword_id": 11,
+      "keyword_text": "process follows simple",
+      "segment_id": 2,
+      "delta_t": 9.313,
+      "S_temporal": 0.09696673145372377,
+      "priority": 79.92242661483704
+    },
+    {
+      "keyword_id": 3,
+      "keyword_text": "welcome instructional video",
+      "segment_id": 0,
+      "delta_t": 2.49,
+      "S_temporal": 60.895676939925494,
+      "priority": 31.283458448059605
+    },
+    {
+      "keyword_id": 10,
+      "keyword_text": "simple yet powerful three-step ai pipeline",
+      "segment_id": 2,
+      "delta_t": 1.9720000000000013,
+      "S_temporal": 73.26386153654485,
+      "priority": 21.38891077076412
+    },
+    {
+      "keyword_id": 42,
+      "keyword_text": "generates comprehensive score",
+      "segment_id": 10,
+      "delta_t": 1.647999999999996,
+      "S_temporal": 80.47108006191239,
+      "priority": 15.62313595047009
+    }
+  ]
+}

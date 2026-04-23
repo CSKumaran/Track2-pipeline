@@ -1,0 +1,130 @@
+{
+  "pipeline_version": "4.1",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "dwell_threshold": 15.0,
+  "dwell_tau": 30.0,
+  "keyword_level": {
+    "n_total": 80,
+    "n_groundable": 80,
+    "n_matched": 51,
+    "n_unmatched": 29,
+    "match_rate": 0.6375,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 29
+    },
+    "mean_S_gaussian_weighted": 87.39036364743839,
+    "mean_S_piecewise_weighted": 88.09958870018838,
+    "mean_S_temporal_weighted": 87.39036364743839,
+    "mean_S_gaussian_unweighted": 86.79969633141523,
+    "mean_S_piecewise_unweighted": 87.5478366424837,
+    "mean_S_temporal_unweighted": 86.79969633141523,
+    "median_S_temporal": 99.92629917241162,
+    "mean_delta_t": -18.063372549019608,
+    "median_delta_t": -9.664,
+    "std_delta_t": 23.283525319814256,
+    "min_delta_t": -83.106,
+    "max_delta_t": 1.4699999999999989,
+    "pct_negative_delta_t": 88.23529411764706,
+    "pct_within_1s": 23.52941176470588,
+    "mean_alpha": 0.8439215686274508,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 74.50980392156863,
+    "pct_Suboptimal": 13.725490196078432,
+    "pct_Disruptive": 3.9215686274509802,
+    "pct_Unacceptable": 7.8431372549019605,
+    "case_distribution": {
+      "A": 25,
+      "D": 25,
+      "E": 1
+    },
+    "high_confidence": {
+      "n": 51,
+      "mean_S_temporal": 86.79969633141523,
+      "mean_delta_t": -18.063372549019608
+    }
+  },
+  "segment_level": {
+    "n_total": 16,
+    "n_with_matches": 15,
+    "n_without_matches": 1,
+    "mean_S_temporal": 88.20244030631041,
+    "median_S_temporal": 96.64131334295014,
+    "mean_S_piecewise": 88.73111748913715,
+    "mean_S_weighted": 88.08712828329469
+  },
+  "overall_score": 87.39,
+  "overall_grade": "Excellent",
+  "overall_score_alpha_only": 87.39,
+  "overall_score_unweighted": 86.8,
+  "overall_score_piecewise": 88.1,
+  "overall_grade_piecewise": "Excellent",
+  "coverage": {
+    "n_groundable_keywords": 80,
+    "n_matched": 51,
+    "coverage_rate": 0.6375,
+    "tc_score_matched_only": 87.39,
+    "tc_score_coverage_adjusted": 55.71,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 50,
+    "mean_lead_s": 17.53,
+    "median_lead_s": 7.78,
+    "max_lead_s": 83.11,
+    "pct_within_2s": 36.0,
+    "pct_within_5s": 48.0,
+    "pct_over_10s": 48.0,
+    "distribution": {
+      "0-1s (simultaneous)": 16,
+      "1-3s (near-simultaneous)": 6,
+      "3-5s (prepared ahead)": 2,
+      "5-10s (slide already up)": 2,
+      ">10s (long-showing slide)": 24
+    }
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 77,
+      "keyword_text": "processing learning outcomes",
+      "segment_id": 15,
+      "delta_t": -83.106,
+      "S_temporal": 7.600896234928513,
+      "priority": 73.91928301205719
+    },
+    {
+      "keyword_id": 78,
+      "keyword_text": "cognitive load encouraging",
+      "segment_id": 15,
+      "delta_t": -80.36000000000001,
+      "S_temporal": 9.317328665744414,
+      "priority": 72.54613706740447
+    },
+    {
+      "keyword_id": 76,
+      "keyword_text": "both channels",
+      "segment_id": 15,
+      "delta_t": -78.316,
+      "S_temporal": 10.783257614690287,
+      "priority": 71.37339390824778
+    },
+    {
+      "keyword_id": 79,
+      "keyword_text": "engaging channels managing",
+      "segment_id": 15,
+      "delta_t": -77.836,
+      "S_temporal": 11.152182779964223,
+      "priority": 71.07825377602863
+    },
+    {
+      "keyword_id": 61,
+      "keyword_text": "presentations focus essential",
+      "segment_id": 12,
+      "delta_t": -48.631,
+      "S_temporal": 53.34671059472773,
+      "priority": 37.32263152421782
+    }
+  ]
+}

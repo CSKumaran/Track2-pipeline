@@ -1,0 +1,137 @@
+{
+  "pipeline_version": "4.0",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "keyword_level": {
+    "n_total": 154,
+    "n_groundable": 144,
+    "n_matched": 50,
+    "n_unmatched": 104,
+    "match_rate": 0.3246753246753247,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 87,
+      "low_groundability": 10,
+      "no_ocr_nearby": 7
+    },
+    "mean_S_gaussian_weighted": 89.33917258371943,
+    "mean_S_piecewise_weighted": 89.97124539007092,
+    "mean_S_temporal_weighted": 89.33917258371943,
+    "mean_S_gaussian_unweighted": 88.26794036902393,
+    "mean_S_piecewise_unweighted": 88.95270000000001,
+    "mean_S_temporal_unweighted": 88.26794036902393,
+    "median_S_temporal": 100.0,
+    "mean_delta_t": -2.5396799999999997,
+    "median_delta_t": -1.0729999999999933,
+    "std_delta_t": 5.798326646154923,
+    "min_delta_t": -17.290999999999997,
+    "max_delta_t": 10.296999999999995,
+    "pct_negative_delta_t": 74.0,
+    "pct_within_1s": 32.0,
+    "mean_alpha": 0.88125,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 84.0,
+    "pct_Suboptimal": 6.0,
+    "pct_Disruptive": 0.0,
+    "pct_Unacceptable": 10.0,
+    "case_distribution": {
+      "A": 24,
+      "D": 22,
+      "B": 3,
+      "E": 1
+    },
+    "high_confidence": {
+      "n": 50,
+      "mean_S_temporal": 88.26794036902393,
+      "mean_delta_t": -2.5396799999999997
+    }
+  },
+  "segment_level": {
+    "n_total": 35,
+    "n_with_matches": 18,
+    "n_without_matches": 17,
+    "mean_S_temporal": 84.72797201079815,
+    "median_S_temporal": 99.99999999999999,
+    "mean_S_piecewise": 85.63213359116912,
+    "mean_S_weighted": 106.82587819619904
+  },
+  "overall_score": 89.7,
+  "overall_grade": "Excellent",
+  "overall_score_alpha_only": 89.34,
+  "overall_score_unweighted": 88.27,
+  "overall_score_piecewise": 90.31,
+  "overall_grade_piecewise": "Excellent",
+  "coverage": {
+    "n_groundable_keywords": 144,
+    "n_matched": 50,
+    "coverage_rate": 0.3472,
+    "tc_score_matched_only": 89.7,
+    "tc_score_coverage_adjusted": 31.15,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 46,
+    "mean_lead_s": 3.04,
+    "median_lead_s": 1.76,
+    "max_lead_s": 17.29,
+    "pct_within_2s": 52.2,
+    "pct_within_5s": 69.6,
+    "pct_over_10s": 10.9,
+    "distribution": {
+      "0-1s (simultaneous)": 21,
+      "1-3s (near-simultaneous)": 8,
+      "3-5s (prepared ahead)": 3,
+      "5-10s (slide already up)": 9,
+      ">10s (long-showing slide)": 5
+    }
+  },
+  "positive_delta_t_only": {
+    "n": 3,
+    "mean_delta_t": 4.62,
+    "mean_S_temporal": 34.06,
+    "interpretation": "Cases B/C where visual appears AFTER narration (true TC lag)"
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 131,
+      "keyword_text": "slowly simulated annealing",
+      "segment_id": 32,
+      "delta_t": 7.307999999999993,
+      "S_temporal": 1.3946187298594404,
+      "priority": 118.32645752416866
+    },
+    {
+      "keyword_id": 134,
+      "keyword_text": "annealing solution close",
+      "segment_id": 32,
+      "delta_t": 5.524000000000001,
+      "S_temporal": 8.705927417144183,
+      "priority": 109.55288709942698
+    },
+    {
+      "keyword_id": 73,
+      "keyword_text": "nearby states",
+      "segment_id": 18,
+      "delta_t": 10.296999999999995,
+      "S_temporal": 0.020711078388719762,
+      "priority": 79.98343113728903
+    },
+    {
+      "keyword_id": 69,
+      "keyword_text": "states stop climbing",
+      "segment_id": 18,
+      "delta_t": 9.915999999999997,
+      "S_temporal": 0.0383502476327692,
+      "priority": 79.96931980189379
+    },
+    {
+      "keyword_id": 107,
+      "keyword_text": "worse move",
+      "segment_id": 26,
+      "delta_t": 5.9010000000000105,
+      "S_temporal": 6.168317473446529,
+      "priority": 75.06534602124277
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "pipeline_version": "4.1",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "dwell_threshold": 15.0,
+  "dwell_tau": 30.0,
+  "keyword_level": {
+    "n_total": 80,
+    "n_groundable": 80,
+    "n_matched": 10,
+    "n_unmatched": 70,
+    "match_rate": 0.125,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 70
+    },
+    "mean_S_gaussian_weighted": 52.9232628651059,
+    "mean_S_piecewise_weighted": 52.9232628651059,
+    "mean_S_temporal_weighted": 52.9232628651059,
+    "mean_S_gaussian_unweighted": 51.74634443673356,
+    "mean_S_piecewise_unweighted": 51.74634443673356,
+    "mean_S_temporal_unweighted": 51.74634443673356,
+    "median_S_temporal": 58.55468649597191,
+    "mean_delta_t": -21.8673,
+    "median_delta_t": -17.750500000000002,
+    "std_delta_t": 56.38777215959345,
+    "min_delta_t": -103.066,
+    "max_delta_t": 71.218,
+    "pct_negative_delta_t": 80.0,
+    "pct_within_1s": 10.0,
+    "mean_alpha": 0.8200000000000001,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 50.0,
+    "pct_Suboptimal": 0.0,
+    "pct_Disruptive": 0.0,
+    "pct_Unacceptable": 50.0,
+    "case_distribution": {
+      "A": 8,
+      "D": 2
+    },
+    "high_confidence": {
+      "n": 10,
+      "mean_S_temporal": 51.74634443673356,
+      "mean_delta_t": -21.8673
+    }
+  },
+  "segment_level": {
+    "n_total": 16,
+    "n_with_matches": 6,
+    "n_without_matches": 10,
+    "mean_S_temporal": 51.455287030611295,
+    "median_S_temporal": 53.59151263235788,
+    "mean_S_piecewise": 51.455287030611295,
+    "mean_S_weighted": 51.455287030611295
+  },
+  "overall_score": 52.92,
+  "overall_grade": "Acceptable",
+  "overall_score_alpha_only": 52.92,
+  "overall_score_unweighted": 51.75,
+  "overall_score_piecewise": 52.92,
+  "overall_grade_piecewise": "Acceptable",
+  "coverage": {
+    "n_groundable_keywords": 80,
+    "n_matched": 10,
+    "coverage_rate": 0.125,
+    "tc_score_matched_only": 52.92,
+    "tc_score_coverage_adjusted": 6.62,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 10,
+    "mean_lead_s": 21.87,
+    "median_lead_s": 17.75,
+    "max_lead_s": 103.07,
+    "pct_within_2s": 40.0,
+    "pct_within_5s": 40.0,
+    "pct_over_10s": 60.0,
+    "distribution": {
+      "0-1s (simultaneous)": 3,
+      "1-3s (near-simultaneous)": 1,
+      "3-5s (prepared ahead)": 0,
+      "5-10s (slide already up)": 0,
+      ">10s (long-showing slide)": 6
+    }
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 41,
+      "keyword_text": "coherent mental representations",
+      "segment_id": 7,
+      "delta_t": 71.218,
+      "S_temporal": 6.033212006285424e-175,
+      "priority": 80.0
+    },
+    {
+      "keyword_id": 62,
+      "keyword_text": "presentations focus essential",
+      "segment_id": 12,
+      "delta_t": 42.406000000000006,
+      "S_temporal": 3.324615334771551e-61,
+      "priority": 80.0
+    },
+    {
+      "keyword_id": 75,
+      "keyword_text": "processing learning outcomes",
+      "segment_id": 15,
+      "delta_t": -103.066,
+      "S_temporal": 1.345132081959341,
+      "priority": 78.92389433443253
+    },
+    {
+      "keyword_id": 74,
+      "keyword_text": "cognitive load encouraging",
+      "segment_id": 15,
+      "delta_t": -100.321,
+      "S_temporal": 1.7522617559446798,
+      "priority": 78.59819059524426
+    },
+    {
+      "keyword_id": 61,
+      "keyword_text": "multimedia presentations focus",
+      "segment_id": 12,
+      "delta_t": -67.953,
+      "S_temporal": 21.06011950072347,
+      "priority": 63.15190439942123
+    }
+  ]
+}

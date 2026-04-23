@@ -1,0 +1,1143 @@
+=== GPU Check ===
+Tue Mar 31 03:47:01 2026       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.154.05             Driver Version: 535.154.05   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA A30                     On  | 00000000:61:00.0 Off |                    0 |
+| N/A   33C    P0              28W / 165W |      0MiB / 24576MiB |      0%      Default |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+CUDA available: True, Device: NVIDIA A30
+
+=== Pipeline v2.2 — Stage 1 ALL videos ===
+Time: Tue Mar 31 03:47:04 IST 2026
+
+
+==========================================
+Processing: videos/A0.mp4
+Start: Tue Mar 31 03:47:04 IST 2026
+==========================================
+
+=== A0: Output files ===
+total 6810
+drwxr-xr-x 3 senthil1 phd    4096 Mar 31 03:33 .
+drwxr-xr-x 3 senthil1 phd    4096 Mar 31 03:33 ..
+-rw-r--r-- 1 senthil1 phd 6928170 Mar 31 03:33 audio.wav
+drwxr-xr-x 2 senthil1 phd    4096 Mar 31 03:33 diagnostics
+-rw-r--r-- 1 senthil1 phd      73 Mar 31 03:47 timings.json
+-rw-r--r-- 1 senthil1 phd    4246 Mar 31 03:33 transcript_segments.csv
+-rw-r--r-- 1 senthil1 phd    4339 Mar 31 03:33 transcript_segments_improved.csv
+-rw-r--r-- 1 senthil1 phd   17782 Mar 31 03:33 transcript_words.csv
+
+=== A0: Diagnostics ===
+{
+  "asr_backend": "cached",
+  "n_words_total": 595,
+  "n_words_reliable": 555,
+  "n_words_flagged": 40,
+  "pct_unreliable": 6.72,
+  "flag_reasons": {
+    "duration_out_of_range": 40,
+    "large_gap_over_3s": 0,
+    "non_monotonic": 0,
+    "missing_timestamp": 0
+  },
+  "n_segments_raw_whisper": 34,
+  "n_segments_after_pysbd": 34,
+  "n_segments_merged_short": 0,
+  "word_duration_stats": {
+    "mean_s": 0.2558,
+    "median_s": 0.24,
+    "min_s": 0.02,
+    "max_s": 1.082,
+    "std_s": 0.176
+  },
+  "inter_word_gap_stats": {
+    "mean_s": 0.1006,
+    "median_s": 0.06,
+    "min_s": -0.02,
+    "max_s": 0.74,
+    "n_gaps_over_3s": 0,
+    "n_negative_gaps": 8
+  },
+  "segment_stats": {
+    "mean_duration_s": 5.92,
+    "min_duration_s": 0.86,
+    "max_duration_s": 13.79,
+    "mean_n_words": 17.5,
+    "min_n_words": 4,
+    "max_n_words": 44
+  },
+  "time_coverage": {
+    "first_word_time": 3.895,
+    "last_word_time": 215.865,
+    "transcript_span_s": 211.97
+  },
+  "flagged_word_samples": [
+    {
+      "word_id": 4,
+      "word": "a",
+      "start_time": 5.097,
+      "end_time": 5.117
+    },
+    {
+      "word_id": 7,
+      "word": "of",
+      "start_time": 6.119,
+      "end_time": 6.159
+    },
+    {
+      "word_id": 36,
+      "word": "at",
+      "start_time": 15.498,
+      "end_time": 15.538
+    },
+    {
+      "word_id": 37,
+      "word": "a",
+      "start_time": 15.578,
+      "end_time": 15.598
+    },
+    {
+      "word_id": 39,
+      "word": "in",
+      "start_time": 15.959,
+      "end_time": 15.999
+    },
+    {
+      "word_id": 52,
+      "word": "of",
+      "start_time": 19.906,
+      "end_time": 19.946
+    },
+    {
+      "word_id": 74,
+      "word": "of",
+      "start_time": 28.478,
+      "end_time": 28.518
+    },
+    {
+      "word_id": 87,
+      "word": "a",
+      "start_time": 32.182,
+      "end_time": 32.222
+    },
+    {
+      "word_id": 97,
+      "word": "if",
+      "start_time": 35.545,
+      "end_time": 35.585
+    },
+    {
+      "word_id": 107,
+      "word": "a",
+      "start_time": 39.149,
+      "end_time": 39.189
+    },
+    {
+      "word_id": 122,
+      "word": "a",
+      "start_time": 44.354,
+      "end_time": 44.374
+    },
+    {
+      "word_id": 143,
+      "word": "an",
+      "start_time": 51.123,
+      "end_time": 51.163
+    },
+    {
+      "word_id": 147,
+      "word": "it",
+      "start_time": 52.506,
+      "end_time": 52.546
+    },
+    {
+      "word_id": 159,
+      "word": "a",
+      "start_time": 56.957,
+      "end_time": 56.977
+    },
+    {
+      "word_id": 225,
+      "word": "a",
+      "start_time": 79.239,
+      "end_time": 79.259
+    },
+    {
+      "word_id": 243,
+      "word": "a",
+      "start_time": 86.647,
+      "end_time": 86.667
+    },
+    {
+      "word_id": 253,
+      "word": "a",
+      "start_time": 90.552,
+      "end_time": 90.572
+    },
+    {
+      "word_id": 262,
+      "word": "a",
+      "start_time": 93.075,
+      "end_time": 93.095
+    },
+    {
+      "word_id": 296,
+      "word": "a",
+      "start_time": 104.329,
+      "end_time": 104.349
+    },
+    {
+      "word_id": 308,
+      "word": "a",
+      "start_time": 107.893,
+      "end_time": 107.913
+    }
+  ]
+}
+Finished: videos/A0.mp4 at Tue Mar 31 03:47:07 IST 2026
+
+==========================================
+Processing: videos/A1.mp4
+Start: Tue Mar 31 03:47:07 IST 2026
+==========================================
+2026-03-31 03:47:19 - whisperx.asr - INFO - No language specified, language will be detected for each audio file (increases inference time)
+2026-03-31 03:47:19 - whisperx.vads.pyannote - INFO - Performing voice activity detection using Pyannote...
+Model was trained with pyannote.audio 0.0.1, yours is 3.4.0. Bad things might happen unless you revert pyannote.audio to 0.x.
+Model was trained with torch 1.10.0+cu102, yours is 2.8.0+cu128. Bad things might happen unless you revert torch to 1.x.
+2026-03-31 03:47:20 - whisperx.asr - INFO - Detected language: en (1.00) in first 30s of audio
+
+=== A1: Output files ===
+total 6810
+drwxr-xr-x 3 senthil1 phd    4096 Mar 31 03:47 .
+drwxr-xr-x 4 senthil1 phd    4096 Mar 31 03:47 ..
+-rw-r--r-- 1 senthil1 phd 6928912 Mar 31 03:47 audio.wav
+drwxr-xr-x 2 senthil1 phd    4096 Mar 31 03:47 diagnostics
+-rw-r--r-- 1 senthil1 phd      69 Mar 31 03:47 timings.json
+-rw-r--r-- 1 senthil1 phd    4152 Mar 31 03:47 transcript_segments.csv
+-rw-r--r-- 1 senthil1 phd    4192 Mar 31 03:47 transcript_segments_improved.csv
+-rw-r--r-- 1 senthil1 phd   17728 Mar 31 03:47 transcript_words.csv
+
+=== A1: Diagnostics ===
+{
+  "asr_backend": "whisperx",
+  "n_words_total": 595,
+  "n_words_reliable": 552,
+  "n_words_flagged": 43,
+  "pct_unreliable": 7.23,
+  "flag_reasons": {
+    "duration_out_of_range": 43,
+    "large_gap_over_3s": 0,
+    "non_monotonic": 0,
+    "missing_timestamp": 0
+  },
+  "n_segments_raw_whisper": 30,
+  "n_segments_after_pysbd": 28,
+  "n_segments_merged_short": 2,
+  "word_duration_stats": {
+    "mean_s": 0.2536,
+    "median_s": 0.24,
+    "min_s": 0.02,
+    "max_s": 1.082,
+    "std_s": 0.1756
+  },
+  "inter_word_gap_stats": {
+    "mean_s": 0.1029,
+    "median_s": 0.06,
+    "min_s": -0.02,
+    "max_s": 0.721,
+    "n_gaps_over_3s": 0,
+    "n_negative_gaps": 8
+  },
+  "segment_stats": {
+    "mean_duration_s": 7.22,
+    "min_duration_s": 0.88,
+    "max_duration_s": 29.27,
+    "mean_n_words": 21.2,
+    "min_n_words": 5,
+    "max_n_words": 81
+  },
+  "time_coverage": {
+    "first_word_time": 3.912,
+    "last_word_time": 215.882,
+    "transcript_span_s": 211.97
+  },
+  "flagged_word_samples": [
+    {
+      "word_id": 4,
+      "word": "a",
+      "start_time": 5.114,
+      "end_time": 5.134
+    },
+    {
+      "word_id": 7,
+      "word": "of",
+      "start_time": 6.136,
+      "end_time": 6.176
+    },
+    {
+      "word_id": 27,
+      "word": "a",
+      "start_time": 13.429,
+      "end_time": 13.449
+    },
+    {
+      "word_id": 36,
+      "word": "at",
+      "start_time": 15.513,
+      "end_time": 15.553
+    },
+    {
+      "word_id": 37,
+      "word": "a",
+      "start_time": 15.593,
+      "end_time": 15.633
+    },
+    {
+      "word_id": 39,
+      "word": "in",
+      "start_time": 15.994,
+      "end_time": 16.034
+    },
+    {
+      "word_id": 87,
+      "word": "a",
+      "start_time": 32.215,
+      "end_time": 32.235
+    },
+    {
+      "word_id": 106,
+      "word": "on",
+      "start_time": 39.082,
+      "end_time": 39.122
+    },
+    {
+      "word_id": 107,
+      "word": "a",
+      "start_time": 39.162,
+      "end_time": 39.202
+    },
+    {
+      "word_id": 122,
+      "word": "a",
+      "start_time": 44.387,
+      "end_time": 44.408
+    },
+    {
+      "word_id": 143,
+      "word": "an",
+      "start_time": 51.155,
+      "end_time": 51.195
+    },
+    {
+      "word_id": 147,
+      "word": "it",
+      "start_time": 52.517,
+      "end_time": 52.557
+    },
+    {
+      "word_id": 159,
+      "word": "a",
+      "start_time": 56.964,
+      "end_time": 56.984
+    },
+    {
+      "word_id": 178,
+      "word": "of",
+      "start_time": 63.574,
+      "end_time": 63.614
+    },
+    {
+      "word_id": 197,
+      "word": "at",
+      "start_time": 69.923,
+      "end_time": 69.963
+    },
+    {
+      "word_id": 202,
+      "word": "of",
+      "start_time": 71.846,
+      "end_time": 71.886
+    },
+    {
+      "word_id": 225,
+      "word": "a",
+      "start_time": 79.218,
+      "end_time": 79.258
+    },
+    {
+      "word_id": 243,
+      "word": "a",
+      "start_time": 86.63,
+      "end_time": 86.67
+    },
+    {
+      "word_id": 246,
+      "word": "it",
+      "start_time": 88.312,
+      "end_time": 88.352
+    },
+    {
+      "word_id": 253,
+      "word": "a",
+      "start_time": 90.596,
+      "end_time": 90.616
+    }
+  ]
+}
+Finished: videos/A1.mp4 at Tue Mar 31 03:47:32 IST 2026
+
+==========================================
+Processing: videos/A3.mp4
+Start: Tue Mar 31 03:47:32 IST 2026
+==========================================
+2026-03-31 03:47:43 - whisperx.asr - INFO - No language specified, language will be detected for each audio file (increases inference time)
+2026-03-31 03:47:43 - whisperx.vads.pyannote - INFO - Performing voice activity detection using Pyannote...
+Model was trained with pyannote.audio 0.0.1, yours is 3.4.0. Bad things might happen unless you revert pyannote.audio to 0.x.
+Model was trained with torch 1.10.0+cu102, yours is 2.8.0+cu128. Bad things might happen unless you revert torch to 1.x.
+2026-03-31 03:47:44 - whisperx.asr - INFO - Detected language: en (1.00) in first 30s of audio
+
+=== A3: Output files ===
+total 6770
+drwxr-xr-x 3 senthil1 phd    4096 Mar 31 03:47 .
+drwxr-xr-x 5 senthil1 phd    4096 Mar 31 03:47 ..
+-rw-r--r-- 1 senthil1 phd 6928912 Mar 31 03:47 audio.wav
+drwxr-xr-x 2 senthil1 phd    4096 Mar 31 03:47 diagnostics
+-rw-r--r-- 1 senthil1 phd      69 Mar 31 03:47 timings.json
+-rw-r--r-- 1 senthil1 phd    4152 Mar 31 03:47 transcript_segments.csv
+-rw-r--r-- 1 senthil1 phd    4192 Mar 31 03:47 transcript_segments_improved.csv
+-rw-r--r-- 1 senthil1 phd   17728 Mar 31 03:47 transcript_words.csv
+
+=== A3: Diagnostics ===
+{
+  "asr_backend": "whisperx",
+  "n_words_total": 595,
+  "n_words_reliable": 552,
+  "n_words_flagged": 43,
+  "pct_unreliable": 7.23,
+  "flag_reasons": {
+    "duration_out_of_range": 43,
+    "large_gap_over_3s": 0,
+    "non_monotonic": 0,
+    "missing_timestamp": 0
+  },
+  "n_segments_raw_whisper": 30,
+  "n_segments_after_pysbd": 28,
+  "n_segments_merged_short": 2,
+  "word_duration_stats": {
+    "mean_s": 0.2536,
+    "median_s": 0.24,
+    "min_s": 0.02,
+    "max_s": 1.082,
+    "std_s": 0.1756
+  },
+  "inter_word_gap_stats": {
+    "mean_s": 0.1029,
+    "median_s": 0.06,
+    "min_s": -0.02,
+    "max_s": 0.721,
+    "n_gaps_over_3s": 0,
+    "n_negative_gaps": 8
+  },
+  "segment_stats": {
+    "mean_duration_s": 7.22,
+    "min_duration_s": 0.88,
+    "max_duration_s": 29.27,
+    "mean_n_words": 21.2,
+    "min_n_words": 5,
+    "max_n_words": 81
+  },
+  "time_coverage": {
+    "first_word_time": 3.912,
+    "last_word_time": 215.882,
+    "transcript_span_s": 211.97
+  },
+  "flagged_word_samples": [
+    {
+      "word_id": 4,
+      "word": "a",
+      "start_time": 5.114,
+      "end_time": 5.134
+    },
+    {
+      "word_id": 7,
+      "word": "of",
+      "start_time": 6.136,
+      "end_time": 6.176
+    },
+    {
+      "word_id": 27,
+      "word": "a",
+      "start_time": 13.429,
+      "end_time": 13.449
+    },
+    {
+      "word_id": 36,
+      "word": "at",
+      "start_time": 15.513,
+      "end_time": 15.553
+    },
+    {
+      "word_id": 37,
+      "word": "a",
+      "start_time": 15.593,
+      "end_time": 15.633
+    },
+    {
+      "word_id": 39,
+      "word": "in",
+      "start_time": 15.994,
+      "end_time": 16.034
+    },
+    {
+      "word_id": 87,
+      "word": "a",
+      "start_time": 32.215,
+      "end_time": 32.235
+    },
+    {
+      "word_id": 106,
+      "word": "on",
+      "start_time": 39.082,
+      "end_time": 39.122
+    },
+    {
+      "word_id": 107,
+      "word": "a",
+      "start_time": 39.162,
+      "end_time": 39.202
+    },
+    {
+      "word_id": 122,
+      "word": "a",
+      "start_time": 44.387,
+      "end_time": 44.408
+    },
+    {
+      "word_id": 143,
+      "word": "an",
+      "start_time": 51.155,
+      "end_time": 51.195
+    },
+    {
+      "word_id": 147,
+      "word": "it",
+      "start_time": 52.517,
+      "end_time": 52.557
+    },
+    {
+      "word_id": 159,
+      "word": "a",
+      "start_time": 56.964,
+      "end_time": 56.984
+    },
+    {
+      "word_id": 178,
+      "word": "of",
+      "start_time": 63.574,
+      "end_time": 63.614
+    },
+    {
+      "word_id": 197,
+      "word": "at",
+      "start_time": 69.923,
+      "end_time": 69.963
+    },
+    {
+      "word_id": 202,
+      "word": "of",
+      "start_time": 71.846,
+      "end_time": 71.886
+    },
+    {
+      "word_id": 225,
+      "word": "a",
+      "start_time": 79.218,
+      "end_time": 79.258
+    },
+    {
+      "word_id": 243,
+      "word": "a",
+      "start_time": 86.63,
+      "end_time": 86.67
+    },
+    {
+      "word_id": 246,
+      "word": "it",
+      "start_time": 88.312,
+      "end_time": 88.352
+    },
+    {
+      "word_id": 253,
+      "word": "a",
+      "start_time": 90.596,
+      "end_time": 90.616
+    }
+  ]
+}
+Finished: videos/A3.mp4 at Tue Mar 31 03:47:55 IST 2026
+
+==========================================
+Processing: videos/A5.mp4
+Start: Tue Mar 31 03:47:55 IST 2026
+==========================================
+2026-03-31 03:48:04 - whisperx.asr - INFO - No language specified, language will be detected for each audio file (increases inference time)
+2026-03-31 03:48:04 - whisperx.vads.pyannote - INFO - Performing voice activity detection using Pyannote...
+Model was trained with pyannote.audio 0.0.1, yours is 3.4.0. Bad things might happen unless you revert pyannote.audio to 0.x.
+Model was trained with torch 1.10.0+cu102, yours is 2.8.0+cu128. Bad things might happen unless you revert torch to 1.x.
+2026-03-31 03:48:05 - whisperx.asr - INFO - Detected language: en (1.00) in first 30s of audio
+
+=== A5: Output files ===
+total 6770
+drwxr-xr-x 3 senthil1 phd    4096 Mar 31 03:48 .
+drwxr-xr-x 6 senthil1 phd    4096 Mar 31 03:47 ..
+-rw-r--r-- 1 senthil1 phd 6928912 Mar 31 03:47 audio.wav
+drwxr-xr-x 2 senthil1 phd    4096 Mar 31 03:48 diagnostics
+-rw-r--r-- 1 senthil1 phd      67 Mar 31 03:48 timings.json
+-rw-r--r-- 1 senthil1 phd    4152 Mar 31 03:48 transcript_segments.csv
+-rw-r--r-- 1 senthil1 phd    4192 Mar 31 03:48 transcript_segments_improved.csv
+-rw-r--r-- 1 senthil1 phd   17728 Mar 31 03:48 transcript_words.csv
+
+=== A5: Diagnostics ===
+{
+  "asr_backend": "whisperx",
+  "n_words_total": 595,
+  "n_words_reliable": 552,
+  "n_words_flagged": 43,
+  "pct_unreliable": 7.23,
+  "flag_reasons": {
+    "duration_out_of_range": 43,
+    "large_gap_over_3s": 0,
+    "non_monotonic": 0,
+    "missing_timestamp": 0
+  },
+  "n_segments_raw_whisper": 30,
+  "n_segments_after_pysbd": 28,
+  "n_segments_merged_short": 2,
+  "word_duration_stats": {
+    "mean_s": 0.2536,
+    "median_s": 0.24,
+    "min_s": 0.02,
+    "max_s": 1.082,
+    "std_s": 0.1756
+  },
+  "inter_word_gap_stats": {
+    "mean_s": 0.1029,
+    "median_s": 0.06,
+    "min_s": -0.02,
+    "max_s": 0.721,
+    "n_gaps_over_3s": 0,
+    "n_negative_gaps": 8
+  },
+  "segment_stats": {
+    "mean_duration_s": 7.22,
+    "min_duration_s": 0.88,
+    "max_duration_s": 29.27,
+    "mean_n_words": 21.2,
+    "min_n_words": 5,
+    "max_n_words": 81
+  },
+  "time_coverage": {
+    "first_word_time": 3.912,
+    "last_word_time": 215.882,
+    "transcript_span_s": 211.97
+  },
+  "flagged_word_samples": [
+    {
+      "word_id": 4,
+      "word": "a",
+      "start_time": 5.114,
+      "end_time": 5.134
+    },
+    {
+      "word_id": 7,
+      "word": "of",
+      "start_time": 6.136,
+      "end_time": 6.176
+    },
+    {
+      "word_id": 27,
+      "word": "a",
+      "start_time": 13.429,
+      "end_time": 13.449
+    },
+    {
+      "word_id": 36,
+      "word": "at",
+      "start_time": 15.513,
+      "end_time": 15.553
+    },
+    {
+      "word_id": 37,
+      "word": "a",
+      "start_time": 15.593,
+      "end_time": 15.633
+    },
+    {
+      "word_id": 39,
+      "word": "in",
+      "start_time": 15.994,
+      "end_time": 16.034
+    },
+    {
+      "word_id": 87,
+      "word": "a",
+      "start_time": 32.215,
+      "end_time": 32.235
+    },
+    {
+      "word_id": 106,
+      "word": "on",
+      "start_time": 39.082,
+      "end_time": 39.122
+    },
+    {
+      "word_id": 107,
+      "word": "a",
+      "start_time": 39.162,
+      "end_time": 39.202
+    },
+    {
+      "word_id": 122,
+      "word": "a",
+      "start_time": 44.387,
+      "end_time": 44.408
+    },
+    {
+      "word_id": 143,
+      "word": "an",
+      "start_time": 51.155,
+      "end_time": 51.195
+    },
+    {
+      "word_id": 147,
+      "word": "it",
+      "start_time": 52.517,
+      "end_time": 52.557
+    },
+    {
+      "word_id": 159,
+      "word": "a",
+      "start_time": 56.964,
+      "end_time": 56.984
+    },
+    {
+      "word_id": 178,
+      "word": "of",
+      "start_time": 63.574,
+      "end_time": 63.614
+    },
+    {
+      "word_id": 197,
+      "word": "at",
+      "start_time": 69.923,
+      "end_time": 69.963
+    },
+    {
+      "word_id": 202,
+      "word": "of",
+      "start_time": 71.846,
+      "end_time": 71.886
+    },
+    {
+      "word_id": 225,
+      "word": "a",
+      "start_time": 79.218,
+      "end_time": 79.258
+    },
+    {
+      "word_id": 243,
+      "word": "a",
+      "start_time": 86.63,
+      "end_time": 86.67
+    },
+    {
+      "word_id": 246,
+      "word": "it",
+      "start_time": 88.312,
+      "end_time": 88.352
+    },
+    {
+      "word_id": 253,
+      "word": "a",
+      "start_time": 90.596,
+      "end_time": 90.616
+    }
+  ]
+}
+Finished: videos/A5.mp4 at Tue Mar 31 03:48:15 IST 2026
+
+==========================================
+Processing: videos/CTML_03_01.mp4
+Start: Tue Mar 31 03:48:15 IST 2026
+==========================================
+2026-03-31 03:48:25 - whisperx.asr - INFO - No language specified, language will be detected for each audio file (increases inference time)
+2026-03-31 03:48:25 - whisperx.vads.pyannote - INFO - Performing voice activity detection using Pyannote...
+Model was trained with pyannote.audio 0.0.1, yours is 3.4.0. Bad things might happen unless you revert pyannote.audio to 0.x.
+Model was trained with torch 1.10.0+cu102, yours is 2.8.0+cu128. Bad things might happen unless you revert torch to 1.x.
+2026-03-31 03:48:26 - whisperx.asr - INFO - Detected language: en (1.00) in first 30s of audio
+
+=== CTML_03_01: Output files ===
+total 4259
+drwxr-xr-x 3 senthil1 phd    4096 Mar 31 03:48 .
+drwxr-xr-x 7 senthil1 phd    4096 Mar 31 03:48 ..
+-rw-r--r-- 1 senthil1 phd 4357256 Mar 31 03:48 audio.wav
+drwxr-xr-x 2 senthil1 phd    4096 Mar 31 03:48 diagnostics
+-rw-r--r-- 1 senthil1 phd      69 Mar 31 03:48 timings.json
+-rw-r--r-- 1 senthil1 phd    1943 Mar 31 03:48 transcript_segments.csv
+-rw-r--r-- 1 senthil1 phd    1958 Mar 31 03:48 transcript_segments_improved.csv
+-rw-r--r-- 1 senthil1 phd    6587 Mar 31 03:48 transcript_words.csv
+
+=== CTML_03_01: Diagnostics ===
+{
+  "asr_backend": "whisperx",
+  "n_words_total": 219,
+  "n_words_reliable": 214,
+  "n_words_flagged": 5,
+  "pct_unreliable": 2.28,
+  "flag_reasons": {
+    "duration_out_of_range": 5,
+    "large_gap_over_3s": 0,
+    "non_monotonic": 0,
+    "missing_timestamp": 0
+  },
+  "n_segments_raw_whisper": 20,
+  "n_segments_after_pysbd": 18,
+  "n_segments_merged_short": 2,
+  "word_duration_stats": {
+    "mean_s": 0.3694,
+    "median_s": 0.38,
+    "min_s": 0.04,
+    "max_s": 1.161,
+    "std_s": 0.1989
+  },
+  "inter_word_gap_stats": {
+    "mean_s": 0.2481,
+    "median_s": 0.1205,
+    "min_s": 0.02,
+    "max_s": 1.041,
+    "n_gaps_over_3s": 0,
+    "n_negative_gaps": 0
+  },
+  "segment_stats": {
+    "mean_duration_s": 6.81,
+    "min_duration_s": 2.64,
+    "max_duration_s": 12.33,
+    "mean_n_words": 12.2,
+    "min_n_words": 6,
+    "max_n_words": 26
+  },
+  "time_coverage": {
+    "first_word_time": 1.128,
+    "last_word_time": 136.114,
+    "transcript_span_s": 134.99
+  },
+  "flagged_word_samples": [
+    {
+      "word_id": 45,
+      "word": "a",
+      "start_time": 24.473,
+      "end_time": 24.513
+    },
+    {
+      "word_id": 117,
+      "word": "a",
+      "start_time": 72.642,
+      "end_time": 72.682
+    },
+    {
+      "word_id": 124,
+      "word": "a",
+      "start_time": 77.068,
+      "end_time": 77.108
+    },
+    {
+      "word_id": 132,
+      "word": "a",
+      "start_time": 81.574,
+      "end_time": 81.614
+    },
+    {
+      "word_id": 200,
+      "word": "a",
+      "start_time": 124.292,
+      "end_time": 124.332
+    }
+  ]
+}
+Finished: videos/CTML_03_01.mp4 at Tue Mar 31 03:48:32 IST 2026
+
+==========================================
+Processing: videos/Video_evaluation_01.mp4
+Start: Tue Mar 31 03:48:32 IST 2026
+==========================================
+2026-03-31 03:48:42 - whisperx.asr - INFO - No language specified, language will be detected for each audio file (increases inference time)
+2026-03-31 03:48:42 - whisperx.vads.pyannote - INFO - Performing voice activity detection using Pyannote...
+Model was trained with pyannote.audio 0.0.1, yours is 3.4.0. Bad things might happen unless you revert pyannote.audio to 0.x.
+Model was trained with torch 1.10.0+cu102, yours is 2.8.0+cu128. Bad things might happen unless you revert torch to 1.x.
+2026-03-31 03:48:43 - whisperx.asr - INFO - Detected language: en (1.00) in first 30s of audio
+
+=== Video_evaluation_01: Output files ===
+total 2548
+drwxr-xr-x 3 senthil1 phd    4096 Mar 31 03:48 .
+drwxr-xr-x 8 senthil1 phd    4096 Mar 31 03:48 ..
+-rw-r--r-- 1 senthil1 phd 2599970 Mar 31 03:48 audio.wav
+drwxr-xr-x 2 senthil1 phd    4096 Mar 31 03:48 diagnostics
+-rw-r--r-- 1 senthil1 phd      69 Mar 31 03:48 timings.json
+-rw-r--r-- 1 senthil1 phd    1263 Mar 31 03:48 transcript_segments.csv
+-rw-r--r-- 1 senthil1 phd    1301 Mar 31 03:48 transcript_segments_improved.csv
+-rw-r--r-- 1 senthil1 phd    3940 Mar 31 03:48 transcript_words.csv
+
+=== Video_evaluation_01: Diagnostics ===
+{
+  "asr_backend": "whisperx",
+  "n_words_total": 132,
+  "n_words_reliable": 132,
+  "n_words_flagged": 0,
+  "pct_unreliable": 0.0,
+  "flag_reasons": {
+    "duration_out_of_range": 0,
+    "large_gap_over_3s": 0,
+    "non_monotonic": 0,
+    "missing_timestamp": 0
+  },
+  "n_segments_raw_whisper": 13,
+  "n_segments_after_pysbd": 13,
+  "n_segments_merged_short": 0,
+  "word_duration_stats": {
+    "mean_s": 0.392,
+    "median_s": 0.3905,
+    "min_s": 0.06,
+    "max_s": 1.402,
+    "std_s": 0.2451
+  },
+  "inter_word_gap_stats": {
+    "mean_s": 0.2144,
+    "median_s": 0.12,
+    "min_s": 0.02,
+    "max_s": 1.142,
+    "n_gaps_over_3s": 0,
+    "n_negative_gaps": 0
+  },
+  "segment_stats": {
+    "mean_duration_s": 5.57,
+    "min_duration_s": 1.96,
+    "max_duration_s": 10.21,
+    "mean_n_words": 10.2,
+    "min_n_words": 4,
+    "max_n_words": 18
+  },
+  "time_coverage": {
+    "first_word_time": 1.01,
+    "last_word_time": 80.848,
+    "transcript_span_s": 79.84
+  },
+  "flagged_word_samples": []
+}
+Finished: videos/Video_evaluation_01.mp4 at Tue Mar 31 03:48:49 IST 2026
+
+==========================================
+Processing: videos/test_video.mp4
+Start: Tue Mar 31 03:48:49 IST 2026
+==========================================
+2026-03-31 03:48:59 - whisperx.asr - INFO - No language specified, language will be detected for each audio file (increases inference time)
+2026-03-31 03:48:59 - whisperx.vads.pyannote - INFO - Performing voice activity detection using Pyannote...
+Model was trained with pyannote.audio 0.0.1, yours is 3.4.0. Bad things might happen unless you revert pyannote.audio to 0.x.
+Model was trained with torch 1.10.0+cu102, yours is 2.8.0+cu128. Bad things might happen unless you revert torch to 1.x.
+2026-03-31 03:49:00 - whisperx.asr - INFO - Detected language: en (1.00) in first 30s of audio
+
+=== test_video: Output files ===
+total 14970
+drwxr-xr-x 3 senthil1 phd     4096 Mar 31 03:49 .
+drwxr-xr-x 9 senthil1 phd     4096 Mar 31 03:48 ..
+-rw-r--r-- 1 senthil1 phd 15279180 Mar 31 03:48 audio.wav
+drwxr-xr-x 2 senthil1 phd     4096 Mar 31 03:49 diagnostics
+-rw-r--r-- 1 senthil1 phd       69 Mar 31 03:49 timings.json
+-rw-r--r-- 1 senthil1 phd     8721 Mar 31 03:49 transcript_segments.csv
+-rw-r--r-- 1 senthil1 phd     8868 Mar 31 03:49 transcript_segments_improved.csv
+-rw-r--r-- 1 senthil1 phd    39797 Mar 31 03:49 transcript_words.csv
+
+=== test_video: Diagnostics ===
+{
+  "asr_backend": "whisperx",
+  "n_words_total": 1307,
+  "n_words_reliable": 1199,
+  "n_words_flagged": 108,
+  "pct_unreliable": 8.26,
+  "flag_reasons": {
+    "duration_out_of_range": 107,
+    "large_gap_over_3s": 1,
+    "non_monotonic": 0,
+    "missing_timestamp": 0
+  },
+  "n_segments_raw_whisper": 56,
+  "n_segments_after_pysbd": 56,
+  "n_segments_merged_short": 0,
+  "word_duration_stats": {
+    "mean_s": 0.2361,
+    "median_s": 0.2,
+    "min_s": 0.02,
+    "max_s": 1.783,
+    "std_s": 0.1842
+  },
+  "inter_word_gap_stats": {
+    "mean_s": 0.1127,
+    "median_s": 0.06,
+    "min_s": -0.02,
+    "max_s": 6.308,
+    "n_gaps_over_3s": 1,
+    "n_negative_gaps": 10
+  },
+  "segment_stats": {
+    "mean_duration_s": 7.51,
+    "min_duration_s": 1.58,
+    "max_duration_s": 21.21,
+    "mean_n_words": 23.3,
+    "min_n_words": 5,
+    "max_n_words": 67
+  },
+  "time_coverage": {
+    "first_word_time": 1.297,
+    "last_word_time": 457.093,
+    "transcript_span_s": 455.8
+  },
+  "flagged_word_samples": [
+    {
+      "word_id": 4,
+      "word": "a",
+      "start_time": 2.579,
+      "end_time": 2.599
+    },
+    {
+      "word_id": 10,
+      "word": "a",
+      "start_time": 4.342,
+      "end_time": 4.383
+    },
+    {
+      "word_id": 13,
+      "word": "a",
+      "start_time": 5.044,
+      "end_time": 5.064
+    },
+    {
+      "word_id": 51,
+      "word": "a",
+      "start_time": 18.348,
+      "end_time": 18.368
+    },
+    {
+      "word_id": 76,
+      "word": "it",
+      "start_time": 25.417,
+      "end_time": 25.457
+    },
+    {
+      "word_id": 92,
+      "word": "a",
+      "start_time": 30.762,
+      "end_time": 30.782
+    },
+    {
+      "word_id": 102,
+      "word": "a",
+      "start_time": 34.245,
+      "end_time": 34.265
+    },
+    {
+      "word_id": 109,
+      "word": "A",
+      "start_time": 37.147,
+      "end_time": 37.187
+    },
+    {
+      "word_id": 114,
+      "word": "a",
+      "start_time": 38.388,
+      "end_time": 38.428
+    },
+    {
+      "word_id": 127,
+      "word": "of",
+      "start_time": 43.493,
+      "end_time": 43.533
+    },
+    {
+      "word_id": 130,
+      "word": "of",
+      "start_time": 44.734,
+      "end_time": 44.774
+    },
+    {
+      "word_id": 138,
+      "word": "it",
+      "start_time": 47.437,
+      "end_time": 47.477
+    },
+    {
+      "word_id": 142,
+      "word": "a",
+      "start_time": 48.317,
+      "end_time": 48.337
+    },
+    {
+      "word_id": 166,
+      "word": "a",
+      "start_time": 56.247,
+      "end_time": 56.267
+    },
+    {
+      "word_id": 169,
+      "word": "a",
+      "start_time": 57.048,
+      "end_time": 57.088
+    },
+    {
+      "word_id": 185,
+      "word": "of",
+      "start_time": 62.435,
+      "end_time": 62.475
+    },
+    {
+      "word_id": 201,
+      "word": "a",
+      "start_time": 67.321,
+      "end_time": 67.341
+    },
+    {
+      "word_id": 224,
+      "word": "a",
+      "start_time": 74.771,
+      "end_time": 74.791
+    },
+    {
+      "word_id": 231,
+      "word": "it",
+      "start_time": 76.313,
+      "end_time": 76.353
+    },
+    {
+      "word_id": 252,
+      "word": "is",
+      "start_time": 82.522,
+      "end_time": 82.562
+    }
+  ]
+}
+Finished: videos/test_video.mp4 at Tue Mar 31 03:49:18 IST 2026
+
+=== All Stage 1 Done ===
+End: Tue Mar 31 03:49:18 IST 2026

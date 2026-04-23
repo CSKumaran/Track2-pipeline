@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pipeline V4.0 — Detailed Flowchart</title>
+<style>
+  :root {
+    --bg: #0d1117; --fg: #c9d1d9; --card: #161b22; --border: #30363d;
+    --accent: #58a6ff; --green: #3fb950; --yellow: #d29922; --red: #f85149;
+    --purple: #bc8cff; --orange: #f0883e; --teal: #39d353;
+    --v4badge: #da3633;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; padding: 20px; }
+  h1 { text-align: center; color: var(--accent); margin: 30px 0 10px; font-size: 2em; }
+  h2 { color: var(--accent); margin: 30px 0 15px; font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  h3 { color: var(--purple); margin: 20px 0 10px; font-size: 1.15em; }
+  .subtitle { text-align: center; color: #8b949e; margin-bottom: 30px; font-size: 0.95em; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* Pipeline Overview */
+  .pipeline-flow { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 25px 0 35px; }
+  .stage-box { background: var(--card); border: 2px solid var(--border); border-radius: 10px; padding: 12px 18px; text-align: center; min-width: 130px; position: relative; }
+  .stage-box .num { font-size: 0.75em; color: #8b949e; }
+  .stage-box .name { font-weight: 600; color: var(--accent); font-size: 0.95em; }
+  .stage-box.v4-enhanced { border-color: var(--v4badge); }
+  .stage-box.v4-enhanced::after { content: 'v4'; position: absolute; top: -8px; right: -8px; background: var(--v4badge); color: #fff; font-size: 0.65em; padding: 1px 6px; border-radius: 8px; font-weight: 700; }
+  .arrow { color: #8b949e; font-size: 1.5em; }
+
+  /* Stage Cards */
+  .stage-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0; }
+  .stage-card.v4-highlight { border-left: 4px solid var(--v4badge); }
+  .stage-header { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; }
+  .stage-num { background: var(--accent); color: var(--bg); font-weight: 700; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9em; flex-shrink: 0; }
+  .stage-title { font-size: 1.25em; font-weight: 600; }
+
+  /* IO Boxes */
+  .io-row { display: flex; gap: 15px; margin: 12px 0; flex-wrap: wrap; }
+  .io-box { flex: 1; min-width: 250px; background: #0d1117; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+  .io-box.input { border-left: 3px solid var(--yellow); }
+  .io-box.output { border-left: 3px solid var(--green); }
+  .io-box.cache { border-left: 3px solid #8b949e; }
+  .io-label { font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-weight: 600; }
+  .io-label.input { color: var(--yellow); }
+  .io-label.output { color: var(--green); }
+  .io-label.cache { color: #8b949e; }
+  .io-box code { font-size: 0.85em; color: var(--teal); }
+
+  /* Process Steps */
+  .steps { margin: 15px 0; }
+  .step { display: flex; gap: 12px; margin: 8px 0; align-items: flex-start; }
+  .step-marker { background: var(--border); color: var(--fg); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .step-content { flex: 1; }
+  .step-content p { margin: 2px 0; }
+
+  /* V4 Badge */
+  .v4 { display: inline-block; background: var(--v4badge); color: #fff; font-size: 0.7em; padding: 1px 6px; border-radius: 4px; font-weight: 700; vertical-align: middle; margin-left: 4px; }
+
+  /* Cascade */
+  .cascade { margin: 15px 0; }
+  .case-row { display: flex; align-items: stretch; margin: 6px 0; gap: 10px; }
+  .case-letter { background: var(--card); border: 2px solid var(--border); width: 42px; height: 42px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1em; flex-shrink: 0; }
+  .case-letter.a { border-color: var(--green); color: var(--green); }
+  .case-letter.b { border-color: var(--yellow); color: var(--yellow); }
+  .case-letter.c { border-color: var(--orange); color: var(--orange); }
+  .case-letter.d { border-color: #79c0ff; color: #79c0ff; }
+  .case-letter.e { border-color: var(--v4badge); color: var(--v4badge); }
+  .case-letter.g { border-color: var(--purple); color: var(--purple); }
+  .case-letter.f { border-color: #8b949e; color: #8b949e; }
+  .case-detail { flex: 1; background: #0d1117; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 0.9em; }
+  .case-detail strong { color: var(--fg); }
+  .case-detail .formula { color: var(--teal); font-family: 'Consolas', monospace; font-size: 0.9em; }
+  .case-detail .fallthrough { color: #8b949e; font-style: italic; font-size: 0.85em; }
+
+  /* Config Table */
+  .config-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.85em; }
+  .config-table th { text-align: left; padding: 6px 10px; background: #0d1117; color: var(--accent); border-bottom: 1px solid var(--border); }
+  .config-table td { padding: 5px 10px; border-bottom: 1px solid #21262d; }
+  .config-table td:first-child { font-family: 'Consolas', monospace; color: var(--teal); white-space: nowrap; }
+  .config-table td:nth-child(2) { color: var(--yellow); text-align: center; }
+  .config-table tr.v4-row td { background: rgba(218,54,51,0.08); }
+
+  /* Heuristic weights */
+  .weight-bar { display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin: 8px 0; }
+  .weight-bar .seg { display: flex; align-items: center; justify-content: center; font-size: 0.7em; font-weight: 600; color: #fff; }
+
+  /* Formula box */
+  .formula-box { background: #0d1117; border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; margin: 10px 0; font-family: 'Consolas', monospace; font-size: 0.9em; color: var(--teal); line-height: 1.8; overflow-x: auto; }
+
+  /* Legend */
+  .legend { display: flex; gap: 20px; flex-wrap: wrap; margin: 15px 0; padding: 12px; background: var(--card); border-radius: 8px; font-size: 0.85em; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+  /* Decision diamond */
+  .decision { background: #1c2128; border: 2px dashed var(--yellow); border-radius: 8px; padding: 10px 16px; margin: 10px 0 10px 36px; font-size: 0.9em; }
+  .decision::before { content: '?'; display: inline-block; background: var(--yellow); color: var(--bg); width: 20px; height: 20px; border-radius: 50%; text-align: center; line-height: 20px; font-weight: 700; font-size: 0.8em; margin-right: 8px; }
+
+  /* Tier boxes */
+  .tier { display: flex; gap: 12px; margin: 12px 0; flex-wrap: wrap; }
+  .tier-box { flex: 1; min-width: 200px; background: #0d1117; border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+  .tier-box .tier-name { font-weight: 700; margin-bottom: 6px; }
+  .tier-box.t1 { border-top: 3px solid var(--green); }
+  .tier-box.t1 .tier-name { color: var(--green); }
+  .tier-box.t2 { border-top: 3px solid var(--yellow); }
+  .tier-box.t2 .tier-name { color: var(--yellow); }
+  .tier-box.t3 { border-top: 3px solid var(--orange); }
+  .tier-box.t3 .tier-name { color: var(--orange); }
+
+  .zone-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.85em; }
+  .zone-table td, .zone-table th { padding: 4px 8px; border: 1px solid var(--border); }
+  .zone-table .optimal { color: var(--green); }
+  .zone-table .suboptimal { color: var(--yellow); }
+  .zone-table .disruptive { color: var(--orange); }
+  .zone-table .unacceptable { color: var(--red); }
+
+  .connector-line { border-left: 2px solid var(--border); margin-left: 18px; padding-left: 20px; padding-top: 5px; padding-bottom: 5px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Pipeline V4.0 — Temporal Contiguity Analysis</h1>
+<p class="subtitle">Detailed Flowchart &middot; All stages, signals, thresholds, and V4 enhancements</p>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Inherited (V2.2/V3)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--v4badge)"></div> New in V4.0</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div> Input</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Output</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#8b949e"></div> Cache skip</div>
+</div>
+
+<!-- ==================== PIPELINE OVERVIEW ==================== -->
+<h2>Pipeline Execution Order (Transcript-First)</h2>
+
+<div class="pipeline-flow">
+  <div class="stage-box"><div class="num">Stage 1</div><div class="name">ASR</div></div>
+  <div class="arrow">&rarr;</div>
+  <div class="stage-box v4-enhanced"><div class="num">Stage 2</div><div class="name">Scene Detection</div></div>
+  <div class="arrow">&rarr;</div>
+  <div class="stage-box v4-enhanced"><div class="num">Stage 5</div><div class="name">Keywords</div></div>
+  <div class="arrow">&rarr;</div>
+  <div class="stage-box v4-enhanced"><div class="num">Stage 4</div><div class="name">Alignment</div></div>
+  <div class="arrow">&rarr;</div>
+  <div class="stage-box v4-enhanced"><div class="num">Stage 6</div><div class="name">Importance</div></div>
+  <div class="arrow">&rarr;</div>
+  <div class="stage-box v4-enhanced"><div class="num">Stage 7</div><div class="name">Scoring</div></div>
+  <div class="arrow">&rarr;</div>
+  <div class="stage-box"><div class="num"></div><div class="name">Dashboard</div></div>
+  <div class="arrow">&rarr;</div>
+  <div class="stage-box v4-enhanced"><div class="num"></div><div class="name">Sensitivity</div></div>
+</div>
+
+<!-- ==================== STAGE 1 ==================== -->
+<div class="stage-card">
+  <div class="stage-header"><div class="stage-num">1</div><div class="stage-title">ASR Transcription (WhisperX)</div></div>
+  <div class="io-row">
+    <div class="io-box input"><div class="io-label input">Input</div><code>video.mp4</code></div>
+    <div class="io-box cache"><div class="io-label cache">Cache skip if</div><code>transcript_words.csv</code>, <code>transcript_segments.csv</code>, <code>transcript_segments_improved.csv</code> exist</div>
+    <div class="io-box output"><div class="io-label output">Output</div><code>transcript_words.csv</code> (word, start_time, end_time)<br><code>transcript_segments_improved.csv</code> (segment_id, text, times)</div>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-marker">1</div><div class="step-content"><p>Extract audio via FFmpeg</p></div></div>
+    <div class="step"><div class="step-marker">2</div><div class="step-content"><p>WhisperX transcription (model=<code>large-v3</code>, batch=16, beam=10, lang=en, compute=float16)</p><p class="fallthrough">Fallback: faster-whisper if WhisperX fails</p></div></div>
+    <div class="step"><div class="step-marker">3</div><div class="step-content"><p>Forced alignment &rarr; word-level timestamps</p></div></div>
+    <div class="step"><div class="step-marker">4</div><div class="step-content"><p>pySBD sentence segmentation (force-split segments &gt;40 words)</p></div></div>
+  </div>
+</div>
+
+<!-- ==================== STAGE 2 ==================== -->
+<div class="stage-card v4-highlight">
+  <div class="stage-header"><div class="stage-num">2</div><div class="stage-title">Scene Detection (Multi-Signal Fusion) <span class="v4">V4</span></div></div>
+  <div class="io-row">
+    <div class="io-box input"><div class="io-label input">Input</div><code>video.mp4</code></div>
+    <div class="io-box cache"><div class="io-label cache">Cache skip if</div><code>scenes.csv</code>, <code>ocr_per_frame.csv</code>, <code>dinov2_distances.csv</code> exist</div>
+    <div class="io-box output"><div class="io-label output">Output</div>
+      <code>scenes.csv</code> (scene_id, t_start, t_end, t_keyframe, keyframe_path, ocr_words, <strong style="color:var(--v4badge)">gemini_concepts</strong>)<br>
+      <code>ocr_per_frame.csv</code> &middot; <code>dinov2_distances.csv</code>
+    </div>
+  </div>
+
+  <h3>Signal Computation</h3>
+  <div class="steps">
+    <div class="step"><div class="step-marker">A</div><div class="step-content"><p><strong>Signal A: PySceneDetect</strong> &mdash; AdaptiveDetector, binary boundary signal. Weight: <code>0.35</code></p></div></div>
+    <div class="step"><div class="step-marker">B</div><div class="step-content"><p><strong>Signal B: DINOv2 Embeddings</strong> &mdash; L2 distance between consecutive frames, normalized 0-1. Weight: <code>0.45</code></p></div></div>
+    <div class="step"><div class="step-marker">C</div><div class="step-content"><p><strong>Signal C: OCR Jaccard</strong> &mdash; Jaccard distance of OCR word sets between consecutive samples (every 0.5s). Weight: <code>0.20</code></p></div></div>
+  </div>
+
+  <div class="formula-box">combined = 0.35 &times; signal_A + 0.45 &times; signal_B + 0.20 &times; signal_C<br>
+(If no OCR signal: reweight A + B only)</div>
+
+  <h3>Boundary Detection</h3>
+  <div class="steps">
+    <div class="step"><div class="step-marker">1</div><div class="step-content"><p><strong>Adaptive threshold:</strong> Otsu-like scan &rarr; fallback: mean + 1.5&sigma;</p></div></div>
+    <div class="step"><div class="step-marker">2</div><div class="step-content"><p><strong>Density guard:</strong> If scenes &lt; 50% expected (4/min) &rarr; progressively lower threshold [&times;0.75, &times;0.5, &times;0.25]</p></div></div>
+    <div class="step"><div class="step-marker">3</div><div class="step-content"><p><strong>NMS peaks:</strong> Group adjacent frames, keep peak of each group</p></div></div>
+  </div>
+
+  <h3>Scene Construction</h3>
+  <div class="steps">
+    <div class="step"><div class="step-marker">4</div><div class="step-content"><p><strong>Build scenes:</strong> Boundaries &rarr; segments. Keyframe = DINOv2 centroid of inner 80%</p></div></div>
+    <div class="step"><div class="step-marker">5</div><div class="step-content"><p><strong>Smart merge:</strong> Merge scenes &lt;2s if DINOv2 similarity &gt;0.85</p></div></div>
+    <div class="step"><div class="step-marker">6</div><div class="step-content"><p><strong>Force-split:</strong> Split scenes &gt;30s at local signal minima</p></div></div>
+    <div class="step"><div class="step-marker">7</div><div class="step-content"><p><strong>OCR enrichment:</strong> OCR at scene start frame + keyframe (union)</p></div></div>
+    <div class="step"><div class="step-marker">8</div><div class="step-content"><p><strong style="color:var(--v4badge)">Gemini Frame Understanding</strong> <span class="v4">V4</span><br>
+      For each keyframe &rarr; query Gemini: <em>"List all concepts, labels, variables visible"</em><br>
+      Parse JSON array &rarr; <code>gemini_concepts</code> column (pipe-separated)<br>
+      Cached in <code>.gemini_frame_cache/</code>. Fallback: empty if no API key.</p></div></div>
+  </div>
+</div>
+
+<!-- ==================== STAGE 5 ==================== -->
+<div class="stage-card v4-highlight">
+  <div class="stage-header"><div class="stage-num">5</div><div class="stage-title">Keyword Extraction <span class="v4">V4</span></div></div>
+  <div class="io-row">
+    <div class="io-box input"><div class="io-label input">Input</div><code>transcript_segments_improved.csv</code>, <code>transcript_words.csv</code></div>
+    <div class="io-box cache"><div class="io-label cache">Cache skip if</div><code>keywords.csv</code> exists</div>
+    <div class="io-box output"><div class="io-label output">Output</div><code>keywords.csv</code> (keyword_id, text, t_narr, groundability, <strong style="color:var(--v4badge)">is_first_mention</strong>)</div>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-marker">1</div><div class="step-content"><p><strong>Per segment:</strong> Extract keywords via spaCy NER + noun phrases</p></div></div>
+    <div class="step"><div class="step-marker">2</div><div class="step-content"><p><strong>KeyBERT:</strong> Top-5 keywords via embedding similarity (if enabled)</p></div></div>
+    <div class="step"><div class="step-marker">3</div><div class="step-content"><p><strong>Merge + filter:</strong> Deduplicate, enforce min length &ge;3 chars</p></div></div>
+    <div class="step"><div class="step-marker">4</div><div class="step-content"><p><strong>t_narr assignment:</strong> exact word match &rarr; normalized &rarr; substring &rarr; fallback midpoint</p></div></div>
+    <div class="step"><div class="step-marker">5</div><div class="step-content"><p><strong>Groundability:</strong> Brysbaert concreteness DB &rarr; HIGH / MEDIUM / LOW</p></div></div>
+    <div class="step"><div class="step-marker">6</div><div class="step-content"><p><strong style="color:var(--v4badge)">First-Mention Detection</strong> <span class="v4">V4</span><br>
+      spaCy lemmatization &rarr; for each keyword, check if lemma set appeared in prior segments<br>
+      Match: &ge;50% lemma overlap within 60s lookback window<br>
+      Output: <code>is_first_mention = True/False</code></p></div></div>
+  </div>
+</div>
+
+<!-- ==================== STAGE 4 ==================== -->
+<div class="stage-card v4-highlight">
+  <div class="stage-header"><div class="stage-num">4</div><div class="stage-title">Alignment (Transcript-First, Priority Cascade) <span class="v4">V4</span></div></div>
+  <div class="io-row">
+    <div class="io-box input"><div class="io-label input">Input</div><code>keywords.csv</code>, <code>scenes.csv</code>, <code>ocr_per_frame.csv</code>, <code>transcript_words.csv</code></div>
+    <div class="io-box cache"><div class="io-label cache">Cache skip if</div><code>keyword_alignment.csv</code>, <code>segment_alignment.csv</code> exist</div>
+    <div class="io-box output"><div class="io-label output">Output</div><code>keyword_alignment.csv</code> (t_narr, t_vis, delta_t, match_case, alpha, <strong style="color:var(--v4badge)">visual_on_screen</strong>, <strong style="color:var(--v4badge)">gemini_concept_matched</strong>)<br><code>segment_alignment.csv</code></div>
+  </div>
+
+  <h3 style="color:var(--v4badge)">Pre-Processing: Transcript-Informed OCR Correction <span class="v4">V4</span></h3>
+  <div class="steps">
+    <div class="step"><div class="step-marker">a</div><div class="step-content"><p>Build vocabulary from <code>transcript_words.csv</code> (all words &ge;3 chars, normalized)</p></div></div>
+    <div class="step"><div class="step-marker">b</div><div class="step-content"><p>Build abbreviation map (all-caps words: KNN &rarr; knn, k-nn)</p></div></div>
+    <div class="step"><div class="step-marker">c</div><div class="step-content"><p>For each OCR frame: fuzzy-correct garbled words against transcript (threshold 0.75), expand abbreviations</p></div></div>
+  </div>
+
+  <h3>Priority Cascade (per keyword)</h3>
+  <div class="decision">Is keyword groundable AND has t_narr? &mdash; If no &rarr; Case F</div>
+
+  <div class="cascade">
+    <div class="case-row">
+      <div class="case-letter a">A</div>
+      <div class="case-detail">
+        <strong>OCR at t_narr (visual present in current scene)</strong><br>
+        Union of all OCR words across scene &rarr; fuzzy match keyword (threshold 0.80)<br>
+        Find earliest frame with keyword in scene<br>
+        <span class="formula">t_vis = earliest_frame | delta_t = t_vis - t_narr &le; 0 | alpha = 1.0 (full) / 0.8 (partial)</span><br>
+        Sub-case <strong>D</strong>: keyword onset &gt;1s after scene start (progressive reveal)
+        <div class="fallthrough">&darr; not found &rarr; try Case B</div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div class="case-letter b">B</div>
+      <div class="case-detail">
+        <strong>Forward search +10s (visual appears late)</strong><br>
+        Search OCR frames in [t_narr+1s, t_narr+10s]<br>
+        <span class="formula">delta_t = t_vis - t_narr &gt; 0 &rarr; penalized | alpha = 1.0 / 0.8</span>
+        <div class="fallthrough">&darr; not found &rarr; try Case C</div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div class="case-letter c">C</div>
+      <div class="case-detail">
+        <strong>Backward search -10s (visual expired)</strong><br>
+        Search OCR frames in [t_narr-10s, t_narr-1s], scene must have ended<br>
+        <span class="formula">delta_t = 10.0 (capped) | alpha = 0.8 | confidence = MEDIUM</span>
+        <div class="fallthrough">&darr; not found &rarr; try Case E</div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div class="case-letter e">E</div>
+      <div class="case-detail">
+        <strong>Gemini Concept Match</strong> <span class="v4">V4</span><br>
+        Search scenes &plusmn;10s &rarr; match keyword against <code>gemini_concepts</code> (pipe-separated)<br>
+        Matching: exact substring OR rapidfuzz <code>token_set_ratio</code> &ge; 75<br>
+        <span class="formula">alpha = 0.6 + 0.3 &times; (score/100) &isin; [0.6, 0.9] | confidence = MEDIUM/HIGH</span><br>
+        Records: <code>gemini_concept_matched</code>, <code>gemini_match_score</code>
+        <div class="fallthrough">&darr; not found &rarr; try Case G</div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div class="case-letter g">G</div>
+      <div class="case-detail">
+        <strong>SigLIP Visual Match (no text, reduced alpha)</strong><br>
+        Embed keyword as <em>"A visual showing {kw}"</em> + embed keyframe images<br>
+        Sigmoid similarity &times; temporal Gaussian weight (&sigma;=5s)<br>
+        Threshold: <code>SIGLIP_KEYWORD_MIN_SIM = 0.55</code><br>
+        <span class="formula">alpha &isin; [0.1, 0.5] (scaled by similarity margin) | confidence = LOW</span>
+        <div class="fallthrough">&darr; not found &rarr; Case F</div>
+      </div>
+    </div>
+
+    <div class="case-row">
+      <div class="case-letter f">F</div>
+      <div class="case-detail">
+        <strong>No Visual Correlate (excluded from scoring)</strong><br>
+        Sub-classify reason: <code>ocr_vocabulary_mismatch</code> | <code>no_ocr_nearby</code> | <code>low_groundability</code><br>
+        <span class="formula">alpha = 0 | t_vis = None | delta_t = None</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="formula-box"><strong>Asymmetric delta_t (Visual Persistence Verified):</strong> <span class="v4">V4</span><br>
+delta_t = t_vis - t_narr<br><br>
+delta_t &le; 0 <strong>AND</strong> <code>visual_on_screen = True</code> &rarr; Score = 100 (simultaneous presentation)<br>
+delta_t &le; 0 <strong>AND</strong> <code>visual_on_screen = False</code> &rarr; penalized by |delta_t| (visual expired)<br>
+delta_t &gt; 0 &rarr; visual appears AFTER narration &rarr; penalized by scoring formula<br><br>
+<strong>Visual persistence verification per case:</strong><br>
+&bull; Case A/D: keyword in current scene OCR union &rarr; scene active at t_narr &rarr; <code>True</code><br>
+&bull; Case E/G: matched scene.t_start &le; t_narr &le; scene.t_end &rarr; <code>True</code>; else <code>False</code><br>
+&bull; Case C: scene ended before t_narr &rarr; <code>False</code> (expired)<br>
+&bull; Case F: no match &rarr; <code>False</code><br><br>
+<em>Theoretical basis: Mayer (2009) Temporal Contiguity Principle &mdash; score 100 is justified<br>
+because the visual IS still on screen when narration occurs (verified, not assumed).</em></div>
+</div>
+
+<!-- ==================== STAGE 6 ==================== -->
+<div class="stage-card v4-highlight">
+  <div class="stage-header"><div class="stage-num">6</div><div class="stage-title">Pedagogical Importance Rating <span class="v4">V4</span></div></div>
+  <div class="io-row">
+    <div class="io-box input"><div class="io-label input">Input</div><code>transcript_segments_improved.csv</code>, <code>scenes.csv</code> (for keyframes), <code>keywords.csv</code> (for heuristic)</div>
+    <div class="io-box cache"><div class="io-label cache">Cache skip if</div><code>pedagogical_importance.csv</code> exists</div>
+    <div class="io-box output"><div class="io-label output">Output</div><code>pedagogical_importance.csv</code> (segment_id, importance 1-5, reason, backend)</div>
+  </div>
+
+  <h3>3-Tier Backend (auto fallback)</h3>
+  <div class="tier">
+    <div class="tier-box t1">
+      <div class="tier-name">Tier 1: Gemini API <span class="v4">V4</span></div>
+      <p><strong>Multimodal mode:</strong> Collect all scene keyframes overlapping with segments &rarr; send images + transcript in single prompt<br>
+      <em>"Rate importance 1-5. Consider visual-verbal integration demand."</em><br>
+      Backend tag: <code>gemini_multimodal</code></p>
+      <p><strong>Text-only fallback:</strong> transcript only, no images<br>
+      Optional double-run for reliability check</p>
+    </div>
+    <div class="tier-box t2">
+      <div class="tier-name">Tier 2: Local VLM <span class="v4">V4</span></div>
+      <p><strong>Primary: vLLM/SGLang</strong> (OpenAI-compatible API)<br>
+      Model: <code>Qwen2.5-VL-72B</code> (best) or <code>Qwen2.5-VL-7B</code><br>
+      Multimodal: sends keyframe images + transcript<br>
+      Backend tag: <code>local_vlm_multimodal</code></p>
+      <p><strong>Fallback: Ollama</strong> &rarr; <code>llava:7b</code> (legacy)<br>
+      Config: <code>LOCAL_VLM_BACKEND = auto | vllm | ollama</code></p>
+    </div>
+    <div class="tier-box t3">
+      <div class="tier-name">Tier 3: Heuristic <span class="v4">V4 Enhanced</span></div>
+      <p>6 features (was 4), percentile-binned to 1-5 scale<br>All marked <code>is_reliable = False</code></p>
+    </div>
+  </div>
+
+  <h3>V4 Heuristic Feature Weights</h3>
+  <div class="weight-bar">
+    <div class="seg" style="width:30%;background:#2ea043">KW Density 30%</div>
+    <div class="seg" style="width:20%;background:#1f6feb">Speech Rate 20%</div>
+    <div class="seg" style="width:10%;background:#8b949e">Words 10%</div>
+    <div class="seg" style="width:15%;background:var(--v4badge)">Instr. Verb 15%</div>
+    <div class="seg" style="width:10%;background:#da3633cc">Discourse 10%</div>
+    <div class="seg" style="width:15%;background:#b62324">1st Mention 15%</div>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-marker">1</div><div class="step-content"><p><strong>Keyword density (30%):</strong> <code>min(n_kw / duration / 2.0, 1.0)</code></p></div></div>
+    <div class="step"><div class="step-marker">2</div><div class="step-content"><p><strong>Speech rate (20%):</strong> <code>min(n_words / duration / 4.0, 1.0)</code></p></div></div>
+    <div class="step"><div class="step-marker">3</div><div class="step-content"><p><strong>Word count (10%):</strong> <code>min(n_words / 25, 1.0)</code></p></div></div>
+    <div class="step"><div class="step-marker">4</div><div class="step-content"><p><strong style="color:var(--v4badge)">Instructional verb (15%):</strong> <span class="v4">V4</span> spaCy dep parse &mdash; Bloom's verb governing technical noun. "Notice <em>the gradient</em>" = 1.0, "you notice, it's late" = 0.0</p></div></div>
+    <div class="step"><div class="step-marker">5</div><div class="step-content"><p><strong style="color:var(--v4badge)">Discourse signals (10%):</strong> <span class="v4">V4</span> regex: "as you can see", "look at the diagram", "on this slide", etc.</p></div></div>
+    <div class="step"><div class="step-marker">6</div><div class="step-content"><p><strong style="color:var(--v4badge)">First-mention density (15%):</strong> <span class="v4">V4</span> <code>n_first_mentions / n_keywords</code> from Stage 5</p></div></div>
+  </div>
+
+  <div class="formula-box"><strong>Importance weights applied to scoring:</strong><br>
+Gemini/LLM backend: {1: 0.3, 2: 0.6, 3: 1.0, 4: 1.5, 5: 2.0}<br>
+Heuristic backend:   {1: 0.8, 2: 0.9, 3: 1.0, 4: 1.1, 5: 1.2} &mdash; compressed range</div>
+</div>
+
+<!-- ==================== STAGE 7 ==================== -->
+<div class="stage-card v4-highlight">
+  <div class="stage-header"><div class="stage-num">7</div><div class="stage-title">Scoring & Aggregation <span class="v4">V4</span></div></div>
+  <div class="io-row">
+    <div class="io-box input"><div class="io-label input">Input</div><code>keyword_alignment.csv</code> (incl. <strong style="color:var(--v4badge)">visual_on_screen</strong>), <code>pedagogical_importance.csv</code></div>
+    <div class="io-box output"><div class="io-label output">Output</div><code>keyword_scores.csv</code> (incl. <strong style="color:var(--v4badge)">visual_on_screen</strong>), <code>segment_scores.csv</code>, <code>results.json</code>, <code>report_dashboard.html</code></div>
+  </div>
+
+  <h3>Scoring Formulas (Asymmetric, Visual-Persistence Verified) <span class="v4">V4</span></h3>
+  <div class="formula-box"><strong>Gaussian (primary):</strong><br>
+if delta_t &le; 0 AND <code>visual_on_screen = True</code>: S = 100 &emsp; (simultaneous &rarr; no penalty)<br>
+if delta_t &le; 0 AND <code>visual_on_screen = False</code>: S = 100 &times; exp(-0.5 &times; (|delta_t| / &tau;)&sup2;) &emsp; (expired visual)<br>
+if delta_t &gt; 0: S = 100 &times; exp(-0.5 &times; (delta_t / &tau;)&sup2;) &emsp; &tau; = 2.5s<br><br>
+<strong>Piecewise (alternative):</strong><br>
+Same logic: <code>visual_on_screen = True</code> &rarr; 100; else piecewise on |delta_t|<br>
+|&Delta;t| &le; 1s &rarr; 100 &emsp;|&emsp; 1-3s &rarr; 100 - 15(|&Delta;t|-1) &emsp;|&emsp; 3-5s &rarr; 70 - 35(|&Delta;t|-3) &emsp;|&emsp; &gt;5s &rarr; 0<br><br>
+<strong>Floor formula:</strong><br>
+S_final = S_raw &times; (0.5 + 0.5 &times; alpha)</div>
+
+  <h3>Zone Classification</h3>
+  <table class="zone-table">
+    <tr><th>Zone</th><th>&Delta;t Range</th><th>Interpretation</th></tr>
+    <tr><td class="optimal"><strong>Optimal</strong></td><td>&le; 1.0s</td><td>Visual present at/before narration (<code>visual_on_screen = True</code> verified)</td></tr>
+    <tr><td class="suboptimal"><strong>Suboptimal</strong></td><td>1.0 &ndash; 3.0s</td><td>Slight delay, manageable</td></tr>
+    <tr><td class="disruptive"><strong>Disruptive</strong></td><td>3.0 &ndash; 5.0s</td><td>Noticeable gap, learning impacted</td></tr>
+    <tr><td class="unacceptable"><strong>Unacceptable</strong></td><td>&gt; 5.0s</td><td>Visual too late, integration fails</td></tr>
+  </table>
+
+  <h3>Aggregation</h3>
+  <div class="formula-box"><strong>Weighted score:</strong><br>
+overall_score = &Sigma;(S_i &times; importance_weight_i) / &Sigma;(importance_weight_i)<br><br>
+<strong>Grade mapping:</strong><br>
+&ge;80 Excellent | &ge;60 Good | &ge;40 Acceptable | &ge;20 Poor | &lt;20 Unacceptable</div>
+</div>
+
+<!-- ==================== SENSITIVITY ANALYSIS ==================== -->
+<div class="stage-card v4-highlight">
+  <div class="stage-header"><div class="stage-num" style="background:var(--v4badge)">S</div><div class="stage-title">Sensitivity Analysis (Post-Pipeline) <span class="v4">V4</span></div></div>
+  <div class="io-row">
+    <div class="io-box input"><div class="io-label input">Input</div><code>transcript_segments_improved.csv</code>, <code>keywords.csv</code>, <code>keyword_alignment.csv</code></div>
+    <div class="io-box output"><div class="io-label output">Output</div><code>sensitivity/weight_perturbation.csv</code>, <code>sensitivity/ablation.csv</code>, <code>sensitivity/scoring_impact.csv</code>, <code>sensitivity/sensitivity_summary.json</code></div>
+  </div>
+
+  <h3>Purpose</h3>
+  <p>Tests whether final scores are <strong>robust</strong> to heuristic weight perturbations. If scores are stable across &plusmn;50% weight changes, the specific weight values matter less than the feature set &mdash; a strong defense against "arbitrary weights" criticism.</p>
+
+  <h3>Analysis Components</h3>
+  <div class="steps">
+    <div class="step"><div class="step-marker">1</div><div class="step-content"><p><strong>Weight Perturbation:</strong> Vary each of 6 features &plusmn;25%/&plusmn;50% (re-normalize to sum=1.0). Measure Spearman rank correlation vs baseline. Target: &rho; &gt; 0.9 = robust.</p></div></div>
+    <div class="step"><div class="step-marker">2</div><div class="step-content"><p><strong>Feature Ablation:</strong> Leave-one-out for each feature + V3-equivalent (3 features only). Shows marginal contribution of each V4 feature.</p></div></div>
+    <div class="step"><div class="step-marker">3</div><div class="step-content"><p><strong>End-to-End Scoring Impact:</strong> Propagate weight changes through importance &rarr; scoring &rarr; overall video score. Report CV% &mdash; target: &lt;5% = stable.</p></div></div>
+    <div class="step"><div class="step-marker">4</div><div class="step-content"><p><strong>Feature Correlations:</strong> Pairwise correlation matrix to check multicollinearity between the 6 features.</p></div></div>
+  </div>
+
+  <div class="formula-box"><strong>Theoretical grounding per feature:</strong><br>
+Keyword density &rarr; Cognitive Load Theory (Sweller, 1988)<br>
+Speech rate &rarr; Segmenting Principle (Mayer, 2009)<br>
+Word count &rarr; Element interactivity (Sweller &amp; Chandler, 1994)<br>
+Instructional verbs &rarr; Bloom's Taxonomy (Anderson &amp; Krathwohl, 2001)<br>
+Discourse signals &rarr; Signaling Principle (Mayer, 2009; Lemari&eacute; et al., 2008)<br>
+First-mention &rarr; Schema Theory / novelty processing (Piaget; Tulving, 1972)</div>
+
+  <p>Run via: <code>--sensitivity-analysis</code> flag or standalone: <code>python -m pipeline_v4_gpu.utils.sensitivity_analysis --output-dir outputs_v4/VIDEO</code></p>
+</div>
+
+<!-- ==================== CONFIG REFERENCE ==================== -->
+<h2>Configuration Reference</h2>
+
+<table class="config-table">
+  <tr><th>Parameter</th><th>Default</th><th>Description</th></tr>
+  <tr><td>WHISPER_MODEL</td><td>large-v3</td><td>ASR model size</td></tr>
+  <tr><td>WHISPER_BATCH_SIZE</td><td>16</td><td>GPU batch for ASR</td></tr>
+  <tr><td>WHISPER_BEAM_SIZE</td><td>10</td><td>Beam search width</td></tr>
+  <tr><td>SAMPLE_INTERVAL</td><td>0.5</td><td>Frame extraction interval (seconds)</td></tr>
+  <tr><td>SCENE_SIGNAL_W1 / W2 / W3</td><td>0.35 / 0.45 / 0.20</td><td>PySceneDetect / DINOv2 / OCR signal weights</td></tr>
+  <tr><td>SCENE_THRESHOLD_K</td><td>1.5</td><td>Adaptive threshold: mean + k&times;std</td></tr>
+  <tr><td>MAX_SCENE_DURATION</td><td>30.0</td><td>Force-split scenes longer than this (seconds)</td></tr>
+  <tr><td>EXPECTED_SCENES_PER_MINUTE</td><td>4.0</td><td>Density guard target</td></tr>
+  <tr><td>OCR_FUZZY_THRESHOLD</td><td>0.80</td><td>Levenshtein ratio for OCR matching</td></tr>
+  <tr><td>OCR_SAMPLE_EVERY_FRAME</td><td>True</td><td>OCR on every 0.5s frame (v3)</td></tr>
+  <tr class="v4-row"><td>GEMINI_FRAME_ENABLED</td><td>True</td><td>Extract concepts from keyframes via Gemini</td></tr>
+  <tr class="v4-row"><td>GEMINI_FRAME_CACHE_DIR</td><td>.gemini_frame_cache</td><td>Cache for Gemini vision queries</td></tr>
+  <tr><td>TRACK_A_TEMPORAL_WINDOW</td><td>10.0</td><td>Search window for OCR matching (seconds)</td></tr>
+  <tr class="v4-row"><td>TRACK_E_ENABLED</td><td>True</td><td>Gemini concept matching in alignment</td></tr>
+  <tr class="v4-row"><td>TRACK_E_FUZZY_THRESHOLD</td><td>0.75</td><td>rapidfuzz token_set_ratio threshold</td></tr>
+  <tr><td>SIGLIP_KEYWORD_MIN_SIM</td><td>0.55</td><td>SigLIP similarity threshold</td></tr>
+  <tr><td>TEMPORAL_SIGMA</td><td>5.0</td><td>Gaussian temporal decay for SigLIP</td></tr>
+  <tr class="v4-row"><td>FIRST_MENTION_WINDOW_S</td><td>60.0</td><td>Lookback window for first-mention detection</td></tr>
+  <tr class="v4-row"><td>INSTRUCTIONAL_VERB_ENABLED</td><td>True</td><td>Bloom's verb detection in heuristic</td></tr>
+  <tr class="v4-row"><td>DISCOURSE_SIGNAL_ENABLED</td><td>True</td><td>Visual-reference phrase detection in heuristic</td></tr>
+  <tr class="v4-row"><td>LOCAL_VLM_BACKEND</td><td>auto</td><td>vllm | ollama | auto (try vLLM first)</td></tr>
+  <tr class="v4-row"><td>LOCAL_VLM_ENDPOINT</td><td>http://localhost:8000/v1</td><td>OpenAI-compatible endpoint for vLLM/SGLang</td></tr>
+  <tr class="v4-row"><td>LOCAL_VLM_MODEL_ID</td><td>Qwen2.5-VL-7B</td><td>Model ID (72B-AWQ recommended for HPC)</td></tr>
+  <tr><td>IMPORTANCE_BACKEND</td><td>auto</td><td>gemini &rarr; local_vlm &rarr; heuristic</td></tr>
+  <tr><td>SCORE_TAU</td><td>2.5</td><td>Gaussian width (seconds)</td></tr>
+  <tr><td>SCORING_MODE</td><td>both</td><td>gaussian | piecewise | both</td></tr>
+  <tr><td>PIECEWISE_FLOOR_FACTOR</td><td>0.5</td><td>Floor for alpha-adjusted piecewise score</td></tr>
+</table>
+
+<!-- ==================== V4 SUMMARY ==================== -->
+<h2>V4.0 Enhancement Summary</h2>
+<table class="config-table">
+  <tr><th>Feature</th><th>Stage</th><th>Purpose</th><th>Impact Target</th></tr>
+  <tr class="v4-row"><td>Gemini Frame Understanding</td><td>2</td><td>Extract visual concepts beyond OCR text</td><td>Coverage +15-20%</td></tr>
+  <tr class="v4-row"><td>Track E: Concept Matching</td><td>4</td><td>Match keywords to VLM-identified concepts</td><td>Reduce Case F (vocabulary mismatch)</td></tr>
+  <tr class="v4-row"><td>Transcript-Informed OCR</td><td>4</td><td>Correct garbled OCR using transcript</td><td>Improve Track A/B/C hit rate</td></tr>
+  <tr class="v4-row"><td>First-Mention Detection</td><td>5</td><td>Flag novel concept introductions</td><td>Better importance weighting</td></tr>
+  <tr class="v4-row"><td>Instructional Verb Detection</td><td>6</td><td>Dep-parsed Bloom's verbs + technical objects</td><td>Smarter heuristic importance</td></tr>
+  <tr class="v4-row"><td>Discourse Signal Detection</td><td>6</td><td>Visual-reference phrases ("as you can see")</td><td>Identify integration-demand moments</td></tr>
+  <tr class="v4-row"><td>Multimodal Importance</td><td>6</td><td>Keyframe images in Gemini importance prompt</td><td>Visual-verbal integration awareness</td></tr>
+  <tr class="v4-row"><td>Tier 2: vLLM/Qwen2.5-VL</td><td>6</td><td>Replace Ollama/LLaVA-7B with Qwen2.5-VL via vLLM</td><td>3-5x faster, much better quality</td></tr>
+  <tr class="v4-row"><td>Visual Persistence Verification</td><td>4, 7</td><td><code>visual_on_screen</code> flag — principled asymmetric scoring</td><td>Reviewer-defensible score=100 for delta_t &le; 0</td></tr>
+  <tr class="v4-row"><td>Sensitivity Analysis</td><td>Post</td><td>Weight perturbation &plusmn;50%, ablation, scoring impact</td><td>Prove weight robustness for paper</td></tr>
+</table>
+
+<p class="subtitle" style="margin-top:40px">Pipeline V4.0 &middot; Updated 2026-04-04 &middot; Temporal Contiguity Analysis for Instructional Videos &middot; Visual Persistence Verified Scoring</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ollama list:*)",
+      "Bash(ollama pull:*)",
+      "Bash(pip --version)",
+      "Bash(pip list:*)",
+      "Bash(pip install:*)",
+      "Bash(python -m spacy download en_core_web_sm)",
+      "Bash(rm -rf \"D:/PhD/Track2_codeClaude_19Mar26/outputs_v2_1\")",
+      "Bash(python run_all_v2_1.py)",
+      "Bash(PYTHONIOENCODING=utf-8 python -c \":*)",
+      "Bash(python -c \"import ast; [ast.parse\\(open\\(f\\).read\\(\\)\\) for f in [''pipeline_v4_gpu/config.py'', ''pipeline_v4_gpu/main.py'', ''pipeline_v4_gpu/stages/alignment.py'', ''pipeline_v4_gpu/stages/keyword_extraction.py'', ''pipeline_v4_gpu/stages/pedagogical_rating.py'', ''pipeline_v4_gpu/stages/scene_detection.py'', ''pipeline_v4_gpu/utils/gemini_utils.py'', ''pipeline_v4_gpu/utils/ocr_utils.py'']]; print\\(''All files parse OK''\\)\")",
+      "Bash(python analyze_freeze_diffs.py D1.mp4 D3.mp4 D5.mp4 --sample-fps 10 --threshold 1.0 -o outputs/freeze_detection/D_intervariant/)",
+      "Bash(python -c ':*)"
+    ]
+  }
+}

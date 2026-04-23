@@ -1,0 +1,138 @@
+{
+  "pipeline_version": "4.1",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "dwell_threshold": 15.0,
+  "dwell_tau": 30.0,
+  "keyword_level": {
+    "n_total": 178,
+    "n_groundable": 173,
+    "n_matched": 136,
+    "n_unmatched": 42,
+    "match_rate": 0.7640449438202247,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 37,
+      "low_groundability": 5
+    },
+    "mean_S_gaussian_weighted": 93.26105152764266,
+    "mean_S_piecewise_weighted": 93.7907677872458,
+    "mean_S_temporal_weighted": 93.26105152764266,
+    "mean_S_gaussian_unweighted": 92.62633860926954,
+    "mean_S_piecewise_unweighted": 93.16789381875404,
+    "mean_S_temporal_unweighted": 92.62633860926954,
+    "median_S_temporal": 100.0,
+    "mean_delta_t": -6.585797794117647,
+    "median_delta_t": -5.381500000000003,
+    "std_delta_t": 7.294525224917525,
+    "min_delta_t": -27.764,
+    "max_delta_t": 15.659999999999997,
+    "pct_negative_delta_t": 90.44117647058823,
+    "pct_within_1s": 9.558823529411764,
+    "mean_alpha": 0.9143315018315019,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 89.70588235294117,
+    "pct_Suboptimal": 2.941176470588235,
+    "pct_Disruptive": 2.941176470588235,
+    "pct_Unacceptable": 4.411764705882353,
+    "case_distribution": {
+      "A": 106,
+      "D": 19,
+      "E": 10,
+      "C": 1
+    },
+    "high_confidence": {
+      "n": 136,
+      "mean_S_temporal": 92.62633860926954,
+      "mean_delta_t": -6.585797794117647
+    }
+  },
+  "segment_level": {
+    "n_total": 39,
+    "n_with_matches": 38,
+    "n_without_matches": 1,
+    "mean_S_temporal": 90.69838840839765,
+    "median_S_temporal": 100.0,
+    "mean_S_piecewise": 91.4148213100144,
+    "mean_S_weighted": 90.57210163071468
+  },
+  "overall_score": 93.26,
+  "overall_grade": "Excellent",
+  "overall_score_alpha_only": 93.26,
+  "overall_score_unweighted": 92.63,
+  "overall_score_piecewise": 93.79,
+  "overall_grade_piecewise": "Excellent",
+  "coverage": {
+    "n_groundable_keywords": 173,
+    "n_matched": 136,
+    "coverage_rate": 0.7861,
+    "tc_score_matched_only": 93.26,
+    "tc_score_coverage_adjusted": 73.31,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 125,
+    "mean_lead_s": 6.75,
+    "median_lead_s": 5.48,
+    "max_lead_s": 27.76,
+    "pct_within_2s": 24.8,
+    "pct_within_5s": 47.2,
+    "pct_over_10s": 28.0,
+    "distribution": {
+      "0-1s (simultaneous)": 18,
+      "1-3s (near-simultaneous)": 23,
+      "3-5s (prepared ahead)": 18,
+      "5-10s (slide already up)": 31,
+      ">10s (long-showing slide)": 35
+    }
+  },
+  "positive_delta_t_only": {
+    "n": 1,
+    "mean_delta_t": 10.0,
+    "mean_S_temporal": 0.03,
+    "interpretation": "Cases B/C where visual appears AFTER narration (true TC lag)"
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 73,
+      "keyword_text": "data points graph",
+      "segment_id": 16,
+      "delta_t": -15.953999999999994,
+      "S_temporal": 1.4345576687866543e-07,
+      "priority": 89.99999987088981
+    },
+    {
+      "keyword_id": 74,
+      "keyword_text": "features data points",
+      "segment_id": 16,
+      "delta_t": -15.293999999999995,
+      "S_temporal": 7.468924082269328e-07,
+      "priority": 89.99999932779681
+    },
+    {
+      "keyword_id": 166,
+      "keyword_text": "class representatives nearest",
+      "segment_id": 37,
+      "delta_t": 15.659999999999997,
+      "S_temporal": 3.017467299399552e-07,
+      "priority": 79.99999975860263
+    },
+    {
+      "keyword_id": 87,
+      "keyword_text": "collected data",
+      "segment_id": 18,
+      "delta_t": 10.0,
+      "S_temporal": 0.033546262790251184,
+      "priority": 79.9731629897678
+    },
+    {
+      "keyword_id": 176,
+      "keyword_text": "red dots nearest",
+      "segment_id": 38,
+      "delta_t": 8.288999999999987,
+      "S_temporal": 0.4100683220534078,
+      "priority": 79.67194534235728
+    }
+  ]
+}

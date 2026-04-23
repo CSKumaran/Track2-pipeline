@@ -1,0 +1,129 @@
+{
+  "pipeline_version": "4.0",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "keyword_level": {
+    "n_total": 155,
+    "n_groundable": 151,
+    "n_matched": 43,
+    "n_unmatched": 112,
+    "match_rate": 0.27741935483870966,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 108,
+      "low_groundability": 4
+    },
+    "mean_S_gaussian_weighted": 82.75957625246822,
+    "mean_S_piecewise_weighted": 82.99360896052879,
+    "mean_S_temporal_weighted": 82.75957625246822,
+    "mean_S_gaussian_unweighted": 83.08110437721075,
+    "mean_S_piecewise_unweighted": 83.31593023255815,
+    "mean_S_temporal_unweighted": 83.08110437721075,
+    "median_S_temporal": 100.0,
+    "mean_delta_t": -6.694360465116279,
+    "median_delta_t": -6.332999999999998,
+    "std_delta_t": 7.788637485011328,
+    "min_delta_t": -27.441999999999997,
+    "max_delta_t": 6.52000000000001,
+    "pct_negative_delta_t": 81.3953488372093,
+    "pct_within_1s": 18.6046511627907,
+    "mean_alpha": 0.83851945644343,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 79.06976744186046,
+    "pct_Suboptimal": 4.651162790697675,
+    "pct_Disruptive": 2.3255813953488373,
+    "pct_Unacceptable": 13.953488372093023,
+    "case_distribution": {
+      "E": 25,
+      "D": 10,
+      "A": 8
+    },
+    "high_confidence": {
+      "n": 43,
+      "mean_S_temporal": 83.08110437721075,
+      "mean_delta_t": -6.694360465116279
+    }
+  },
+  "segment_level": {
+    "n_total": 43,
+    "n_with_matches": 27,
+    "n_without_matches": 16,
+    "mean_S_temporal": 84.83989584397705,
+    "median_S_temporal": 100.0,
+    "mean_S_piecewise": 85.29582199625976,
+    "mean_S_weighted": 101.95094432562419
+  },
+  "overall_score": 82.44,
+  "overall_grade": "Excellent",
+  "overall_score_alpha_only": 82.76,
+  "overall_score_unweighted": 83.08,
+  "overall_score_piecewise": 82.76,
+  "overall_grade_piecewise": "Excellent",
+  "coverage": {
+    "n_groundable_keywords": 151,
+    "n_matched": 43,
+    "coverage_rate": 0.2848,
+    "tc_score_matched_only": 82.44,
+    "tc_score_coverage_adjusted": 23.48,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 18,
+    "mean_lead_s": 5.38,
+    "median_lead_s": 1.37,
+    "max_lead_s": 27.44,
+    "pct_within_2s": 61.1,
+    "pct_within_5s": 61.1,
+    "pct_over_10s": 22.2,
+    "distribution": {
+      "0-1s (simultaneous)": 9,
+      "1-3s (near-simultaneous)": 2,
+      "3-5s (prepared ahead)": 0,
+      "5-10s (slide already up)": 3,
+      ">10s (long-showing slide)": 4
+    }
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 60,
+      "keyword_text": "x1, x2",
+      "segment_id": 16,
+      "delta_t": -8.575999999999993,
+      "S_temporal": 0.27841237696749277,
+      "priority": 134.62414329109387
+    },
+    {
+      "keyword_id": 61,
+      "keyword_text": "x2 x3 values",
+      "segment_id": 16,
+      "delta_t": -6.733499999999992,
+      "S_temporal": 2.6590486434656038,
+      "priority": 131.4102843313214
+    },
+    {
+      "keyword_id": 146,
+      "keyword_text": "sigmoid activation function",
+      "segment_id": 40,
+      "delta_t": 6.52000000000001,
+      "S_temporal": 3.334551494740517,
+      "priority": 115.99853820631138
+    },
+    {
+      "keyword_id": 54,
+      "keyword_text": "neural network",
+      "segment_id": 15,
+      "delta_t": -12.501999999999995,
+      "S_temporal": 0.00037117751451362836,
+      "priority": 89.99966594023694
+    },
+    {
+      "keyword_id": 43,
+      "keyword_text": "neural network break",
+      "segment_id": 14,
+      "delta_t": -7.200999999999993,
+      "S_temporal": 1.5790416399073797,
+      "priority": 83.36834119913728
+    }
+  ]
+}

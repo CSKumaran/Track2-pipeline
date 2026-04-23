@@ -1,0 +1,118 @@
+t_narr,t_vis,delta_t,match_case,match_method,alpha,scene_id,scene_t_start,scene_t_end,sub_scene_onset,confidence,gemini_concept_matched,gemini_match_score,visual_on_screen,keyword_id,keyword_text,segment_id,groundability,gap_since_expired,S_gaussian,S_piecewise,S_temporal,zone,S_floored,importance,importance_weight,S_weighted,priority
+6.877,3.5,-3.377,E,gemini_concept_exact,0.8999999999999999,2.0,3.5,19.5,,HIGH,white and light grey mist fills the valleys,1.0,True,0,valleys,0,MEDIUM,,100.0,100.0,100.0,Optimal,95.0,5,1.2,120.0,0.0
+5.234,3.5,-1.734,E,gemini_concept_fuzzy,0.825,2.0,3.5,19.5,,MEDIUM,this image captures a breathtaking aerial or elevated view of a mountainous landscape partially obscured by a thick,0.75,True,1,foggy landscape,0,MEDIUM,,100.0,100.0,100.0,Optimal,91.25,5,1.2,120.0,0.0
+9.662,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,2,highest peak,0,MEDIUM,,,,,No Match,,5,1.2,,0.0
+7.999,,,F,low_groundability,0.0,,,,,NONE,,,False,3,goal,0,LOW,,,,,No Match,,5,1.2,,0.0
+6.216,3.5,-2.716,E,gemini_concept_exact,0.8999999999999999,2.0,3.5,19.5,,HIGH,the upper parts of several forested mountains and hills emerge. the most prominent mountain in the center is densely covered with dark green trees,1.0,True,4,hills,0,MEDIUM,,100.0,100.0,100.0,Optimal,95.0,5,1.2,120.0,0.0
+14.992,,,F,low_groundability,0.0,,,,,NONE,,,False,5,one step,1,LOW,,,,,No Match,,5,1.2,,0.0
+16.154,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,6,direction,1,MEDIUM,,,,,No Match,,5,1.2,,0.0
+15.693,,,F,low_groundability,0.0,,,,,NONE,,,False,7,time,1,LOW,,,,,No Match,,5,1.2,,0.0
+18.438,,,F,low_groundability,0.0,,,,,NONE,,,False,8,idea,2,LOW,,,,,No Match,,4,1.1,,0.0
+19.5,,,F,low_groundability,0.0,,,,,NONE,,,False,9,essence,2,LOW,,,,,No Match,,4,1.1,,0.0
+20.021,20.5,0.4789999999999992,A,ocr_at_tnarr_full,1.0,3.0,19.5,24.0,,HIGH,,,True,10,local search,2,MEDIUM,,98.18121521654717,100.0,98.18121521654717,Optimal,98.18121521654717,4,1.1,107.9993367382019,2.0006632617981097
+21.143,21.0,-0.1430000000000006,D,ocr_at_tnarr_full,1.0,3.0,19.5,24.0,21.0,HIGH,,,True,11,optimization,2,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,4,1.1,110.00000000000001,0.0
+30.153,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,12,every possibility,3,MEDIUM,,,,,No Match,,4,1.1,,0.0
+23.186,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,13,techniques,3,MEDIUM,,,,,No Match,,4,1.1,,0.0
+24.368,24.0,-0.3679999999999985,A,ocr_at_tnarr_partial,0.8,4.0,24.0,28.5,,MEDIUM,,,True,14,search space,3,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,4,1.1,110.00000000000001,0.0
+29.092,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,15,perfect solution,3,MEDIUM,,,,,No Match,,4,1.1,,0.0
+33.777,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,16,small changes,4,MEDIUM,,,,,No Match,,4,1.1,,0.0
+36.299,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,17,outcome,4,MEDIUM,,,,,No Match,,4,1.1,,0.0
+32.295,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,18,good enough solution,4,MEDIUM,,,,,No Match,,4,1.1,,0.0
+39.282,39.0,-0.2819999999999965,D,ocr_at_tnarr_partial,0.8,7.0,37.0,54.5,39.0,MEDIUM,,,True,19,single current state,5,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,3,1.0,100.0,0.0
+41.525,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,20,multiple paths,5,MEDIUM,,,,,No Match,,3,1.0,,0.0
+37.24,37.0,-0.240000000000002,A,ocr_at_tnarr_full,1.0,7.0,37.0,54.5,,HIGH,,,True,21,local search algorithms,5,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,3,1.0,100.0,0.0
+44.448,39.0,-5.448,D,ocr_at_tnarr_partial,0.8,7.0,37.0,54.5,39.0,MEDIUM,,,True,22,neighboring state,6,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,2,0.9,90.0,0.0
+43.607,39.0,-4.606999999999999,D,ocr_at_tnarr_full,1.0,7.0,37.0,54.5,39.0,HIGH,,,True,23,one state,6,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,2,0.9,90.0,0.0
+46.89,46.0,-0.8900000000000006,D,ocr_at_tnarr_partial,0.8,7.0,37.0,54.5,46.0,MEDIUM,,,True,24,objective function,6,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,2,0.9,90.0,0.0
+50.334,,,F,low_groundability,0.0,,,,,NONE,,,False,25,move,7,LOW,,,,,No Match,,3,1.0,,0.0
+51.255,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,26,improvement,7,MEDIUM,,,,,No Match,,3,1.0,,0.0
+55.862,54.5,-1.362000000000002,A,ocr_at_tnarr_full,1.0,8.0,54.5,60.5,,HIGH,,,True,27,problems,8,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,2,0.9,90.0,0.0
+57.044,,,F,low_groundability,0.0,,,,,NONE,,,False,28,solution,8,LOW,,,,,No Match,,2,0.9,,0.0
+54.56,54.5,-0.0600000000000022,A,ocr_at_tnarr_full,1.0,8.0,54.5,60.5,,HIGH,,,True,29,local search,8,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,2,0.9,90.0,0.0
+61.991,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,30,hill climbing,9,MEDIUM,,,,,No Match,,2,0.9,,0.0
+63.834,64.0,0.1659999999999968,D,ocr_at_tnarr_full,1.0,9.0,60.5,64.0,64.0,HIGH,,,True,31,simplest local search methods,10,MEDIUM,,99.77979480814886,100.0,99.77979480814886,Optimal,99.77979480814886,1,0.8,79.8238358465191,0.1761641534809087
+66.118,,,F,low_groundability,0.0,,,,,NONE,,,False,32,idea,11,LOW,,,,,No Match,,2,0.9,,0.0
+70.004,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,33,neighboring solutions,11,MEDIUM,,,,,No Match,,2,0.9,,0.0
+67.68,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,34,initial solution,11,MEDIUM,,,,,No Match,,2,0.9,,0.0
+73.309,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,35,current state,12,MEDIUM,,,,,No Match,,4,1.1,,0.0
+72.107,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,36,neighbors,12,MEDIUM,,,,,No Match,,4,1.1,,0.0
+74.991,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,37,new state,12,MEDIUM,,,,,No Match,,4,1.1,,0.0
+77.134,,,F,low_groundability,0.0,,,,,NONE,,,False,38,process,13,LOW,,,,,No Match,,3,1.0,,0.0
+79.318,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,39,better neighbor,14,MEDIUM,,,,,No Match,,1,0.8,,0.0
+81.541,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,40,improvement,14,MEDIUM,,,,,No Match,,1,0.8,,0.0
+83.064,,,F,low_groundability,0.0,,,,,NONE,,,False,41,point,15,LOW,,,,,No Match,,3,1.0,,0.0
+85.748,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,42,hill climbing,16,MEDIUM,,,,,No Match,,2,0.9,,0.0
+86.77,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,43,major limitation,16,MEDIUM,,,,,No Match,,2,0.9,,0.0
+96.826,,,F,no_ocr_nearby,0.0,,,,,NONE,,,False,44,highest point,18,MEDIUM,,,,,No Match,,3,1.0,,0.0
+90.676,86.0,-4.676000000000002,E,gemini_concept_exact,0.8999999999999999,12.0,86.0,90.0,,HIGH,the central figure is a black silhouette of a person walking uphill from left to right. the person is carrying a backpack,1.0,False,45,hill,18,MEDIUM,,17.39133521410144,11.339999999999932,17.39133521410144,Disruptive,16.521768453396366,3,1.0,17.39133521410144,74.3477983073087
+93.22,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,46,small bump,18,MEDIUM,,,,,No Match,,3,1.0,,0.0
+91.297,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,47,foggy landscape,18,MEDIUM,,,,,No Match,,3,1.0,,0.0
+94.542,,,F,no_ocr_nearby,0.0,,,,,NONE,,,False,48,all nearby points,18,MEDIUM,,,,,No Match,,3,1.0,,0.0
+99.751,110.0,10.248999999999995,D,ocr_at_tnarr_partial,0.8,13.0,90.0,110.0,110.0,MEDIUM,,,True,49,nearby states,19,MEDIUM,,0.0224113019951181,0.0,0.0224113019951181,Unacceptable,0.02017017179560629,1,0.8,0.017929041596094483,63.98565676672313
+102.996,,,F,low_groundability,0.0,,,,,NONE,,,False,50,top,19,LOW,,,,,No Match,,1,0.8,,0.0
+104.458,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,51,much higher peak,19,MEDIUM,,,,,No Match,,1,0.8,,0.0
+108.001,110.0,1.9989999999999952,D,ocr_at_tnarr_full,1.0,13.0,90.0,110.0,110.0,HIGH,,,True,52,local maximum,20,MEDIUM,,72.63813838378394,85.01500000000007,72.63813838378394,Suboptimal,72.63813838378394,1,0.8,58.11051070702715,21.88948929297285
+112.545,110.0,-2.5450000000000017,A,ocr_at_tnarr_full,1.0,14.0,110.0,124.0,,HIGH,,,True,53,plateau,21,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,3,1.0,100.0,0.0
+113.666,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,54,all nearby options,21,MEDIUM,,,,,No Match,,3,1.0,,0.0
+111.264,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,55,flat area,21,MEDIUM,,,,,No Match,,3,1.0,,0.0
+116.608,110.0,-6.608000000000004,A,ocr_at_tnarr_full,1.0,14.0,110.0,124.0,,HIGH,,,True,56,ridge,22,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,5,1.2,120.0,0.0
+117.729,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,57,path,22,MEDIUM,,,,,No Match,,5,1.2,,0.0
+121.653,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,58,limitations,23,MEDIUM,,,,,No Match,,5,1.2,,0.0
+125.316,125.5,0.1839999999999975,D,ocr_at_tnarr_full,1.0,15.0,124.0,128.0,125.5,HIGH,,,True,59,simulated annealing,23,MEDIUM,,99.72951846226896,100.0,99.72951846226896,Optimal,99.72951846226896,5,1.2,119.67542215472274,0.32457784527725264
+123.194,110.0,-13.194000000000004,A,ocr_at_tnarr_partial,0.8,14.0,110.0,124.0,,MEDIUM,,,True,60,more advanced local search methods,23,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,5,1.2,120.0,0.0
+131.141,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,61,low energy state,24,MEDIUM,,,,,No Match,,4,1.1,,0.0
+128.879,,,F,low_groundability,0.0,,,,,NONE,,,False,62,way,24,LOW,,,,,No Match,,4,1.1,,0.0
+127.278,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,63,algorithm,24,MEDIUM,,,,,No Match,,4,1.1,,0.0
+129.119,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,64,metals,24,MEDIUM,,,,,No Match,,4,1.1,,0.0
+132.682,,,F,low_groundability,0.0,,,,,NONE,,,False,65,idea,25,LOW,,,,,No Match,,4,1.1,,0.0
+137.628,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,66,worse one,25,MEDIUM,,,,,No Match,,4,1.1,,0.0
+135.626,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,67,better solution,25,MEDIUM,,,,,No Match,,4,1.1,,0.0
+134.985,,,F,low_groundability,0.0,,,,,NONE,,,False,68,order,25,LOW,,,,,No Match,,4,1.1,,0.0
+141.013,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,69,hill climbing,26,MEDIUM,,,,,No Match,,3,1.0,,0.0
+138.89,137.5,-1.3899999999999864,A,ocr_at_tnarr_full,1.0,18.0,137.5,141.0,,HIGH,,,True,70,simulated annealing,26,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,3,1.0,100.0,0.0
+143.996,,,F,low_groundability,0.0,,,,,NONE,,,False,71,solution,26,LOW,,,,,No Match,,3,1.0,,0.0
+146.099,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,72,search,26,MEDIUM,,,,,No Match,,3,1.0,,0.0
+143.155,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,73,moves,26,MEDIUM,,,,,No Match,,3,1.0,,0.0
+148.622,154.5,5.877999999999986,D,ocr_at_tnarr_partial,0.8,20.0,145.5,166.5,154.5,MEDIUM,,,True,74,worse move,27,MEDIUM,,6.303464897790469,0.0,6.303464897790469,Unacceptable,5.673118408011422,5,1.2,7.564157877348562,89.94867369812115
+150.765,154.5,3.7350000000000136,D,ocr_at_tnarr_full,1.0,20.0,145.5,166.5,154.5,HIGH,,,True,75,temperature,27,MEDIUM,,32.75816310012602,44.27499999999952,32.75816310012602,Disruptive,32.75816310012602,5,1.2,39.30979572015122,80.69020427984879
+147.1,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,76,probability,27,MEDIUM,,,,,No Match,,5,1.2,,0.0
+149.784,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,77,parameter,27,MEDIUM,,,,,No Match,,5,1.2,,0.0
+157.012,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,78,local maxima,28,MEDIUM,,,,,No Match,,1,0.8,,0.0
+151.886,154.5,2.6140000000000043,D,ocr_at_tnarr_full,1.0,20.0,145.5,166.5,154.5,HIGH,,,True,79,high temperatures,28,MEDIUM,,57.88918074056467,75.78999999999994,57.88918074056467,Suboptimal,57.88918074056467,1,0.8,46.31134459245174,33.68865540754827
+153.208,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,80,algorithm,28,MEDIUM,,,,,No Match,,1,0.8,,0.0
+155.19,154.5,-0.6899999999999977,D,ocr_at_tnarr_full,1.0,20.0,145.5,166.5,154.5,HIGH,,,True,81,bad moves,28,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,1,0.8,80.0,0.0
+158.675,154.5,-4.175000000000011,D,ocr_at_tnarr_full,1.0,20.0,145.5,166.5,154.5,HIGH,,,True,82,temperature,29,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,2,0.9,90.0,0.0
+164.588,164.0,-0.5879999999999939,D,ocr_at_tnarr_partial,0.8,20.0,145.5,166.5,164.0,MEDIUM,,,True,83,good solution,29,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,2,0.9,90.0,0.0
+161.1,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,84,algorithm,29,MEDIUM,,,,,No Match,,2,0.9,,0.0
+160.098,,,F,low_groundability,0.0,,,,,NONE,,,False,85,time,29,LOW,,,,,No Match,,2,0.9,,0.0
+170.481,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,86,almost anything,31,MEDIUM,,,,,No Match,,1,0.8,,0.0
+168.296,145.5,10.0,C,ocr_backward_expired,0.8,20.0,145.5,166.5,,MEDIUM,,,False,87,temperature,31,MEDIUM,1.7959999999999925,0.033546262790251184,0.0,0.033546262790251184,Unacceptable,0.030191636511226066,1,0.8,0.026837010232200947,63.978530391814246
+174.871,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,88,risky paths,31,MEDIUM,,,,,No Match,,1,0.8,,0.0
+172.485,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,89,valleys,31,MEDIUM,,,,,No Match,,1,0.8,,0.0
+176.434,,,F,no_ocr_nearby,0.0,,,,,NONE,,,False,90,temperature,32,MEDIUM,,,,,No Match,,2,0.9,,0.0
+182.987,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,91,current state,32,MEDIUM,,,,,No Match,,2,0.9,,0.0
+181.844,,,F,no_ocr_nearby,0.0,,,,,NONE,,,False,92,steps,32,MEDIUM,,,,,No Match,,2,0.9,,0.0
+189.439,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,93,global maximum,33,MEDIUM,,,,,No Match,,4,1.1,,0.0
+191.523,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,94,very complex landscapes,33,MEDIUM,,,,,No Match,,4,1.1,,0.0
+188.297,,,F,low_groundability,0.0,,,,,NONE,,,False,95,solution,33,LOW,,,,,No Match,,4,1.1,,0.0
+184.349,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,96,cooling,33,MEDIUM,,,,,No Match,,4,1.1,,0.0
+186.473,192.5,6.026999999999987,B,ocr_forward_full,1.0,24.0,188.0,192.5,,HIGH,,,False,97,simulated annealing,33,MEDIUM,,5.469525495643582,0.0,5.469525495643582,Unacceptable,5.469525495643582,4,1.1,6.016478045207941,103.98352195479207
+193.587,192.5,-1.086999999999989,A,ocr_at_tnarr_full,1.0,25.0,192.5,216.0,,HIGH,,,True,98,both hill climbing,34,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,5,1.2,120.0,0.0
+196.111,193.0,-3.11099999999999,A,ocr_at_tnarr_full,1.0,25.0,192.5,216.0,,HIGH,,,True,99,examples,34,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,5,1.2,120.0,0.0
+201.539,194.0,-7.538999999999987,D,ocr_at_tnarr_full,1.0,25.0,192.5,216.0,194.0,HIGH,,,True,100,exact path,34,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,5,1.2,120.0,0.0
+204.424,,,F,low_groundability,0.0,,,,,NONE,,,False,101,solution,34,LOW,,,,,No Match,,5,1.2,,0.0
+204.885,195.0,-9.884999999999993,D,ocr_at_tnarr_full,1.0,25.0,192.5,216.0,195.0,HIGH,,,True,102,itself,34,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,5,1.2,120.0,0.0
+203.322,194.5,-8.822000000000003,D,ocr_at_tnarr_full,1.0,25.0,192.5,216.0,194.5,HIGH,,,True,103,only the quality,34,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,5,1.2,120.0,0.0
+199.316,193.5,-5.8160000000000025,A,ocr_at_tnarr_full,1.0,25.0,192.5,216.0,,HIGH,,,True,104,optimization problems,34,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,5,1.2,120.0,0.0
+196.672,193.0,-3.671999999999997,A,ocr_at_tnarr_full,1.0,25.0,192.5,216.0,,HIGH,,,True,105,local search,34,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,5,1.2,120.0,0.0
+194.889,192.5,-2.38900000000001,A,ocr_at_tnarr_full,1.0,25.0,192.5,216.0,,HIGH,,,True,106,simulated annealing,34,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,5,1.2,120.0,0.0
+214.961,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,107,neural networks,35,MEDIUM,,,,,No Match,,5,1.2,,0.0
+208.591,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,108,scheduling,35,MEDIUM,,,,,No Match,,5,1.2,,0.0
+210.654,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,109,traveling salesman,35,MEDIUM,,,,,No Match,,5,1.2,,0.0
+209.913,193.5,-16.41300000000001,A,ocr_at_tnarr_full,1.0,25.0,192.5,216.0,,HIGH,,,True,110,problems,35,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,5,1.2,120.0,0.0
+214.34,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,111,training,35,MEDIUM,,,,,No Match,,5,1.2,,0.0
+205.886,193.0,-12.885999999999996,A,ocr_at_tnarr_partial,0.8,25.0,192.5,216.0,,MEDIUM,,,True,112,other examples,35,MEDIUM,,100.0,100.0,100.0,Optimal,90.0,5,1.2,120.0,0.0
+212.437,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,113,machine,35,MEDIUM,,,,,No Match,,5,1.2,,0.0
+213.298,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,114,algorithms,35,MEDIUM,,,,,No Match,,5,1.2,,0.0
+212.937,,,F,ocr_vocabulary_mismatch,0.0,,,,,NONE,,,False,115,learning,35,MEDIUM,,,,,No Match,,5,1.2,,0.0
+206.828,193.0,-13.828000000000005,A,ocr_at_tnarr_full,1.0,25.0,192.5,216.0,,HIGH,,,True,116,local search,35,MEDIUM,,100.0,100.0,100.0,Optimal,100.0,5,1.2,120.0,0.0

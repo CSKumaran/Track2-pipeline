@@ -1,0 +1,130 @@
+{
+  "pipeline_version": "4.1",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "dwell_threshold": 15.0,
+  "dwell_tau": 30.0,
+  "keyword_level": {
+    "n_total": 54,
+    "n_groundable": 53,
+    "n_matched": 14,
+    "n_unmatched": 40,
+    "match_rate": 0.25925925925925924,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 39,
+      "low_groundability": 1
+    },
+    "mean_S_gaussian_weighted": 65.30698146125972,
+    "mean_S_piecewise_weighted": 65.02821642260868,
+    "mean_S_temporal_weighted": 65.30698146125972,
+    "mean_S_gaussian_unweighted": 64.68746327306795,
+    "mean_S_piecewise_unweighted": 64.40372028729814,
+    "mean_S_temporal_unweighted": 64.68746327306795,
+    "median_S_temporal": 99.8998227113593,
+    "mean_delta_t": -4.128392857142856,
+    "median_delta_t": -3.31625,
+    "std_delta_t": 26.351921852391722,
+    "min_delta_t": -50.172,
+    "max_delta_t": 45.907,
+    "pct_negative_delta_t": 71.42857142857143,
+    "pct_within_1s": 7.142857142857142,
+    "mean_alpha": 0.8142857142857146,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 57.14285714285714,
+    "pct_Suboptimal": 0.0,
+    "pct_Disruptive": 14.285714285714285,
+    "pct_Unacceptable": 28.57142857142857,
+    "case_distribution": {
+      "A": 10,
+      "D": 4
+    },
+    "high_confidence": {
+      "n": 14,
+      "mean_S_temporal": 64.68746327306795,
+      "mean_delta_t": -4.128392857142856
+    }
+  },
+  "segment_level": {
+    "n_total": 12,
+    "n_with_matches": 7,
+    "n_without_matches": 5,
+    "mean_S_temporal": 55.01065630171711,
+    "median_S_temporal": 50.0,
+    "mean_S_piecewise": 54.82149404131483,
+    "mean_S_weighted": 37.2806593956905
+  },
+  "overall_score": 52.26,
+  "overall_grade": "Acceptable",
+  "overall_score_alpha_only": 65.31,
+  "overall_score_unweighted": 64.69,
+  "overall_score_piecewise": 52.01,
+  "overall_grade_piecewise": "Acceptable",
+  "coverage": {
+    "n_groundable_keywords": 53,
+    "n_matched": 14,
+    "coverage_rate": 0.2642,
+    "tc_score_matched_only": 52.26,
+    "tc_score_coverage_adjusted": 13.8,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 14,
+    "mean_lead_s": 4.13,
+    "median_lead_s": 3.32,
+    "max_lead_s": 50.17,
+    "pct_within_2s": 42.9,
+    "pct_within_5s": 57.1,
+    "pct_over_10s": 35.7,
+    "distribution": {
+      "0-1s (simultaneous)": 5,
+      "1-3s (near-simultaneous)": 1,
+      "3-5s (prepared ahead)": 2,
+      "5-10s (slide already up)": 1,
+      ">10s (long-showing slide)": 5
+    }
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 29,
+      "keyword_text": "meaningful insight step",
+      "segment_id": 6,
+      "delta_t": 34.673,
+      "S_temporal": 1.7010055662529386e-40,
+      "priority": 120.0
+    },
+    {
+      "keyword_id": 19,
+      "keyword_text": "content analysis step",
+      "segment_id": 5,
+      "delta_t": 45.907,
+      "S_temporal": 6.019986167492559e-72,
+      "priority": 80.0
+    },
+    {
+      "keyword_id": 46,
+      "keyword_text": "completing steps",
+      "segment_id": 10,
+      "delta_t": 14.739000000000004,
+      "S_temporal": 2.833835413665495e-06,
+      "priority": 79.99999773293167
+    },
+    {
+      "keyword_id": 53,
+      "keyword_text": "ensures instructional",
+      "segment_id": 11,
+      "delta_t": 6.349999999999994,
+      "S_temporal": 3.9723989669418827,
+      "priority": 46.0932484958679
+    },
+    {
+      "keyword_id": 51,
+      "keyword_text": "videos deliver maximum",
+      "segment_id": 11,
+      "delta_t": -50.172,
+      "S_temporal": 50.29518294345574,
+      "priority": 23.858312187141244
+    }
+  ]
+}

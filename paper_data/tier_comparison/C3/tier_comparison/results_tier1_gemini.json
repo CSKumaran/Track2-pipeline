@@ -1,0 +1,137 @@
+{
+  "pipeline_version": "4.0",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "keyword_level": {
+    "n_total": 126,
+    "n_groundable": 122,
+    "n_matched": 35,
+    "n_unmatched": 91,
+    "match_rate": 0.2777777777777778,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 87,
+      "low_groundability": 4
+    },
+    "mean_S_gaussian_weighted": 74.92749039932185,
+    "mean_S_piecewise_weighted": 75.70424561403509,
+    "mean_S_temporal_weighted": 74.92749039932185,
+    "mean_S_gaussian_unweighted": 75.29929365148561,
+    "mean_S_piecewise_unweighted": 76.06857142857145,
+    "mean_S_temporal_unweighted": 75.29929365148561,
+    "median_S_temporal": 100.0,
+    "mean_delta_t": -2.0189285714285727,
+    "median_delta_t": -1.0570000000000022,
+    "std_delta_t": 7.294973928654434,
+    "min_delta_t": -26.733000000000004,
+    "max_delta_t": 10.0,
+    "pct_negative_delta_t": 60.0,
+    "pct_within_1s": 11.428571428571429,
+    "mean_alpha": 0.8142857142857144,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 62.857142857142854,
+    "pct_Suboptimal": 11.428571428571429,
+    "pct_Disruptive": 11.428571428571429,
+    "pct_Unacceptable": 14.285714285714285,
+    "case_distribution": {
+      "D": 14,
+      "A": 13,
+      "B": 6,
+      "C": 1,
+      "E": 1
+    },
+    "high_confidence": {
+      "n": 35,
+      "mean_S_temporal": 75.29929365148561,
+      "mean_delta_t": -2.0189285714285727
+    }
+  },
+  "segment_level": {
+    "n_total": 34,
+    "n_with_matches": 17,
+    "n_without_matches": 17,
+    "mean_S_temporal": 77.5427271832417,
+    "median_S_temporal": 99.99999999999999,
+    "mean_S_piecewise": 78.68631913021619,
+    "mean_S_weighted": 98.92766384819704
+  },
+  "overall_score": 73.73,
+  "overall_grade": "Good",
+  "overall_score_alpha_only": 74.93,
+  "overall_score_unweighted": 75.3,
+  "overall_score_piecewise": 74.66,
+  "overall_grade_piecewise": "Good",
+  "coverage": {
+    "n_groundable_keywords": 122,
+    "n_matched": 35,
+    "coverage_rate": 0.2869,
+    "tc_score_matched_only": 73.73,
+    "tc_score_coverage_adjusted": 21.15,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 27,
+    "mean_lead_s": 3.82,
+    "median_lead_s": 2.84,
+    "max_lead_s": 26.73,
+    "pct_within_2s": 48.1,
+    "pct_within_5s": 66.7,
+    "pct_over_10s": 11.1,
+    "distribution": {
+      "0-1s (simultaneous)": 10,
+      "1-3s (near-simultaneous)": 5,
+      "3-5s (prepared ahead)": 3,
+      "5-10s (slide already up)": 6,
+      ">10s (long-showing slide)": 3
+    }
+  },
+  "positive_delta_t_only": {
+    "n": 7,
+    "mean_delta_t": 5.61,
+    "mean_S_temporal": 22.07,
+    "interpretation": "Cases B/C where visual appears AFTER narration (true TC lag)"
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 109,
+      "keyword_text": "10 people gamers",
+      "segment_id": 29,
+      "delta_t": 9.045999999999992,
+      "S_temporal": 0.1435259973467116,
+      "priority": 159.77035840424526
+    },
+    {
+      "keyword_id": 108,
+      "keyword_text": "gamers remaining",
+      "segment_id": 29,
+      "delta_t": 5.608000000000004,
+      "S_temporal": 8.078426116423467,
+      "priority": 147.07451821372246
+    },
+    {
+      "keyword_id": 33,
+      "keyword_text": "homicidal",
+      "segment_id": 7,
+      "delta_t": 5.658000000000001,
+      "S_temporal": 7.72246077117031,
+      "priority": 138.41630884324454
+    },
+    {
+      "keyword_id": 97,
+      "keyword_text": "representing homicidal people",
+      "segment_id": 25,
+      "delta_t": 4.586999999999989,
+      "S_temporal": 18.57700760874753,
+      "priority": 97.70759086950298
+    },
+    {
+      "keyword_id": 117,
+      "keyword_text": "makes people homicidal",
+      "segment_id": 31,
+      "delta_t": 5.110000000000014,
+      "S_temporal": 12.381484682916449,
+      "priority": 70.09481225366684
+    }
+  ]
+}

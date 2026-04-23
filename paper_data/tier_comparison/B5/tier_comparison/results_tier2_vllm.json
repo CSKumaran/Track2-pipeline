@@ -1,0 +1,137 @@
+{
+  "pipeline_version": "4.0",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "keyword_level": {
+    "n_total": 178,
+    "n_groundable": 173,
+    "n_matched": 134,
+    "n_unmatched": 44,
+    "match_rate": 0.7528089887640449,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 39,
+      "low_groundability": 5
+    },
+    "mean_S_gaussian_weighted": 93.03019321830153,
+    "mean_S_piecewise_weighted": 93.32496449746476,
+    "mean_S_temporal_weighted": 93.03019321830153,
+    "mean_S_gaussian_unweighted": 92.50524177708833,
+    "mean_S_piecewise_unweighted": 92.78649253731344,
+    "mean_S_temporal_unweighted": 92.50524177708833,
+    "median_S_temporal": 100.0,
+    "mean_delta_t": -6.605160447761195,
+    "median_delta_t": -5.437500000000007,
+    "std_delta_t": 7.335414327725551,
+    "min_delta_t": -27.764,
+    "max_delta_t": 15.659999999999997,
+    "pct_negative_delta_t": 91.04477611940298,
+    "pct_within_1s": 8.955223880597014,
+    "mean_alpha": 0.9170329670329669,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 90.29850746268657,
+    "pct_Suboptimal": 2.2388059701492535,
+    "pct_Disruptive": 0.7462686567164178,
+    "pct_Unacceptable": 6.7164179104477615,
+    "case_distribution": {
+      "A": 105,
+      "D": 16,
+      "E": 8,
+      "B": 4,
+      "C": 1
+    },
+    "high_confidence": {
+      "n": 134,
+      "mean_S_temporal": 92.50524177708833,
+      "mean_delta_t": -6.605160447761195
+    }
+  },
+  "segment_level": {
+    "n_total": 39,
+    "n_with_matches": 37,
+    "n_without_matches": 2,
+    "mean_S_temporal": 90.26040518153603,
+    "median_S_temporal": 100.0,
+    "mean_S_piecewise": 90.54884215457746,
+    "mean_S_weighted": 92.90605811959007
+  },
+  "overall_score": 92.48,
+  "overall_grade": "Excellent",
+  "overall_score_alpha_only": 93.03,
+  "overall_score_unweighted": 92.51,
+  "overall_score_piecewise": 92.91,
+  "overall_grade_piecewise": "Excellent",
+  "coverage": {
+    "n_groundable_keywords": 173,
+    "n_matched": 134,
+    "coverage_rate": 0.7746,
+    "tc_score_matched_only": 92.48,
+    "tc_score_coverage_adjusted": 71.63,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 121,
+    "mean_lead_s": 7.11,
+    "median_lead_s": 5.65,
+    "max_lead_s": 27.76,
+    "pct_within_2s": 22.3,
+    "pct_within_5s": 45.5,
+    "pct_over_10s": 28.9,
+    "distribution": {
+      "0-1s (simultaneous)": 14,
+      "1-3s (near-simultaneous)": 23,
+      "3-5s (prepared ahead)": 18,
+      "5-10s (slide already up)": 31,
+      ">10s (long-showing slide)": 35
+    }
+  },
+  "positive_delta_t_only": {
+    "n": 5,
+    "mean_delta_t": 7.13,
+    "mean_S_temporal": 3.29,
+    "interpretation": "Cases B/C where visual appears AFTER narration (true TC lag)"
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 97,
+      "keyword_text": "step select",
+      "segment_id": 20,
+      "delta_t": 7.093000000000004,
+      "S_temporal": 1.7866069565024008,
+      "priority": 147.3200895652464
+    },
+    {
+      "keyword_id": 96,
+      "keyword_text": "select value example",
+      "segment_id": 20,
+      "delta_t": 5.872000000000014,
+      "S_temporal": 6.339116883908454,
+      "priority": 112.39305973930985
+    },
+    {
+      "keyword_id": 73,
+      "keyword_text": "data points graph",
+      "segment_id": 16,
+      "delta_t": -15.953999999999994,
+      "S_temporal": 1.4345576687866543e-07,
+      "priority": 89.99999987088981
+    },
+    {
+      "keyword_id": 74,
+      "keyword_text": "features data points",
+      "segment_id": 16,
+      "delta_t": -15.293999999999995,
+      "S_temporal": 7.468924082269328e-07,
+      "priority": 89.99999932779681
+    },
+    {
+      "keyword_id": 168,
+      "keyword_text": "class representatives nearest",
+      "segment_id": 37,
+      "delta_t": 15.659999999999997,
+      "S_temporal": 3.017467299399552e-07,
+      "priority": 79.99999975860263
+    }
+  ]
+}

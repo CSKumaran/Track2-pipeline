@@ -1,0 +1,37 @@
+segment_id,text_preview,n_keywords,n_matched,n_unmatched,match_rate,mean_S_temporal,median_S_temporal,mean_S_piecewise,mean_delta_t,median_delta_t,min_delta_t,max_delta_t,n_Optimal,n_Suboptimal,n_Disruptive,n_Unacceptable,n_high_confidence,n_medium_confidence,mean_S_high_conf,importance,importance_weight,mean_S_weighted,max_priority
+0,"Imagine you're standing in a foggy landscape of hills and valleys, and your goal",5,0,5,0.0,,,,,,,,0,0,0,0,0,0,,5,1.2,,0.0
+1,"You can't see very far ahead, only a little around you, so you take one step at ",6,1,5,0.16666666666666666,100.0,100.0,100.0,-12.193,-12.193,-12.193,-12.193,1,0,0,0,1,0,100.0,5,1.2,120.0,0.0
+2,This idea captures the essence of local search and optimization algorithms.,4,3,1,0.75,97.15375818838503,98.18121521654717,100.0,0.18499999999999986,0.4789999999999992,-0.9239999999999996,1.0,3,0,0,0,3,0,96.83094995173691,2,0.9,87.14785495656322,5.535623060162226
+3,These techniques are used when the search space is too large to explore exhausti,7,2,5,0.2857142857142857,100.0,100.0,100.0,-1.2769999999999992,-1.2769999999999992,-2.186,-0.3679999999999985,2,0,0,0,2,0,100.0,4,1.1,110.00000000000001,0.0
+4,we try to find a good enough solution by making small changes and seeing if they,5,0,5,0.0,,,,,,,,0,0,0,0,0,0,,5,1.2,,0.0
+5,Local search algorithms operate on a single current state rather than exploring ,5,4,1,0.8,99.99999999999999,100.0,99.99999999999999,-0.5764999999999993,-0.5714999999999968,-0.9230000000000018,-0.240000000000002,4,0,0,0,4,0,100.0,3,1.0,100.0,0.0
+6,"They move from one state to a neighboring state, usually based on some objective",5,4,1,0.8,99.99999999999999,100.0,99.99999999999999,-4.978999999999999,-5.0275,-8.970999999999997,-0.8900000000000006,4,0,0,0,4,0,100.0,4,1.1,110.00000000000001,0.0
+7,"If the move leads to an improvement, they accept it and continue.",3,0,3,0.0,,,,,,,,0,0,0,0,0,0,,3,1.0,,0.0
+8,This makes local search efficient for problems where finding a solution is less ,5,5,0,1.0,100.0,100.0,100.0,-5.198600000000001,-2.0630000000000024,-17.32,-0.0600000000000022,5,0,0,0,5,0,100.0,3,1.0,100.0,0.0
+9,Let's start with hill climbing.,2,0,2,0.0,,,,,,,,0,0,0,0,0,0,,5,1.2,,0.0
+10,It's one of the simplest local search methods.,1,1,0,1.0,99.77979480814886,99.77979480814886,100.0,0.1659999999999968,0.1659999999999968,0.1659999999999968,0.1659999999999968,1,0,0,0,1,0,99.77979480814886,1,0.8,79.8238358465191,0.1761641534809087
+11,The idea is to start with some initial solution and then look around at neighbor,3,0,3,0.0,,,,,,,,0,0,0,0,0,0,,1,0.8000000000000002,,0.0
+12,"If one of those neighbors is better than the current state, we move to that new ",3,0,3,0.0,,,,,,,,0,0,0,0,0,0,,5,1.2,,0.0
+13,We keep repeating this process.,1,0,1,0.0,,,,,,,,0,0,0,0,0,0,,2,0.9,,0.0
+14,always moving to a better neighbor until we can't find any improvement.,2,0,2,0.0,,,,,,,,0,0,0,0,0,0,,1,0.8,,0.0
+15,"At that point, we stop.",1,0,1,0.0,,,,,,,,0,0,0,0,0,0,,4,1.1,,0.0
+16,"However, hill climbing has a major limitation.",2,0,2,0.0,,,,,,,,0,0,0,0,0,0,,1,0.8,,0.0
+17,It can get stuck.,1,0,1,0.0,,,,,,,,0,0,0,0,0,0,,4,1.1,,0.0
+18,Imagine you're climbing a hill in that foggy landscape and you reach a small bum,7,0,7,0.0,,,,,,,,0,0,0,0,0,0,,5,1.2,,0.0
+19,"Because you can't see beyond nearby states, you stop climbing thinking you've re",6,2,4,0.3333333333333333,0.03186164212180162,0.03186164212180162,0.0,10.058999999999997,10.058999999999997,9.869,10.248999999999995,0,0,0,2,2,0,0.03186164212180162,2,0.9,0.02867547790962146,71.98386386256351
+20,This is called getting stuck in a local maximum.,3,2,1,0.6666666666666666,54.865048768828366,54.86504876882836,73.90000000000008,2.739999999999995,2.739999999999995,2.5999999999999943,2.8799999999999955,0,2,0,0,2,0,54.86504876882836,2,0.9,49.378543891945526,34.91865106741781
+21,"Similarly, you can get stuck on a flat area, called a plateau, where all nearby ",5,1,4,0.2,100.0,100.0,100.0,-2.5450000000000017,-2.5450000000000017,-2.5450000000000017,-2.5450000000000017,1,0,0,0,1,0,100.0,3,1.0,100.0,0.0
+22,"Or in a ridge, where the path upward is narrow and hard to follow.",4,1,3,0.25,100.0,100.0,100.0,-6.608000000000004,-6.608000000000004,-6.608000000000004,-6.608000000000004,1,0,0,0,1,0,100.0,4,1.1,110.00000000000001,0.0
+23,"To deal with these limitations, we use more advanced local search methods like s",3,2,1,0.6666666666666666,99.41364128407393,99.41364128407392,100.0,-6.405000000000002,-6.405000000000002,-13.194000000000004,0.3840000000000003,2,0,0,0,2,0,99.41364128407392,5,1.2,119.2963695408887,1.1258087345780632
+24,This algorithm is inspired by the way metals cool and settle into a low energy s,5,0,5,0.0,,,,,,,,0,0,0,0,0,0,,3,1.0,,0.0
+25,"The idea is that sometimes, in order to reach a better solution, you have to acc",6,0,6,0.0,,,,,,,,0,0,0,0,0,0,,4,1.0999999999999999,,0.0
+26,"Simulated annealing starts out like hill climbing, but it allows some moves that",6,1,5,0.16666666666666666,100.0,100.0,100.0,-1.3899999999999864,-1.3899999999999864,-1.3899999999999864,-1.3899999999999864,1,0,0,0,1,0,100.0,2,0.9,90.0,0.0
+27,The probability of accepting a worse move depends on a parameter called the temp,4,2,2,0.5,2.9148699552178226,2.914869955217822,0.0,6.796999999999997,6.796999999999997,6.216000000000008,7.377999999999986,0,0,0,2,2,0,2.914869955217822,3,1.0,2.914869955217822,78.97238979750466
+28,"At high temperatures, the algorithm is more likely to accept bad moves, helping ",4,3,1,0.75,66.17198163903686,77.8088288406477,73.14833333333334,2.2316666666666642,1.7709999999999866,0.8100000000000023,4.114000000000004,1,1,1,0,3,0,66.17198163903687,1,0.8000000000000002,52.9375853112295,47.474850983125904
+29,"As the temperature decreases over time, the algorithm becomes more selective, ev",4,2,2,0.5,100.0,100.0,100.0,-1.6315000000000028,-1.6315000000000028,-2.675000000000012,-0.5879999999999939,2,0,0,0,2,0,100.0,1,0.8,80.0,0.0
+30,Think of it like this.,1,0,1,0.0,,,,,,,,0,0,0,0,0,0,,3,1.0,,0.0
+31,"At first, when the temperature is high, you're willing to try almost anything, j",6,0,6,0.0,,,,,,,,0,0,0,0,0,0,,1,0.7999999999999999,,0.0
+32,"As the temperature cools down, you become more careful and conservative, focusin",5,0,5,0.0,,,,,,,,0,0,0,0,0,0,,1,0.8,,0.0
+33,"If the cooling is done slowly enough, simulated annealing can often find a solut",5,2,3,0.4,5.058228255713689,5.058228255713689,0.0,6.407499999999999,6.407499999999999,5.5260000000000105,7.288999999999987,0,0,0,2,2,0,5.058228255713689,2,0.9,4.55240543014232,70.97334654573099
+34,"Both hill climbing and simulated annealing are examples of local search, and the",11,10,1,0.9090909090909091,100.0,100.0,100.0,-5.4830999999999985,-5.484999999999999,-9.884999999999993,-1.086999999999989,10,0,0,0,10,0,100.0,4,1.1,110.00000000000003,0.0
+35,"Other examples where local search is used include scheduling, routing problems l",7,3,4,0.42857142857142855,100.0,100.0,100.0,-13.681333333333336,-13.067000000000007,-15.091000000000008,-12.885999999999996,3,0,0,0,3,0,100.0,2,0.9,90.0,0.0

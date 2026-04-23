@@ -1,0 +1,129 @@
+{
+  "pipeline_version": "4.1",
+  "scoring_mode": "both",
+  "tau": 2.5,
+  "asymmetric": true,
+  "floor_factor": 0.5,
+  "dwell_threshold": 15.0,
+  "dwell_tau": 30.0,
+  "keyword_level": {
+    "n_total": 52,
+    "n_groundable": 51,
+    "n_matched": 30,
+    "n_unmatched": 22,
+    "match_rate": 0.5769230769230769,
+    "case_F_reasons": {
+      "ocr_vocabulary_mismatch": 21,
+      "low_groundability": 1
+    },
+    "mean_S_gaussian_weighted": 78.71818093944457,
+    "mean_S_piecewise_weighted": 78.71818093944457,
+    "mean_S_temporal_weighted": 78.71818093944457,
+    "mean_S_gaussian_unweighted": 78.4470558440761,
+    "mean_S_piecewise_unweighted": 78.4470558440761,
+    "mean_S_temporal_unweighted": 78.4470558440761,
+    "median_S_temporal": 91.20778172854818,
+    "mean_delta_t": -28.792583333333333,
+    "median_delta_t": -27.675500000000003,
+    "std_delta_t": 19.995872614670418,
+    "min_delta_t": -58.342,
+    "max_delta_t": -0.1280000000000001,
+    "pct_negative_delta_t": 100.0,
+    "pct_within_1s": 3.3333333333333335,
+    "mean_alpha": 0.8333333333333335,
+    "pct_high_confidence": 100.0,
+    "pct_Optimal": 56.666666666666664,
+    "pct_Suboptimal": 16.666666666666664,
+    "pct_Disruptive": 16.666666666666664,
+    "pct_Unacceptable": 10.0,
+    "case_distribution": {
+      "A": 30
+    },
+    "high_confidence": {
+      "n": 30,
+      "mean_S_temporal": 78.4470558440761,
+      "mean_delta_t": -28.792583333333333
+    }
+  },
+  "segment_level": {
+    "n_total": 12,
+    "n_with_matches": 12,
+    "n_without_matches": 0,
+    "mean_S_temporal": 81.5947886418452,
+    "median_S_temporal": 93.76474215431966,
+    "mean_S_piecewise": 81.5947886418452,
+    "mean_S_weighted": 81.64249558179222
+  },
+  "overall_score": 78.72,
+  "overall_grade": "Good",
+  "overall_score_alpha_only": 78.72,
+  "overall_score_unweighted": 78.45,
+  "overall_score_piecewise": 78.72,
+  "overall_grade_piecewise": "Good",
+  "coverage": {
+    "n_groundable_keywords": 51,
+    "n_matched": 30,
+    "coverage_rate": 0.5882,
+    "tc_score_matched_only": 78.72,
+    "tc_score_coverage_adjusted": 46.31,
+    "interpretation": "tc_score = temporal alignment quality among matched keywords; coverage_rate = fraction of groundable keywords with visual correlate; coverage_adjusted = product (composite, not standard TC metric)"
+  },
+  "visual_lead_time": {
+    "n_visual_ahead": 30,
+    "mean_lead_s": 28.79,
+    "median_lead_s": 27.68,
+    "max_lead_s": 58.34,
+    "pct_within_2s": 3.3,
+    "pct_within_5s": 13.3,
+    "pct_over_10s": 73.3,
+    "distribution": {
+      "0-1s (simultaneous)": 1,
+      "1-3s (near-simultaneous)": 0,
+      "3-5s (prepared ahead)": 3,
+      "5-10s (slide already up)": 4,
+      ">10s (long-showing slide)": 22
+    }
+  },
+  "top5_priority_fixes": [
+    {
+      "keyword_id": 46,
+      "keyword_text": "score based",
+      "segment_id": 10,
+      "delta_t": -53.515,
+      "S_temporal": 43.86234346334495,
+      "priority": 56.13765653665505
+    },
+    {
+      "keyword_id": 51,
+      "keyword_text": "videos deliver maximum",
+      "segment_id": 11,
+      "delta_t": -58.342,
+      "S_temporal": 35.217495267245326,
+      "priority": 51.82600378620374
+    },
+    {
+      "keyword_id": 47,
+      "keyword_text": "instructional videos deliver",
+      "segment_id": 11,
+      "delta_t": -57.70099999999999,
+      "S_temporal": 36.31329225614182,
+      "priority": 50.94936619508655
+    },
+    {
+      "keyword_id": 50,
+      "keyword_text": "ensures instructional",
+      "segment_id": 11,
+      "delta_t": -56.81999999999999,
+      "S_temporal": 37.84701776855276,
+      "priority": 49.7223857851578
+    },
+    {
+      "keyword_id": 45,
+      "keyword_text": "mayor's principle",
+      "segment_id": 10,
+      "delta_t": -55.017,
+      "S_temporal": 41.080172369072926,
+      "priority": 47.13586210474166
+    }
+  ]
+}
