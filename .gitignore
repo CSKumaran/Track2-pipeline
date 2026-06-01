@@ -14,5 +14,6 @@ __pycache__/
 ssh-copy-id*
 all_dashboards*
 
-# de-blinding audit map — local-only per validation_tool README
+# de-blinding artifacts — local-only per validation_tool README
 validation_tool/output/*_order.csv
+validation_tool/output/*_remap.csv
