@@ -13,3 +13,6 @@ __pycache__/
 .env
 ssh-copy-id*
 all_dashboards*
+
+# de-blinding audit map — local-only per validation_tool README
+validation_tool/output/*_order.csv
