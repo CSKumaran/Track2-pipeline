@@ -19,8 +19,16 @@
   .container { display: grid; grid-template-columns: 60% 40%; height: calc(100vh - 52px); }
   .video-pane { background: #000; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
   .video-pane .video-title { color: #fff; font-size: 18px; margin-bottom: 12px; font-weight: 600; }
-  .video-pane .video-wrapper { width: 100%; max-width: 800px; aspect-ratio: 16/9; background: #111; }
+  .video-pane .video-wrapper { width: 100%; max-width: 800px; aspect-ratio: 16/9; background: #111; position: relative; }
   #player { width: 100%; height: 100%; }
+  /* Blinding mask: covers the YouTube player's top chrome (channel avatar +
+     video title + channel name overlay) which would otherwise leak the
+     internal video id (e.g. "B1.5") and defeat spec §2 blinding. Defense
+     in depth even when videos are renamed to neutral titles. */
+  .video-pane .player-mask {
+    position: absolute; top: 0; left: 0; right: 0; height: 60px;
+    background: #000; z-index: 10; pointer-events: auto;
+  }
 
   .rating-pane { overflow-y: auto; padding: 20px; background: #fff; border-left: 1px solid #e5e7eb; }
   .cpip-card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin-bottom: 14px; background: #fafafa; }
@@ -166,7 +174,10 @@
 <div class="container" id="mainContainer" style="display:none;">
   <div class="video-pane">
     <div class="video-title" id="videoTitle">Loading&hellip;</div>
-    <div class="video-wrapper"><div id="player"></div></div>
+    <div class="video-wrapper">
+      <div id="player"></div>
+      <div class="player-mask" aria-hidden="true"></div>
+    </div>
   </div>
   <div class="rating-pane" id="ratingPane">
     <div id="bannerArea"></div>
@@ -254,7 +265,7 @@ window.RATER_CONFIG = {"raterId": "R3", "appsScriptUrl": "PASTE_YOUR_DEPLOYED_AP
     }
     player = new YT.Player('player', {
       videoId: videoId,
-      playerVars: { 'playsinline': 1, 'rel': 0, 'modestbranding': 1 },
+      playerVars: { 'playsinline': 1, 'rel': 0, 'modestbranding': 1, 'iv_load_policy': 3 },
       events: {
         'onReady': () => { playerReady = true; },
         'onStateChange': onPlayerStateChange
