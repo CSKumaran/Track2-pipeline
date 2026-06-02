@@ -26,7 +26,7 @@ Backs the rebuilt rater HTML. Schema follows
 7. **Test the URL**: open it in a browser — you should see
    `{"ok":true,"service":"expert-evaluation-v2",…}`.
 
-## `Ratings` sheet — 28 columns, one row per CPIP (long format)
+## `Ratings` sheet — 30 columns, one row per CPIP (long format)
 
 | # | Column | Type | Notes |
 |---|---|---|---|
@@ -37,27 +37,47 @@ Backs the rebuilt rater HTML. Schema follows
 | 5 | `rater_ctml_fam` | int | 1–5 |
 | 6 | `rater_qualification` | string | Bachelors / Masters / MPhil / PhD / Postdoc / Other |
 | 7 | `rater_prior_tool_eval` | string | yes / no |
-| 8 | `video_internal_id` | string | True id (`M_A0`, `F_AI03`, …) — NOT shown to rater |
+| 8 | `video_internal_id` | string | True id (`A0`, `F_v3`, …) — NOT shown to rater |
 | 9 | `video_display_label` | string | Blinded label (`Video_R07`) |
 | 10 | `video_set` | enum | `manipulated` / `fresh` |
 | 11 | `video_topic` | string | Base topic label |
 | 12 | `video_delay_s` | float | 0 / 1.5 / 5 for manipulated; blank for fresh |
-| 13 | `video_order_index` | int | Position in this rater's sequence |
-| 14 | `cpip_id` | string | Stable pipeline CPIP id |
-| 15 | `cpip_index` | int | 1..N within the video |
-| 16 | `cpip_t_narr_s` | float | Narration anchor time |
-| 17 | `cpip_window_start_s` | float | Viewing-window start (§8) |
-| 18 | `cpip_window_end_s` | float | Viewing-window end (§8) |
-| 19 | `concept_label` | string | Short label shown to rater |
-| 20 | `support_rating` | int | 1–5 — visual-narration support (Q1, single click) |
-| 21 | `cpip_dwell_ms` | int | Auto: time card was "active" |
-| 22 | `cpip_rewinds` | int | Auto: re-watches of the moment (first watch not counted) |
-| 23 | `overall_score` | int | Q2, 0–100 (repeated per CPIP row) |
-| 24 | `confidence` | string | Q3, `very_low` / `low` / `medium` / `high` / `very_high` |
-| 25 | `principles_violated` | string | Q4, semicolon-joined CTML principles |
-| 26 | `moment_anchor` | string | Q5, optional ≤200-char free text |
-| 27 | `video_dwell_ms` | int | Total ms on this video |
-| 28 | `video_rewinds` | int | Sum of `cpip_rewinds` across the video |
+| 13 | `video_order_index` | int | Global position (1..N) in this rater's full sequence across all sessions |
+| 14 | `session_index` | int | **NEW** — 1 / 2 / 3 (session this video belongs to in this rater's design) |
+| 15 | `position_in_session` | int | **NEW** — 1..N within the session |
+| 16 | `cpip_id` | string | Stable pipeline CPIP id |
+| 17 | `cpip_index` | int | 1..N within the video |
+| 18 | `cpip_t_narr_s` | float | Narration anchor time |
+| 19 | `cpip_window_start_s` | float | Viewing-window start (§8) |
+| 20 | `cpip_window_end_s` | float | Viewing-window end (§8) |
+| 21 | `concept_label` | string | Short label shown to rater |
+| 22 | `support_rating` | int | 1–5 — visual-narration support (Q1, single click) |
+| 23 | `cpip_dwell_ms` | int | Auto: time card was "active" |
+| 24 | `cpip_rewinds` | int | Auto: re-watches of the moment (first watch not counted) |
+| 25 | `overall_score` | int | Q2, 0–100 (repeated per CPIP row) |
+| 26 | `confidence` | string | Q3, `very_low` / `low` / `medium` / `high` / `very_high` |
+| 27 | `principles_violated` | string | Q4, semicolon-joined CTML principles |
+| 28 | `moment_anchor` | string | Q5, optional ≤200-char free text |
+| 29 | `video_dwell_ms` | int | Total ms on this video |
+| 30 | `video_rewinds` | int | Sum of `cpip_rewinds` across the video |
+
+### Session-design schema notes (2026-06-02)
+
+Columns 14 and 15 capture the 3-session block structure introduced on
+2026-06-02. Each rater's 23 videos are split into 3 sessions of 7–8
+videos each, with topic × delay counterbalanced per session (2-2-2 delay
+balance) and across sessions (each topic at each delay exactly once).
+For analysis:
+
+- Filter by `session_index` to stratify any per-rater analysis by session
+  position (tests for fatigue / practice effects).
+- For per-rater stringency check (§11 step 1), aggregate across all
+  sessions — the design guarantees each rater sees all 3 delay levels
+  for every topic, just in different sittings.
+
+If you are migrating from the pre-session 28-column schema: rename the
+existing `Ratings` tab to `Ratings_legacy` before re-running
+`setupSheets()`. The new tab will be created with the 30-column header.
 
 ## `CurationLog` sheet — per spec §9
 

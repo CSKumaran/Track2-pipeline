@@ -2,19 +2,31 @@
 generate_rater_copies.py
 Generates personalised rater HTML files from rater_template.html + config/.
 
-Per spec tool_design_spec.md (locked 2026-05-31):
-  - Each rater gets a unique randomised video order across both stimulus sets
-    (manipulated + fresh). Same-topic videos (manipulated dose-set) are kept
-    ≥ MIN_SPACING positions apart.
-  - Videos are relabeled neutrally as Video_R01..Video_RNN to preserve blinding.
-  - For each CPIP we compute a viewing window per §8:
+Per spec tool_design_spec.md (locked 2026-05-31) + 2026-06-02 session design:
+
+  - The 23 videos per rater are split across 3 SESSIONS:
+      * Each session contains 6 manipulated videos (one per topic A–F).
+      * Within each session the 6 topics each contribute exactly one delay
+        variant — chosen so the session has a 2-2-2 delay balance across
+        {0, 1.5, 5} s. Across the 3 sessions, each topic is seen at each
+        delay exactly once (within-rater complete; cross-rater
+        counterbalanced via per-rater seed).
+      * Fresh videos are distributed 2 + 2 + 1 across sessions (or 4 + 3 + 3
+        when ≥10 fresh videos are present), random which session gets the
+        "short" allocation. Fresh and manipulated interleave randomly
+        within each session.
+  - Soft session boundaries: after a session is complete the rater sees
+    an interstitial in the HTML; "Continue now" or "Resume later".
+  - Videos are relabeled neutrally as Video_R01..Video_RNN.
+  - For each CPIP we compute a viewing window per spec §8:
       manipulated set: [t_narr - 5, t_narr + 7]   (12 s)
       fresh set:       [t_narr - 5, t_narr + 10]  (15 s)
-    A CPIP entry may also override these with explicit windowStartS / windowEndS.
+    A CPIP entry may override these with explicit windowStartS / windowEndS.
 
 Outputs:
     output/rater_R{n}.html            -- file to email to each rater
     output/rater_R{n}_order.csv       -- offline de-blinding audit trail
+                                         (gitignored; includes session columns)
 
 Usage:
     python generate_rater_copies.py --raters R1 R2 R3 R4 R5
@@ -34,7 +46,6 @@ BASE = Path(__file__).resolve().parent
 CFG = BASE / "config"
 TEMPLATE = BASE / "rater_template.html"
 OUT = BASE / "output"
-MIN_SPACING = 4  # min positions between two videos sharing the same topicKey
 
 # Per spec §8
 WINDOW_RULES = {
@@ -62,6 +73,21 @@ CONFIDENCE_LABELS = {
     "high":      "High",
     "very_high": "Very high",
 }
+
+# Session design (2026-06-02 decision)
+N_SESSIONS = 3
+DELAYS = [0, 1.5, 5]  # the 3 manipulated delays used by spec §3
+EXPECTED_TOPICS = 6   # A–F
+
+# Delay-pattern cyclic permutations across N_SESSIONS sessions.
+# With 6 manipulated topics and 3 patterns × 2 topics per pattern, each
+# session ends up with exactly 2 of each delay (2-2-2 balance), and each
+# topic gets each delay exactly once across the 3 sessions.
+DELAY_PATTERNS = [
+    [DELAYS[(i + offset) % len(DELAYS)] for i in range(N_SESSIONS)]
+    for offset in range(len(DELAYS))
+]
+# DELAY_PATTERNS == [[0, 1.5, 5], [1.5, 5, 0], [5, 0, 1.5]]
 
 
 def load_inputs():
@@ -119,117 +145,115 @@ def enrich_cpips(video, raw_cpips):
     return out
 
 
-def spacing_ok(order, min_spacing=MIN_SPACING):
-    for i in range(len(order)):
-        for j in range(i + 1, min(i + min_spacing + 1, len(order))):
-            if order[i]["topicKey"] == order[j]["topicKey"]:
-                return False
-    return True
+def assign_sessions(manipulated, fresh, rng):
+    """Build N_SESSIONS session-blocks of (6 manipulated + N fresh) videos
+    with the 2-2-2 delay balance per session and within-session shuffle.
 
-
-def randomise_with_spacing(videos, rng, max_tries=50000):
-    """Round-robin placement of multi-item topics, then fill singletons,
-    then randomised valid swaps to shuffle while keeping the constraint."""
+    Returns a list of N_SESSIONS lists, each containing 7 or 8 video dicts.
+    """
+    # Group manipulated by topic
     by_topic = defaultdict(list)
-    for v in videos:
+    for v in manipulated:
         by_topic[v["topicKey"]].append(v)
-    for t in by_topic:
-        rng.shuffle(by_topic[t])
+    topics = sorted(by_topic.keys())
 
-    topics_sorted = sorted(by_topic.keys(), key=lambda t: -len(by_topic[t]))
-    n = len(videos)
-    order = [None] * n
-    step = max(MIN_SPACING + 1, 1)
-    used = set()
+    if len(topics) != EXPECTED_TOPICS:
+        raise SystemExit(
+            f"Session design requires exactly {EXPECTED_TOPICS} manipulated "
+            f"topics; got {len(topics)}: {topics}"
+        )
+    for t in topics:
+        delays_present = sorted(v["delay_s"] for v in by_topic[t])
+        if delays_present != DELAYS:
+            raise SystemExit(
+                f"Topic {t!r} must have delays {DELAYS}; got {delays_present}"
+            )
 
-    for t in topics_sorted:
-        items = by_topic[t]
-        k = len(items)
-        if k == 1:
-            continue
-        bases = list(range(n))
-        rng.shuffle(bases)
-        placed = False
-        for base in bases:
-            positions = [(base + i * step) % n for i in range(k)]
-            if len(set(positions)) == k and all(p not in used for p in positions):
-                for i, p in enumerate(positions):
-                    order[p] = items[i]
-                    used.add(p)
-                placed = True
-                break
-        if not placed:
-            for alt_step in range(step + 1, n):
-                for base in bases:
-                    positions = [(base + i * alt_step) % n for i in range(k)]
-                    if len(set(positions)) == k and all(p not in used for p in positions):
-                        for i, p in enumerate(positions):
-                            order[p] = items[i]
-                            used.add(p)
-                        placed = True
-                        break
-                if placed:
-                    break
-        if not placed:
-            raise RuntimeError(f"Cannot place topic {t} with spacing constraint")
+    # Shuffle topic order so different raters get different topic→pattern
+    # assignments. Patterns are cyclic permutations of DELAYS; assigning two
+    # topics to each pattern guarantees the 2-2-2 per-session balance.
+    rng.shuffle(topics)
+    n_patterns = len(DELAY_PATTERNS)
+    topics_per_pattern = len(topics) // n_patterns  # 6 / 3 = 2
+    if topics_per_pattern * n_patterns != len(topics):
+        raise SystemExit(
+            f"Topic count {len(topics)} must be divisible by the number of "
+            f"delay patterns ({n_patterns})."
+        )
 
-    singletons = [by_topic[t][0] for t in topics_sorted if len(by_topic[t]) == 1]
-    rng.shuffle(singletons)
-    free_positions = [i for i in range(n) if order[i] is None]
-    for p, item in zip(free_positions, singletons):
-        order[p] = item
+    sessions = [[] for _ in range(N_SESSIONS)]
+    for idx, t in enumerate(topics):
+        pattern = DELAY_PATTERNS[idx // topics_per_pattern]
+        for s in range(N_SESSIONS):
+            target_delay = pattern[s]
+            video = next(v for v in by_topic[t] if v["delay_s"] == target_delay)
+            sessions[s].append(video)
 
-    if not spacing_ok(order):
-        for _ in range(max_tries):
-            i, j = rng.randrange(n), rng.randrange(n)
-            if i == j:
-                continue
-            order[i], order[j] = order[j], order[i]
-            if spacing_ok(order):
-                break
-            order[i], order[j] = order[j], order[i]
-        else:
-            raise RuntimeError("Could not satisfy spacing constraint after repair")
+    # Distribute fresh videos across sessions: base + remainder-to-random.
+    fresh_shuffled = list(fresh)
+    rng.shuffle(fresh_shuffled)
+    n_fresh = len(fresh_shuffled)
+    base = n_fresh // N_SESSIONS
+    remainder = n_fresh % N_SESSIONS
+    extra_session_indices = list(range(N_SESSIONS))
+    rng.shuffle(extra_session_indices)
+    extras = set(extra_session_indices[:remainder])
 
-    for _ in range(500):
-        i, j = rng.randrange(n), rng.randrange(n)
-        if i == j:
-            continue
-        order[i], order[j] = order[j], order[i]
-        if not spacing_ok(order):
-            order[i], order[j] = order[j], order[i]
+    cursor = 0
+    for s in range(N_SESSIONS):
+        count = base + (1 if s in extras else 0)
+        for _ in range(count):
+            sessions[s].append(fresh_shuffled[cursor])
+            cursor += 1
 
-    return order
+    # Sanity check: every fresh consumed
+    if cursor != n_fresh:
+        raise RuntimeError(f"Fresh distribution mismatch: {cursor} placed of {n_fresh}")
+
+    # Shuffle the videos within each session so manipulated + fresh interleave
+    for s in range(N_SESSIONS):
+        rng.shuffle(sessions[s])
+
+    return sessions
 
 
 def build_config_for_rater(rater_id, videos, cpips, scale_card_html, apps_script_url, base_seed):
     rng = random.Random(seed_for(rater_id, base_seed))
-    ordered = randomise_with_spacing(videos, rng)
+
+    manipulated = [v for v in videos if v.get("set") == "manipulated"]
+    fresh = [v for v in videos if v.get("set") == "fresh"]
+    sessions = assign_sessions(manipulated, fresh, rng)
 
     rater_videos = []
     rater_cpips = {}
-    for idx, v in enumerate(ordered, start=1):
-        rater_videos.append({
-            "displayLabel": f"Video_R{idx:02d}",
-            "internalId":   v["internalId"],
-            "youtubeId":    v["youtubeId"],
-            "duration":     v.get("duration", 0),
-            "set":          v["set"],
-            "topic":        v.get("topic", ""),
-            "delay_s":      v.get("delay_s"),
-        })
-        raw = cpips.get(v["internalId"], [])
-        rater_cpips[v["internalId"]] = enrich_cpips(v, raw)
+    global_order = 0
+    for s_idx, session_videos in enumerate(sessions, start=1):
+        for pos_in_session, v in enumerate(session_videos, start=1):
+            global_order += 1
+            rater_videos.append({
+                "displayLabel":       f"Video_R{global_order:02d}",
+                "internalId":         v["internalId"],
+                "youtubeId":          v["youtubeId"],
+                "duration":           v.get("duration", 0),
+                "set":                v["set"],
+                "topic":              v.get("topic", ""),
+                "delay_s":            v.get("delay_s"),
+                "session_index":      s_idx,
+                "position_in_session": pos_in_session,
+            })
+            raw = cpips.get(v["internalId"], [])
+            rater_cpips[v["internalId"]] = enrich_cpips(v, raw)
 
     return {
-        "raterId": rater_id,
-        "appsScriptUrl": apps_script_url,
-        "principles": DEFAULT_PRINCIPLES,
+        "raterId":          rater_id,
+        "appsScriptUrl":    apps_script_url,
+        "principles":       DEFAULT_PRINCIPLES,
         "confidenceLevels": CONFIDENCE_LEVELS,
         "confidenceLabels": CONFIDENCE_LABELS,
-        "videos": rater_videos,
-        "cpips": rater_cpips,
-        "ratingScaleHtml": scale_card_html,
+        "nSessions":        N_SESSIONS,
+        "videos":           rater_videos,
+        "cpips":            rater_cpips,
+        "ratingScaleHtml":  scale_card_html,
     }
 
 
@@ -252,13 +276,15 @@ def write_audit_csv(path: Path, rater_videos, rater_cpips):
     with open(path, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow([
-            "order_index", "display_label", "internal_id", "youtube_id",
+            "order_index", "session_index", "position_in_session",
+            "display_label", "internal_id", "youtube_id",
             "set", "topic", "delay_s", "n_cpips",
         ])
         for i, v in enumerate(rater_videos, start=1):
             n_cpips = len(rater_cpips.get(v["internalId"], []))
             w.writerow([
-                i, v["displayLabel"], v["internalId"], v["youtubeId"],
+                i, v["session_index"], v["position_in_session"],
+                v["displayLabel"], v["internalId"], v["youtubeId"],
                 v["set"], v.get("topic", ""), v.get("delay_s", ""), n_cpips,
             ])
 
@@ -280,10 +306,31 @@ def validate_inputs(videos, cpips, apps_script_url):
         print(f"WARNING: videos still have placeholder YouTube IDs: {bad_yt}")
 
 
+def session_summary(rater_videos):
+    """Build a compact text summary of the per-rater session layout for logging."""
+    by_session = defaultdict(list)
+    for v in rater_videos:
+        by_session[v["session_index"]].append(v)
+    lines = []
+    for s_idx in sorted(by_session.keys()):
+        items = by_session[s_idx]
+        delay_counts = defaultdict(int)
+        for v in items:
+            if v["set"] == "manipulated":
+                delay_counts[v["delay_s"]] += 1
+        n_fresh = sum(1 for v in items if v["set"] == "fresh")
+        bal = " / ".join(f"{d}s={delay_counts[d]}" for d in DELAYS)
+        lines.append(
+            f"    Session {s_idx}: {len(items)} videos "
+            f"({len(items)-n_fresh} manipulated [{bal}], {n_fresh} fresh)"
+        )
+    return "\n".join(lines)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--raters", nargs="+", default=["R1", "R2", "R3", "R4"])
-    ap.add_argument("--seed", type=int, default=20260531)
+    ap.add_argument("--seed", type=int, default=20260602)
     args = ap.parse_args()
 
     OUT.mkdir(exist_ok=True)
@@ -297,7 +344,8 @@ def main():
         out_csv = OUT / f"rater_{rid}_order.csv"
         out_html.write_text(html, encoding="utf-8")
         write_audit_csv(out_csv, cfg["videos"], cfg["cpips"])
-        print(f"  wrote {out_html.name} ({len(cfg['videos'])} videos) + audit csv")
+        print(f"  wrote {out_html.name} ({len(cfg['videos'])} videos):")
+        print(session_summary(cfg["videos"]))
 
     print(f"\nDone. Files written to: {OUT}")
     print("Email each rater ONLY their own rater_R{n}.html file.")

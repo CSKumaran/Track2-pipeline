@@ -35,6 +35,8 @@ const RATINGS_HEADERS = [
   'video_topic',
   'video_delay_s',
   'video_order_index',
+  'session_index',
+  'position_in_session',
   'cpip_id',
   'cpip_index',
   'cpip_t_narr_s',
@@ -91,6 +93,8 @@ function doPost(e) {
       data.videoTopic || '',
       data.videoDelayS != null ? data.videoDelayS : '',
       data.videoOrderIndex != null ? data.videoOrderIndex : '',
+      data.sessionIndex != null ? data.sessionIndex : '',
+      data.positionInSession != null ? data.positionInSession : '',
       c.cpipId || '',
       c.cpipIndex != null ? c.cpipIndex : '',
       c.tNarrS != null ? c.tNarrS : '',
@@ -164,15 +168,15 @@ function setupSheets() {
       'Auto-populated progress view. Edit the QUERY below if you change Ratings columns.'
     );
     progress.getRange('A3').setFormula(
-      "=QUERY(Ratings!A:AB, \"SELECT B, H, I, M, MIN(A) WHERE A IS NOT NULL " +
-      "GROUP BY B, H, I, M ORDER BY B, M LABEL MIN(A) 'first_submitted'\", 1)"
+      "=QUERY(Ratings!A:AD, \"SELECT B, H, I, M, N, MIN(A) WHERE A IS NOT NULL " +
+      "GROUP BY B, H, I, M, N ORDER BY B, N, M LABEL MIN(A) 'first_submitted'\", 1)"
     );
   }
 
   SpreadsheetApp.getUi().alert(
     'Sheets are ready:\n' +
-    '  - ' + RATINGS_SHEET + ' (28 columns, one row per CPIP)\n' +
-    '  - ' + PROGRESS_SHEET + ' (live pivot)\n' +
+    '  - ' + RATINGS_SHEET + ' (30 columns, one row per CPIP)\n' +
+    '  - ' + PROGRESS_SHEET + ' (live pivot, grouped by session)\n' +
     '  - ' + CURATION_SHEET + ' (per-CPIP keep/remove + 20% audit)\n\n' +
     'Next: Deploy -> New deployment -> Type: Web app.'
   );

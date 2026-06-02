@@ -87,6 +87,19 @@
   .completion-screen { padding: 40px; text-align: center; max-width: 640px; margin: 40px auto; background: #fff; border-radius: 8px; }
   .completion-screen h2 { color: #10b981; }
 
+  .interstitial-screen { padding: 40px; max-width: 640px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .interstitial-screen h2 { color: #10b981; margin-top: 0; }
+  .interstitial-screen p { font-size: 14px; color: #4b5563; line-height: 1.5; }
+  .interstitial-screen .button-row { display: flex; gap: 12px; margin-top: 24px; }
+  .interstitial-screen .button-row button { flex: 1; padding: 14px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .interstitial-screen .button-row .primary { background: #10b981; color: #fff; }
+  .interstitial-screen .button-row .primary:hover { background: #059669; }
+  .interstitial-screen .button-row .secondary { background: #e5e7eb; color: #1f2937; }
+  .interstitial-screen .button-row .secondary:hover { background: #d1d5db; }
+  .interstitial-screen .resumed-msg { margin-top: 24px; padding: 14px; background: #f0fdf4; border: 1px solid #10b981; border-radius: 6px; color: #065f46; font-size: 13px; }
+  .interstitial-screen .disclosure-note { margin-top: 16px; padding: 14px 16px; background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 4px; color: #1e3a8a; font-size: 13.5px; line-height: 1.55; }
+  .interstitial-screen .disclosure-note strong { display: block; margin-bottom: 6px; font-size: 14px; }
+
   .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 1000; display: none; align-items: center; justify-content: center; }
   .modal-overlay.open { display: flex; }
   .modal { background: #fff; max-width: 720px; width: 90%; max-height: 85vh; overflow-y: auto; border-radius: 8px; padding: 24px; }
@@ -182,6 +195,9 @@
   <p>Your ratings have been recorded. You may close this window.</p>
 </div>
 
+<!-- Session boundary interstitial (shown between sessions) -->
+<div class="interstitial-screen" id="interstitialScreen" style="display:none;"></div>
+
 <!-- Rating-scale reference modal -->
 <div class="modal-overlay" id="scaleModal">
   <div class="modal">
@@ -216,7 +232,8 @@ window.RATER_CONFIG = {
 <script>
 (function() {
   const cfg = window.RATER_CONFIG;
-  const stateKey = 'validation_' + cfg.raterId + '_state_v2';
+  const stateKey = 'validation_' + cfg.raterId + '_state_v3';  // v3: session-block design
+  const N_SESSIONS = cfg.nSessions || 3;
 
   // ----- State -----
   let state = loadState();
@@ -230,6 +247,7 @@ window.RATER_CONFIG = {
       completedVideos: [],
       draftAnswers: {},
       currentVideoIndex: 0,
+      currentSessionIndex: 1,
       videoStartTime: null,
       activeCpipId: null,
       activeCpipStartTime: null
@@ -244,11 +262,26 @@ window.RATER_CONFIG = {
     return `${m}:${sec}`;
   }
 
-  function findNextVideoIndex() {
+  // Session-aware navigation helpers
+  function videosInSession(sessionIdx) {
+    return cfg.videos.filter(v => v.session_index === sessionIdx);
+  }
+  function findNextVideoInSession(sessionIdx) {
     for (let i = 0; i < cfg.videos.length; i++) {
-      if (!state.completedVideos.includes(cfg.videos[i].internalId)) return i;
+      const v = cfg.videos[i];
+      if (v.session_index === sessionIdx && !state.completedVideos.includes(v.internalId)) {
+        return i;
+      }
     }
     return -1;
+  }
+  function isSessionComplete(sessionIdx) {
+    const videos = videosInSession(sessionIdx);
+    if (videos.length === 0) return false;
+    return videos.every(v => state.completedVideos.includes(v.internalId));
+  }
+  function completedInSession(sessionIdx) {
+    return videosInSession(sessionIdx).filter(v => state.completedVideos.includes(v.internalId)).length;
   }
 
   // ----- YouTube Player -----
@@ -554,10 +587,14 @@ window.RATER_CONFIG = {
   }
 
   function updateProgress() {
-    const done = state.completedVideos.length;
+    const sIdx = state.currentSessionIndex || 1;
+    const sessionVideos = videosInSession(sIdx);
+    const sessionDone = completedInSession(sIdx);
+    const totalDone = state.completedVideos.length;
     const total = cfg.videos.length;
-    document.getElementById('progressText').textContent = `${done} of ${total} videos`;
-    document.getElementById('progressFill').style.width = (total ? done/total*100 : 0) + '%';
+    document.getElementById('progressText').textContent =
+      `Session ${sIdx} of ${N_SESSIONS} — ${sessionDone} of ${sessionVideos.length} in this session (${totalDone}/${total} overall)`;
+    document.getElementById('progressFill').style.width = (total ? totalDone/total*100 : 0) + '%';
   }
 
   // ----- Submit -----
@@ -582,6 +619,8 @@ window.RATER_CONFIG = {
       videoTopic: video.topic,
       videoDelayS: video.delay_s,
       videoOrderIndex: idx + 1,
+      sessionIndex: video.session_index,
+      positionInSession: video.position_in_session,
       videoDwellMs: videoDwellMs,
       videoRewinds: videoRewinds,
       overallScore: draft.overallScore ?? 50,
@@ -619,12 +658,22 @@ window.RATER_CONFIG = {
       state.activeCpipId = null;
       state.activeCpipStartTime = null;
       saveState();
-      showBanner('Submitted. Loading next video&hellip;', 'success');
-      setTimeout(() => {
-        const next = findNextVideoIndex();
-        if (next === -1) showCompletion();
-        else { renderVideo(next); document.getElementById('ratingPane').scrollTop = 0; }
-      }, 900);
+      const sIdx = state.currentSessionIndex || 1;
+      const sessionJustCompleted = isSessionComplete(sIdx);
+      if (sessionJustCompleted && sIdx < N_SESSIONS) {
+        showBanner('Submitted &mdash; end of Session ' + sIdx + '.', 'success');
+        setTimeout(() => routeToNext(), 600);
+      } else if (sessionJustCompleted && sIdx === N_SESSIONS) {
+        showBanner('Submitted &mdash; all sessions complete.', 'success');
+        setTimeout(() => routeToNext(), 600);
+      } else {
+        showBanner('Submitted. Loading next video&hellip;', 'success');
+        setTimeout(() => {
+          const next = findNextVideoInSession(sIdx);
+          if (next === -1) { routeToNext(); }
+          else { renderVideo(next); document.getElementById('ratingPane').scrollTop = 0; }
+        }, 900);
+      }
     } catch(e) {
       showBanner('Submit failed: ' + escapeHtml(e.message) + '. Copy the JSON below and email it as a backup:<br><textarea style="width:100%;height:120px;margin-top:6px;">' + escapeHtml(JSON.stringify(payload)) + '</textarea>', 'error');
       this.disabled = false;
@@ -666,12 +715,7 @@ window.RATER_CONFIG = {
     };
     state.demographics = d;
     saveState();
-    document.getElementById('demographicsScreen').style.display = 'none';
-    document.getElementById('mainContainer').style.display = 'grid';
-    const idx = findNextVideoIndex();
-    if (idx === -1) { showCompletion(); return; }
-    state.videoStartTime = Date.now();
-    renderVideo(idx);
+    routeToNext();
   });
 
   // Warn on unload if a draft exists
@@ -689,16 +733,92 @@ window.RATER_CONFIG = {
   // ----- Bootstrap -----
   function maybeStart() {
     document.getElementById('raterBadge').textContent = cfg.raterId;
-    if (state.demographics) {
-      document.getElementById('mainContainer').style.display = 'grid';
-      const idx = findNextVideoIndex();
-      if (idx === -1) { showCompletion(); return; }
-      if (!state.videoStartTime) state.videoStartTime = Date.now();
-      renderVideo(idx);
-    } else {
+    if (!state.demographics) {
       document.getElementById('demographicsScreen').style.display = 'block';
       updateProgress();
+      return;
     }
+    routeToNext();
+  }
+
+  // Decide what screen to show next based on session state.
+  function routeToNext() {
+    hideAllScreens();
+    const sIdx = state.currentSessionIndex || 1;
+    // If current session is complete:
+    if (isSessionComplete(sIdx)) {
+      if (sIdx < N_SESSIONS) {
+        showInterstitial(sIdx);
+        return;
+      } else {
+        showCompletion();
+        return;
+      }
+    }
+    // Otherwise render the next un-completed video in the current session.
+    document.getElementById('mainContainer').style.display = 'grid';
+    const idx = findNextVideoInSession(sIdx);
+    if (idx === -1) {
+      // Shouldn't normally happen; defensive fallback.
+      showCompletion();
+      return;
+    }
+    if (!state.videoStartTime) state.videoStartTime = Date.now();
+    renderVideo(idx);
+  }
+
+  function hideAllScreens() {
+    document.getElementById('demographicsScreen').style.display = 'none';
+    document.getElementById('mainContainer').style.display = 'none';
+    document.getElementById('completionScreen').style.display = 'none';
+    document.getElementById('interstitialScreen').style.display = 'none';
+  }
+
+  function showInterstitial(completedSession) {
+    const screen = document.getElementById('interstitialScreen');
+    const nextSession = completedSession + 1;
+    const nextSessionVideoCount = videosInSession(nextSession).length;
+    // After session 1 we surface a brief mid-study note about cross-session
+    // recurrence (per the 2026-06-02 disclosure decision: session 1 is fully
+    // blind; sessions 2-3 raters are informed that lecture topics may recur
+    // in slightly different versions, with an instruction to rate each
+    // independently). No mention of the manipulation type.
+    const disclosureNote = completedSession === 1 ? `
+      <div class="disclosure-note">
+        <strong>A short note before Session ${nextSession}</strong>
+        You may notice that some of the lecture topics you watched in Session 1 reappear in Session ${nextSession} (and Session ${N_SESSIONS}), in slightly different versions. Please rate each version based only on what you observe in <em>this</em> video — try not to compare against what you remember from earlier sessions.
+      </div>
+    ` : '';
+    screen.innerHTML = `
+      <h2>Session ${completedSession} of ${N_SESSIONS} complete</h2>
+      <p>Thank you — you have rated all the videos in this session.</p>
+      <p>You may continue to Session ${nextSession} now (it has ${nextSessionVideoCount} videos), or take a break and resume later. Your progress is saved either way.</p>
+      ${disclosureNote}
+      <div class="button-row">
+        <button class="primary" id="continueBtn">Continue to Session ${nextSession} now</button>
+        <button class="secondary" id="resumeLaterBtn">Resume later</button>
+      </div>
+    `;
+    screen.style.display = 'block';
+    document.getElementById('continueBtn').onclick = () => {
+      state.currentSessionIndex = nextSession;
+      state.videoStartTime = null;
+      saveState();
+      routeToNext();
+    };
+    document.getElementById('resumeLaterBtn').onclick = () => {
+      // Persist intent: advance the session pointer now so that when the rater
+      // reopens this URL, they land directly on the first video of the next
+      // session (no need to re-click "Continue").
+      state.currentSessionIndex = nextSession;
+      state.videoStartTime = null;
+      saveState();
+      screen.innerHTML = `
+        <h2>See you next time</h2>
+        <p>Your progress has been saved. When you re-open this page, you will be taken directly to Session ${nextSession}.</p>
+        <div class="resumed-msg">You may now close this window safely.</div>
+      `;
+    };
   }
 
   // If YT API loaded before this script

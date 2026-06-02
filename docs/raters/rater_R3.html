@@ -87,6 +87,19 @@
   .completion-screen { padding: 40px; text-align: center; max-width: 640px; margin: 40px auto; background: #fff; border-radius: 8px; }
   .completion-screen h2 { color: #10b981; }
 
+  .interstitial-screen { padding: 40px; max-width: 640px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .interstitial-screen h2 { color: #10b981; margin-top: 0; }
+  .interstitial-screen p { font-size: 14px; color: #4b5563; line-height: 1.5; }
+  .interstitial-screen .button-row { display: flex; gap: 12px; margin-top: 24px; }
+  .interstitial-screen .button-row button { flex: 1; padding: 14px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .interstitial-screen .button-row .primary { background: #10b981; color: #fff; }
+  .interstitial-screen .button-row .primary:hover { background: #059669; }
+  .interstitial-screen .button-row .secondary { background: #e5e7eb; color: #1f2937; }
+  .interstitial-screen .button-row .secondary:hover { background: #d1d5db; }
+  .interstitial-screen .resumed-msg { margin-top: 24px; padding: 14px; background: #f0fdf4; border: 1px solid #10b981; border-radius: 6px; color: #065f46; font-size: 13px; }
+  .interstitial-screen .disclosure-note { margin-top: 16px; padding: 14px 16px; background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 4px; color: #1e3a8a; font-size: 13.5px; line-height: 1.55; }
+  .interstitial-screen .disclosure-note strong { display: block; margin-bottom: 6px; font-size: 14px; }
+
   .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 1000; display: none; align-items: center; justify-content: center; }
   .modal-overlay.open { display: flex; }
   .modal { background: #fff; max-width: 720px; width: 90%; max-height: 85vh; overflow-y: auto; border-radius: 8px; padding: 24px; }
@@ -182,6 +195,9 @@
   <p>Your ratings have been recorded. You may close this window.</p>
 </div>
 
+<!-- Session boundary interstitial (shown between sessions) -->
+<div class="interstitial-screen" id="interstitialScreen" style="display:none;"></div>
+
 <!-- Rating-scale reference modal -->
 <div class="modal-overlay" id="scaleModal">
   <div class="modal">
@@ -195,13 +211,14 @@
 
 <!-- RATER_CONFIG injected by generate_rater_copies.py -->
 <script id="rater-config">
-window.RATER_CONFIG = {"raterId": "R3", "appsScriptUrl": "PASTE_YOUR_DEPLOYED_APPS_SCRIPT_WEBAPP_URL_HERE", "principles": ["Temporal contiguity", "Spatial contiguity", "Modality", "Redundancy", "Coherence", "Signaling", "Segmenting", "Personalisation"], "confidenceLevels": ["very_low", "low", "medium", "high", "very_high"], "confidenceLabels": {"very_low": "Very low", "low": "Low", "medium": "Medium", "high": "High", "very_high": "Very high"}, "videos": [{"displayLabel": "Video_R01", "internalId": "D5", "youtubeId": "ska7n7i4RDQ", "duration": 240, "set": "manipulated", "topic": "TopicD", "delay_s": 5}, {"displayLabel": "Video_R02", "internalId": "C1.5", "youtubeId": "9D9shdTsqZc", "duration": 240, "set": "manipulated", "topic": "TopicC", "delay_s": 1.5}, {"displayLabel": "Video_R03", "internalId": "B5", "youtubeId": "YZfzuTSsi2A", "duration": 240, "set": "manipulated", "topic": "TopicB", "delay_s": 5}, {"displayLabel": "Video_R04", "internalId": "A1.5", "youtubeId": "bCFKmVTxnp4", "duration": 240, "set": "manipulated", "topic": "TopicA", "delay_s": 1.5}, {"displayLabel": "Video_R05", "internalId": "E1.5", "youtubeId": "v1K8O0JEDro", "duration": 240, "set": "manipulated", "topic": "TopicE", "delay_s": 1.5}, {"displayLabel": "Video_R06", "internalId": "F_v5", "youtubeId": "34ulJLhK4-I", "duration": 253, "set": "fresh", "topic": "AISearchAlgorithms", "delay_s": null}, {"displayLabel": "Video_R07", "internalId": "D0", "youtubeId": "0xgLGXZHvYA", "duration": 240, "set": "manipulated", "topic": "TopicD", "delay_s": 0}, {"displayLabel": "Video_R08", "internalId": "C0", "youtubeId": "eWNpIHPm1IE", "duration": 240, "set": "manipulated", "topic": "TopicC", "delay_s": 0}, {"displayLabel": "Video_R09", "internalId": "F1.5", "youtubeId": "kJhG9U8vbBE", "duration": 240, "set": "manipulated", "topic": "TopicF", "delay_s": 1.5}, {"displayLabel": "Video_R10", "internalId": "F_v2", "youtubeId": "fd5m0acg3Zo", "duration": 218, "set": "fresh", "topic": "UniversalApproximator", "delay_s": null}, {"displayLabel": "Video_R11", "internalId": "E0", "youtubeId": "5GXsE2GapjY", "duration": 240, "set": "manipulated", "topic": "TopicE", "delay_s": 0}, {"displayLabel": "Video_R12", "internalId": "A5", "youtubeId": "aX3i2zQiJM8", "duration": 240, "set": "manipulated", "topic": "TopicA", "delay_s": 5}, {"displayLabel": "Video_R13", "internalId": "F_v3", "youtubeId": "AEileXzqIqc", "duration": 220, "set": "fresh", "topic": "UnsupervisedLearning", "delay_s": null}, {"displayLabel": "Video_R14", "internalId": "F0", "youtubeId": "KyN_byReZe8", "duration": 240, "set": "manipulated", "topic": "TopicF", "delay_s": 0}, {"displayLabel": "Video_R15", "internalId": "F_v4", "youtubeId": "-1vj8TxInw8", "duration": 293, "set": "fresh", "topic": "PCAMainIdeas", "delay_s": null}, {"displayLabel": "Video_R16", "internalId": "C5", "youtubeId": "a6xQBJCK4os", "duration": 240, "set": "manipulated", "topic": "TopicC", "delay_s": 5}, {"displayLabel": "Video_R17", "internalId": "B1.5", "youtubeId": "OWGVy1ftHkY", "duration": 240, "set": "manipulated", "topic": "TopicB", "delay_s": 1.5}, {"displayLabel": "Video_R18", "internalId": "A0", "youtubeId": "cO9Wa6iOC9k", "duration": 240, "set": "manipulated", "topic": "TopicA", "delay_s": 0}, {"displayLabel": "Video_R19", "internalId": "F5", "youtubeId": "fnA_NP8o_TY", "duration": 240, "set": "manipulated", "topic": "TopicF", "delay_s": 5}, {"displayLabel": "Video_R20", "internalId": "F_v6", "youtubeId": "JLqv93rH5JA", "duration": 308, "set": "fresh", "topic": "GradientDescent", "delay_s": null}, {"displayLabel": "Video_R21", "internalId": "E5", "youtubeId": "BdUXz66hHZM", "duration": 240, "set": "manipulated", "topic": "TopicE", "delay_s": 5}, {"displayLabel": "Video_R22", "internalId": "D1.5", "youtubeId": "2jgSz2RNbTk", "duration": 240, "set": "manipulated", "topic": "TopicD", "delay_s": 1.5}, {"displayLabel": "Video_R23", "internalId": "B0", "youtubeId": "TJL5yLz-feY", "duration": 240, "set": "manipulated", "topic": "TopicB", "delay_s": 0}], "cpips": {"D5": [{"cpipId": "D5_c1", "t_narr_s": 27.0, "conceptLabel": "Neural network with bias node", "window_start_s": 22.0, "window_end_s": 34.0}, {"cpipId": "D5_c2", "t_narr_s": 110.0, "conceptLabel": "ReLU activation graph", "window_start_s": 105.0, "window_end_s": 117.0}, {"cpipId": "D5_c3", "t_narr_s": 195.0, "conceptLabel": "Weighted inputs with sigmoid", "window_start_s": 190.0, "window_end_s": 202.0}, {"cpipId": "D5_c4", "t_narr_s": 212.0, "conceptLabel": "Sigmoid curve mapping", "window_start_s": 207.0, "window_end_s": 219.0}], "C1.5": [{"cpipId": "C1.5_c1", "t_narr_s": 44.0, "conceptLabel": "Bayes theorem formula", "window_start_s": 39.0, "window_end_s": 51.0}, {"cpipId": "C1.5_c2", "t_narr_s": 100.0, "conceptLabel": "Probability values", "window_start_s": 95.0, "window_end_s": 107.0}, {"cpipId": "C1.5_c3", "t_narr_s": 151.0, "conceptLabel": "100K population in circle", "window_start_s": 146.0, "window_end_s": 158.0}, {"cpipId": "C1.5_c4", "t_narr_s": 182.0, "conceptLabel": "Venn diagram (homicidals / gamers)", "window_start_s": 177.0, "window_end_s": 189.0}], "B5": [{"cpipId": "B5_c1", "t_narr_s": 43.0, "conceptLabel": "K = 5 preference", "window_start_s": 38.0, "window_end_s": 50.0}, {"cpipId": "B5_c2", "t_narr_s": 129.0, "conceptLabel": "Select K neighbours (Step 1)", "window_start_s": 124.0, "window_end_s": 136.0}, {"cpipId": "B5_c3", "t_narr_s": 159.0, "conceptLabel": "Euclidean distance formula", "window_start_s": 154.0, "window_end_s": 166.0}, {"cpipId": "B5_c4", "t_narr_s": 220.0, "conceptLabel": "Classification count (Step 4)", "window_start_s": 215.0, "window_end_s": 227.0}], "A1.5": [{"cpipId": "A1.5_c1", "t_narr_s": 72.0, "conceptLabel": "Binary tree diagram", "window_start_s": 67.0, "window_end_s": 79.0}, {"cpipId": "A1.5_c2", "t_narr_s": 112.0, "conceptLabel": "State-space diagram (plateau)", "window_start_s": 107.0, "window_end_s": 119.0}, {"cpipId": "A1.5_c3", "t_narr_s": 150.0, "conceptLabel": "Simulated annealing thermometer", "window_start_s": 145.0, "window_end_s": 157.0}, {"cpipId": "A1.5_c4", "t_narr_s": 173.0, "conceptLabel": "Cliff-jump transition", "window_start_s": 168.0, "window_end_s": 180.0}], "E1.5": [{"cpipId": "E1.5_c1", "t_narr_s": 40.0, "conceptLabel": "Insurance ~ Age mapping", "window_start_s": 35.0, "window_end_s": 47.0}, {"cpipId": "E1.5_c2", "t_narr_s": 85.0, "conceptLabel": "Yes/No data scatter on age", "window_start_s": 80.0, "window_end_s": 92.0}, {"cpipId": "E1.5_c3", "t_narr_s": 121.0, "conceptLabel": "Fitted sigmoid curve", "window_start_s": 116.0, "window_end_s": 128.0}, {"cpipId": "E1.5_c4", "t_narr_s": 227.0, "conceptLabel": "Multi-variable extension", "window_start_s": 222.0, "window_end_s": 234.0}], "F_v5": [{"cpipId": "F_v5_c1", "t_narr_s": 19.2, "conceptLabel": "Core idea of search in AI", "window_start_s": 14.2, "window_end_s": 29.2}, {"cpipId": "F_v5_c2", "t_narr_s": 89.9, "conceptLabel": "Problem-specific knowledge", "window_start_s": 84.9, "window_end_s": 99.9}, {"cpipId": "F_v5_c3", "t_narr_s": 122.9, "conceptLabel": "Single-solution improvement", "window_start_s": 117.9, "window_end_s": 132.9}, {"cpipId": "F_v5_c4", "t_narr_s": 181.8, "conceptLabel": "Algorithms and applications", "window_start_s": 176.8, "window_end_s": 191.8}], "D0": [{"cpipId": "D0_c1", "t_narr_s": 27.0, "conceptLabel": "Neural network with bias node", "window_start_s": 22.0, "window_end_s": 34.0}, {"cpipId": "D0_c2", "t_narr_s": 110.0, "conceptLabel": "ReLU activation graph", "window_start_s": 105.0, "window_end_s": 117.0}, {"cpipId": "D0_c3", "t_narr_s": 195.0, "conceptLabel": "Weighted inputs with sigmoid", "window_start_s": 190.0, "window_end_s": 202.0}, {"cpipId": "D0_c4", "t_narr_s": 212.0, "conceptLabel": "Sigmoid curve mapping", "window_start_s": 207.0, "window_end_s": 219.0}], "C0": [{"cpipId": "C0_c1", "t_narr_s": 44.0, "conceptLabel": "Bayes theorem formula", "window_start_s": 39.0, "window_end_s": 51.0}, {"cpipId": "C0_c2", "t_narr_s": 100.0, "conceptLabel": "Probability values", "window_start_s": 95.0, "window_end_s": 107.0}, {"cpipId": "C0_c3", "t_narr_s": 151.0, "conceptLabel": "100K population in circle", "window_start_s": 146.0, "window_end_s": 158.0}, {"cpipId": "C0_c4", "t_narr_s": 182.0, "conceptLabel": "Venn diagram (homicidals / gamers)", "window_start_s": 177.0, "window_end_s": 189.0}], "F1.5": [{"cpipId": "F1.5_c1", "t_narr_s": 41.0, "conceptLabel": "Supervised learning panel", "window_start_s": 36.0, "window_end_s": 48.0}, {"cpipId": "F1.5_c2", "t_narr_s": 56.0, "conceptLabel": "Reinforcement learning panel", "window_start_s": 51.0, "window_end_s": 63.0}, {"cpipId": "F1.5_c3", "t_narr_s": 177.0, "conceptLabel": "Agent–environment cycle", "window_start_s": 172.0, "window_end_s": 184.0}, {"cpipId": "F1.5_c4", "t_narr_s": 190.0, "conceptLabel": "Policy annotation (π)", "window_start_s": 185.0, "window_end_s": 197.0}], "F_v2": [{"cpipId": "F_v2_c1", "t_narr_s": 67.4, "conceptLabel": "Universal function approximator theorem", "window_start_s": 62.4, "window_end_s": 77.4}, {"cpipId": "F_v2_c2", "t_narr_s": 107.8, "conceptLabel": "Where physics comes in", "window_start_s": 102.8, "window_end_s": 117.8}, {"cpipId": "F_v2_c3", "t_narr_s": 157.7, "conceptLabel": "Force of gravity", "window_start_s": 152.7, "window_end_s": 167.7}, {"cpipId": "F_v2_c4", "t_narr_s": 186.2, "conceptLabel": "Locality and low polynomial order", "window_start_s": 181.2, "window_end_s": 196.2}], "E0": [{"cpipId": "E0_c1", "t_narr_s": 40.0, "conceptLabel": "Insurance ~ Age mapping", "window_start_s": 35.0, "window_end_s": 47.0}, {"cpipId": "E0_c2", "t_narr_s": 85.0, "conceptLabel": "Yes/No data scatter on age", "window_start_s": 80.0, "window_end_s": 92.0}, {"cpipId": "E0_c3", "t_narr_s": 121.0, "conceptLabel": "Fitted sigmoid curve", "window_start_s": 116.0, "window_end_s": 128.0}, {"cpipId": "E0_c4", "t_narr_s": 227.0, "conceptLabel": "Multi-variable extension", "window_start_s": 222.0, "window_end_s": 234.0}], "A5": [{"cpipId": "A5_c1", "t_narr_s": 72.0, "conceptLabel": "Binary tree diagram", "window_start_s": 67.0, "window_end_s": 79.0}, {"cpipId": "A5_c2", "t_narr_s": 112.0, "conceptLabel": "State-space diagram (plateau)", "window_start_s": 107.0, "window_end_s": 119.0}, {"cpipId": "A5_c3", "t_narr_s": 150.0, "conceptLabel": "Simulated annealing thermometer", "window_start_s": 145.0, "window_end_s": 157.0}, {"cpipId": "A5_c4", "t_narr_s": 173.0, "conceptLabel": "Cliff-jump transition", "window_start_s": 168.0, "window_end_s": 180.0}], "F_v3": [{"cpipId": "F_v3_c1", "t_narr_s": 5.4, "conceptLabel": "Unsupervised learning type", "window_start_s": 0.4, "window_end_s": 15.4}, {"cpipId": "F_v3_c2", "t_narr_s": 42.4, "conceptLabel": "Clustering algorithm", "window_start_s": 37.4, "window_end_s": 52.4}, {"cpipId": "F_v3_c3", "t_narr_s": 55.7, "conceptLabel": "Anomaly detection", "window_start_s": 50.7, "window_end_s": 65.7}, {"cpipId": "F_v3_c4", "t_narr_s": 130.0, "conceptLabel": "Labeled spam example", "window_start_s": 125.0, "window_end_s": 140.0}], "F0": [{"cpipId": "F0_c1", "t_narr_s": 41.0, "conceptLabel": "Supervised learning panel", "window_start_s": 36.0, "window_end_s": 48.0}, {"cpipId": "F0_c2", "t_narr_s": 56.0, "conceptLabel": "Reinforcement learning panel", "window_start_s": 51.0, "window_end_s": 63.0}, {"cpipId": "F0_c3", "t_narr_s": 177.0, "conceptLabel": "Agent–environment cycle", "window_start_s": 172.0, "window_end_s": 184.0}, {"cpipId": "F0_c4", "t_narr_s": 190.0, "conceptLabel": "Policy annotation (π)", "window_start_s": 185.0, "window_end_s": 197.0}], "F_v4": [{"cpipId": "F_v4_c1", "t_narr_s": 10.4, "conceptLabel": "Cars and cities analogy", "window_start_s": 5.4, "window_end_s": 20.4}, {"cpipId": "F_v4_c2", "t_narr_s": 53.5, "conceptLabel": "Measuring weight and blood pressure", "window_start_s": 48.5, "window_end_s": 63.5}, {"cpipId": "F_v4_c3", "t_narr_s": 126.4, "conceptLabel": "Correlated genes", "window_start_s": 121.4, "window_end_s": 136.4}, {"cpipId": "F_v4_c4", "t_narr_s": 221.6, "conceptLabel": "Color-coded clusters", "window_start_s": 216.6, "window_end_s": 231.6}], "C5": [{"cpipId": "C5_c1", "t_narr_s": 44.0, "conceptLabel": "Bayes theorem formula", "window_start_s": 39.0, "window_end_s": 51.0}, {"cpipId": "C5_c2", "t_narr_s": 100.0, "conceptLabel": "Probability values", "window_start_s": 95.0, "window_end_s": 107.0}, {"cpipId": "C5_c3", "t_narr_s": 151.0, "conceptLabel": "100K population in circle", "window_start_s": 146.0, "window_end_s": 158.0}, {"cpipId": "C5_c4", "t_narr_s": 182.0, "conceptLabel": "Venn diagram (homicidals / gamers)", "window_start_s": 177.0, "window_end_s": 189.0}], "B1.5": [{"cpipId": "B1.5_c1", "t_narr_s": 43.0, "conceptLabel": "K = 5 preference", "window_start_s": 38.0, "window_end_s": 50.0}, {"cpipId": "B1.5_c2", "t_narr_s": 129.0, "conceptLabel": "Select K neighbours (Step 1)", "window_start_s": 124.0, "window_end_s": 136.0}, {"cpipId": "B1.5_c3", "t_narr_s": 159.0, "conceptLabel": "Euclidean distance formula", "window_start_s": 154.0, "window_end_s": 166.0}, {"cpipId": "B1.5_c4", "t_narr_s": 220.0, "conceptLabel": "Classification count (Step 4)", "window_start_s": 215.0, "window_end_s": 227.0}], "A0": [{"cpipId": "A0_c1", "t_narr_s": 72.0, "conceptLabel": "Binary tree diagram", "window_start_s": 67.0, "window_end_s": 79.0}, {"cpipId": "A0_c2", "t_narr_s": 112.0, "conceptLabel": "State-space diagram (plateau)", "window_start_s": 107.0, "window_end_s": 119.0}, {"cpipId": "A0_c3", "t_narr_s": 150.0, "conceptLabel": "Simulated annealing thermometer", "window_start_s": 145.0, "window_end_s": 157.0}, {"cpipId": "A0_c4", "t_narr_s": 173.0, "conceptLabel": "Cliff-jump transition", "window_start_s": 168.0, "window_end_s": 180.0}], "F5": [{"cpipId": "F5_c1", "t_narr_s": 41.0, "conceptLabel": "Supervised learning panel", "window_start_s": 36.0, "window_end_s": 48.0}, {"cpipId": "F5_c2", "t_narr_s": 56.0, "conceptLabel": "Reinforcement learning panel", "window_start_s": 51.0, "window_end_s": 63.0}, {"cpipId": "F5_c3", "t_narr_s": 177.0, "conceptLabel": "Agent–environment cycle", "window_start_s": 172.0, "window_end_s": 184.0}, {"cpipId": "F5_c4", "t_narr_s": 190.0, "conceptLabel": "Policy annotation (π)", "window_start_s": 185.0, "window_end_s": 197.0}], "F_v6": [{"cpipId": "F_v6_c1", "t_narr_s": 12.2, "conceptLabel": "Gradient descent technique", "window_start_s": 7.2, "window_end_s": 22.2}, {"cpipId": "F_v6_c2", "t_narr_s": 28.2, "conceptLabel": "Iterative manner", "window_start_s": 23.2, "window_end_s": 38.2}, {"cpipId": "F_v6_c3", "t_narr_s": 118.3, "conceptLabel": "Gradient in 1D", "window_start_s": 113.3, "window_end_s": 128.3}, {"cpipId": "F_v6_c4", "t_narr_s": 224.5, "conceptLabel": "Compute the gradient", "window_start_s": 219.5, "window_end_s": 234.5}], "E5": [{"cpipId": "E5_c1", "t_narr_s": 40.0, "conceptLabel": "Insurance ~ Age mapping", "window_start_s": 35.0, "window_end_s": 47.0}, {"cpipId": "E5_c2", "t_narr_s": 85.0, "conceptLabel": "Yes/No data scatter on age", "window_start_s": 80.0, "window_end_s": 92.0}, {"cpipId": "E5_c3", "t_narr_s": 121.0, "conceptLabel": "Fitted sigmoid curve", "window_start_s": 116.0, "window_end_s": 128.0}, {"cpipId": "E5_c4", "t_narr_s": 227.0, "conceptLabel": "Multi-variable extension", "window_start_s": 222.0, "window_end_s": 234.0}], "D1.5": [{"cpipId": "D1.5_c1", "t_narr_s": 27.0, "conceptLabel": "Neural network with bias node", "window_start_s": 22.0, "window_end_s": 34.0}, {"cpipId": "D1.5_c2", "t_narr_s": 110.0, "conceptLabel": "ReLU activation graph", "window_start_s": 105.0, "window_end_s": 117.0}, {"cpipId": "D1.5_c3", "t_narr_s": 195.0, "conceptLabel": "Weighted inputs with sigmoid", "window_start_s": 190.0, "window_end_s": 202.0}, {"cpipId": "D1.5_c4", "t_narr_s": 212.0, "conceptLabel": "Sigmoid curve mapping", "window_start_s": 207.0, "window_end_s": 219.0}], "B0": [{"cpipId": "B0_c1", "t_narr_s": 43.0, "conceptLabel": "K = 5 preference", "window_start_s": 38.0, "window_end_s": 50.0}, {"cpipId": "B0_c2", "t_narr_s": 129.0, "conceptLabel": "Select K neighbours (Step 1)", "window_start_s": 124.0, "window_end_s": 136.0}, {"cpipId": "B0_c3", "t_narr_s": 159.0, "conceptLabel": "Euclidean distance formula", "window_start_s": 154.0, "window_end_s": 166.0}, {"cpipId": "B0_c4", "t_narr_s": 220.0, "conceptLabel": "Classification count (Step 4)", "window_start_s": 215.0, "window_end_s": 227.0}]}, "ratingScaleHtml": "<h2>Rating-scale reference<\/h2>\n<p style=\"font-size:13px;color:#4b5563;\">For each moment, you'll be asked: <em>\"At this moment, how well does the visual support what's being said?\"<\/em> Use this scale. Judge what the learner experiences — there is no need to count seconds or estimate timings.<\/p>\n\n<div class=\"rating-def excellent\">\n  <strong>5 &mdash; Very well<\/strong>\n  <p>The visual fully supports the narration at this moment. The learner can integrate what they see with what they hear effortlessly; there is no cognitive gap between the two streams.<\/p>\n<\/div>\n\n<div class=\"rating-def good\">\n  <strong>4 &mdash; Well<\/strong>\n  <p>The visual largely supports the narration. The learner can connect the two with only minor effort &mdash; e.g. a brief glance back to the visual, or a small mental bridge that does not interrupt comprehension.<\/p>\n<\/div>\n\n<div class=\"rating-def adequate\">\n  <strong>3 &mdash; Adequately<\/strong>\n  <p>The pairing works, but the learner must hold one stream in working memory while waiting for &mdash; or looking for &mdash; the other. Comprehension is preserved, but at a noticeable cognitive cost.<\/p>\n<\/div>\n\n<div class=\"rating-def poor\">\n  <strong>2 &mdash; Poorly<\/strong>\n  <p>The learner must actively recall what was said (or shown) in order to connect it with the other stream. Working memory is strained, and the learner is aware of the mismatch. Integration is no longer automatic and learning is impaired.<\/p>\n<\/div>\n\n<div class=\"rating-def vpoor\">\n  <strong>1 &mdash; Very poorly<\/strong>\n  <p>The visual does not meaningfully support the narration at this moment. The learner experiences split attention and cannot reliably integrate the two streams; the pairing has failed pedagogically.<\/p>\n<\/div>\n\n<p style=\"font-size:12px;color:#6b7280;margin-top:16px;\"><strong>Note for the fresh-video set:<\/strong> if the relevant visual does not appear in the viewing window, or appears so far from the narration that it no longer feels connected, score the support low (1 or 2).<\/p>\n"};
+window.RATER_CONFIG = {"raterId": "R3", "appsScriptUrl": "PASTE_YOUR_DEPLOYED_APPS_SCRIPT_WEBAPP_URL_HERE", "principles": ["Temporal contiguity", "Spatial contiguity", "Modality", "Redundancy", "Coherence", "Signaling", "Segmenting", "Personalisation"], "confidenceLevels": ["very_low", "low", "medium", "high", "very_high"], "confidenceLabels": {"very_low": "Very low", "low": "Low", "medium": "Medium", "high": "High", "very_high": "Very high"}, "nSessions": 3, "videos": [{"displayLabel": "Video_R01", "internalId": "F_v6", "youtubeId": "JLqv93rH5JA", "duration": 308, "set": "fresh", "topic": "GradientDescent", "delay_s": null, "session_index": 1, "position_in_session": 1}, {"displayLabel": "Video_R02", "internalId": "E0", "youtubeId": "5GXsE2GapjY", "duration": 240, "set": "manipulated", "topic": "TopicE", "delay_s": 0, "session_index": 1, "position_in_session": 2}, {"displayLabel": "Video_R03", "internalId": "D5", "youtubeId": "ska7n7i4RDQ", "duration": 240, "set": "manipulated", "topic": "TopicD", "delay_s": 5, "session_index": 1, "position_in_session": 3}, {"displayLabel": "Video_R04", "internalId": "F1.5", "youtubeId": "kJhG9U8vbBE", "duration": 240, "set": "manipulated", "topic": "TopicF", "delay_s": 1.5, "session_index": 1, "position_in_session": 4}, {"displayLabel": "Video_R05", "internalId": "A1.5", "youtubeId": "bCFKmVTxnp4", "duration": 240, "set": "manipulated", "topic": "TopicA", "delay_s": 1.5, "session_index": 1, "position_in_session": 5}, {"displayLabel": "Video_R06", "internalId": "B5", "youtubeId": "YZfzuTSsi2A", "duration": 240, "set": "manipulated", "topic": "TopicB", "delay_s": 5, "session_index": 1, "position_in_session": 6}, {"displayLabel": "Video_R07", "internalId": "C0", "youtubeId": "eWNpIHPm1IE", "duration": 240, "set": "manipulated", "topic": "TopicC", "delay_s": 0, "session_index": 1, "position_in_session": 7}, {"displayLabel": "Video_R08", "internalId": "E1.5", "youtubeId": "v1K8O0JEDro", "duration": 240, "set": "manipulated", "topic": "TopicE", "delay_s": 1.5, "session_index": 2, "position_in_session": 1}, {"displayLabel": "Video_R09", "internalId": "F_v2", "youtubeId": "fd5m0acg3Zo", "duration": 218, "set": "fresh", "topic": "UniversalApproximator", "delay_s": null, "session_index": 2, "position_in_session": 2}, {"displayLabel": "Video_R10", "internalId": "C1.5", "youtubeId": "9D9shdTsqZc", "duration": 240, "set": "manipulated", "topic": "TopicC", "delay_s": 1.5, "session_index": 2, "position_in_session": 3}, {"displayLabel": "Video_R11", "internalId": "F5", "youtubeId": "fnA_NP8o_TY", "duration": 240, "set": "manipulated", "topic": "TopicF", "delay_s": 5, "session_index": 2, "position_in_session": 4}, {"displayLabel": "Video_R12", "internalId": "A5", "youtubeId": "aX3i2zQiJM8", "duration": 240, "set": "manipulated", "topic": "TopicA", "delay_s": 5, "session_index": 2, "position_in_session": 5}, {"displayLabel": "Video_R13", "internalId": "D0", "youtubeId": "0xgLGXZHvYA", "duration": 240, "set": "manipulated", "topic": "TopicD", "delay_s": 0, "session_index": 2, "position_in_session": 6}, {"displayLabel": "Video_R14", "internalId": "B0", "youtubeId": "TJL5yLz-feY", "duration": 240, "set": "manipulated", "topic": "TopicB", "delay_s": 0, "session_index": 2, "position_in_session": 7}, {"displayLabel": "Video_R15", "internalId": "F_v4", "youtubeId": "-1vj8TxInw8", "duration": 293, "set": "fresh", "topic": "PCAMainIdeas", "delay_s": null, "session_index": 2, "position_in_session": 8}, {"displayLabel": "Video_R16", "internalId": "F_v5", "youtubeId": "34ulJLhK4-I", "duration": 253, "set": "fresh", "topic": "AISearchAlgorithms", "delay_s": null, "session_index": 3, "position_in_session": 1}, {"displayLabel": "Video_R17", "internalId": "F0", "youtubeId": "KyN_byReZe8", "duration": 240, "set": "manipulated", "topic": "TopicF", "delay_s": 0, "session_index": 3, "position_in_session": 2}, {"displayLabel": "Video_R18", "internalId": "D1.5", "youtubeId": "2jgSz2RNbTk", "duration": 240, "set": "manipulated", "topic": "TopicD", "delay_s": 1.5, "session_index": 3, "position_in_session": 3}, {"displayLabel": "Video_R19", "internalId": "E5", "youtubeId": "BdUXz66hHZM", "duration": 240, "set": "manipulated", "topic": "TopicE", "delay_s": 5, "session_index": 3, "position_in_session": 4}, {"displayLabel": "Video_R20", "internalId": "F_v3", "youtubeId": "AEileXzqIqc", "duration": 220, "set": "fresh", "topic": "UnsupervisedLearning", "delay_s": null, "session_index": 3, "position_in_session": 5}, {"displayLabel": "Video_R21", "internalId": "A0", "youtubeId": "cO9Wa6iOC9k", "duration": 240, "set": "manipulated", "topic": "TopicA", "delay_s": 0, "session_index": 3, "position_in_session": 6}, {"displayLabel": "Video_R22", "internalId": "C5", "youtubeId": "a6xQBJCK4os", "duration": 240, "set": "manipulated", "topic": "TopicC", "delay_s": 5, "session_index": 3, "position_in_session": 7}, {"displayLabel": "Video_R23", "internalId": "B1.5", "youtubeId": "OWGVy1ftHkY", "duration": 240, "set": "manipulated", "topic": "TopicB", "delay_s": 1.5, "session_index": 3, "position_in_session": 8}], "cpips": {"F_v6": [{"cpipId": "F_v6_c1", "t_narr_s": 12.2, "conceptLabel": "Gradient descent technique", "window_start_s": 7.2, "window_end_s": 22.2}, {"cpipId": "F_v6_c2", "t_narr_s": 28.2, "conceptLabel": "Iterative manner", "window_start_s": 23.2, "window_end_s": 38.2}, {"cpipId": "F_v6_c3", "t_narr_s": 118.3, "conceptLabel": "Gradient in 1D", "window_start_s": 113.3, "window_end_s": 128.3}, {"cpipId": "F_v6_c4", "t_narr_s": 224.5, "conceptLabel": "Compute the gradient", "window_start_s": 219.5, "window_end_s": 234.5}], "E0": [{"cpipId": "E0_c1", "t_narr_s": 40.0, "conceptLabel": "Insurance ~ Age mapping", "window_start_s": 35.0, "window_end_s": 47.0}, {"cpipId": "E0_c2", "t_narr_s": 85.0, "conceptLabel": "Yes/No data scatter on age", "window_start_s": 80.0, "window_end_s": 92.0}, {"cpipId": "E0_c3", "t_narr_s": 121.0, "conceptLabel": "Fitted sigmoid curve", "window_start_s": 116.0, "window_end_s": 128.0}, {"cpipId": "E0_c4", "t_narr_s": 227.0, "conceptLabel": "Multi-variable extension", "window_start_s": 222.0, "window_end_s": 234.0}], "D5": [{"cpipId": "D5_c1", "t_narr_s": 27.0, "conceptLabel": "Neural network with bias node", "window_start_s": 22.0, "window_end_s": 34.0}, {"cpipId": "D5_c2", "t_narr_s": 110.0, "conceptLabel": "ReLU activation graph", "window_start_s": 105.0, "window_end_s": 117.0}, {"cpipId": "D5_c3", "t_narr_s": 195.0, "conceptLabel": "Weighted inputs with sigmoid", "window_start_s": 190.0, "window_end_s": 202.0}, {"cpipId": "D5_c4", "t_narr_s": 212.0, "conceptLabel": "Sigmoid curve mapping", "window_start_s": 207.0, "window_end_s": 219.0}], "F1.5": [{"cpipId": "F1.5_c1", "t_narr_s": 41.0, "conceptLabel": "Supervised learning panel", "window_start_s": 36.0, "window_end_s": 48.0}, {"cpipId": "F1.5_c2", "t_narr_s": 56.0, "conceptLabel": "Reinforcement learning panel", "window_start_s": 51.0, "window_end_s": 63.0}, {"cpipId": "F1.5_c3", "t_narr_s": 177.0, "conceptLabel": "Agent–environment cycle", "window_start_s": 172.0, "window_end_s": 184.0}, {"cpipId": "F1.5_c4", "t_narr_s": 190.0, "conceptLabel": "Policy annotation (π)", "window_start_s": 185.0, "window_end_s": 197.0}], "A1.5": [{"cpipId": "A1.5_c1", "t_narr_s": 72.0, "conceptLabel": "Binary tree diagram", "window_start_s": 67.0, "window_end_s": 79.0}, {"cpipId": "A1.5_c2", "t_narr_s": 112.0, "conceptLabel": "State-space diagram (plateau)", "window_start_s": 107.0, "window_end_s": 119.0}, {"cpipId": "A1.5_c3", "t_narr_s": 150.0, "conceptLabel": "Simulated annealing thermometer", "window_start_s": 145.0, "window_end_s": 157.0}, {"cpipId": "A1.5_c4", "t_narr_s": 173.0, "conceptLabel": "Cliff-jump transition", "window_start_s": 168.0, "window_end_s": 180.0}], "B5": [{"cpipId": "B5_c1", "t_narr_s": 43.0, "conceptLabel": "K = 5 preference", "window_start_s": 38.0, "window_end_s": 50.0}, {"cpipId": "B5_c2", "t_narr_s": 129.0, "conceptLabel": "Select K neighbours (Step 1)", "window_start_s": 124.0, "window_end_s": 136.0}, {"cpipId": "B5_c3", "t_narr_s": 159.0, "conceptLabel": "Euclidean distance formula", "window_start_s": 154.0, "window_end_s": 166.0}, {"cpipId": "B5_c4", "t_narr_s": 220.0, "conceptLabel": "Classification count (Step 4)", "window_start_s": 215.0, "window_end_s": 227.0}], "C0": [{"cpipId": "C0_c1", "t_narr_s": 44.0, "conceptLabel": "Bayes theorem formula", "window_start_s": 39.0, "window_end_s": 51.0}, {"cpipId": "C0_c2", "t_narr_s": 100.0, "conceptLabel": "Probability values", "window_start_s": 95.0, "window_end_s": 107.0}, {"cpipId": "C0_c3", "t_narr_s": 151.0, "conceptLabel": "100K population in circle", "window_start_s": 146.0, "window_end_s": 158.0}, {"cpipId": "C0_c4", "t_narr_s": 182.0, "conceptLabel": "Venn diagram (homicidals / gamers)", "window_start_s": 177.0, "window_end_s": 189.0}], "E1.5": [{"cpipId": "E1.5_c1", "t_narr_s": 40.0, "conceptLabel": "Insurance ~ Age mapping", "window_start_s": 35.0, "window_end_s": 47.0}, {"cpipId": "E1.5_c2", "t_narr_s": 85.0, "conceptLabel": "Yes/No data scatter on age", "window_start_s": 80.0, "window_end_s": 92.0}, {"cpipId": "E1.5_c3", "t_narr_s": 121.0, "conceptLabel": "Fitted sigmoid curve", "window_start_s": 116.0, "window_end_s": 128.0}, {"cpipId": "E1.5_c4", "t_narr_s": 227.0, "conceptLabel": "Multi-variable extension", "window_start_s": 222.0, "window_end_s": 234.0}], "F_v2": [{"cpipId": "F_v2_c1", "t_narr_s": 67.4, "conceptLabel": "Universal function approximator theorem", "window_start_s": 62.4, "window_end_s": 77.4}, {"cpipId": "F_v2_c2", "t_narr_s": 107.8, "conceptLabel": "Where physics comes in", "window_start_s": 102.8, "window_end_s": 117.8}, {"cpipId": "F_v2_c3", "t_narr_s": 157.7, "conceptLabel": "Force of gravity", "window_start_s": 152.7, "window_end_s": 167.7}, {"cpipId": "F_v2_c4", "t_narr_s": 186.2, "conceptLabel": "Locality and low polynomial order", "window_start_s": 181.2, "window_end_s": 196.2}], "C1.5": [{"cpipId": "C1.5_c1", "t_narr_s": 44.0, "conceptLabel": "Bayes theorem formula", "window_start_s": 39.0, "window_end_s": 51.0}, {"cpipId": "C1.5_c2", "t_narr_s": 100.0, "conceptLabel": "Probability values", "window_start_s": 95.0, "window_end_s": 107.0}, {"cpipId": "C1.5_c3", "t_narr_s": 151.0, "conceptLabel": "100K population in circle", "window_start_s": 146.0, "window_end_s": 158.0}, {"cpipId": "C1.5_c4", "t_narr_s": 182.0, "conceptLabel": "Venn diagram (homicidals / gamers)", "window_start_s": 177.0, "window_end_s": 189.0}], "F5": [{"cpipId": "F5_c1", "t_narr_s": 41.0, "conceptLabel": "Supervised learning panel", "window_start_s": 36.0, "window_end_s": 48.0}, {"cpipId": "F5_c2", "t_narr_s": 56.0, "conceptLabel": "Reinforcement learning panel", "window_start_s": 51.0, "window_end_s": 63.0}, {"cpipId": "F5_c3", "t_narr_s": 177.0, "conceptLabel": "Agent–environment cycle", "window_start_s": 172.0, "window_end_s": 184.0}, {"cpipId": "F5_c4", "t_narr_s": 190.0, "conceptLabel": "Policy annotation (π)", "window_start_s": 185.0, "window_end_s": 197.0}], "A5": [{"cpipId": "A5_c1", "t_narr_s": 72.0, "conceptLabel": "Binary tree diagram", "window_start_s": 67.0, "window_end_s": 79.0}, {"cpipId": "A5_c2", "t_narr_s": 112.0, "conceptLabel": "State-space diagram (plateau)", "window_start_s": 107.0, "window_end_s": 119.0}, {"cpipId": "A5_c3", "t_narr_s": 150.0, "conceptLabel": "Simulated annealing thermometer", "window_start_s": 145.0, "window_end_s": 157.0}, {"cpipId": "A5_c4", "t_narr_s": 173.0, "conceptLabel": "Cliff-jump transition", "window_start_s": 168.0, "window_end_s": 180.0}], "D0": [{"cpipId": "D0_c1", "t_narr_s": 27.0, "conceptLabel": "Neural network with bias node", "window_start_s": 22.0, "window_end_s": 34.0}, {"cpipId": "D0_c2", "t_narr_s": 110.0, "conceptLabel": "ReLU activation graph", "window_start_s": 105.0, "window_end_s": 117.0}, {"cpipId": "D0_c3", "t_narr_s": 195.0, "conceptLabel": "Weighted inputs with sigmoid", "window_start_s": 190.0, "window_end_s": 202.0}, {"cpipId": "D0_c4", "t_narr_s": 212.0, "conceptLabel": "Sigmoid curve mapping", "window_start_s": 207.0, "window_end_s": 219.0}], "B0": [{"cpipId": "B0_c1", "t_narr_s": 43.0, "conceptLabel": "K = 5 preference", "window_start_s": 38.0, "window_end_s": 50.0}, {"cpipId": "B0_c2", "t_narr_s": 129.0, "conceptLabel": "Select K neighbours (Step 1)", "window_start_s": 124.0, "window_end_s": 136.0}, {"cpipId": "B0_c3", "t_narr_s": 159.0, "conceptLabel": "Euclidean distance formula", "window_start_s": 154.0, "window_end_s": 166.0}, {"cpipId": "B0_c4", "t_narr_s": 220.0, "conceptLabel": "Classification count (Step 4)", "window_start_s": 215.0, "window_end_s": 227.0}], "F_v4": [{"cpipId": "F_v4_c1", "t_narr_s": 10.4, "conceptLabel": "Cars and cities analogy", "window_start_s": 5.4, "window_end_s": 20.4}, {"cpipId": "F_v4_c2", "t_narr_s": 53.5, "conceptLabel": "Measuring weight and blood pressure", "window_start_s": 48.5, "window_end_s": 63.5}, {"cpipId": "F_v4_c3", "t_narr_s": 126.4, "conceptLabel": "Correlated genes", "window_start_s": 121.4, "window_end_s": 136.4}, {"cpipId": "F_v4_c4", "t_narr_s": 221.6, "conceptLabel": "Color-coded clusters", "window_start_s": 216.6, "window_end_s": 231.6}], "F_v5": [{"cpipId": "F_v5_c1", "t_narr_s": 19.2, "conceptLabel": "Core idea of search in AI", "window_start_s": 14.2, "window_end_s": 29.2}, {"cpipId": "F_v5_c2", "t_narr_s": 89.9, "conceptLabel": "Problem-specific knowledge", "window_start_s": 84.9, "window_end_s": 99.9}, {"cpipId": "F_v5_c3", "t_narr_s": 122.9, "conceptLabel": "Single-solution improvement", "window_start_s": 117.9, "window_end_s": 132.9}, {"cpipId": "F_v5_c4", "t_narr_s": 181.8, "conceptLabel": "Algorithms and applications", "window_start_s": 176.8, "window_end_s": 191.8}], "F0": [{"cpipId": "F0_c1", "t_narr_s": 41.0, "conceptLabel": "Supervised learning panel", "window_start_s": 36.0, "window_end_s": 48.0}, {"cpipId": "F0_c2", "t_narr_s": 56.0, "conceptLabel": "Reinforcement learning panel", "window_start_s": 51.0, "window_end_s": 63.0}, {"cpipId": "F0_c3", "t_narr_s": 177.0, "conceptLabel": "Agent–environment cycle", "window_start_s": 172.0, "window_end_s": 184.0}, {"cpipId": "F0_c4", "t_narr_s": 190.0, "conceptLabel": "Policy annotation (π)", "window_start_s": 185.0, "window_end_s": 197.0}], "D1.5": [{"cpipId": "D1.5_c1", "t_narr_s": 27.0, "conceptLabel": "Neural network with bias node", "window_start_s": 22.0, "window_end_s": 34.0}, {"cpipId": "D1.5_c2", "t_narr_s": 110.0, "conceptLabel": "ReLU activation graph", "window_start_s": 105.0, "window_end_s": 117.0}, {"cpipId": "D1.5_c3", "t_narr_s": 195.0, "conceptLabel": "Weighted inputs with sigmoid", "window_start_s": 190.0, "window_end_s": 202.0}, {"cpipId": "D1.5_c4", "t_narr_s": 212.0, "conceptLabel": "Sigmoid curve mapping", "window_start_s": 207.0, "window_end_s": 219.0}], "E5": [{"cpipId": "E5_c1", "t_narr_s": 40.0, "conceptLabel": "Insurance ~ Age mapping", "window_start_s": 35.0, "window_end_s": 47.0}, {"cpipId": "E5_c2", "t_narr_s": 85.0, "conceptLabel": "Yes/No data scatter on age", "window_start_s": 80.0, "window_end_s": 92.0}, {"cpipId": "E5_c3", "t_narr_s": 121.0, "conceptLabel": "Fitted sigmoid curve", "window_start_s": 116.0, "window_end_s": 128.0}, {"cpipId": "E5_c4", "t_narr_s": 227.0, "conceptLabel": "Multi-variable extension", "window_start_s": 222.0, "window_end_s": 234.0}], "F_v3": [{"cpipId": "F_v3_c1", "t_narr_s": 5.4, "conceptLabel": "Unsupervised learning type", "window_start_s": 0.4, "window_end_s": 15.4}, {"cpipId": "F_v3_c2", "t_narr_s": 42.4, "conceptLabel": "Clustering algorithm", "window_start_s": 37.4, "window_end_s": 52.4}, {"cpipId": "F_v3_c3", "t_narr_s": 55.7, "conceptLabel": "Anomaly detection", "window_start_s": 50.7, "window_end_s": 65.7}, {"cpipId": "F_v3_c4", "t_narr_s": 130.0, "conceptLabel": "Labeled spam example", "window_start_s": 125.0, "window_end_s": 140.0}], "A0": [{"cpipId": "A0_c1", "t_narr_s": 72.0, "conceptLabel": "Binary tree diagram", "window_start_s": 67.0, "window_end_s": 79.0}, {"cpipId": "A0_c2", "t_narr_s": 112.0, "conceptLabel": "State-space diagram (plateau)", "window_start_s": 107.0, "window_end_s": 119.0}, {"cpipId": "A0_c3", "t_narr_s": 150.0, "conceptLabel": "Simulated annealing thermometer", "window_start_s": 145.0, "window_end_s": 157.0}, {"cpipId": "A0_c4", "t_narr_s": 173.0, "conceptLabel": "Cliff-jump transition", "window_start_s": 168.0, "window_end_s": 180.0}], "C5": [{"cpipId": "C5_c1", "t_narr_s": 44.0, "conceptLabel": "Bayes theorem formula", "window_start_s": 39.0, "window_end_s": 51.0}, {"cpipId": "C5_c2", "t_narr_s": 100.0, "conceptLabel": "Probability values", "window_start_s": 95.0, "window_end_s": 107.0}, {"cpipId": "C5_c3", "t_narr_s": 151.0, "conceptLabel": "100K population in circle", "window_start_s": 146.0, "window_end_s": 158.0}, {"cpipId": "C5_c4", "t_narr_s": 182.0, "conceptLabel": "Venn diagram (homicidals / gamers)", "window_start_s": 177.0, "window_end_s": 189.0}], "B1.5": [{"cpipId": "B1.5_c1", "t_narr_s": 43.0, "conceptLabel": "K = 5 preference", "window_start_s": 38.0, "window_end_s": 50.0}, {"cpipId": "B1.5_c2", "t_narr_s": 129.0, "conceptLabel": "Select K neighbours (Step 1)", "window_start_s": 124.0, "window_end_s": 136.0}, {"cpipId": "B1.5_c3", "t_narr_s": 159.0, "conceptLabel": "Euclidean distance formula", "window_start_s": 154.0, "window_end_s": 166.0}, {"cpipId": "B1.5_c4", "t_narr_s": 220.0, "conceptLabel": "Classification count (Step 4)", "window_start_s": 215.0, "window_end_s": 227.0}]}, "ratingScaleHtml": "<h2>Rating-scale reference<\/h2>\n<p style=\"font-size:13px;color:#4b5563;\">For each moment, you'll be asked: <em>\"At this moment, how well does the visual support what's being said?\"<\/em> Use this scale. Judge what the learner experiences — there is no need to count seconds or estimate timings.<\/p>\n\n<div class=\"rating-def excellent\">\n  <strong>5 &mdash; Very well<\/strong>\n  <p>The visual fully supports the narration at this moment. The learner can integrate what they see with what they hear effortlessly; there is no cognitive gap between the two streams.<\/p>\n<\/div>\n\n<div class=\"rating-def good\">\n  <strong>4 &mdash; Well<\/strong>\n  <p>The visual largely supports the narration. The learner can connect the two with only minor effort &mdash; e.g. a brief glance back to the visual, or a small mental bridge that does not interrupt comprehension.<\/p>\n<\/div>\n\n<div class=\"rating-def adequate\">\n  <strong>3 &mdash; Adequately<\/strong>\n  <p>The pairing works, but the learner must hold one stream in working memory while waiting for &mdash; or looking for &mdash; the other. Comprehension is preserved, but at a noticeable cognitive cost.<\/p>\n<\/div>\n\n<div class=\"rating-def poor\">\n  <strong>2 &mdash; Poorly<\/strong>\n  <p>The learner must actively recall what was said (or shown) in order to connect it with the other stream. Working memory is strained, and the learner is aware of the mismatch. Integration is no longer automatic and learning is impaired.<\/p>\n<\/div>\n\n<div class=\"rating-def vpoor\">\n  <strong>1 &mdash; Very poorly<\/strong>\n  <p>The visual does not meaningfully support the narration at this moment. The learner experiences split attention and cannot reliably integrate the two streams; the pairing has failed pedagogically.<\/p>\n<\/div>\n\n<p style=\"font-size:12px;color:#6b7280;margin-top:16px;\"><strong>Note for the fresh-video set:<\/strong> if the relevant visual does not appear in the viewing window, or appears so far from the narration that it no longer feels connected, score the support low (1 or 2).<\/p>\n"};
 </script>
 
 <script>
 (function() {
   const cfg = window.RATER_CONFIG;
-  const stateKey = 'validation_' + cfg.raterId + '_state_v2';
+  const stateKey = 'validation_' + cfg.raterId + '_state_v3';  // v3: session-block design
+  const N_SESSIONS = cfg.nSessions || 3;
 
   // ----- State -----
   let state = loadState();
@@ -215,6 +232,7 @@ window.RATER_CONFIG = {"raterId": "R3", "appsScriptUrl": "PASTE_YOUR_DEPLOYED_AP
       completedVideos: [],
       draftAnswers: {},
       currentVideoIndex: 0,
+      currentSessionIndex: 1,
       videoStartTime: null,
       activeCpipId: null,
       activeCpipStartTime: null
@@ -229,11 +247,26 @@ window.RATER_CONFIG = {"raterId": "R3", "appsScriptUrl": "PASTE_YOUR_DEPLOYED_AP
     return `${m}:${sec}`;
   }
 
-  function findNextVideoIndex() {
+  // Session-aware navigation helpers
+  function videosInSession(sessionIdx) {
+    return cfg.videos.filter(v => v.session_index === sessionIdx);
+  }
+  function findNextVideoInSession(sessionIdx) {
     for (let i = 0; i < cfg.videos.length; i++) {
-      if (!state.completedVideos.includes(cfg.videos[i].internalId)) return i;
+      const v = cfg.videos[i];
+      if (v.session_index === sessionIdx && !state.completedVideos.includes(v.internalId)) {
+        return i;
+      }
     }
     return -1;
+  }
+  function isSessionComplete(sessionIdx) {
+    const videos = videosInSession(sessionIdx);
+    if (videos.length === 0) return false;
+    return videos.every(v => state.completedVideos.includes(v.internalId));
+  }
+  function completedInSession(sessionIdx) {
+    return videosInSession(sessionIdx).filter(v => state.completedVideos.includes(v.internalId)).length;
   }
 
   // ----- YouTube Player -----
@@ -539,10 +572,14 @@ window.RATER_CONFIG = {"raterId": "R3", "appsScriptUrl": "PASTE_YOUR_DEPLOYED_AP
   }
 
   function updateProgress() {
-    const done = state.completedVideos.length;
+    const sIdx = state.currentSessionIndex || 1;
+    const sessionVideos = videosInSession(sIdx);
+    const sessionDone = completedInSession(sIdx);
+    const totalDone = state.completedVideos.length;
     const total = cfg.videos.length;
-    document.getElementById('progressText').textContent = `${done} of ${total} videos`;
-    document.getElementById('progressFill').style.width = (total ? done/total*100 : 0) + '%';
+    document.getElementById('progressText').textContent =
+      `Session ${sIdx} of ${N_SESSIONS} — ${sessionDone} of ${sessionVideos.length} in this session (${totalDone}/${total} overall)`;
+    document.getElementById('progressFill').style.width = (total ? totalDone/total*100 : 0) + '%';
   }
 
   // ----- Submit -----
@@ -567,6 +604,8 @@ window.RATER_CONFIG = {"raterId": "R3", "appsScriptUrl": "PASTE_YOUR_DEPLOYED_AP
       videoTopic: video.topic,
       videoDelayS: video.delay_s,
       videoOrderIndex: idx + 1,
+      sessionIndex: video.session_index,
+      positionInSession: video.position_in_session,
       videoDwellMs: videoDwellMs,
       videoRewinds: videoRewinds,
       overallScore: draft.overallScore ?? 50,
@@ -604,12 +643,22 @@ window.RATER_CONFIG = {"raterId": "R3", "appsScriptUrl": "PASTE_YOUR_DEPLOYED_AP
       state.activeCpipId = null;
       state.activeCpipStartTime = null;
       saveState();
-      showBanner('Submitted. Loading next video&hellip;', 'success');
-      setTimeout(() => {
-        const next = findNextVideoIndex();
-        if (next === -1) showCompletion();
-        else { renderVideo(next); document.getElementById('ratingPane').scrollTop = 0; }
-      }, 900);
+      const sIdx = state.currentSessionIndex || 1;
+      const sessionJustCompleted = isSessionComplete(sIdx);
+      if (sessionJustCompleted && sIdx < N_SESSIONS) {
+        showBanner('Submitted &mdash; end of Session ' + sIdx + '.', 'success');
+        setTimeout(() => routeToNext(), 600);
+      } else if (sessionJustCompleted && sIdx === N_SESSIONS) {
+        showBanner('Submitted &mdash; all sessions complete.', 'success');
+        setTimeout(() => routeToNext(), 600);
+      } else {
+        showBanner('Submitted. Loading next video&hellip;', 'success');
+        setTimeout(() => {
+          const next = findNextVideoInSession(sIdx);
+          if (next === -1) { routeToNext(); }
+          else { renderVideo(next); document.getElementById('ratingPane').scrollTop = 0; }
+        }, 900);
+      }
     } catch(e) {
       showBanner('Submit failed: ' + escapeHtml(e.message) + '. Copy the JSON below and email it as a backup:<br><textarea style="width:100%;height:120px;margin-top:6px;">' + escapeHtml(JSON.stringify(payload)) + '</textarea>', 'error');
       this.disabled = false;
@@ -651,12 +700,7 @@ window.RATER_CONFIG = {"raterId": "R3", "appsScriptUrl": "PASTE_YOUR_DEPLOYED_AP
     };
     state.demographics = d;
     saveState();
-    document.getElementById('demographicsScreen').style.display = 'none';
-    document.getElementById('mainContainer').style.display = 'grid';
-    const idx = findNextVideoIndex();
-    if (idx === -1) { showCompletion(); return; }
-    state.videoStartTime = Date.now();
-    renderVideo(idx);
+    routeToNext();
   });
 
   // Warn on unload if a draft exists
@@ -674,16 +718,92 @@ window.RATER_CONFIG = {"raterId": "R3", "appsScriptUrl": "PASTE_YOUR_DEPLOYED_AP
   // ----- Bootstrap -----
   function maybeStart() {
     document.getElementById('raterBadge').textContent = cfg.raterId;
-    if (state.demographics) {
-      document.getElementById('mainContainer').style.display = 'grid';
-      const idx = findNextVideoIndex();
-      if (idx === -1) { showCompletion(); return; }
-      if (!state.videoStartTime) state.videoStartTime = Date.now();
-      renderVideo(idx);
-    } else {
+    if (!state.demographics) {
       document.getElementById('demographicsScreen').style.display = 'block';
       updateProgress();
+      return;
     }
+    routeToNext();
+  }
+
+  // Decide what screen to show next based on session state.
+  function routeToNext() {
+    hideAllScreens();
+    const sIdx = state.currentSessionIndex || 1;
+    // If current session is complete:
+    if (isSessionComplete(sIdx)) {
+      if (sIdx < N_SESSIONS) {
+        showInterstitial(sIdx);
+        return;
+      } else {
+        showCompletion();
+        return;
+      }
+    }
+    // Otherwise render the next un-completed video in the current session.
+    document.getElementById('mainContainer').style.display = 'grid';
+    const idx = findNextVideoInSession(sIdx);
+    if (idx === -1) {
+      // Shouldn't normally happen; defensive fallback.
+      showCompletion();
+      return;
+    }
+    if (!state.videoStartTime) state.videoStartTime = Date.now();
+    renderVideo(idx);
+  }
+
+  function hideAllScreens() {
+    document.getElementById('demographicsScreen').style.display = 'none';
+    document.getElementById('mainContainer').style.display = 'none';
+    document.getElementById('completionScreen').style.display = 'none';
+    document.getElementById('interstitialScreen').style.display = 'none';
+  }
+
+  function showInterstitial(completedSession) {
+    const screen = document.getElementById('interstitialScreen');
+    const nextSession = completedSession + 1;
+    const nextSessionVideoCount = videosInSession(nextSession).length;
+    // After session 1 we surface a brief mid-study note about cross-session
+    // recurrence (per the 2026-06-02 disclosure decision: session 1 is fully
+    // blind; sessions 2-3 raters are informed that lecture topics may recur
+    // in slightly different versions, with an instruction to rate each
+    // independently). No mention of the manipulation type.
+    const disclosureNote = completedSession === 1 ? `
+      <div class="disclosure-note">
+        <strong>A short note before Session ${nextSession}</strong>
+        You may notice that some of the lecture topics you watched in Session 1 reappear in Session ${nextSession} (and Session ${N_SESSIONS}), in slightly different versions. Please rate each version based only on what you observe in <em>this</em> video — try not to compare against what you remember from earlier sessions.
+      </div>
+    ` : '';
+    screen.innerHTML = `
+      <h2>Session ${completedSession} of ${N_SESSIONS} complete</h2>
+      <p>Thank you — you have rated all the videos in this session.</p>
+      <p>You may continue to Session ${nextSession} now (it has ${nextSessionVideoCount} videos), or take a break and resume later. Your progress is saved either way.</p>
+      ${disclosureNote}
+      <div class="button-row">
+        <button class="primary" id="continueBtn">Continue to Session ${nextSession} now</button>
+        <button class="secondary" id="resumeLaterBtn">Resume later</button>
+      </div>
+    `;
+    screen.style.display = 'block';
+    document.getElementById('continueBtn').onclick = () => {
+      state.currentSessionIndex = nextSession;
+      state.videoStartTime = null;
+      saveState();
+      routeToNext();
+    };
+    document.getElementById('resumeLaterBtn').onclick = () => {
+      // Persist intent: advance the session pointer now so that when the rater
+      // reopens this URL, they land directly on the first video of the next
+      // session (no need to re-click "Continue").
+      state.currentSessionIndex = nextSession;
+      state.videoStartTime = null;
+      saveState();
+      screen.innerHTML = `
+        <h2>See you next time</h2>
+        <p>Your progress has been saved. When you re-open this page, you will be taken directly to Session ${nextSession}.</p>
+        <div class="resumed-msg">You may now close this window safely.</div>
+      `;
+    };
   }
 
   // If YT API loaded before this script
