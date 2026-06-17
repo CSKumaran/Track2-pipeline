@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Expert Evaluation — Multimedia Learning</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f4f6f8; color: #1a1a1a; }
+  header { background: #1f2937; color: #fff; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  header h1 { font-size: 16px; margin: 0; font-weight: 600; }
+  header .meta { display: flex; align-items: center; gap: 16px; font-size: 13px; }
+  header .progress-bar { width: 220px; height: 8px; background: #374151; border-radius: 4px; overflow: hidden; }
+  header .progress-fill { height: 100%; background: #10b981; transition: width 0.3s; }
+  header button { background: #3b82f6; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+  header button:hover { background: #2563eb; }
+  header .rater-badge { background: #4b5563; padding: 4px 10px; border-radius: 4px; font-weight: 600; }
+
+  .container { display: grid; grid-template-columns: 65% 35%; height: calc(100vh - 52px); }
+  .video-pane { background: #000; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+  .video-pane .video-title { color: #fff; font-size: 18px; margin-bottom: 12px; font-weight: 600; }
+  .video-pane .video-wrapper { width: 100%; max-width: 1000px; aspect-ratio: 16/9; background: #111; }
+  #player { width: 100%; height: 100%; }
+
+  .rating-pane { overflow-y: auto; padding: 20px; background: #fff; border-left: 1px solid #e5e7eb; }
+  .cpip-card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin-bottom: 14px; background: #fafafa; }
+  .cpip-card.active { border-color: #3b82f6; background: #eff6ff; }
+  .cpip-card.answered { border-color: #10b981; background: #f0fdf4; }
+  .cpip-card .cpip-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; gap: 12px; }
+  .cpip-card .cpip-label { font-weight: 600; font-size: 14px; }
+  .cpip-card .cpip-concept { color: #4b5563; font-size: 13px; margin-top: 4px; }
+  .cpip-card .watch-btn { background: #10b981; color: #fff; border: none; padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 13px; white-space: nowrap; font-weight: 600; }
+  .cpip-card .watch-btn:hover { background: #059669; }
+  .cpip-card .rewind-count { font-size: 11px; color: #6b7280; margin-top: 4px; text-align: right; }
+  .cpip-card .q-prompt { font-size: 13px; font-weight: 600; margin: 14px 0 8px 0; }
+  .cpip-card .rating-bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .cpip-card .rating-bar label { display: flex; flex-direction: column; align-items: center; padding: 10px 4px; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer; font-size: 12px; background: #fff; text-align: center; line-height: 1.2; }
+  .cpip-card .rating-bar label:hover { background: #f3f4f6; }
+  .cpip-card .rating-bar label .num { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+  .cpip-card .rating-bar label:has(input:checked) { background: #dbeafe; border-color: #3b82f6; }
+  .cpip-card .rating-bar input[type=radio] { display: none; }
+
+  .video-form { margin-top: 24px; padding: 16px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fafafa; }
+  .video-form.locked { opacity: 0.4; pointer-events: none; }
+  .video-form h3 { margin: 0 0 4px 0; font-size: 15px; }
+  .video-form .hint { font-size: 12px; color: #6b7280; margin-bottom: 16px; }
+  .video-form .q-block { margin-bottom: 18px; }
+  .video-form .q-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; display: block; }
+  .video-form .q-sublabel { font-size: 12px; color: #6b7280; margin-top: -4px; margin-bottom: 8px; }
+  .video-form .slider-row { display: flex; align-items: center; gap: 12px; }
+  .video-form .slider-row input[type=range] { flex: 1; }
+  .video-form .slider-row .slider-value { font-weight: 600; font-size: 18px; min-width: 48px; text-align: right; }
+  .video-form .anchors { display: flex; justify-content: space-between; font-size: 11px; color: #6b7280; margin-top: 4px; }
+  .video-form .confidence-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .video-form .confidence-row label { display: flex; flex-direction: column; align-items: center; padding: 8px 4px; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer; font-size: 12px; background: #fff; text-align: center; }
+  .video-form .confidence-row label:has(input:checked) { background: #dbeafe; border-color: #3b82f6; font-weight: 600; }
+  .video-form .confidence-row input[type=radio] { display: none; }
+  .video-form .principles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .video-form .principles-grid label { display: flex; align-items: center; padding: 6px 10px; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer; font-size: 12px; background: #fff; }
+  .video-form .principles-grid label:has(input:checked) { background: #dbeafe; border-color: #3b82f6; }
+  .video-form .principles-grid input[type=checkbox] { margin-right: 8px; }
+  .video-form textarea { width: 100%; min-height: 60px; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px; font-family: inherit; font-size: 13px; resize: vertical; }
+  .video-form .char-count { font-size: 11px; color: #6b7280; text-align: right; margin-top: 2px; }
+  .video-form .char-count.over { color: #ef4444; font-weight: 600; }
+
+  .submit-btn { width: 100%; margin-top: 16px; padding: 14px; background: #10b981; color: #fff; border: none; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .submit-btn:hover { background: #059669; }
+  .submit-btn:disabled { background: #9ca3af; cursor: not-allowed; }
+
+  .banner { padding: 10px 14px; border-radius: 6px; margin-bottom: 12px; font-size: 13px; }
+  .banner.success { background: #d1fae5; color: #065f46; border: 1px solid #10b981; }
+  .banner.error { background: #fee2e2; color: #991b1b; border: 1px solid #ef4444; }
+  .banner.info { background: #dbeafe; color: #1e40af; border: 1px solid #3b82f6; }
+
+  /* Demographics gate */
+  .demographics-screen { max-width: 640px; margin: 40px auto; background: #fff; padding: 32px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .demographics-screen h2 { margin-top: 0; }
+  .demographics-screen .intro { font-size: 14px; color: #4b5563; margin-bottom: 24px; }
+  .demographics-screen .field { margin-bottom: 18px; }
+  .demographics-screen .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .demographics-screen .field input[type=text], .demographics-screen .field input[type=number], .demographics-screen .field select { width: 100%; padding: 9px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 14px; font-family: inherit; }
+  .demographics-screen .field .options { display: flex; gap: 8px; flex-wrap: wrap; }
+  .demographics-screen .field .options label { display: flex; align-items: center; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer; font-size: 13px; background: #fff; font-weight: 400; }
+  .demographics-screen .field .options label:has(input:checked) { background: #dbeafe; border-color: #3b82f6; font-weight: 600; }
+  .demographics-screen .field .options input { margin-right: 6px; }
+
+  .completion-screen { padding: 40px; text-align: center; max-width: 640px; margin: 40px auto; background: #fff; border-radius: 8px; }
+  .completion-screen h2 { color: #10b981; }
+
+  .interstitial-screen { padding: 40px; max-width: 640px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .interstitial-screen h2 { color: #10b981; margin-top: 0; }
+  .interstitial-screen p { font-size: 14px; color: #4b5563; line-height: 1.5; }
+  .interstitial-screen .button-row { display: flex; gap: 12px; margin-top: 24px; }
+  .interstitial-screen .button-row button { flex: 1; padding: 14px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .interstitial-screen .button-row .primary { background: #10b981; color: #fff; }
+  .interstitial-screen .button-row .primary:hover { background: #059669; }
+  .interstitial-screen .button-row .secondary { background: #e5e7eb; color: #1f2937; }
+  .interstitial-screen .button-row .secondary:hover { background: #d1d5db; }
+  .interstitial-screen .resumed-msg { margin-top: 24px; padding: 14px; background: #f0fdf4; border: 1px solid #10b981; border-radius: 6px; color: #065f46; font-size: 13px; }
+  .interstitial-screen .disclosure-note { margin-top: 16px; padding: 14px 16px; background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 4px; color: #1e3a8a; font-size: 13.5px; line-height: 1.55; }
+  .interstitial-screen .disclosure-note strong { display: block; margin-bottom: 6px; font-size: 14px; }
+
+  .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 1000; display: none; align-items: center; justify-content: center; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: #fff; max-width: 720px; width: 90%; max-height: 85vh; overflow-y: auto; border-radius: 8px; padding: 24px; }
+  .modal h2 { margin-top: 0; }
+  .modal .close-btn { float: right; background: #e5e7eb; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+  .modal .rating-def { margin-bottom: 14px; padding: 12px; border-left: 4px solid #d1d5db; background: #f9fafb; }
+  .modal .rating-def.excellent { border-left-color: #10b981; }
+  .modal .rating-def.good { border-left-color: #34d399; }
+  .modal .rating-def.adequate { border-left-color: #f59e0b; }
+  .modal .rating-def.poor { border-left-color: #f97316; }
+  .modal .rating-def.vpoor { border-left-color: #ef4444; }
+  .modal .rating-def strong { display: block; margin-bottom: 4px; font-size: 14px; }
+  .modal .rating-def p { margin: 0; font-size: 13px; color: #4b5563; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Expert Evaluation — Multimedia Learning</h1>
+  <div class="meta">
+    <button id="scaleCardBtn">Rating-scale reference</button>
+    <div>
+      <span id="progressText">Loading&hellip;</span>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    </div>
+    <span class="rater-badge" id="raterBadge">R?</span>
+  </div>
+</header>
+
+<!-- Demographics gate (shown once at session start) -->
+<div class="demographics-screen" id="demographicsScreen" style="display:none;">
+  <h2>Expert background information</h2>
+  <p class="intro">Before you begin the rating task, please complete this brief background questionnaire. The responses are used to characterise the expert panel in the paper's methods section and to support any analyses that stratify findings by rater background. The information is stored together with your ratings and is requested only once. Estimated time: two minutes.</p>
+  <p class="intro" style="font-size:13px;color:#6b7280;margin-top:-8px;">Your responses are linked to your rater identifier and will be reported only in aggregate; no individual responses will be attributed in the published paper.</p>
+  <form id="demographicsForm">
+    <div class="field">
+      <label for="d_institution">Institutional affiliation</label>
+      <input type="text" id="d_institution" name="institution" placeholder="e.g. IIT Bombay, CET" required>
+    </div>
+    <div class="field">
+      <label for="d_yearsExp">Years of experience in instructional design or educational technology</label>
+      <input type="number" id="d_yearsExp" name="yearsExp" min="0" max="60" step="1" required>
+    </div>
+    <div class="field">
+      <label>Familiarity with the Cognitive Theory of Multimedia Learning (CTML)</label>
+      <div class="options">
+        <label><input type="radio" name="ctmlFamiliarity" value="1" required>1 &mdash; None</label>
+        <label><input type="radio" name="ctmlFamiliarity" value="2">2</label>
+        <label><input type="radio" name="ctmlFamiliarity" value="3">3</label>
+        <label><input type="radio" name="ctmlFamiliarity" value="4">4</label>
+        <label><input type="radio" name="ctmlFamiliarity" value="5">5 &mdash; Expert</label>
+      </div>
+    </div>
+    <div class="field">
+      <label for="d_qualification">Highest academic qualification</label>
+      <select id="d_qualification" name="qualification" required>
+        <option value="">&mdash; select &mdash;</option>
+        <option value="Bachelors">Bachelors</option>
+        <option value="Masters">Masters</option>
+        <option value="MPhil">MPhil</option>
+        <option value="PhD">PhD</option>
+        <option value="Postdoc">Postdoctoral</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Prior experience evaluating automated educational tools</label>
+      <div class="options">
+        <label><input type="radio" name="priorToolEval" value="yes" required>Yes</label>
+        <label><input type="radio" name="priorToolEval" value="no">No</label>
+      </div>
+    </div>
+    <button type="submit" class="submit-btn" id="demographicsSubmit">Save and begin rating</button>
+  </form>
+</div>
+
+<!-- Main rating UI -->
+<div class="container" id="mainContainer" style="display:none;">
+  <div class="video-pane">
+    <div class="video-title" id="videoTitle">Loading&hellip;</div>
+    <div class="video-wrapper"><div id="player"></div></div>
+  </div>
+  <div class="rating-pane" id="ratingPane">
+    <div id="bannerArea"></div>
+    <div id="cpipContainer"></div>
+    <div class="video-form locked" id="videoForm"></div>
+    <button class="submit-btn" id="submitBtn" disabled>Submit rating</button>
+  </div>
+</div>
+
+<!-- Completion -->
+<div class="completion-screen" id="completionScreen" style="display:none;">
+  <h2>All videos completed. Thank you!</h2>
+  <p>Your ratings have been recorded. You may close this window.</p>
+</div>
+
+<!-- Session boundary interstitial (shown between sessions) -->
+<div class="interstitial-screen" id="interstitialScreen" style="display:none;"></div>
+
+<!-- Rating-scale reference modal -->
+<div class="modal-overlay" id="scaleModal">
+  <div class="modal">
+    <button class="close-btn" id="closeModalBtn">Close</button>
+    <div id="scaleCardContent"></div>
+  </div>
+</div>
+
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<!-- RATER_CONFIG injected by generate_rater_copies.py -->
+<script id="rater-config">
+window.RATER_CONFIG = {"raterId": "R6", "appsScriptUrl": "https://script.google.com/macros/s/AKfycbx1X51kQv5fB8GK09jpE4kcSILzfl_8xeCvzlACKiFT-0n1YgBWAc7e5nFNQQg_VQK3/exec", "principles": ["Temporal contiguity", "Spatial contiguity", "Modality", "Redundancy", "Coherence", "Signaling", "Segmenting", "Personalisation"], "confidenceLevels": ["very_low", "low", "medium", "high", "very_high"], "confidenceLabels": {"very_low": "Very low", "low": "Low", "medium": "Medium", "high": "High", "very_high": "Very high"}, "nSessions": 3, "videos": [{"displayLabel": "Video_R01", "internalId": "B0", "youtubeId": "TJL5yLz-feY", "duration": 240, "set": "manipulated", "topic": "TopicB", "delay_s": 0, "session_index": 1, "position_in_session": 1}, {"displayLabel": "Video_R02", "internalId": "E0", "youtubeId": "5GXsE2GapjY", "duration": 240, "set": "manipulated", "topic": "TopicE", "delay_s": 0, "session_index": 1, "position_in_session": 2}, {"displayLabel": "Video_R03", "internalId": "D1.5", "youtubeId": "2jgSz2RNbTk", "duration": 240, "set": "manipulated", "topic": "TopicD", "delay_s": 1.5, "session_index": 1, "position_in_session": 3}, {"displayLabel": "Video_R04", "internalId": "F5", "youtubeId": "fnA_NP8o_TY", "duration": 240, "set": "manipulated", "topic": "TopicF", "delay_s": 5, "session_index": 1, "position_in_session": 4}, {"displayLabel": "Video_R05", "internalId": "C1.5", "youtubeId": "9D9shdTsqZc", "duration": 240, "set": "manipulated", "topic": "TopicC", "delay_s": 1.5, "session_index": 1, "position_in_session": 5}, {"displayLabel": "Video_R06", "internalId": "F_v3", "youtubeId": "AEileXzqIqc", "duration": 220, "set": "fresh", "topic": "UnsupervisedLearning", "delay_s": null, "session_index": 1, "position_in_session": 6}, {"displayLabel": "Video_R07", "internalId": "F_v6", "youtubeId": "JLqv93rH5JA", "duration": 308, "set": "fresh", "topic": "GradientDescent", "delay_s": null, "session_index": 1, "position_in_session": 7}, {"displayLabel": "Video_R08", "internalId": "A5", "youtubeId": "aX3i2zQiJM8", "duration": 240, "set": "manipulated", "topic": "TopicA", "delay_s": 5, "session_index": 1, "position_in_session": 8}, {"displayLabel": "Video_R09", "internalId": "C5", "youtubeId": "a6xQBJCK4os", "duration": 240, "set": "manipulated", "topic": "TopicC", "delay_s": 5, "session_index": 2, "position_in_session": 1}, {"displayLabel": "Video_R10", "internalId": "E1.5", "youtubeId": "v1K8O0JEDro", "duration": 240, "set": "manipulated", "topic": "TopicE", "delay_s": 1.5, "session_index": 2, "position_in_session": 2}, {"displayLabel": "Video_R11", "internalId": "F_v5", "youtubeId": "34ulJLhK4-I", "duration": 253, "set": "fresh", "topic": "AISearchAlgorithms", "delay_s": null, "session_index": 2, "position_in_session": 3}, {"displayLabel": "Video_R12", "internalId": "B1.5", "youtubeId": "OWGVy1ftHkY", "duration": 240, "set": "manipulated", "topic": "TopicB", "delay_s": 1.5, "session_index": 2, "position_in_session": 4}, {"displayLabel": "Video_R13", "internalId": "A0", "youtubeId": "cO9Wa6iOC9k", "duration": 240, "set": "manipulated", "topic": "TopicA", "delay_s": 0, "session_index": 2, "position_in_session": 5}, {"displayLabel": "Video_R14", "internalId": "D5", "youtubeId": "ska7n7i4RDQ", "duration": 240, "set": "manipulated", "topic": "TopicD", "delay_s": 5, "session_index": 2, "position_in_session": 6}, {"displayLabel": "Video_R15", "internalId": "F0", "youtubeId": "KyN_byReZe8", "duration": 240, "set": "manipulated", "topic": "TopicF", "delay_s": 0, "session_index": 2, "position_in_session": 7}, {"displayLabel": "Video_R16", "internalId": "F_v2", "youtubeId": "fd5m0acg3Zo", "duration": 218, "set": "fresh", "topic": "UniversalApproximator", "delay_s": null, "session_index": 2, "position_in_session": 8}, {"displayLabel": "Video_R17", "internalId": "B5", "youtubeId": "YZfzuTSsi2A", "duration": 240, "set": "manipulated", "topic": "TopicB", "delay_s": 5, "session_index": 3, "position_in_session": 1}, {"displayLabel": "Video_R18", "internalId": "F_v4", "youtubeId": "-1vj8TxInw8", "duration": 293, "set": "fresh", "topic": "PCAMainIdeas", "delay_s": null, "session_index": 3, "position_in_session": 2}, {"displayLabel": "Video_R19", "internalId": "A1.5", "youtubeId": "bCFKmVTxnp4", "duration": 240, "set": "manipulated", "topic": "TopicA", "delay_s": 1.5, "session_index": 3, "position_in_session": 3}, {"displayLabel": "Video_R20", "internalId": "F1.5", "youtubeId": "kJhG9U8vbBE", "duration": 240, "set": "manipulated", "topic": "TopicF", "delay_s": 1.5, "session_index": 3, "position_in_session": 4}, {"displayLabel": "Video_R21", "internalId": "D0", "youtubeId": "0xgLGXZHvYA", "duration": 240, "set": "manipulated", "topic": "TopicD", "delay_s": 0, "session_index": 3, "position_in_session": 5}, {"displayLabel": "Video_R22", "internalId": "C0", "youtubeId": "eWNpIHPm1IE", "duration": 240, "set": "manipulated", "topic": "TopicC", "delay_s": 0, "session_index": 3, "position_in_session": 6}, {"displayLabel": "Video_R23", "internalId": "E5", "youtubeId": "BdUXz66hHZM", "duration": 240, "set": "manipulated", "topic": "TopicE", "delay_s": 5, "session_index": 3, "position_in_session": 7}], "cpips": {"B0": [{"cpipId": "B0_c1", "t_narr_s": 43.0, "conceptLabel": "K = 5 preference", "window_start_s": 38.0, "window_end_s": 50.0}, {"cpipId": "B0_c2", "t_narr_s": 129.0, "conceptLabel": "Select K neighbours (Step 1)", "window_start_s": 124.0, "window_end_s": 136.0}, {"cpipId": "B0_c3", "t_narr_s": 159.0, "conceptLabel": "Euclidean distance formula", "window_start_s": 154.0, "window_end_s": 166.0}, {"cpipId": "B0_c4", "t_narr_s": 220.0, "conceptLabel": "Classification count (Step 4)", "window_start_s": 215.0, "window_end_s": 227.0}], "E0": [{"cpipId": "E0_c1", "t_narr_s": 40.0, "conceptLabel": "Insurance ~ Age mapping", "window_start_s": 35.0, "window_end_s": 47.0}, {"cpipId": "E0_c2", "t_narr_s": 85.0, "conceptLabel": "Yes/No data scatter on age", "window_start_s": 80.0, "window_end_s": 92.0}, {"cpipId": "E0_c3", "t_narr_s": 121.0, "conceptLabel": "Fitted sigmoid curve", "window_start_s": 116.0, "window_end_s": 128.0}, {"cpipId": "E0_c4", "t_narr_s": 227.0, "conceptLabel": "Multi-variable extension", "window_start_s": 222.0, "window_end_s": 234.0}], "D1.5": [{"cpipId": "D1.5_c1", "t_narr_s": 27.0, "conceptLabel": "Neural network with bias node", "window_start_s": 22.0, "window_end_s": 34.0}, {"cpipId": "D1.5_c2", "t_narr_s": 110.0, "conceptLabel": "ReLU activation graph", "window_start_s": 105.0, "window_end_s": 117.0}, {"cpipId": "D1.5_c3", "t_narr_s": 195.0, "conceptLabel": "Weighted inputs with sigmoid", "window_start_s": 190.0, "window_end_s": 202.0}, {"cpipId": "D1.5_c4", "t_narr_s": 212.0, "conceptLabel": "Sigmoid curve mapping", "window_start_s": 207.0, "window_end_s": 219.0}], "F5": [{"cpipId": "F5_c1", "t_narr_s": 41.0, "conceptLabel": "Supervised learning panel", "window_start_s": 36.0, "window_end_s": 48.0}, {"cpipId": "F5_c2", "t_narr_s": 56.0, "conceptLabel": "Reinforcement learning panel", "window_start_s": 51.0, "window_end_s": 63.0}, {"cpipId": "F5_c3", "t_narr_s": 177.0, "conceptLabel": "Agent–environment cycle", "window_start_s": 172.0, "window_end_s": 184.0}, {"cpipId": "F5_c4", "t_narr_s": 190.0, "conceptLabel": "Policy annotation (π)", "window_start_s": 185.0, "window_end_s": 197.0}], "C1.5": [{"cpipId": "C1.5_c1", "t_narr_s": 44.0, "conceptLabel": "Bayes theorem formula", "window_start_s": 39.0, "window_end_s": 51.0}, {"cpipId": "C1.5_c2", "t_narr_s": 100.0, "conceptLabel": "Probability values", "window_start_s": 95.0, "window_end_s": 107.0}, {"cpipId": "C1.5_c3", "t_narr_s": 151.0, "conceptLabel": "100K population in circle", "window_start_s": 146.0, "window_end_s": 158.0}, {"cpipId": "C1.5_c4", "t_narr_s": 182.0, "conceptLabel": "Venn diagram (homicidals / gamers)", "window_start_s": 177.0, "window_end_s": 189.0}], "F_v3": [{"cpipId": "F_v3_c1", "t_narr_s": 5.4, "conceptLabel": "Unsupervised learning type", "window_start_s": 0.4, "window_end_s": 15.4}, {"cpipId": "F_v3_c2", "t_narr_s": 42.4, "conceptLabel": "Clustering algorithm", "window_start_s": 37.4, "window_end_s": 52.4}, {"cpipId": "F_v3_c3", "t_narr_s": 55.7, "conceptLabel": "Anomaly detection", "window_start_s": 50.7, "window_end_s": 65.7}, {"cpipId": "F_v3_c4", "t_narr_s": 130.0, "conceptLabel": "Labeled spam example", "window_start_s": 125.0, "window_end_s": 140.0}], "F_v6": [{"cpipId": "F_v6_c1", "t_narr_s": 12.2, "conceptLabel": "Gradient descent technique", "window_start_s": 7.2, "window_end_s": 22.2}, {"cpipId": "F_v6_c2", "t_narr_s": 28.2, "conceptLabel": "Iterative manner", "window_start_s": 23.2, "window_end_s": 38.2}, {"cpipId": "F_v6_c3", "t_narr_s": 118.3, "conceptLabel": "Gradient in 1D", "window_start_s": 113.3, "window_end_s": 128.3}, {"cpipId": "F_v6_c4", "t_narr_s": 224.5, "conceptLabel": "Compute the gradient", "window_start_s": 219.5, "window_end_s": 234.5}], "A5": [{"cpipId": "A5_c1", "t_narr_s": 72.0, "conceptLabel": "Binary tree diagram", "window_start_s": 67.0, "window_end_s": 79.0}, {"cpipId": "A5_c2", "t_narr_s": 112.0, "conceptLabel": "State-space diagram (plateau)", "window_start_s": 107.0, "window_end_s": 119.0}, {"cpipId": "A5_c3", "t_narr_s": 150.0, "conceptLabel": "Simulated annealing thermometer", "window_start_s": 145.0, "window_end_s": 157.0}, {"cpipId": "A5_c4", "t_narr_s": 173.0, "conceptLabel": "Cliff-jump transition", "window_start_s": 168.0, "window_end_s": 180.0}], "C5": [{"cpipId": "C5_c1", "t_narr_s": 44.0, "conceptLabel": "Bayes theorem formula", "window_start_s": 39.0, "window_end_s": 51.0}, {"cpipId": "C5_c2", "t_narr_s": 100.0, "conceptLabel": "Probability values", "window_start_s": 95.0, "window_end_s": 107.0}, {"cpipId": "C5_c3", "t_narr_s": 151.0, "conceptLabel": "100K population in circle", "window_start_s": 146.0, "window_end_s": 158.0}, {"cpipId": "C5_c4", "t_narr_s": 182.0, "conceptLabel": "Venn diagram (homicidals / gamers)", "window_start_s": 177.0, "window_end_s": 189.0}], "E1.5": [{"cpipId": "E1.5_c1", "t_narr_s": 40.0, "conceptLabel": "Insurance ~ Age mapping", "window_start_s": 35.0, "window_end_s": 47.0}, {"cpipId": "E1.5_c2", "t_narr_s": 85.0, "conceptLabel": "Yes/No data scatter on age", "window_start_s": 80.0, "window_end_s": 92.0}, {"cpipId": "E1.5_c3", "t_narr_s": 121.0, "conceptLabel": "Fitted sigmoid curve", "window_start_s": 116.0, "window_end_s": 128.0}, {"cpipId": "E1.5_c4", "t_narr_s": 227.0, "conceptLabel": "Multi-variable extension", "window_start_s": 222.0, "window_end_s": 234.0}], "F_v5": [{"cpipId": "F_v5_c1", "t_narr_s": 19.2, "conceptLabel": "Core idea of search in AI", "window_start_s": 14.2, "window_end_s": 29.2}, {"cpipId": "F_v5_c2", "t_narr_s": 89.9, "conceptLabel": "Problem-specific knowledge", "window_start_s": 84.9, "window_end_s": 99.9}, {"cpipId": "F_v5_c3", "t_narr_s": 122.9, "conceptLabel": "Single-solution improvement", "window_start_s": 117.9, "window_end_s": 132.9}, {"cpipId": "F_v5_c4", "t_narr_s": 181.8, "conceptLabel": "Algorithms and applications", "window_start_s": 176.8, "window_end_s": 191.8}], "B1.5": [{"cpipId": "B1.5_c1", "t_narr_s": 43.0, "conceptLabel": "K = 5 preference", "window_start_s": 38.0, "window_end_s": 50.0}, {"cpipId": "B1.5_c2", "t_narr_s": 129.0, "conceptLabel": "Select K neighbours (Step 1)", "window_start_s": 124.0, "window_end_s": 136.0}, {"cpipId": "B1.5_c3", "t_narr_s": 159.0, "conceptLabel": "Euclidean distance formula", "window_start_s": 154.0, "window_end_s": 166.0}, {"cpipId": "B1.5_c4", "t_narr_s": 220.0, "conceptLabel": "Classification count (Step 4)", "window_start_s": 215.0, "window_end_s": 227.0}], "A0": [{"cpipId": "A0_c1", "t_narr_s": 72.0, "conceptLabel": "Binary tree diagram", "window_start_s": 67.0, "window_end_s": 79.0}, {"cpipId": "A0_c2", "t_narr_s": 112.0, "conceptLabel": "State-space diagram (plateau)", "window_start_s": 107.0, "window_end_s": 119.0}, {"cpipId": "A0_c3", "t_narr_s": 150.0, "conceptLabel": "Simulated annealing thermometer", "window_start_s": 145.0, "window_end_s": 157.0}, {"cpipId": "A0_c4", "t_narr_s": 173.0, "conceptLabel": "Cliff-jump transition", "window_start_s": 168.0, "window_end_s": 180.0}], "D5": [{"cpipId": "D5_c1", "t_narr_s": 27.0, "conceptLabel": "Neural network with bias node", "window_start_s": 22.0, "window_end_s": 34.0}, {"cpipId": "D5_c2", "t_narr_s": 110.0, "conceptLabel": "ReLU activation graph", "window_start_s": 105.0, "window_end_s": 117.0}, {"cpipId": "D5_c3", "t_narr_s": 195.0, "conceptLabel": "Weighted inputs with sigmoid", "window_start_s": 190.0, "window_end_s": 202.0}, {"cpipId": "D5_c4", "t_narr_s": 212.0, "conceptLabel": "Sigmoid curve mapping", "window_start_s": 207.0, "window_end_s": 219.0}], "F0": [{"cpipId": "F0_c1", "t_narr_s": 41.0, "conceptLabel": "Supervised learning panel", "window_start_s": 36.0, "window_end_s": 48.0}, {"cpipId": "F0_c2", "t_narr_s": 56.0, "conceptLabel": "Reinforcement learning panel", "window_start_s": 51.0, "window_end_s": 63.0}, {"cpipId": "F0_c3", "t_narr_s": 177.0, "conceptLabel": "Agent–environment cycle", "window_start_s": 172.0, "window_end_s": 184.0}, {"cpipId": "F0_c4", "t_narr_s": 190.0, "conceptLabel": "Policy annotation (π)", "window_start_s": 185.0, "window_end_s": 197.0}], "F_v2": [{"cpipId": "F_v2_c1", "t_narr_s": 67.4, "conceptLabel": "Universal function approximator theorem", "window_start_s": 62.4, "window_end_s": 77.4}, {"cpipId": "F_v2_c2", "t_narr_s": 107.8, "conceptLabel": "Where physics comes in", "window_start_s": 102.8, "window_end_s": 117.8}, {"cpipId": "F_v2_c3", "t_narr_s": 157.7, "conceptLabel": "Force of gravity", "window_start_s": 152.7, "window_end_s": 167.7}, {"cpipId": "F_v2_c4", "t_narr_s": 186.2, "conceptLabel": "Locality and low polynomial order", "window_start_s": 181.2, "window_end_s": 196.2}], "B5": [{"cpipId": "B5_c1", "t_narr_s": 43.0, "conceptLabel": "K = 5 preference", "window_start_s": 38.0, "window_end_s": 50.0}, {"cpipId": "B5_c2", "t_narr_s": 129.0, "conceptLabel": "Select K neighbours (Step 1)", "window_start_s": 124.0, "window_end_s": 136.0}, {"cpipId": "B5_c3", "t_narr_s": 159.0, "conceptLabel": "Euclidean distance formula", "window_start_s": 154.0, "window_end_s": 166.0}, {"cpipId": "B5_c4", "t_narr_s": 220.0, "conceptLabel": "Classification count (Step 4)", "window_start_s": 215.0, "window_end_s": 227.0}], "F_v4": [{"cpipId": "F_v4_c1", "t_narr_s": 10.4, "conceptLabel": "Cars and cities analogy", "window_start_s": 5.4, "window_end_s": 20.4}, {"cpipId": "F_v4_c2", "t_narr_s": 53.5, "conceptLabel": "Measuring weight and blood pressure", "window_start_s": 48.5, "window_end_s": 63.5}, {"cpipId": "F_v4_c3", "t_narr_s": 126.4, "conceptLabel": "Correlated genes", "window_start_s": 121.4, "window_end_s": 136.4}, {"cpipId": "F_v4_c4", "t_narr_s": 221.6, "conceptLabel": "Color-coded clusters", "window_start_s": 216.6, "window_end_s": 231.6}], "A1.5": [{"cpipId": "A1.5_c1", "t_narr_s": 72.0, "conceptLabel": "Binary tree diagram", "window_start_s": 67.0, "window_end_s": 79.0}, {"cpipId": "A1.5_c2", "t_narr_s": 112.0, "conceptLabel": "State-space diagram (plateau)", "window_start_s": 107.0, "window_end_s": 119.0}, {"cpipId": "A1.5_c3", "t_narr_s": 150.0, "conceptLabel": "Simulated annealing thermometer", "window_start_s": 145.0, "window_end_s": 157.0}, {"cpipId": "A1.5_c4", "t_narr_s": 173.0, "conceptLabel": "Cliff-jump transition", "window_start_s": 168.0, "window_end_s": 180.0}], "F1.5": [{"cpipId": "F1.5_c1", "t_narr_s": 41.0, "conceptLabel": "Supervised learning panel", "window_start_s": 36.0, "window_end_s": 48.0}, {"cpipId": "F1.5_c2", "t_narr_s": 56.0, "conceptLabel": "Reinforcement learning panel", "window_start_s": 51.0, "window_end_s": 63.0}, {"cpipId": "F1.5_c3", "t_narr_s": 177.0, "conceptLabel": "Agent–environment cycle", "window_start_s": 172.0, "window_end_s": 184.0}, {"cpipId": "F1.5_c4", "t_narr_s": 190.0, "conceptLabel": "Policy annotation (π)", "window_start_s": 185.0, "window_end_s": 197.0}], "D0": [{"cpipId": "D0_c1", "t_narr_s": 27.0, "conceptLabel": "Neural network with bias node", "window_start_s": 22.0, "window_end_s": 34.0}, {"cpipId": "D0_c2", "t_narr_s": 110.0, "conceptLabel": "ReLU activation graph", "window_start_s": 105.0, "window_end_s": 117.0}, {"cpipId": "D0_c3", "t_narr_s": 195.0, "conceptLabel": "Weighted inputs with sigmoid", "window_start_s": 190.0, "window_end_s": 202.0}, {"cpipId": "D0_c4", "t_narr_s": 212.0, "conceptLabel": "Sigmoid curve mapping", "window_start_s": 207.0, "window_end_s": 219.0}], "C0": [{"cpipId": "C0_c1", "t_narr_s": 44.0, "conceptLabel": "Bayes theorem formula", "window_start_s": 39.0, "window_end_s": 51.0}, {"cpipId": "C0_c2", "t_narr_s": 100.0, "conceptLabel": "Probability values", "window_start_s": 95.0, "window_end_s": 107.0}, {"cpipId": "C0_c3", "t_narr_s": 151.0, "conceptLabel": "100K population in circle", "window_start_s": 146.0, "window_end_s": 158.0}, {"cpipId": "C0_c4", "t_narr_s": 182.0, "conceptLabel": "Venn diagram (homicidals / gamers)", "window_start_s": 177.0, "window_end_s": 189.0}], "E5": [{"cpipId": "E5_c1", "t_narr_s": 40.0, "conceptLabel": "Insurance ~ Age mapping", "window_start_s": 35.0, "window_end_s": 47.0}, {"cpipId": "E5_c2", "t_narr_s": 85.0, "conceptLabel": "Yes/No data scatter on age", "window_start_s": 80.0, "window_end_s": 92.0}, {"cpipId": "E5_c3", "t_narr_s": 121.0, "conceptLabel": "Fitted sigmoid curve", "window_start_s": 116.0, "window_end_s": 128.0}, {"cpipId": "E5_c4", "t_narr_s": 227.0, "conceptLabel": "Multi-variable extension", "window_start_s": 222.0, "window_end_s": 234.0}]}, "ratingScaleHtml": "<h2>Rating-scale reference<\/h2>\n<p style=\"font-size:13px;color:#4b5563;\">For each moment, you'll be asked: <em>\"At this moment, how well does the visual support what's being said?\"<\/em> Use this scale. Judge what the learner experiences — there is no need to count seconds or estimate timings.<\/p>\n\n<div class=\"rating-def excellent\">\n  <strong>5 &mdash; Very well<\/strong>\n  <p>The visual fully supports the narration at this moment. The learner can integrate what they see with what they hear effortlessly; there is no cognitive gap between the two streams.<\/p>\n<\/div>\n\n<div class=\"rating-def good\">\n  <strong>4 &mdash; Well<\/strong>\n  <p>The visual largely supports the narration. The learner can connect the two with only minor effort &mdash; e.g. a brief glance back to the visual, or a small mental bridge that does not interrupt comprehension.<\/p>\n<\/div>\n\n<div class=\"rating-def adequate\">\n  <strong>3 &mdash; Adequately<\/strong>\n  <p>The pairing works, but the learner must hold one stream in working memory while waiting for &mdash; or looking for &mdash; the other. Comprehension is preserved, but at a noticeable cognitive cost.<\/p>\n<\/div>\n\n<div class=\"rating-def poor\">\n  <strong>2 &mdash; Poorly<\/strong>\n  <p>The learner must actively recall what was said (or shown) in order to connect it with the other stream. Working memory is strained, and the learner is aware of the mismatch. Integration is no longer automatic and learning is impaired.<\/p>\n<\/div>\n\n<div class=\"rating-def vpoor\">\n  <strong>1 &mdash; Very poorly<\/strong>\n  <p>The visual does not meaningfully support the narration at this moment. The learner experiences split attention and cannot reliably integrate the two streams; the pairing has failed pedagogically.<\/p>\n<\/div>\n\n<p style=\"font-size:12px;color:#6b7280;margin-top:16px;\"><strong>Note for the fresh-video set:<\/strong> if the relevant visual does not appear in the viewing window, or appears so far from the narration that it no longer feels connected, score the support low (1 or 2).<\/p>\n"};
+</script>
+
+<script>
+(function() {
+  const cfg = window.RATER_CONFIG;
+  const stateKey = 'validation_' + cfg.raterId + '_state_v3';  // v3: session-block design
+  const N_SESSIONS = cfg.nSessions || 3;
+
+  // ----- State -----
+  let state = loadState();
+  function loadState() {
+    try {
+      const s = localStorage.getItem(stateKey);
+      if (s) return JSON.parse(s);
+    } catch(e){}
+    return {
+      demographics: null,
+      completedVideos: [],
+      draftAnswers: {},
+      currentVideoIndex: 0,
+      currentSessionIndex: 1,
+      videoStartTime: null,
+      activeCpipId: null,
+      activeCpipStartTime: null
+    };
+  }
+  function saveState() { try { localStorage.setItem(stateKey, JSON.stringify(state)); } catch(e){} }
+
+  // ----- Helpers -----
+  function escapeHtml(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+  function formatTime(s) {
+    const m = Math.floor(s/60), sec = Math.floor(s%60).toString().padStart(2,'0');
+    return `${m}:${sec}`;
+  }
+
+  // Session-aware navigation helpers
+  function videosInSession(sessionIdx) {
+    return cfg.videos.filter(v => v.session_index === sessionIdx);
+  }
+  function findNextVideoInSession(sessionIdx) {
+    for (let i = 0; i < cfg.videos.length; i++) {
+      const v = cfg.videos[i];
+      if (v.session_index === sessionIdx && !state.completedVideos.includes(v.internalId)) {
+        return i;
+      }
+    }
+    return -1;
+  }
+  function isSessionComplete(sessionIdx) {
+    const videos = videosInSession(sessionIdx);
+    if (videos.length === 0) return false;
+    return videos.every(v => state.completedVideos.includes(v.internalId));
+  }
+  function completedInSession(sessionIdx) {
+    return videosInSession(sessionIdx).filter(v => state.completedVideos.includes(v.internalId)).length;
+  }
+
+  // ----- YouTube Player -----
+  let player = null;
+  let playerReady = false;
+  let pauseAtSec = null;        // when set, pause the player when currentTime exceeds it
+  let pauseCheckInterval = null;
+
+  window.onYouTubeIframeAPIReady = function() {
+    // Player created on demand; demographics gate may delay video load
+    maybeStart();
+  };
+
+  function createPlayer(videoId) {
+    if (player) {
+      player.loadVideoById(videoId);
+      return;
+    }
+    player = new YT.Player('player', {
+      videoId: videoId,
+      playerVars: { 'playsinline': 1, 'rel': 0, 'modestbranding': 1, 'iv_load_policy': 3 },
+      events: {
+        'onReady': () => { playerReady = true; },
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function onPlayerStateChange(ev) {
+    // YT.PlayerState.PLAYING === 1
+    if (ev.data === 1) {
+      ensurePauseChecker();
+    }
+  }
+
+  function ensurePauseChecker() {
+    if (pauseCheckInterval) return;
+    pauseCheckInterval = setInterval(() => {
+      if (!player || !playerReady || pauseAtSec == null) return;
+      try {
+        const t = player.getCurrentTime();
+        if (t >= pauseAtSec) {
+          player.pauseVideo();
+          pauseAtSec = null;
+        }
+      } catch(e){}
+    }, 250);
+  }
+
+  function watchCpip(cpip) {
+    if (!player || !playerReady) return;
+    const startSec = Math.max(0, cpip.window_start_s);
+    pauseAtSec = cpip.window_end_s;
+    player.seekTo(startSec, true);
+    player.playVideo();
+    markCpipActive(cpip.cpipId);
+    // Count this as a rewind (the first jump for a CPIP is also tracked,
+    // but only subsequent jumps count as "rewinds").
+    incrementCpipWatchCount(cpip.cpipId);
+  }
+
+  // ----- Per-CPIP dwell + rewind tracking -----
+  function getDraft(videoId) {
+    let d = state.draftAnswers[videoId];
+    if (!d) {
+      d = {
+        cpips: {},               // cpipId -> { rating, dwell_ms, watch_count }
+        overallScore: 50,
+        confidence: null,
+        principles: [],
+        momentAnchor: ''
+      };
+      state.draftAnswers[videoId] = d;
+    }
+    return d;
+  }
+
+  function ensureCpipDraft(videoId, cpipId) {
+    const d = getDraft(videoId);
+    if (!d.cpips[cpipId]) d.cpips[cpipId] = { rating: null, dwell_ms: 0, watch_count: 0 };
+    return d.cpips[cpipId];
+  }
+
+  function markCpipActive(cpipId) {
+    const idx = state.currentVideoIndex;
+    if (idx < 0 || idx >= cfg.videos.length) return;
+    const video = cfg.videos[idx];
+
+    // Stop the previously active CPIP's timer
+    if (state.activeCpipId && state.activeCpipStartTime) {
+      const elapsed = Date.now() - state.activeCpipStartTime;
+      const prev = ensureCpipDraft(video.internalId, state.activeCpipId);
+      prev.dwell_ms = (prev.dwell_ms || 0) + elapsed;
+    }
+    state.activeCpipId = cpipId;
+    state.activeCpipStartTime = Date.now();
+    saveState();
+    updateActiveHighlight();
+  }
+
+  function freezeActiveTimer() {
+    const idx = state.currentVideoIndex;
+    if (idx < 0 || idx >= cfg.videos.length) return;
+    const video = cfg.videos[idx];
+    if (state.activeCpipId && state.activeCpipStartTime) {
+      const elapsed = Date.now() - state.activeCpipStartTime;
+      const prev = ensureCpipDraft(video.internalId, state.activeCpipId);
+      prev.dwell_ms = (prev.dwell_ms || 0) + elapsed;
+      state.activeCpipStartTime = Date.now(); // restart from now so further activity continues to accumulate
+    }
+    saveState();
+  }
+
+  function incrementCpipWatchCount(cpipId) {
+    const idx = state.currentVideoIndex;
+    if (idx < 0 || idx >= cfg.videos.length) return;
+    const video = cfg.videos[idx];
+    const d = ensureCpipDraft(video.internalId, cpipId);
+    d.watch_count = (d.watch_count || 0) + 1;
+    saveState();
+    const el = document.querySelector(`.cpip-card[data-cpip-id="${cpipId}"] .rewind-count`);
+    if (el) el.textContent = formatRewindLabel(d.watch_count);
+  }
+
+  function formatRewindLabel(watchCount) {
+    if (!watchCount) return '';
+    const rewinds = Math.max(0, watchCount - 1);
+    return `Watched ${watchCount}× (${rewinds} re-watch${rewinds === 1 ? '' : 'es'})`;
+  }
+
+  // ----- Render -----
+  function renderVideo(idx) {
+    if (idx < 0 || idx >= cfg.videos.length) { showCompletion(); return; }
+    const video = cfg.videos[idx];
+    state.currentVideoIndex = idx;
+    if (!state.videoStartTime) state.videoStartTime = Date.now();
+    state.activeCpipId = null;
+    state.activeCpipStartTime = null;
+    saveState();
+
+    document.getElementById('videoTitle').textContent = video.displayLabel;
+    pauseAtSec = null;
+    createPlayer(video.youtubeId);
+    renderCPIPs(video);
+    renderVideoForm(video);
+    updateProgress();
+    updateSubmitState(video);
+  }
+
+  function renderCPIPs(video) {
+    const container = document.getElementById('cpipContainer');
+    container.innerHTML = '';
+    const cpips = cfg.cpips[video.internalId] || [];
+    const draft = getDraft(video.internalId);
+
+    cpips.forEach((cpip, i) => {
+      const saved = draft.cpips[cpip.cpipId] || {};
+      const card = document.createElement('div');
+      card.className = 'cpip-card' + (saved.rating ? ' answered' : '');
+      card.dataset.cpipId = cpip.cpipId;
+      card.dataset.cpipIdx = i;
+      const windowLen = (cpip.window_end_s - cpip.window_start_s).toFixed(0);
+      card.innerHTML = `
+        <div class="cpip-header">
+          <div>
+            <div class="cpip-label">Moment ${i+1} of ${cpips.length}</div>
+            <div class="cpip-concept">${escapeHtml(cpip.conceptLabel)}</div>
+            <div class="rewind-count">${formatRewindLabel(saved.watch_count)}</div>
+          </div>
+          <button class="watch-btn" data-cpip-id="${cpip.cpipId}">Watch this moment<br><span style="font-weight:400;font-size:11px;">(${windowLen} s clip)</span></button>
+        </div>
+
+        <div class="question">
+          <div class="q-prompt">At this moment, how well does the visual support what's being said?</div>
+          <div class="rating-bar">
+            <label><input type="radio" name="rating_${cpip.cpipId}" value="1" ${saved.rating==1?'checked':''}><span class="num">1</span>Very<br>poorly</label>
+            <label><input type="radio" name="rating_${cpip.cpipId}" value="2" ${saved.rating==2?'checked':''}><span class="num">2</span>Poorly</label>
+            <label><input type="radio" name="rating_${cpip.cpipId}" value="3" ${saved.rating==3?'checked':''}><span class="num">3</span>Adequately</label>
+            <label><input type="radio" name="rating_${cpip.cpipId}" value="4" ${saved.rating==4?'checked':''}><span class="num">4</span>Well</label>
+            <label><input type="radio" name="rating_${cpip.cpipId}" value="5" ${saved.rating==5?'checked':''}><span class="num">5</span>Very<br>well</label>
+          </div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    // Wire handlers
+    container.querySelectorAll('.watch-btn').forEach(btn => {
+      btn.onclick = () => {
+        const cid = btn.dataset.cpipId;
+        const cpip = cpips.find(c => c.cpipId === cid);
+        if (cpip) watchCpip(cpip);
+      };
+    });
+    container.querySelectorAll('input[type=radio][name^="rating_"]').forEach(el => {
+      el.onchange = () => {
+        const cid = el.name.replace(/^rating_/, '');
+        const d = ensureCpipDraft(video.internalId, cid);
+        d.rating = parseInt(el.value);
+        saveState();
+        const card = document.querySelector(`.cpip-card[data-cpip-id="${cid}"]`);
+        if (card) card.classList.add('answered');
+        updateSubmitState(video);
+      };
+    });
+
+    updateActiveHighlight();
+  }
+
+  function updateActiveHighlight() {
+    document.querySelectorAll('.cpip-card').forEach(c => c.classList.remove('active'));
+    if (state.activeCpipId) {
+      const card = document.querySelector(`.cpip-card[data-cpip-id="${state.activeCpipId}"]`);
+      if (card) card.classList.add('active');
+    }
+  }
+
+  function renderVideoForm(video) {
+    const form = document.getElementById('videoForm');
+    const draft = getDraft(video.internalId);
+    const principles = cfg.principles || [];
+    const confLevels = cfg.confidenceLevels || [];
+    const confLabels = cfg.confidenceLabels || {};
+
+    form.innerHTML = `
+      <h3>About this video as a whole</h3>
+      <div class="hint">Complete this section after rating every moment above.</div>
+
+      <div class="q-block">
+        <label class="q-label">Considering this entire video, how well-presented is the material from a multimedia-learning standpoint?</label>
+        <div class="slider-row">
+          <input type="range" id="overallScore" min="0" max="100" value="${draft.overallScore ?? 50}" step="1">
+          <span class="slider-value" id="overallScoreVal">${draft.overallScore ?? 50}</span>
+        </div>
+        <div class="anchors"><span>0 &mdash; many principles violated</span><span>100 &mdash; excellent integration</span></div>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label">How confident are you in that overall score?</label>
+        <div class="confidence-row">
+          ${confLevels.map(lv => `
+            <label><input type="radio" name="confidence" value="${lv}" ${draft.confidence===lv?'checked':''}>${escapeHtml(confLabels[lv] || lv)}</label>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label">Multimedia-learning principles violated (if any)</label>
+        <div class="q-sublabel">Select all that apply. Leave blank if none stood out.</div>
+        <div class="principles-grid">
+          ${principles.map(p => `
+            <label><input type="checkbox" name="principle" value="${escapeHtml(p)}" ${(draft.principles||[]).includes(p)?'checked':''}>${escapeHtml(p)}</label>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="q-block">
+        <label class="q-label">One specific moment that drove your score (optional, &le;200 chars)</label>
+        <textarea id="momentAnchor" maxlength="200" placeholder="e.g. The diagram appeared after the narrator had moved on to the next topic.">${escapeHtml(draft.momentAnchor||'')}</textarea>
+        <div class="char-count" id="momentCharCount">${(draft.momentAnchor||'').length}/200</div>
+      </div>
+    `;
+
+    document.getElementById('overallScore').oninput = function() {
+      document.getElementById('overallScoreVal').textContent = this.value;
+      draft.overallScore = parseInt(this.value);
+      saveState();
+      updateSubmitState(video);
+    };
+    form.querySelectorAll('input[name="confidence"]').forEach(el => {
+      el.onchange = () => { draft.confidence = el.value; saveState(); updateSubmitState(video); };
+    });
+    form.querySelectorAll('input[name="principle"]').forEach(el => {
+      el.onchange = () => {
+        const chosen = Array.from(form.querySelectorAll('input[name="principle"]:checked')).map(x => x.value);
+        draft.principles = chosen;
+        saveState();
+      };
+    });
+    const ta = document.getElementById('momentAnchor');
+    const cc = document.getElementById('momentCharCount');
+    ta.oninput = function() {
+      draft.momentAnchor = this.value.slice(0, 200);
+      this.value = draft.momentAnchor;
+      const len = draft.momentAnchor.length;
+      cc.textContent = `${len}/200`;
+      cc.classList.toggle('over', len >= 200);
+      saveState();
+    };
+  }
+
+  function updateSubmitState(video) {
+    const cpips = cfg.cpips[video.internalId] || [];
+    const draft = getDraft(video.internalId);
+    const allRated = cpips.every(c => {
+      const d = draft.cpips[c.cpipId];
+      return d && d.rating != null;
+    });
+    const hasConfidence = !!draft.confidence;
+    const ready = allRated && hasConfidence;
+    document.getElementById('videoForm').classList.toggle('locked', !allRated);
+    document.getElementById('submitBtn').disabled = !ready;
+  }
+
+  function updateProgress() {
+    const sIdx = state.currentSessionIndex || 1;
+    const sessionVideos = videosInSession(sIdx);
+    const sessionDone = completedInSession(sIdx);
+    const totalDone = state.completedVideos.length;
+    const total = cfg.videos.length;
+    document.getElementById('progressText').textContent =
+      `Session ${sIdx} of ${N_SESSIONS} — ${sessionDone} of ${sessionVideos.length} in this session (${totalDone}/${total} overall)`;
+    document.getElementById('progressFill').style.width = (total ? totalDone/total*100 : 0) + '%';
+  }
+
+  // ----- Submit -----
+  document.getElementById('submitBtn').onclick = async function() {
+    freezeActiveTimer();
+    const idx = state.currentVideoIndex;
+    const video = cfg.videos[idx];
+    const cpips = cfg.cpips[video.internalId] || [];
+    const draft = getDraft(video.internalId);
+    const videoDwellMs = state.videoStartTime ? (Date.now() - state.videoStartTime) : 0;
+    const videoRewinds = cpips.reduce((acc, c) => {
+      const d = draft.cpips[c.cpipId] || {};
+      return acc + Math.max(0, (d.watch_count || 0) - 1);
+    }, 0);
+
+    const payload = {
+      raterId: cfg.raterId,
+      demographics: state.demographics,
+      videoInternalId: video.internalId,
+      videoDisplayLabel: video.displayLabel,
+      videoSet: video.set,
+      videoTopic: video.topic,
+      videoDelayS: video.delay_s,
+      videoOrderIndex: idx + 1,
+      sessionIndex: video.session_index,
+      positionInSession: video.position_in_session,
+      videoDwellMs: videoDwellMs,
+      videoRewinds: videoRewinds,
+      overallScore: draft.overallScore ?? 50,
+      confidence: draft.confidence,
+      principlesViolated: draft.principles || [],
+      momentAnchor: (draft.momentAnchor || '').slice(0, 200),
+      cpips: cpips.map((cpip, i) => {
+        const d = draft.cpips[cpip.cpipId] || {};
+        return {
+          cpipId: cpip.cpipId,
+          cpipIndex: i + 1,
+          tNarrS: cpip.t_narr_s,
+          windowStartS: cpip.window_start_s,
+          windowEndS: cpip.window_end_s,
+          conceptLabel: cpip.conceptLabel,
+          supportRating: d.rating,
+          cpipDwellMs: d.dwell_ms || 0,
+          cpipRewinds: Math.max(0, (d.watch_count || 0) - 1)
+        };
+      })
+    };
+
+    showBanner('Submitting&hellip;', 'info');
+    this.disabled = true;
+    try {
+      await fetch(cfg.appsScriptUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+      state.completedVideos.push(video.internalId);
+      delete state.draftAnswers[video.internalId];
+      state.videoStartTime = null;
+      state.activeCpipId = null;
+      state.activeCpipStartTime = null;
+      saveState();
+      const sIdx = state.currentSessionIndex || 1;
+      const sessionJustCompleted = isSessionComplete(sIdx);
+      if (sessionJustCompleted && sIdx < N_SESSIONS) {
+        showBanner('Submitted &mdash; end of Session ' + sIdx + '.', 'success');
+        setTimeout(() => routeToNext(), 600);
+      } else if (sessionJustCompleted && sIdx === N_SESSIONS) {
+        showBanner('Submitted &mdash; all sessions complete.', 'success');
+        setTimeout(() => routeToNext(), 600);
+      } else {
+        showBanner('Submitted. Loading next video&hellip;', 'success');
+        setTimeout(() => {
+          const next = findNextVideoInSession(sIdx);
+          if (next === -1) { routeToNext(); }
+          else { renderVideo(next); document.getElementById('ratingPane').scrollTop = 0; }
+        }, 900);
+      }
+    } catch(e) {
+      showBanner('Submit failed: ' + escapeHtml(e.message) + '. Copy the JSON below and email it as a backup:<br><textarea style="width:100%;height:120px;margin-top:6px;">' + escapeHtml(JSON.stringify(payload)) + '</textarea>', 'error');
+      this.disabled = false;
+    }
+  };
+
+  function showBanner(msg, type) {
+    const area = document.getElementById('bannerArea');
+    area.innerHTML = `<div class="banner ${type}">${msg}</div>`;
+    if (type !== 'error') setTimeout(() => { area.innerHTML = ''; }, 3000);
+  }
+
+  function showCompletion() {
+    document.getElementById('mainContainer').style.display = 'none';
+    document.getElementById('demographicsScreen').style.display = 'none';
+    document.getElementById('completionScreen').style.display = 'block';
+    updateProgress();
+  }
+
+  // ----- Reference-card modal -----
+  document.getElementById('scaleCardBtn').onclick = () => {
+    document.getElementById('scaleCardContent').innerHTML = cfg.ratingScaleHtml || '';
+    document.getElementById('scaleModal').classList.add('open');
+  };
+  document.getElementById('closeModalBtn').onclick = () => document.getElementById('scaleModal').classList.remove('open');
+  document.getElementById('scaleModal').onclick = (e) => { if (e.target.id==='scaleModal') e.currentTarget.classList.remove('open'); };
+
+  // ----- Demographics gate -----
+  document.getElementById('demographicsForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fd = new FormData(this);
+    const d = {
+      institution: (fd.get('institution') || '').toString().trim(),
+      yearsExp: parseInt(fd.get('yearsExp') || '0'),
+      ctmlFamiliarity: parseInt(fd.get('ctmlFamiliarity') || '0'),
+      qualification: (fd.get('qualification') || '').toString(),
+      priorToolEval: (fd.get('priorToolEval') || '').toString(),
+      capturedAt: new Date().toISOString()
+    };
+    state.demographics = d;
+    saveState();
+    routeToNext();
+  });
+
+  // Warn on unload if a draft exists
+  window.addEventListener('beforeunload', (e) => {
+    const idx = state.currentVideoIndex;
+    if (idx >= 0 && idx < cfg.videos.length) {
+      const video = cfg.videos[idx];
+      const draft = state.draftAnswers[video.internalId];
+      if (draft && !state.completedVideos.includes(video.internalId)) {
+        e.preventDefault(); e.returnValue = '';
+      }
+    }
+  });
+
+  // ----- Bootstrap -----
+  function maybeStart() {
+    document.getElementById('raterBadge').textContent = cfg.raterId;
+    if (!state.demographics) {
+      document.getElementById('demographicsScreen').style.display = 'block';
+      updateProgress();
+      return;
+    }
+    routeToNext();
+  }
+
+  // Decide what screen to show next based on session state.
+  function routeToNext() {
+    hideAllScreens();
+    const sIdx = state.currentSessionIndex || 1;
+    // If current session is complete:
+    if (isSessionComplete(sIdx)) {
+      if (sIdx < N_SESSIONS) {
+        showInterstitial(sIdx);
+        return;
+      } else {
+        showCompletion();
+        return;
+      }
+    }
+    // Otherwise render the next un-completed video in the current session.
+    document.getElementById('mainContainer').style.display = 'grid';
+    const idx = findNextVideoInSession(sIdx);
+    if (idx === -1) {
+      // Shouldn't normally happen; defensive fallback.
+      showCompletion();
+      return;
+    }
+    if (!state.videoStartTime) state.videoStartTime = Date.now();
+    renderVideo(idx);
+  }
+
+  function hideAllScreens() {
+    document.getElementById('demographicsScreen').style.display = 'none';
+    document.getElementById('mainContainer').style.display = 'none';
+    document.getElementById('completionScreen').style.display = 'none';
+    document.getElementById('interstitialScreen').style.display = 'none';
+  }
+
+  function showInterstitial(completedSession) {
+    const screen = document.getElementById('interstitialScreen');
+    const nextSession = completedSession + 1;
+    const nextSessionVideoCount = videosInSession(nextSession).length;
+    // After session 1 we surface a brief mid-study note about cross-session
+    // recurrence (per the 2026-06-02 disclosure decision: session 1 is fully
+    // blind; sessions 2-3 raters are informed that lecture topics may recur
+    // in slightly different versions, with an instruction to rate each
+    // independently). No mention of the manipulation type.
+    const disclosureNote = completedSession === 1 ? `
+      <div class="disclosure-note">
+        <strong>A short note before Session ${nextSession}</strong>
+        You may notice that some of the lecture topics you watched in Session 1 reappear in Session ${nextSession} (and Session ${N_SESSIONS}), in slightly different versions. Please rate each version based only on what you observe in <em>this</em> video — try not to compare against what you remember from earlier sessions.
+      </div>
+    ` : '';
+    screen.innerHTML = `
+      <h2>Session ${completedSession} of ${N_SESSIONS} complete</h2>
+      <p>Thank you — you have rated all the videos in this session.</p>
+      <p>You may continue to Session ${nextSession} now (it has ${nextSessionVideoCount} videos), or take a break and resume later. Your progress is saved either way.</p>
+      ${disclosureNote}
+      <div class="button-row">
+        <button class="primary" id="continueBtn">Continue to Session ${nextSession} now</button>
+        <button class="secondary" id="resumeLaterBtn">Resume later</button>
+      </div>
+    `;
+    screen.style.display = 'block';
+    document.getElementById('continueBtn').onclick = () => {
+      state.currentSessionIndex = nextSession;
+      state.videoStartTime = null;
+      saveState();
+      routeToNext();
+    };
+    document.getElementById('resumeLaterBtn').onclick = () => {
+      // Persist intent: advance the session pointer now so that when the rater
+      // reopens this URL, they land directly on the first video of the next
+      // session (no need to re-click "Continue").
+      state.currentSessionIndex = nextSession;
+      state.videoStartTime = null;
+      saveState();
+      screen.innerHTML = `
+        <h2>See you next time</h2>
+        <p>Your progress has been saved. When you re-open this page, you will be taken directly to Session ${nextSession}.</p>
+        <div class="resumed-msg">You may now close this window safely.</div>
+      `;
+    };
+  }
+
+  // If YT API loaded before this script
+  if (window.YT && window.YT.Player) maybeStart();
+})();
+</script>
+</body>
+</html>
